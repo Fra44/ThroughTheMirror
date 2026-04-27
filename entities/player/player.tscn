@@ -35,3 +35,6 @@ frame = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1578707545]
 libraries/ = SubResource("AnimationLibrary_sglur")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1841351269]
+position_smoothing_speed = 50.0
