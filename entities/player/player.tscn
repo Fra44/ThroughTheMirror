@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://d2uhc4g6n7c4d"]
 
+[ext_resource type="Script" uid="uid://ciu2r0o43kly8" path="res://entities/player/player.gd" id="1_abrql"]
 [ext_resource type="Texture2D" uid="uid://bat2hcihyj5dj" path="res://entities/player/character_premade_01_idle.png" id="1_symyc"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sfv1e"]
-size = Vector2(16, 32)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_abrql"]
+size = Vector2(14, 3)
 
 [sub_resource type="Animation" id="Animation_symyc"]
 length = 0.001
@@ -20,9 +21,11 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" unique_id=896777798]
+script = ExtResource("1_abrql")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2112129482]
-shape = SubResource("RectangleShape2D_sfv1e")
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_abrql")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1069740663]
 texture = ExtResource("1_symyc")
