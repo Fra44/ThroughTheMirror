@@ -9,11 +9,10 @@ signal level_changed(level_path: String)
 
 var current_level_instance: Node = null
 
-
 func _ready() -> void:
 	if not initial_level_path.is_empty():
-		change_level(initial_level_path)
-
+		# Usiamo "Default" come id di spawn per far apparire l'Architetto nel punto giusto
+		change_level(initial_level_path, &"Default")
 
 func change_level(path: String, spawn_id: StringName = &"") -> void:
 	if path.is_empty():
@@ -35,14 +34,15 @@ func change_level(path: String, spawn_id: StringName = &"") -> void:
 	_place_player_at_spawn(spawn_id)
 	level_changed.emit(path)
 
-
 func _place_player_at_spawn(spawn_id: StringName) -> void:
 	if spawn_id == StringName():
 		return
 
-	var spawn_path := NodePath("SpawnPoints/%s" % String(spawn_id))
-	if current_level_instance != null and current_level_instance.has_node(spawn_path):
-		var spawn := current_level_instance.get_node(spawn_path) as Node2D
+	# Cerca il nodo SpawnPoints nel livello appena caricato
+	var spawn_points_node = current_level_instance.get_node_or_null("SpawnPoints")
+	
+	if spawn_points_node != null:
+		var spawn = spawn_points_node.get_node_or_null(String(spawn_id))
 		if spawn != null:
 			player.global_position = spawn.global_position
 			return

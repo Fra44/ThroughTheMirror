@@ -8,6 +8,7 @@ script = ExtResource("1_iuonh")
 
 [node name="CurrentLevel" type="Node2D" parent="." unique_id=401760833]
 
-[node name="Actors" type="Node2D" parent="." unique_id=1217217804]
+[node name="Actors" type="Node2D" parent="." unique_id=1314988803]
 
 [node name="Player" parent="Actors" unique_id=896777798 instance=ExtResource("1_hyk8p")]
+position = Vector2(-33, -28)
