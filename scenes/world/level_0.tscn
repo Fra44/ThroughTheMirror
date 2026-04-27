@@ -9,9 +9,10 @@ position = Vector2(95, 47)
 [node name="Overworld" parent="." unique_id=1589885129 instance=ExtResource("1_6vksw")]
 position = Vector2(129, 52)
 
-[node name="SpawnPoints" type="Node2D" parent="." unique_id=2127013424]
-
-[node name="Default" type="Marker2D" parent="SpawnPoints" unique_id=352165738]
-position = Vector2(127, 50)
-
 [node name="Tavern" parent="." unique_id=141820022 instance=ExtResource("2_7umm2")]
+position = Vector2(336, -7)
+
+[node name="SpawnPoints" type="Node2D" parent="." unique_id=934246133]
+
+[node name="Default" type="Marker2D" parent="SpawnPoints" unique_id=1699341683]
+position = Vector2(127, 50)
