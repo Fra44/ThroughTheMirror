@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://rd3pc53spu15"]
+
+[ext_resource type="Texture2D" uid="uid://brgaxh2ugrjbp" path="res://entities/npcs/guard/guard.png" id="1_f4nb8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f8q51"]
+size = Vector2(11.5, 13.700001)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x1mx7"]
+radius = 17.8
+
+[node name="Guard" type="CharacterBody2D" unique_id=96672729]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=5156888]
+z_index = 1
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_f4nb8")
+hframes = 5
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1288017672]
+position = Vector2(-1.73, 17.15)
+shape = SubResource("RectangleShape2D_f8q51")
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=1511953679]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1707259508]
+position = Vector2(-1.8, 8)
+shape = SubResource("CircleShape2D_x1mx7")

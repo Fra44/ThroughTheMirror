@@ -21,7 +21,7 @@ MCPRuntime="*uid://qshpbdluw3j0"
 
 [display]
 
-window/size/initial_position_type=4
+window/size/initial_position_type=3
 window/stretch/mode="viewport"
 window/stretch/scale=3.0
 

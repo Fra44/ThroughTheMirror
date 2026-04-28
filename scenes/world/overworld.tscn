@@ -31,4 +31,4 @@ position = Vector2(-72, -190)
 [node name="TeleportTrigger" parent="SpawnPoints" unique_id=720813871 instance=ExtResource("2_het3u")]
 position = Vector2(-72, -199)
 target_scene_path = "uid://4to86fcqodrf"
-target_spawn_id = "insideDoor"
+target_spawn_id = "InsideDoor"

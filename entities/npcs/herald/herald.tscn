@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cf7w5va7vp8u7"]
+
+[ext_resource type="Texture2D" uid="uid://dxof735o8nm8d" path="res://entities/npcs/herald/south.png" id="1_krrav"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sgogx"]
+size = Vector2(5.75, 11.425)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5bwdk"]
+radius = 8.0
+
+[node name="Herald" type="CharacterBody2D" unique_id=777789410]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=199017846]
+z_index = 1
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_krrav")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=781722917]
+position = Vector2(0, 2.2875)
+shape = SubResource("RectangleShape2D_sgogx")
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=1578364785]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=368120]
+shape = SubResource("CircleShape2D_5bwdk")

@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://n47uwycg7cau"]
+
+[ext_resource type="Texture2D" uid="uid://ciooagaw4f1hm" path="res://entities/npcs/innkeeper/innkeeper_idle.png" id="1_prilj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0pg44"]
+size = Vector2(11.5, 13.700001)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wu38h"]
+radius = 16.03122
+
+[node name="Innkeeper" type="CharacterBody2D" unique_id=659102842]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1456255863]
+z_index = 1
+texture = ExtResource("1_prilj")
+hframes = 2
+vframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=451936232]
+position = Vector2(-1, 8)
+scale = Vector2(1.5, 1.5)
+shape = SubResource("RectangleShape2D_0pg44")
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=866024440]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=93053225]
+position = Vector2(-1, 5)
+shape = SubResource("CircleShape2D_wu38h")

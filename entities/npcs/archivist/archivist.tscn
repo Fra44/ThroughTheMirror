@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dc2g03j4xdn0p"]
+
+[ext_resource type="Texture2D" uid="uid://c6r8v58l7fh67" path="res://entities/npcs/archivist/granny.png" id="1_x11do"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pbffu"]
+size = Vector2(5.75, 11.425)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_acf7a"]
+radius = 8.0
+
+[node name="Archivist" type="CharacterBody2D" unique_id=652356716]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=174769482]
+z_index = 1
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_x11do")
+hframes = 5
+vframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1247619821]
+position = Vector2(0, 2.2875)
+shape = SubResource("RectangleShape2D_pbffu")
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=2036747924]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=602401849]
+shape = SubResource("CircleShape2D_acf7a")

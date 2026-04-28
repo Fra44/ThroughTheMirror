@@ -2,6 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://d2uhc4g6n7c4d" path="res://entities/player/player.tscn" id="1_hyk8p"]
 [ext_resource type="Script" uid="uid://bw6stpsuvxl2y" path="res://scenes/main/main.gd" id="1_iuonh"]
+[ext_resource type="PackedScene" uid="uid://rd3pc53spu15" path="res://entities/npcs/guard/guard.tscn" id="3_k2fmo"]
+[ext_resource type="PackedScene" uid="uid://n47uwycg7cau" path="res://entities/npcs/innkeeper/innkeeper.tscn" id="4_l3cfh"]
+[ext_resource type="PackedScene" uid="uid://cf7w5va7vp8u7" path="res://entities/npcs/herald/herald.tscn" id="5_6q06x"]
 
 [node name="Main" type="Node2D" unique_id=1419610177]
 script = ExtResource("1_iuonh")
@@ -12,3 +15,14 @@ script = ExtResource("1_iuonh")
 
 [node name="Player" parent="Actors" unique_id=896777798 instance=ExtResource("1_hyk8p")]
 position = Vector2(-33, -28)
+
+[node name="Guard" parent="Actors" unique_id=96672729 instance=ExtResource("3_k2fmo")]
+position = Vector2(82, 17)
+
+[node name="Innkeeper" parent="Actors" unique_id=659102842 instance=ExtResource("4_l3cfh")]
+visible = false
+position = Vector2(115, 24)
+
+[node name="Herald" parent="Actors" unique_id=777789410 instance=ExtResource("5_6q06x")]
+position = Vector2(102, 26)
+scale = Vector2(2, 2)
