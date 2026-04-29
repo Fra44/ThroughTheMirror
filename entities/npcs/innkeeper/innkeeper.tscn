@@ -1,12 +1,14 @@
 [gd_scene format=3 uid="uid://n47uwycg7cau"]
 
 [ext_resource type="Texture2D" uid="uid://ciooagaw4f1hm" path="res://entities/npcs/innkeeper/innkeeper_idle.png" id="1_prilj"]
+[ext_resource type="Script" uid="uid://dxgwgmyd14tng" path="res://entities/npcs/innkeeper/actionable.gd" id="2_wu38h"]
+[ext_resource type="Resource" uid="uid://clvcchuhtb1xv" path="res://dialogue/test_dialogue.dialogue" id="3_uw0j0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0pg44"]
 size = Vector2(11.5, 13.700001)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_wu38h"]
-radius = 16.03122
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_prilj"]
+size = Vector2(14, 32)
 
 [node name="Innkeeper" type="CharacterBody2D" unique_id=659102842]
 
@@ -21,8 +23,12 @@ position = Vector2(-1, 8)
 scale = Vector2(1.5, 1.5)
 shape = SubResource("RectangleShape2D_0pg44")
 
-[node name="InteractionArea" type="Area2D" parent="." unique_id=866024440]
+[node name="Actionable" type="Area2D" parent="." unique_id=455008164]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("2_wu38h")
+dialogue_resource = ExtResource("3_uw0j0")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=93053225]
-position = Vector2(-1, 5)
-shape = SubResource("CircleShape2D_wu38h")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionable" unique_id=1805900562]
+position = Vector2(-1, 15)
+shape = SubResource("RectangleShape2D_prilj")

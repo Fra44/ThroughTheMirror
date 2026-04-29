@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@onready  var actionable_finder: Area2D = $Direction/ActionableFinder
+
 # Velocità regolabile dall'Inspector (utile per testare il Reflow dell'Araldo!)
 @export var speed: float = 150.0 
 
@@ -14,3 +16,10 @@ func _physics_process(_delta: float) -> void:
 	# 3. Muovi il corpo e gestisci le collisioni
 	# move_and_slide() usa automaticamente la proprietà 'velocity'
 	move_and_slide()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("ui_accept"): # "ui_accept" è solitamente Spazio/Invio
+		var actionables = actionable_finder.get_overlapping_areas()
+		if actionables.size() > 0:
+			actionables[0].action() # Attiva il primo dialogo trovato
+			return

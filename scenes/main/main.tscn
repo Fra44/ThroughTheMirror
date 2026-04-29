@@ -2,12 +2,16 @@
 
 [ext_resource type="PackedScene" uid="uid://d2uhc4g6n7c4d" path="res://entities/player/player.tscn" id="1_hyk8p"]
 [ext_resource type="Script" uid="uid://bw6stpsuvxl2y" path="res://scenes/main/main.gd" id="1_iuonh"]
+[ext_resource type="PackedScene" uid="uid://ugd552efvil0" path="res://addons/dialogue_manager/test_scene.tscn" id="2_hujxm"]
 [ext_resource type="PackedScene" uid="uid://rd3pc53spu15" path="res://entities/npcs/guard/guard.tscn" id="3_k2fmo"]
 [ext_resource type="PackedScene" uid="uid://n47uwycg7cau" path="res://entities/npcs/innkeeper/innkeeper.tscn" id="4_l3cfh"]
 [ext_resource type="PackedScene" uid="uid://cf7w5va7vp8u7" path="res://entities/npcs/herald/herald.tscn" id="5_6q06x"]
+[ext_resource type="PackedScene" uid="uid://dc2g03j4xdn0p" path="res://entities/npcs/archivist/archivist.tscn" id="6_ow5a4"]
 
 [node name="Main" type="Node2D" unique_id=1419610177]
 script = ExtResource("1_iuonh")
+
+[node name="TestScene" parent="." unique_id=2100696509 instance=ExtResource("2_hujxm")]
 
 [node name="CurrentLevel" type="Node2D" parent="." unique_id=401760833]
 
@@ -26,3 +30,5 @@ position = Vector2(115, 24)
 [node name="Herald" parent="Actors" unique_id=777789410 instance=ExtResource("5_6q06x")]
 position = Vector2(102, 26)
 scale = Vector2(2, 2)
+
+[node name="Archivist" parent="Actors" unique_id=652356716 instance=ExtResource("6_ow5a4")]
