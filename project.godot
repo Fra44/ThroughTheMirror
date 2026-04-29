@@ -19,9 +19,11 @@ config/icon="res://icon.svg"
 
 MCPRuntime="*uid://qshpbdluw3j0"
 DialogueManager="*uid://c3rodes2l3gxb"
+State="*uid://koyanq64kv14"
 
 [dialogue_manager]
 
+runtime/balloon_path="res://dialogue/balloon.tscn"
 runtime/state_autoload_shortcuts=[null, null]
 
 [display]

@@ -10,7 +10,7 @@ position = Vector2(95, 47)
 position = Vector2(129, 52)
 
 [node name="Tavern" parent="." unique_id=141820022 instance=ExtResource("2_7umm2")]
-position = Vector2(336, -7)
+position = Vector2(336, -6)
 
 [node name="SpawnPoints" type="Node2D" parent="." unique_id=934246133]
 
