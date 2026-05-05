@@ -29,3 +29,4 @@ position = Vector2(102, 26)
 scale = Vector2(2, 2)
 
 [node name="Archivist" parent="Actors" unique_id=652356716 instance=ExtResource("6_ow5a4")]
+position = Vector2(131, 59)
