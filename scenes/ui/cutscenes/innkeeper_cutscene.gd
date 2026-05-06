@@ -5,40 +5,54 @@ signal cutscene_finished
 @onready var portrait: TextureRect = $Portrait
 @onready var balloon: Node = $Balloon
 
+var current_resource: Resource = null
+
 func _ready() -> void:
-	# In Godot 4 si usa process_mode e la costante PROCESS_MODE_ALWAYS
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	
-	# Assicurarsi che il balloon processi durante la pausa
-	if is_instance_valid(balloon):
-		balloon.process_mode = Node.PROCESS_MODE_ALWAYS
-		
 	visible = false
 	
-func start_cutscene(dialogue_res: Resource, title: String = "start") -> void:
+	# Connessione fine dialogo globale
+	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
+	
+	# Connessione al nuovo segnale del Balloon per cambiare portrait
+	if is_instance_valid(balloon) and balloon.has_signal("line_changed"):
+		balloon.line_changed.connect(_on_balloon_line_changed)
+
+# Aggiunto parametro opzionale initial_portrait_path
+func start_cutscene(dialogue_res: Resource, title: String = "start", initial_portrait_path: String = "") -> void:
+	if dialogue_res == null:
+		return
+		
+	current_resource = dialogue_res
 	visible = true
 	
-	# Caricamento del portrait
-	var tex_path := "res://scenes/ui/cutscenes/images/conversation_innkeeper_sad.png"
-	if ResourceLoader.exists(tex_path):
-		portrait.texture = load(tex_path)
+	# Se passiamo un'immagine iniziale, la carichiamo (es. Happy)
+	if initial_portrait_path != "" and ResourceLoader.exists(initial_portrait_path):
+		portrait.texture = load(initial_portrait_path)
 	
-	# Metti in pausa il mondo
 	get_tree().paused = true
 	
-	# Avvia il dialogo
 	if is_instance_valid(balloon):
+		balloon.process_mode = Node.PROCESS_MODE_ALWAYS
 		balloon.start(dialogue_res, title)
-		
-		# Aspetta che il balloon finisca (diventi invisibile)
-		while is_instance_valid(balloon) and balloon.visible:
-			await get_tree().process_frame
-			
-	_end_cutscene()
+
+# Funzione che legge i tag della linea (es: # portrait=res://.../innkeeper_sad.png)
+func _on_balloon_line_changed(line: DialogueLine) -> void:
+	for tag in line.tags:
+		if tag.begins_with("portrait="):
+			var path = tag.split("=")[1].strip_edges()
+			if ResourceLoader.exists(path):
+				portrait.texture = load(path)
+			else:
+				push_warning("Cutscene: Immagine non trovata al percorso: " + path)
+
+func _on_dialogue_ended(resource: DialogueResource) -> void:
+	if resource == current_resource:
+		_end_cutscene()
 
 func _end_cutscene() -> void:
 	get_tree().paused = false
 	visible = false
-	cutscene_finished.emit() # Sintassi moderna di Godot 4 per i segnali
-	# ATTENZIONE: queue_free() eliminerà questa scena definitivamente.
-	# Se vuoi riutilizzarla per altri dialoghi, NON metterlo.
+	current_resource = null
+	cutscene_finished.emit()
+	queue_free()

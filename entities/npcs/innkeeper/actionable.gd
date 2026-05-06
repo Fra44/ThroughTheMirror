@@ -20,4 +20,4 @@ func action() -> void:
 	
 	# Avviamo la cutscene passando la risorsa dialogo e il punto di inizio
 	# Nota: assicurati che in innkeeper_cutscene.gd la funzione si chiami start_cutscene
-	cutscene.start_cutscene(dialogue_resource, dialogue_start)
+	cutscene.start_cutscene(dialogue_resource, dialogue_start, "res://scenes/ui/cutscenes/images/conversation_innkeeper_happy.png")

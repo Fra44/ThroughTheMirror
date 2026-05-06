@@ -2,6 +2,6 @@
 
 innkeeper: Hi! Welcome to the tavern!
 innkeeper: This is my home now.
-innkeeper: But it's not as it was...
-innkeeper: SUCAAAAAAAAAAAAAAAAA
+innkeeper: But it's not as it was.  [#portrait=res://scenes/ui/cutscenes/images/conversation_innkeeper_sad.png]
+innkeeper: ...
 => END

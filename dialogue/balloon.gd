@@ -1,6 +1,8 @@
 extends CanvasLayer
 ## A basic dialogue balloon for use with Dialogue Manager.
 
+# --- AGGIUNTO: Segnale per notificare il cambio riga ---
+signal line_changed(line: DialogueLine)
 
 ## The dialogue resource
 @export var dialogue_resource: DialogueResource
@@ -135,6 +137,9 @@ func apply_dialogue_line() -> void:
 
 	dialogue_label.hide()
 	dialogue_label.dialogue_line = dialogue_line
+
+	# --- AGGIUNTO: Emette il segnale per la cutscene ---
+	line_changed.emit(dialogue_line)
 
 	responses_menu.hide()
 	responses_menu.responses = dialogue_line.responses
