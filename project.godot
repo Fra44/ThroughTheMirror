@@ -28,8 +28,11 @@ runtime/state_autoload_shortcuts=[null, null]
 
 [display]
 
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=3
 window/size/initial_position_type=3
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 window/stretch/scale=3.0
 
 [editor]
@@ -111,6 +114,7 @@ locale/translations_pot_files=PackedStringArray("res://dialogue/test_dialogue.di
 [physics]
 
 3d/physics_engine="Jolt Physics"
+common/physics_interpolation=true
 
 [rendering]
 
@@ -118,4 +122,3 @@ textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-2d/snap/snap_2d_transforms_to_pixel=true

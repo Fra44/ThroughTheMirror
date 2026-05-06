@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready  var actionable_finder: Area2D = $Direction/ActionableFinder
 
 # Velocità regolabile dall'Inspector (utile per testare il Reflow dell'Araldo!)
-@export var speed: float = 150.0 
+@export var speed: float = 300.0 
 
 func _physics_process(_delta: float) -> void:
 	# 1. Ottieni la direzione dai tasti (WASD o Frecce)

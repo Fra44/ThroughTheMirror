@@ -39,6 +39,8 @@ frame = 5
 libraries/ = SubResource("AnimationLibrary_sglur")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1841351269]
+zoom = Vector2(2, 2)
+process_callback = 0
 position_smoothing_speed = 50.0
 
 [node name="Direction" type="Marker2D" parent="." unique_id=2058518789]
