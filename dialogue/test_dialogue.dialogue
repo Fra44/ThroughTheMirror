@@ -1,7 +1,12 @@
 ~ start
 
-innkeeper: Hi! Welcome to the tavern!
-innkeeper: This is my home now.
-innkeeper: But it's not as it was.  [#portrait=res://scenes/ui/cutscenes/images/conversation_innkeeper_sad.png]
-innkeeper: ...
+Innkeeper: Hi! Welcome to the tavern!
+Innkeeper: The realm is going to have a lot of visitors in the next days! The launch of the game is going to be a fantastic moment for everybody! 
+Innkeeper: But I'm feeling a bit anxious...  [#portrait=res://scenes/ui/cutscenes/images/conversation_innkeeper_sad.png]
+Innkeeper: My sight has gotten worse, and I am not able to read the only thing that I actually have to read to the visitors, the menu of the tavern!  [#portrait=res://scenes/ui/cutscenes/images/conversation_innkeeper_angry.png]
+Innkeeper: If only there was somebody that could help me... [#portrait=res://scenes/ui/cutscenes/images/conversation_innkeeper_sad.png]
+Innkeeper: What? You are the developer of the game?? [#portrait=res://scenes/ui/cutscenes/images/conversation_innkeeper_surprised.png]
+Innkeeper: Please help me, creator!
+: Here you have the menu. As you can see, it is not clearly visible. [#portrait=res://scenes/ui/cutscenes/images/menu_lowContrast.png]
+: Let's see how your newly acquired power works! Activate now the mirror of resonance! Press (M) and see the results!
 => END

@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://dbsdm6smg08wx"]
+
+[ext_resource type="Script" uid="uid://cllsaprkf0h6s" path="res://scenes/ui/cutscenes/innkeeper/menu_base.gd" id="1_c8yip"]
+[ext_resource type="Texture2D" uid="uid://b6fqbotagpx4e" path="res://scenes/ui/cutscenes/innkeeper/menu_empty.png" id="1_sgmd2"]
+
+[node name="ContrastMinigame" type="CanvasLayer" unique_id=1632444068]
+script = ExtResource("1_c8yip")
+
+[node name="Parchment" type="TextureRect" parent="." unique_id=969746832]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_sgmd2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=765435824]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 247
+theme_override_constants/margin_top = 97
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="TextContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1829446501]
+layout_mode = 2
+theme_override_constants/separation = 22
+
+[node name="Label" type="Label" parent="MarginContainer/TextContainer" unique_id=2072424018]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85882354, 0.67058825, 0.45882353, 1)
+text = "Pork Stew                       ...10c"
+
+[node name="Label2" type="Label" parent="MarginContainer/TextContainer" unique_id=1881638805]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85882354, 0.67058825, 0.45882353, 1)
+text = "Roasted Chicken              ...15c"
+
+[node name="Label3" type="Label" parent="MarginContainer/TextContainer" unique_id=1858131659]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.34117648, 0.34117648, 0.34117648, 1)
+text = "Local Bread and Cheese     ...4c"
+
+[node name="Label4" type="Label" parent="MarginContainer/TextContainer" unique_id=278636932]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85882354, 0.67058825, 0.45882353, 1)
+text = "Craft Dark Ale                   ...3c"
+
+[node name="Label5" type="Label" parent="MarginContainer/TextContainer" unique_id=728109018]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85882354, 0.67058825, 0.45882353, 1)
+text = "House Red Wine                  ...5c"
+
+[node name="Label6" type="Label" parent="MarginContainer/TextContainer" unique_id=1307983088]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Hot Broth                           ...2c"
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="." unique_id=743867836]
+offset_left = 120.0
+offset_top = 80.0
+offset_right = 152.0
+offset_bottom = 112.0
+edit_alpha = false
+
+[node name="RatioDisplay" type="Label" parent="." unique_id=451324990]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 208.0
+offset_top = 36.0
+offset_right = 248.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "AAA"
+
+[connection signal="color_changed" from="ColorPickerButton" to="." method="_on_color_picker_button_color_changed"]

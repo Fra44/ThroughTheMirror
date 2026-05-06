@@ -1,7 +1,7 @@
 extends Area2D
 
 # Carichiamo la scena della cutscene (più pulito usare preload qui)
-const CUTSCENE_SCENE = preload("res://scenes/ui/cutscenes/innkeeper_cutscene.tscn")
+const CUTSCENE_SCENE = preload("res://scenes/ui/cutscenes/innkeeper/innkeeper_cutscene.tscn")
 
 @export var dialogue_resource: DialogueResource
 @export var dialogue_start: String = "start"
