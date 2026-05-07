@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="WCAGData" format=3 uid="uid://c8kdoqwko8sof"]
+
+[ext_resource type="Script" uid="uid://mgn4yar0d3vn" path="res://global/resources/wcag_data.gd" id="1_2ad3p"]
+
+[resource]
+script = ExtResource("1_2ad3p")
+id = "1.4.3"
+title = "Minimum Contrast"
+short_description = "This criterion requires text to have sufficient contrast against its background, with a minimum ratio of 4.5:1 for normal text."
+long_description = "The WCAG 2.1 success criterion 1.4.3 – Contrast (Minimum) ensures that text remains readable for users with visual impairments or reduced contrast sensitivity.
+
+It requires:
+
+- a contrast ratio of at least 4.5:1 for normal text,
+- at least 3:1 for large or bold text.
+
+The rule also applies to images of text and text shown during interactions such as hover or focus states. Decorative text, inactive elements, and logos are exempt.
+
+The guideline emphasizes that low contrast can make content difficult to perceive regardless of color differences, making sufficient contrast essential for accessibility and readability.
+"
+metadata/_custom_type_script = "uid://mgn4yar0d3vn"
