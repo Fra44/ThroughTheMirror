@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cllsaprkf0h6s" path="res://scenes/ui/cutscenes/innkeeper/menu_base.gd" id="1_c8yip"]
 [ext_resource type="Texture2D" uid="uid://b6fqbotagpx4e" path="res://scenes/ui/cutscenes/innkeeper/menu_empty.png" id="1_sgmd2"]
+[ext_resource type="PackedScene" uid="uid://c28oh04cy721k" path="res://ui/hud/debug_window.tscn" id="3_ta6nu"]
 
 [node name="ContrastMinigame" type="CanvasLayer" unique_id=1632444068]
 script = ExtResource("1_c8yip")
@@ -81,5 +82,7 @@ offset_bottom = 52.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "AAA"
+
+[node name="DebugWindow" parent="." unique_id=33922456 instance=ExtResource("3_ta6nu")]
 
 [connection signal="color_changed" from="ColorPickerButton" to="." method="_on_color_picker_button_color_changed"]

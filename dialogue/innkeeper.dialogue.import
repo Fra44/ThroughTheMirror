@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dkggpvq0xl12g"
+path="res://.godot/imported/innkeeper.dialogue-96311aa3728874fc1824a1095848fab6.tres"
+
+[deps]
+
+source_file="res://dialogue/innkeeper.dialogue"
+dest_files=["res://.godot/imported/innkeeper.dialogue-96311aa3728874fc1824a1095848fab6.tres"]
+
+[params]
+
+defaults=true
