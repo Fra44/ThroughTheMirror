@@ -13,7 +13,8 @@ config_version=5
 config/name="thesis game"
 run/main_scene="res://scenes/main/main.tscn"
 config/features=PackedStringArray("4.6", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://6c487avh78gh"
+config/windows_native_icon="res://assets/logo.ico"
 
 [autoload]
 
@@ -21,6 +22,8 @@ MCPRuntime="*uid://qshpbdluw3j0"
 DialogueManager="*uid://c3rodes2l3gxb"
 State="*uid://koyanq64kv14"
 cataract="*uid://cbtyfug4t25yq"
+DiscoveryManager="*uid://djwhlakuxewtw"
+DebugManager="*uid://c28oh04cy721k"
 
 [dialogue_manager]
 
@@ -115,7 +118,7 @@ toggle_mirror_of_resonance={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://dialogue/test_dialogue.dialogue")
+locale/translations_pot_files=PackedStringArray("res://dialogue/test_dialogue.dialogue", "res://dialogue/innkeeper.dialogue")
 
 [layer_names]
 
