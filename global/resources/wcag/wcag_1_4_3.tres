@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_2ad3p")
 id = "1.4.3"
-title = "Minimum Contrast"
+title = "MINIMUM CONTRAST"
 short_description = "This criterion requires text to have sufficient contrast against its background, with a minimum ratio of 4.5:1 for normal text."
 long_description = "The WCAG 2.1 success criterion 1.4.3 – Contrast (Minimum) ensures that text remains readable for users with visual impairments or reduced contrast sensitivity.
 

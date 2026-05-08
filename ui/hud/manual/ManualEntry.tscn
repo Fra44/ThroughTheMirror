@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dkonqc40wptbx"]
+
+[ext_resource type="Texture2D" uid="uid://bl32hg0ksh0ax" path="res://assets/book/Sprites/UI_TravelBook_Slot01a.png" id="1_dx023"]
+[ext_resource type="Script" uid="uid://bjwawyljkdjtd" path="res://ui/hud/manual/manual_entry.gd" id="2_rgbbf"]
+
+[node name="ManualEntry" type="TextureButton" unique_id=2109531342]
+custom_minimum_size = Vector2(30, 30)
+offset_right = 100.0
+offset_bottom = 30.0
+size_flags_horizontal = 3
+texture_normal = ExtResource("1_dx023")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("2_rgbbf")
+
+[node name="Label" type="Label" parent="." unique_id=1933952827]
+layout_mode = 0
+offset_left = 16.775
+offset_top = 5.61
+offset_right = 95.560005
+offset_bottom = 21.61
+text = "Template"
+vertical_alignment = 1

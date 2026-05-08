@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_7niso")
 name = "Cataracts"
-short_info = "cataracts"
+short_info = "CONTRAST RATIO 1.17:1 (REQUIRED 4.5:1)"
 manual_text = "Cataract is a condition in which the eye’s lens becomes cloudy, reducing vision quality and potentially leading to blindness. It is most commonly associated with aging, but it can also occur in children, after eye injuries, or due to diseases such as glaucoma and diabetes.
 
 It is one of the leading causes of blindness worldwide, particularly in regions with limited access to eye care, even though cataracts can usually be treated through surgery.

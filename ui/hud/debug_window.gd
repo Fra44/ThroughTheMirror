@@ -1,10 +1,10 @@
 extends CanvasLayer
 
 @onready var anchor = $Anchor
-@onready var title_label = $Anchor/PanelContainer/MarginContainer/VBoxContainer/TitleLabel
-@onready var status_label = $Anchor/PanelContainer/MarginContainer/VBoxContainer/StatusLabel
-@onready var error_label = $Anchor/PanelContainer/MarginContainer/VBoxContainer/ErrorLabel
-@onready var violation_label = $Anchor/PanelContainer/MarginContainer/VBoxContainer/ViolationLabel
+@onready var title_label = $Anchor/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TitleLabel
+@onready var status_label = $Anchor/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/StatusLabel
+@onready var error_label = $Anchor/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ErrorLabel
+@onready var violation_label = $Anchor/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ViolationLabel
 
 func _ready():
 	hide() # Nascondi all'avvio
@@ -14,6 +14,7 @@ func _ready():
 func setup_display(data: ImpairmentData):
 	if not data: return
 	
+
 	title_label.text = "MIRROR OF RESONANCE ACTIVATED"
 	status_label.text = "STATUS: VISUAL IMPAIRMENT DETECTED - " + data.name.to_upper()
 	error_label.text = "ERROR: " + data.short_info

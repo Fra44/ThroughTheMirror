@@ -23,43 +23,48 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="PanelContainer" type="PanelContainer" parent="Anchor" unique_id=1089378996]
+[node name="MarginContainer" type="MarginContainer" parent="Anchor" unique_id=1089054110]
 layout_mode = 0
-offset_right = 150.0
-offset_bottom = 50.0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="Anchor/MarginContainer" unique_id=1089378996]
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_3q1or")
 
-[node name="MarginContainer" type="MarginContainer" parent="Anchor/PanelContainer" unique_id=1723331014]
+[node name="MarginContainer" type="MarginContainer" parent="Anchor/MarginContainer/PanelContainer" unique_id=1723331014]
 layout_mode = 2
 theme_override_constants/margin_left = 3
 theme_override_constants/margin_top = 3
 theme_override_constants/margin_right = 3
 theme_override_constants/margin_bottom = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Anchor/PanelContainer/MarginContainer" unique_id=1347714292]
+[node name="VBoxContainer" type="VBoxContainer" parent="Anchor/MarginContainer/PanelContainer/MarginContainer" unique_id=1347714292]
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="TitleLabel" type="Label" parent="Anchor/PanelContainer/MarginContainer/VBoxContainer" unique_id=1650363681]
+[node name="TitleLabel" type="Label" parent="Anchor/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1650363681]
 layout_mode = 2
 theme_override_constants/line_spacing = 3
 theme_override_constants/paragraph_spacing = 0
 theme_override_font_sizes/font_size = 18
-text = "Mirror of Resonance Activated"
+text = "MIRROR OF RESONANCE - DIAGNOSIS"
 
-[node name="HSeparator" type="HSeparator" parent="Anchor/PanelContainer/MarginContainer/VBoxContainer" unique_id=1600857697]
+[node name="HSeparator" type="HSeparator" parent="Anchor/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1600857697]
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="StatusLabel" type="Label" parent="Anchor/PanelContainer/MarginContainer/VBoxContainer" unique_id=245633900]
+[node name="StatusLabel" type="Label" parent="Anchor/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=245633900]
 layout_mode = 2
 text = "Status:"
 
-[node name="ErrorLabel" type="Label" parent="Anchor/PanelContainer/MarginContainer/VBoxContainer" unique_id=887357406]
+[node name="ErrorLabel" type="Label" parent="Anchor/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=887357406]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.20392157, 0, 1)
 text = "Error:"
 
-[node name="ViolationLabel" type="Label" parent="Anchor/PanelContainer/MarginContainer/VBoxContainer" unique_id=713293804]
+[node name="ViolationLabel" type="Label" parent="Anchor/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=713293804]
 layout_mode = 2
 text = "Violation:"
