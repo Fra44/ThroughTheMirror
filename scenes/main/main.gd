@@ -11,8 +11,10 @@ var current_level_instance: Node = null
 
 func _ready() -> void:
 	if not initial_level_path.is_empty():
-		# Usiamo "Default" come id di spawn per far apparire l'Architetto nel punto giusto
 		change_level(initial_level_path, &"Default")
+	var hud_scene = preload("res://ui/hud/hud.tscn")
+	var hud_instance = hud_scene.instantiate()
+	add_child(hud_instance)
 
 func change_level(path: String, spawn_id: StringName = &"") -> void:
 	if path.is_empty():

@@ -5,8 +5,20 @@ var associated_data: Resource
 
 func setup(data: Resource):
 	associated_data = data
-	$Label.text = data.name
+	var icon = $Icon
 	
-	# FORZA la Label a ignorare completamente il mouse. 
-	# Questo garantisce che il click "trapassi" il testo e colpisca il bottone sotto.
+	# Controlliamo il tipo di dato per assegnare il testo corretto alla label
+	if data is ImpairmentData:
+		$Label.text = data.name
+		if data.icon:
+			icon.texture = data.icon
+			icon.show()
+		else:
+			icon.hide()
+			
+	elif data is WCAGData:
+		$Label.text = data.id + " - " + data.title 
+		icon.hide()
+	
+	# Forza la label a ignorare il mouse così il click passa al bottone
 	$Label.mouse_filter = Control.MOUSE_FILTER_IGNORE

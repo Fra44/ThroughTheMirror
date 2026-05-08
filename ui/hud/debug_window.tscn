@@ -15,6 +15,7 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
 [node name="DebugWindow" type="CanvasLayer" unique_id=33922456]
+layer = 2
 script = ExtResource("1_2h3q6")
 
 [node name="Anchor" type="Control" parent="." unique_id=1943724020]

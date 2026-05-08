@@ -13,7 +13,7 @@ shader_parameter/tint_color = Color(1, 0.9, 0.6, 1)
 
 [node name="Cataract" type="CanvasLayer" unique_id=163321732]
 process_mode = 3
-layer = 100
+layer = 10
 script = ExtResource("1_yryja")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=201545335]

@@ -1,22 +1,54 @@
 extends CanvasLayer
 
-# Percorso dello stampo (assicurati che il file si chiami esattamente così!)
 const ENTRY_SCENE = preload("res://ui/hud/manual/ManualEntry.tscn")
 
-@onready var impairment_list = $MainContainer/BookBackground/LeftPage/MarginContainer/ScrollContainer/ImpairmentList
-@onready var title_label = $MainContainer/BookBackground/RightPage/MarginContainer/DetailView/Title
-@onready var description = $MainContainer/BookBackground/RightPage/MarginContainer/DetailView/Description
+# Stato di apertura del manuale
+var is_open: bool = false
+
+@onready var impairment_list = $MainContainer/BookBackground/LeftPage/MarginContainer/VBoxContainer/ScrollContainer/ImpairmentList
+@onready var title_label = $MainContainer/BookBackground/RightPage/MarginContainer/DetailView/IconFrame/Title
+@onready var description = $MainContainer/BookBackground/RightPage/MarginContainer/DetailView/ScrollContainer/Description
+
+# --- AGGIUNTE PER LE WCAG CORRELATE ---
+@onready var related_wcag_container = $MainContainer/BookBackground/RightPage/MarginContainer/DetailView/RelatedWcagContainer
+@onready var wcag_value_label = $MainContainer/BookBackground/RightPage/MarginContainer/DetailView/RelatedWcagContainer/WcagLabel
+@onready var jump_button = $MainContainer/BookBackground/RightPage/MarginContainer/DetailView/RelatedWcagContainer/LinkButton
+@onready var icon_frame = $MainContainer/BookBackground/RightPage/MarginContainer/DetailView/IconFrame
+@onready var icon = $MainContainer/BookBackground/RightPage/MarginContainer/DetailView/IconFrame/Icon
+@onready var page_title = $MainContainer/BookBackground/LeftPage/MarginContainer/VBoxContainer/PageTitle
+
+var current_related_wcag: Resource = null
+# ---------------------------------------
+
+# Funzione per chiudere forzatamente il manuale
+func close_manual():
+	is_open = false
+	visible = false
+	get_tree().paused = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+# Funzione per aprire forzatamente il manuale
+func open_manual():
+	is_open = true
+	visible = true
+	update_impairment_list()
+	_clear_details()
+	get_tree().paused = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _ready():
 	hide() # Il libro parte chiuso
-	
+	is_open = false
 	# Fondamentale: permette al manuale di funzionare anche quando il gioco è in pausa
-	process_mode = Node.PROCESS_MODE_ALWAYS 
-	
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	set_process_input(true)
 	# Colleghiamo i segnalibri (Tabs) via codice
 	$MainContainer/BookBackground/TabsContainer/TabImpairments.pressed.connect(update_impairment_list)
 	$MainContainer/BookBackground/TabsContainer/TabWCAG.pressed.connect(update_wcag_list)
-	# Questo serve per il debug estremo
+	# --- AGGIUNTA: Colleghiamo il tasto freccia e nascondiamo il contenitore ---
+	jump_button.pressed.connect(_on_jump_button_pressed)
+	related_wcag_container.modulate.a = 0
+	# ---------------------------------------------------------------------------
 	get_viewport().gui_focus_changed.connect(_on_focus_changed)
 
 func _on_focus_changed(node: Control):
@@ -26,73 +58,99 @@ func _gui_input(event):
 	if event is InputEventMouseButton and event.pressed:
 		print("Click registrato dal Manuale a coordinate: ", event.position)
 		
-func _input(event):
-	# Apri/Chiudi il libro con il tasto configurato (es. "B")
-	if event.is_action_pressed("ui_book"): 
-		toggle_manual()
+
 
 func toggle_manual():
-	visible = !visible
-	
-	if visible:
+	is_open = !is_open
+	visible = is_open
+	if is_open:
 		update_impairment_list() # Di default mostra gli impairment
-		
+		_clear_details()
 		# --- LOGICA PAUSA E MOUSE ---
 		get_tree().paused = true # Ferma il mondo di gioco
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE) # Mostra il mouse per interagire
 	else:
 		# --- RIPRISTINO GIOCO ---
 		get_tree().paused = false # Riattiva il tempo di gioco
-		# Se il tuo gioco è in prima persona o non usa il mouse normalmente, 
-		# potresti voler usare MOUSE_MODE_CAPTURED qui sotto.
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE) 
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func update_impairment_list():
 	_clear_list()
-	# Cicla attraverso gli impairment scoperti nel DiscoveryManager (Autoload)
+	_clear_details()
+	page_title.text = "Discovered Impairments"
 	for impairment in DiscoveryManager.discovered_impairments:
 		_add_entry(impairment)
 
 func update_wcag_list():
 	_clear_list()
-	# Cicla attraverso le WCAG scoperte nel DiscoveryManager (Autoload)
+	_clear_details()
+	page_title.text = "Discovered WCAGs"
 	for wcag in DiscoveryManager.discovered_wcag:
 		_add_entry(wcag)
 
 func _clear_list():
-	# Svuota la lista a sinistra prima di ripopolarla
 	for child in impairment_list.get_children():
 		child.queue_free()
 
 func _add_entry(data):
-	# Istanza un nuovo bottone dallo "stampo" ManualEntry.tscn
 	var new_entry = ENTRY_SCENE.instantiate()
 	impairment_list.add_child(new_entry)
-	
-	# Configura il bottone con i dati (nome, ecc.)
 	new_entry.setup(data)
-	
-	# Collega il click del bottone per mostrare i dettagli nella pagina destra
 	new_entry.pressed.connect(_on_entry_selected.bind(data))
 
 func _on_entry_selected(data):
-	print("Hai cliccato su: ", data.name) # Questo apparirà nella console in basso
-	# Mostra il titolo in maiuscolo
-	title_label.text = data.name.to_upper()
+	if icon_frame:
+			icon_frame.modulate.a = 1
 	
-	# Controlla che tipo di dato è per scegliere quale testo mostrare
+	# Gestione dinamica del nome (Impairment usa .name, WCAG usa .id)
+	var display_name = ""
 	if data is ImpairmentData:
-		# Se è un Impairment (NPC), mostra il testo medico/sociale
-		description.text = data.manual_text
+		display_name = data.name
 	elif data is WCAGData:
-		# Se è una WCAG, mostra la descrizione tecnica
+		display_name = data.id
+	
+	print("Hai cliccato su: ", display_name)
+	title_label.text = display_name
+	
+	if data is ImpairmentData:
+		description.text = data.manual_text
+		# --- AGGIUNTA: Mostra la WCAG correlata se esiste ---
+		if data.related_wcag:
+			related_wcag_container.modulate.a = 1
+			# Usiamo .id perché WCAGData non ha la proprietà .name
+			wcag_value_label.text = data.related_wcag.id
+			current_related_wcag = data.related_wcag
+		else:
+			related_wcag_container.modulate.a = 0
+			current_related_wcag = null
+		# ----------------------------------------------------
+	elif data is WCAGData:
 		description.text = data.long_description
+		# --- AGGIUNTA: Nascondi se siamo già in una WCAG ---
+		related_wcag_container.modulate.a = 0
+		current_related_wcag = null
+		# ----------------------------------------------------
 	else:
 		description.text = "No data available."
 
-#func _process(_delta):
-	#if visible: # Solo quando il libro è aperto
-		#var hovered_node = get_viewport().gui_get_hovered_control()
-		#if hovered_node:
-			## Stampa il nome del nodo che sta "mangiando" il mouse in questo istante
-			#print("Il mouse è sopra: ", hovered_node.name)
+# --- AGGIUNTA: Funzione per saltare alla WCAG ---
+func _on_jump_button_pressed():
+	if current_related_wcag:
+		update_wcag_list()
+		_on_entry_selected(current_related_wcag)
+# ------------------------------------------------
+func _clear_details():
+	title_label.text = ""
+	description.text = ""
+	related_wcag_container.modulate.a = 0
+	
+	# Se hai un riferimento all'icona (quella dentro IconFrame), 
+	# nascondila o togli la texture:
+	
+	if icon:
+		icon.texture = null
+	
+	if icon_frame:
+			icon_frame.modulate.a = 0
+		
+	

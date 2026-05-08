@@ -13,7 +13,7 @@
 
 [node name="Manual" type="CanvasLayer" unique_id=1998279877]
 process_mode = 3
-layer = 2
+layer = 10
 script = ExtResource("1_ipnmw")
 
 [node name="MainContainer" type="Control" parent="." unique_id=1147936895]
@@ -66,13 +66,12 @@ theme_override_constants/margin_bottom = 15
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainContainer/BookBackground/LeftPage/MarginContainer" unique_id=451792466]
 layout_mode = 2
-theme_override_constants/separation = 10
 
 [node name="PageTitle" type="Label" parent="MainContainer/BookBackground/LeftPage/MarginContainer/VBoxContainer" unique_id=1862222382]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
-text = "Discovered Impairments"
+theme_override_font_sizes/font_size = 22
+text = "Titolo Pagina"
 horizontal_alignment = 1
 
 [node name="Separator" type="TextureRect" parent="MainContainer/BookBackground/LeftPage/MarginContainer/VBoxContainer" unique_id=688655549]
@@ -81,7 +80,6 @@ texture = ExtResource("4_sk61m")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MainContainer/BookBackground/LeftPage/MarginContainer/VBoxContainer" unique_id=653428983]
 layout_mode = 2
-size_flags_vertical = 3
 
 [node name="ImpairmentList" type="VBoxContainer" parent="MainContainer/BookBackground/LeftPage/MarginContainer/VBoxContainer/ScrollContainer" unique_id=1819899423]
 layout_mode = 2
