@@ -53,7 +53,7 @@ func _on_balloon_line_changed(line: DialogueLine) -> void:
 			if DebugManager: # Verifichiamo che l'Autoload esista
 				DebugManager.setup_display(current_impairment)
 		if tag == "minigame_menu":
-			var menu_scene = preload("res://scenes/ui/cutscenes/innkeeper/MenuBase.tscn")
+			var menu_scene = preload("res://scenes/ui/cutscenes/innkeeper/ContrastMinigame.tscn")
 			var menu_instance = menu_scene.instantiate()
 			get_tree().root.add_child(menu_instance)
 			portrait.visible = false # Nascondi l'immagine statica se serve

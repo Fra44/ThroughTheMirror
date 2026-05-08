@@ -13,7 +13,7 @@
 
 [node name="Manual" type="CanvasLayer" unique_id=1998279877]
 process_mode = 3
-layer = 2
+layer = 90
 script = ExtResource("1_ipnmw")
 
 [node name="MainContainer" type="Control" parent="." unique_id=1147936895]
