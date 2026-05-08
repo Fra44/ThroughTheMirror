@@ -5,7 +5,16 @@
 [ext_resource type="PackedScene" uid="uid://c28oh04cy721k" path="res://ui/hud/debug_window.tscn" id="3_ta6nu"]
 
 [node name="ContrastMinigame" type="CanvasLayer" unique_id=1632444068]
+layer = 40
 script = ExtResource("1_c8yip")
+
+[node name="CanvasLayer" type="ColorRect" parent="." unique_id=52078734]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="Parchment" type="TextureRect" parent="." unique_id=969746832]
 anchors_preset = 15

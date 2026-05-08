@@ -52,6 +52,12 @@ func _on_balloon_line_changed(line: DialogueLine) -> void:
 		if tag == "show_debug" and current_impairment != null:
 			if DebugManager: # Verifichiamo che l'Autoload esista
 				DebugManager.setup_display(current_impairment)
+		if tag == "minigame_menu":
+			var menu_scene = preload("res://scenes/ui/cutscenes/innkeeper/MenuBase.tscn")
+			var menu_instance = menu_scene.instantiate()
+			get_tree().root.add_child(menu_instance)
+			portrait.visible = false # Nascondi l'immagine statica se serve
+			$Dim.visible = false # Nascondi il ColorRect nero
 
 func _on_dialogue_ended(resource: DialogueResource) -> void:
 	if resource == current_resource:

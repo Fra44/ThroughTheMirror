@@ -1,7 +1,10 @@
 ~ start
 
 Innkeeper: ????????????????
-: OOOOOOOOOOOOOOOOOO [#portrait=res://scenes/ui/cutscenes/images/menu_lowContrast.png] [#show_debug]
+Innkeeper: What? You are the developer of the game?? [#portrait=res://scenes/ui/cutscenes/images/conversation_innkeeper_surprised.png]
+Innkeeper: Please help me, creator!
+: Here you have the menu. As you can see, it is not clearly visible. [#minigame_menu] [#show_debug]
+: Let's see how your newly acquired power works! Activate now the mirror of resonance! Press (M) and see the results!
 => END
 
 ~ already_helped

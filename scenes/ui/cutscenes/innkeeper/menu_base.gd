@@ -12,6 +12,7 @@ func _ready():
 	var initial_color = Color("dfb27a")
 	color_picker.color = initial_color
 	update_ui(initial_color)
+	process_mode = Node.PROCESS_MODE_ALWAYS
 
 # ATTTENTION! Must be linked to the signal in ContrastMinigame
 func _on_color_picker_button_color_changed(color):

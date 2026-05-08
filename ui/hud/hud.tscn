@@ -15,7 +15,7 @@ corner_radius_top_left = 10
 corner_radius_bottom_left = 10
 
 [node name="Hud" type="CanvasLayer" unique_id=2050006127]
-layer = 5
+layer = 100
 script = ExtResource("1_e0nub")
 
 [node name="Control" type="Control" parent="." unique_id=200666908]
