@@ -7,6 +7,7 @@ signal cutscene_finished
 
 var current_resource: Resource = null
 var current_impairment: ImpairmentData = null # Memorizziamo i dati tecnici del livello
+var spawned_minigame: Node = null
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -56,6 +57,7 @@ func _on_balloon_line_changed(line: DialogueLine) -> void:
 			var menu_scene = preload("res://scenes/ui/cutscenes/innkeeper/ContrastMinigame.tscn")
 			var menu_instance = menu_scene.instantiate()
 			get_tree().root.add_child(menu_instance)
+			spawned_minigame = menu_instance
 			portrait.visible = false # Nascondi l'immagine statica se serve
 			$Dim.visible = false # Nascondi il ColorRect nero
 
@@ -68,7 +70,9 @@ func _on_dialogue_ended(resource: DialogueResource) -> void:
 		_end_cutscene()
 
 func _end_cutscene() -> void:
-	get_tree().paused = false
+	# If a spawned minigame is active, let it control pausing; otherwise unpause
+	if spawned_minigame == null or not is_instance_valid(spawned_minigame):
+		get_tree().paused = false
 	visible = false
 	current_resource = null
 	current_impairment = null

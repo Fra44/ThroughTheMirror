@@ -1,8 +1,31 @@
 [gd_scene format=3 uid="uid://dbsdm6smg08wx"]
 
-[ext_resource type="Script" uid="uid://cllsaprkf0h6s" path="res://scenes/ui/cutscenes/innkeeper/menu_base.gd" id="1_e1alh"]
+[ext_resource type="Script" uid="uid://cllsaprkf0h6s" path="res://scenes/ui/cutscenes/innkeeper/contrast_minigame.gd" id="1_e1alh"]
 [ext_resource type="Texture2D" uid="uid://b6fqbotagpx4e" path="res://scenes/ui/cutscenes/innkeeper/menu_empty.png" id="2_rhhg3"]
 [ext_resource type="PackedScene" uid="uid://c28oh04cy721k" path="res://ui/hud/debug_window.tscn" id="3_chm4o"]
+[ext_resource type="Script" uid="uid://bx0op8f3mkajs" path="res://scenes/ui/cutscenes/innkeeper/color_picker_button.gd" id="3_rhhg3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e1alh"]
+bg_color = Color(0.84705883, 0.7254902, 0.62352943, 0.78431374)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhhg3"]
+bg_color = Color(0.84705883, 0.7254902, 0.62352943, 0.78431374)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [node name="ContrastMinigame" type="CanvasLayer" unique_id=1632444068]
 layer = 40
@@ -71,27 +94,87 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Hot Broth                           ...2c"
 
-[node name="ColorPickerButton" type="ColorPickerButton" parent="." unique_id=743867836]
-offset_left = 120.0
-offset_top = 80.0
-offset_right = 152.0
-offset_bottom = 112.0
-edit_alpha = false
+[node name="RatioDisplay" type="CanvasLayer" parent="." unique_id=500036358]
+layer = 60
 
-[node name="RatioDisplay" type="Label" parent="." unique_id=451324990]
-anchors_preset = 8
-anchor_left = 0.5
+[node name="MarginContainer" type="MarginContainer" parent="RatioDisplay" unique_id=1262964693]
+anchors_preset = 6
+anchor_left = 1.0
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 208.0
-offset_top = 36.0
-offset_right = 248.0
-offset_bottom = 52.0
-grow_horizontal = 2
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
 grow_vertical = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="RatioDisplay/MarginContainer" unique_id=284754450]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_e1alh")
+
+[node name="MarginContainer" type="MarginContainer" parent="RatioDisplay/MarginContainer/PanelContainer" unique_id=1776469124]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="RatioValue" type="Label" parent="RatioDisplay/MarginContainer/PanelContainer/MarginContainer" unique_id=451324990]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 17
 text = "AAA"
 
 [node name="DebugWindow" parent="." unique_id=33922456 instance=ExtResource("3_chm4o")]
 
-[connection signal="color_changed" from="ColorPickerButton" to="." method="_on_color_picker_button_color_changed"]
+[node name="ColorPickerDisplay" type="CanvasLayer" parent="." unique_id=1207232469]
+layer = 60
+
+[node name="MarginContainer2" type="MarginContainer" parent="ColorPickerDisplay" unique_id=942211873]
+custom_minimum_size = Vector2(50, 60)
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -35.5
+offset_right = 185.0
+offset_bottom = 76.0
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="ColorPickerDisplay/MarginContainer2" unique_id=670289165]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rhhg3")
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorPickerDisplay/MarginContainer2/PanelContainer" unique_id=1835609341]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorPickerDisplay/MarginContainer2/PanelContainer/MarginContainer" unique_id=289597134]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="Label" type="Label" parent="ColorPickerDisplay/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer" unique_id=988288061]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 17
+text = "Click here to edit color
+[Enter] to confirm
+[Esc] to exit"
+horizontal_alignment = 1
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="ColorPickerDisplay/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer" unique_id=743867836]
+layout_mode = 2
+size_flags_vertical = 3
+expand_icon = true
+edit_alpha = false
+script = ExtResource("3_rhhg3")
+
+[connection signal="color_changed" from="ColorPickerDisplay/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/ColorPickerButton" to="." method="_on_color_picker_button_color_changed"]

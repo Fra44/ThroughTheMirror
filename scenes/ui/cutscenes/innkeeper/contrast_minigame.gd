@@ -1,20 +1,39 @@
 extends CanvasLayer
 
 @onready var text_container = $MarginContainer/TextContainer
-@onready var ratio_label = $RatioDisplay
-@onready var color_picker = $ColorPickerButton
+@onready var ratio_label = $RatioDisplay/MarginContainer/PanelContainer/MarginContainer/RatioValue
+@onready var color_picker = $ColorPickerDisplay/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/ColorPickerButton
 
 # BACKGROUND COLOR (PAPER)
 const BG_COLOR = Color("eac388") 
 
 func _ready():
+	# 1. Impostiamo il minigioco per ignorare la pausa
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	
+	# 2. METTIAMO IN PAUSA IL MONDO DI GIOCO
+	get_tree().paused = true
+	
 	# FOREGROUND COLOR (TEXT) [initial value]
 	var initial_color = Color("dfb27a")
+
 	color_picker.color = initial_color
 	update_ui(initial_color)
-	process_mode = Node.PROCESS_MODE_ALWAYS
 
-# ATTTENTION! Must be linked to the signal in ContrastMinigame
+# Questa funzione va chiamata quando vuoi chiudere il minigioco
+func close_minigame():
+	# IMPORTANTE: Riprendiamo il tempo prima di uscire
+	get_tree().paused = false
+	# Se il minigioco va rimosso:
+	queue_free()
+	# Se va solo nascosto:
+	# hide()
+
+# Assicuriamoci che il gioco riprenda anche se il nodo viene rimosso forzatamente
+func _exit_tree():
+	get_tree().paused = false
+
+# ATTENTION! Must be linked to the signal in ContrastMinigame
 func _on_color_picker_button_color_changed(color):
 	update_ui(color)
 
@@ -30,10 +49,10 @@ func update_ui(new_color):
 	# 3. Update rendered texts
 	ratio_label.text = "Contrast Ratio: " + str(snapped(ratio, 0.01)) + ":1"
 
+# --- RESTO DELLE FUNZIONI MATEMATICHE INVARIATE ---
 func calculate_contrast(c1: Color, c2: Color) -> float:
 	var l1 = get_relative_luminance(c1)
 	var l2 = get_relative_luminance(c2)
-	# Num is always bigger than Den
 	return (max(l1, l2) + 0.05) / (min(l1, l2) + 0.05)
 
 func get_relative_luminance(c: Color) -> float:
