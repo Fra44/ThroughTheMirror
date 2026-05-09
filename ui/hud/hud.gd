@@ -4,7 +4,7 @@ var manual_instance: Node = null
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	var book_button = $Control/MarginContainer/PanelContainer/HBoxContainer/BookButton
+	var book_button = $ToolsHUD/MarginContainer/PanelContainer/HBoxContainer/BookButton
 	book_button.pressed.connect(_on_book_button_pressed)
 	set_process(true)
 	# Ensure all HUD children remain interactive while the game is paused

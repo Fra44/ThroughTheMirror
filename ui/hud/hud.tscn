@@ -1,8 +1,13 @@
 [gd_scene format=3 uid="uid://quw7ip8k7hqq"]
 
 [ext_resource type="Script" uid="uid://dmoogsvo5mhe4" path="res://ui/hud/hud.gd" id="1_e0nub"]
+[ext_resource type="Shader" uid="uid://byrk4l0yq21d8" path="res://ui/hud/hud.gdshader" id="2_kwc50"]
 [ext_resource type="Texture2D" uid="uid://64a1btpixtv1" path="res://assets/book/book_icon.png" id="2_w75iv"]
 [ext_resource type="Texture2D" uid="uid://bhdmqpd2akuhi" path="res://assets/settings_icon.png" id="3_imuuq"]
+[ext_resource type="Texture2D" uid="uid://dhqr78ox760s2" path="res://assets/settings_icon_moved.png" id="4_gfles"]
+[ext_resource type="Texture2D" uid="uid://bll6nxcgfagdg" path="res://assets/hud/mirror/mirror_icon.png" id="4_imuuq"]
+[ext_resource type="Texture2D" uid="uid://dufox1na1nd7i" path="res://assets/hud/mirror/mirror_BW_icon.png" id="5_kwc50"]
+[ext_resource type="Texture2D" uid="uid://dsmetvvhjlmdk" path="res://assets/book/book_open_icon.png" id="6_aixkq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e0nub"]
 bg_color = Color(0.8454806, 0.72517806, 0.6224164, 0.78431374)
@@ -14,51 +19,128 @@ border_color = Color(0.7380309, 0.7380309, 0.7380307, 1)
 corner_radius_top_left = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o2lis"]
+shader = ExtResource("2_kwc50")
+shader_parameter/line_color = Color(0, 0, 0, 1)
+shader_parameter/line_thickness = 10.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kwc50"]
+shader = ExtResource("2_kwc50")
+shader_parameter/line_color = Color(0, 0, 0, 1)
+shader_parameter/line_thickness = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gfles"]
+bg_color = Color(0.6784314, 0.77254903, 0.7882353, 0.32941177)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.7372549, 0.7372549, 0.7372549, 0)
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gfles"]
+shader = ExtResource("2_kwc50")
+shader_parameter/line_color = Color(0, 0, 0, 1)
+shader_parameter/line_thickness = 10.0
+
 [node name="Hud" type="CanvasLayer" unique_id=2050006127]
 layer = 100
 script = ExtResource("1_e0nub")
 
-[node name="Control" type="Control" parent="." unique_id=200666908]
+[node name="ToolsHUD" type="Control" parent="." unique_id=200666908]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 290.0
-offset_top = -90.0
-offset_right = 290.0
-offset_bottom = -90.0
+offset_left = 295.0
+offset_top = -100.0
+offset_right = 295.0
+offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=2044296243]
+[node name="MarginContainer" type="MarginContainer" parent="ToolsHUD" unique_id=2044296243]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 0
 
-[node name="PanelContainer" type="PanelContainer" parent="Control/MarginContainer" unique_id=812892209]
+[node name="PanelContainer" type="PanelContainer" parent="ToolsHUD/MarginContainer" unique_id=812892209]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_e0nub")
 
-[node name="HBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/PanelContainer" unique_id=1067445235]
+[node name="HBoxContainer" type="VBoxContainer" parent="ToolsHUD/MarginContainer/PanelContainer" unique_id=1067445235]
 layout_mode = 2
+theme_override_constants/separation = 4
 
-[node name="BookButton" type="TextureButton" parent="Control/MarginContainer/PanelContainer/HBoxContainer" unique_id=19928958]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_vertical = 4
-texture_normal = ExtResource("2_w75iv")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="SettingsButton" type="TextureButton" parent="Control/MarginContainer/PanelContainer/HBoxContainer" unique_id=1562454299]
-custom_minimum_size = Vector2(60, 60)
+[node name="SettingsButton" type="TextureButton" parent="ToolsHUD/MarginContainer/PanelContainer/HBoxContainer" unique_id=1562454299]
+material = SubResource("ShaderMaterial_o2lis")
+custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
 size_flags_vertical = 4
 texture_normal = ExtResource("3_imuuq")
+texture_hover = ExtResource("4_gfles")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="BookButton" type="TextureButton" parent="ToolsHUD/MarginContainer/PanelContainer/HBoxContainer" unique_id=19928958]
+material = SubResource("ShaderMaterial_kwc50")
+custom_minimum_size = Vector2(50, 45)
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("2_w75iv")
+texture_hover = ExtResource("6_aixkq")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="MirrorHUD" type="Control" parent="." unique_id=595831992]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 295.0
+offset_top = -100.0
+offset_right = 295.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MirrorHUD" unique_id=748248266]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -103.0
+offset_top = -84.0
+offset_right = -47.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 0
+
+[node name="PanelContainer2" type="PanelContainer" parent="MirrorHUD/MarginContainer" unique_id=1555647359]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gfles")
+
+[node name="HBoxContainer" type="VBoxContainer" parent="MirrorHUD/MarginContainer/PanelContainer2" unique_id=1204480468]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="MirrorButton" type="TextureButton" parent="MirrorHUD/MarginContainer/PanelContainer2/HBoxContainer" unique_id=1797091477]
+material = SubResource("ShaderMaterial_gfles")
+custom_minimum_size = Vector2(50, 45)
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("4_imuuq")
+texture_disabled = ExtResource("5_kwc50")
 ignore_texture_size = true
 stretch_mode = 5
