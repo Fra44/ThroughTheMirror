@@ -108,7 +108,7 @@ offset_top = -20.0
 offset_bottom = 20.0
 grow_horizontal = 0
 grow_vertical = 2
-theme_override_constants/margin_top = 34
+theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 5
 
 [node name="PanelContainer" type="PanelContainer" parent="RatioDisplay/MarginContainer" unique_id=284754450]
@@ -122,18 +122,11 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="RatioDisplay/MarginContainer/PanelContainer/MarginContainer" unique_id=1994073094]
-layout_mode = 2
-
-[node name="RatioValue" type="Label" parent="RatioDisplay/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=451324990]
+[node name="RatioValue" type="Label" parent="RatioDisplay/MarginContainer/PanelContainer/MarginContainer" unique_id=451324990]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 17
 text = "AAA"
-
-[node name="ValueCheckerButton" type="Button" parent="RatioDisplay/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=203053920]
-layout_mode = 2
-text = "Is this better?"
 
 [node name="DebugWindow" parent="." unique_id=33922456 instance=ExtResource("3_chm4o")]
 
@@ -173,7 +166,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 17
 text = "Click here to edit color
-[Enter] to apply
+[Enter] to confirm
 [Esc] to exit"
 horizontal_alignment = 1
 
