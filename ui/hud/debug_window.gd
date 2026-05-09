@@ -10,6 +10,7 @@ extends CanvasLayer
 @onready var violation_label = $Anchor/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/ViolationLabel
 
 func _ready():
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	hide() # Nascondi all'avvio
 	anchor.modulate.a = 0 # Assicuriamoci che sia trasparente all'inizio
 	

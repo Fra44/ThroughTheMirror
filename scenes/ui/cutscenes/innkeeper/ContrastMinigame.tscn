@@ -133,7 +133,9 @@ text = "AAA"
 
 [node name="ValueCheckerButton" type="Button" parent="RatioDisplay/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=203053920]
 layout_mode = 2
-text = "Is this better?"
+text = "\"Is this better?\"
+[Click here to ask!]
+"
 
 [node name="DebugWindow" parent="." unique_id=33922456 instance=ExtResource("3_chm4o")]
 

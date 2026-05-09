@@ -8,6 +8,7 @@ signal cutscene_finished
 var current_resource: Resource = null
 var current_impairment: ImpairmentData = null # Memorizziamo i dati tecnici del livello
 var spawned_minigame: Node = null
+var wait_for_debug: bool = false
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -51,8 +52,7 @@ func _on_balloon_line_changed(line: DialogueLine) -> void:
 		
 		# TRIGGER DEBUG WINDOW
 		if tag == "show_debug" and current_impairment != null:
-			if DebugManager:
-				DebugManager.setup_display(current_impairment)
+			wait_for_debug = true
 				
 		# GESTIONE MINIGIOCO
 		if tag == "minigame_menu":
@@ -95,11 +95,16 @@ func _on_dialogue_ended(resource: DialogueResource) -> void:
 	if resource == current_resource:
 		# EVITIAMO CHE LA CUTSCENE SI CHIUDA SE IL MINIGIOCO È ATTIVO
 		if spawned_minigame != null and is_instance_valid(spawned_minigame):
-			print("Cutscene: Dialogo interrotto per minigioco. Forzo la pausa per non far muovere il player.")
 			get_tree().paused = true
+			
+			# IL BALLOON SI È APPENA CHIUSO! CONTROLLIAMO SE DOBBIAMO MOSTRARE IL DEBUG
+			if wait_for_debug and DebugManager:
+				DebugManager.setup_display(current_impairment)
+				wait_for_debug = false # Resettiamo la variabile
+				
 			return
 			
-		# REGISTRAZIONE SCOPERTA (Fine VERA della cutscene)
+		# REGISTRAZIONE SCOPERTA E FINE VERA (codice invariato)
 		if current_impairment and DiscoveryManager:
 			DiscoveryManager.discover_impairment(current_impairment)
 			
