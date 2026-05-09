@@ -27,4 +27,3 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="Balloon" parent="." unique_id=1434168376 instance=ExtResource("2_g4qma")]
-process_mode = 3

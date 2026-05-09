@@ -117,9 +117,14 @@ func _on_dialogue_ended(resource: DialogueResource) -> void:
 		if spawned_minigame != null and is_instance_valid(spawned_minigame):
 			get_tree().paused = true
 			
+			# IL BALLOON SI È APPENA CHIUSO! CONTROLLIAMO SE DOBBIAMO MOSTRARE IL DEBUG
 			if wait_for_debug and DebugManager:
 				DebugManager.setup_display(current_impairment)
 				wait_for_debug = false 
+				
+				# ---> NUOVA RIGA: MOSTRA I COMANDI DEL MINIGIOCO <---
+				if spawned_minigame.has_method("show_ui"):
+					spawned_minigame.show_ui()
 				
 			return
 			
@@ -127,6 +132,9 @@ func _on_dialogue_ended(resource: DialogueResource) -> void:
 		_end_cutscene()
 
 func _end_cutscene() -> void:
+	if DebugManager and DebugManager.visible:
+		DebugManager.hide_display()
+	
 	if spawned_minigame == null or not is_instance_valid(spawned_minigame):
 		get_tree().paused = false
 	visible = false

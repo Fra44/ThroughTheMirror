@@ -71,7 +71,7 @@ theme_override_constants/separation = 10
 
 [node name="PageTitle" type="Label" parent="MainContainer/BookBackground/LeftPage/MarginContainer/VBoxContainer" unique_id=1862222382]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_color = Color(0.50980395, 0.21176471, 0.22745098, 1)
 theme_override_font_sizes/font_size = 20
 text = "Discovered Impairments"
 horizontal_alignment = 1

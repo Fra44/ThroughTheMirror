@@ -4,6 +4,10 @@ extends CanvasLayer
 @onready var ratio_label = $RatioDisplay/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/RatioValue
 @onready var color_picker = $ColorPickerDisplay/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/ColorPickerButton
 
+# --- NUOVI RIFERIMENTI AI PANNELLI PRINCIPALI ---
+@onready var color_picker_display = $ColorPickerDisplay
+@onready var ratio_display = $RatioDisplay
+
 # Il bottone per la verifica
 @onready var confirm_button = $RatioDisplay/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ValueCheckerButton
 
@@ -18,12 +22,21 @@ var current_color: Color
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	
+	# Nascondiamo i pannelli della UI all'avvio
+	if color_picker_display: color_picker_display.hide()
+	if ratio_display: ratio_display.hide()
+	
 	current_color = Color("dfb27a")
 	color_picker.color = current_color
 	update_ui(current_color)
 	
 	if confirm_button:
 		confirm_button.pressed.connect(_on_confirm_button_pressed)
+
+# --- NUOVA FUNZIONE: Chiamata dalla cutscene per rivelare i controlli ---
+func show_ui() -> void:
+	if color_picker_display: color_picker_display.show()
+	if ratio_display: ratio_display.show()
 
 func _on_confirm_button_pressed() -> void:
 	var ratio = calculate_contrast(current_color, BG_COLOR)

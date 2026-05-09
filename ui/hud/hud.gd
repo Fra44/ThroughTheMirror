@@ -2,15 +2,28 @@ extends CanvasLayer
 
 var manual_instance: Node = null
 
-# Recuperiamo i riferimenti ai nuovi nodi dell'HUD
+# --- RIFERIMENTI AI NODI ---
 @onready var mirror_button = $MirrorHUD/MarginContainer/PanelContainer2/MarginContainer/HBoxContainer/MirrorButton
 @onready var status_label = $MirrorHUD/MarginContainer/PanelContainer2/MarginContainer/HBoxContainer/Status
 
+# Portiamo il bottone del libro fuori dal _ready così possiamo cambiargli la texture ovunque
+@onready var book_button = $ToolsHUD/MarginContainer/PanelContainer/HBoxContainer/BookButton
+
+# --- TEXTURE DEL MANUALE ---
+var normal_book_texture: Texture2D
+var notification_book_texture = preload("res://assets/book/book_notification_icon.png")
+
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	var book_button = $ToolsHUD/MarginContainer/PanelContainer/HBoxContainer/BookButton
+	
+	# Salviamo la texture originale impostata nell'editor
+	normal_book_texture = book_button.texture_normal
+	
 	book_button.pressed.connect(_on_book_button_pressed)
-	# Ensure all HUD children remain interactive while the game is paused
+	
+	# ASCOLTIAMO IL DISCOVERY MANAGER
+	if DiscoveryManager:
+		DiscoveryManager.new_discovery.connect(_on_new_discovery)
 
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_book"):
@@ -18,6 +31,11 @@ func _process(_delta):
 		
 	# Chiamiamo la funzione di aggiornamento UI ad ogni frame
 	_update_mirror_hud()
+
+# --- NUOVA FUNZIONE: SCATTA QUANDO VIENE FATTA UNA SCOPERTA ---
+func _on_new_discovery(_item) -> void:
+	# Cambiamo la texture per mostrare la notifica
+	book_button.texture_normal = notification_book_texture
 
 func _update_mirror_hud() -> void:
 	var is_any_shader_active = false
@@ -37,26 +55,26 @@ func _update_mirror_hud() -> void:
 		status_label.text = "OFF"
 		
 	# Aggiorniamo il bottone
-	# Impostando "disabled", Godot userà in automatico la texture associata allo stato Disabled
-	# NOTA: se il bottone è disabled, non potrà essere cliccato! 
-	# Se in futuro vorrai renderlo cliccabile per accendere/spegnere, dovrai usare un approccio 
-	# diverso (es. scambiare manualmente mirror_button.texture_normal = load("..."))
 	mirror_button.disabled = not is_any_shader_active
 
 
 func _on_book_button_pressed():
+	# QUANDO IL MANUALE VIENE APERTO, RIMUOVIAMO LA NOTIFICA
+	book_button.texture_normal = normal_book_texture
+	
 	if manual_instance == null:
 		var manual_scene = preload("res://ui/hud/manual/Manual.tscn")
 		manual_instance = manual_scene.instantiate()
 		get_tree().root.add_child(manual_instance)
+		
 	if manual_instance.visible:
 		manual_instance.close_manual()
 	else:
 		manual_instance.open_manual()
 
 func _set_pause_mode_recursive(node: Node, mode: int) -> void:
-	# Set pause_mode for this node and all children so UI works while game paused
-	node.process_mode = mode # In Godot 4 pause_mode è stato sostituito da process_mode
+	# Set process_mode for this node and all children so UI works while game paused
+	node.process_mode = mode 
 	for child in node.get_children():
 		if child is Node:
 			_set_pause_mode_recursive(child, mode)

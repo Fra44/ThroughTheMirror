@@ -89,6 +89,14 @@ texture_hover = ExtResource("4_gfles")
 ignore_texture_size = true
 stretch_mode = 5
 
+[node name="KeyHint" type="Label" parent="ToolsHUD/MarginContainer/PanelContainer/HBoxContainer/SettingsButton" unique_id=956849143]
+layout_mode = 0
+offset_top = -2.0
+offset_right = 40.0
+offset_bottom = 14.0
+text = "[S]"
+vertical_alignment = 2
+
 [node name="BookButton" type="TextureButton" parent="ToolsHUD/MarginContainer/PanelContainer/HBoxContainer" unique_id=19928958]
 material = SubResource("ShaderMaterial_kwc50")
 custom_minimum_size = Vector2(50, 45)
@@ -99,7 +107,15 @@ texture_hover = ExtResource("6_aixkq")
 ignore_texture_size = true
 stretch_mode = 5
 
+[node name="KeyHint" type="Label" parent="ToolsHUD/MarginContainer/PanelContainer/HBoxContainer/BookButton" unique_id=830385023]
+layout_mode = 0
+offset_top = -2.0
+offset_right = 40.0
+offset_bottom = 14.0
+text = "[M]"
+
 [node name="MirrorHUD" type="Control" parent="." unique_id=595831992]
+visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
