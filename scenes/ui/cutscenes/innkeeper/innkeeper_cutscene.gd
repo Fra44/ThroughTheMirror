@@ -54,6 +54,36 @@ func _on_balloon_line_changed(line: DialogueLine) -> void:
 		if tag == "show_debug" and current_impairment != null:
 			wait_for_debug = true
 				
+		# ACCENSIONE SHADER CATARATTA
+		if tag == "activate_shader":
+			# Troviamo lo shader tramite il gruppo che abbiamo creato prima
+			var shaders = get_tree().get_nodes_in_group("cataract_shader")
+			if shaders.size() > 0:
+				shaders[0].toggle_effect(true)
+		# ACCENSIONE SHADER CATARATTA (che hai già)
+		if tag == "activate_shader":
+			var shaders = get_tree().get_nodes_in_group("cataract_shader")
+			if shaders.size() > 0:
+				shaders[0].toggle_effect(true)
+				
+		# SPEGNIMENTO SHADER (Nuovo!)
+		if tag == "deactivate_shader":
+			var shaders = get_tree().get_nodes_in_group("cataract_shader")
+			if shaders.size() > 0:
+				shaders[0].toggle_effect(false)
+				
+		# CHIUSURA MINIGIOCO E RITORNO ALLA CUTSCENE (Nuovo!)
+		if tag == "close_minigame":
+			# Distruggiamo il minigioco
+			if spawned_minigame != null and is_instance_valid(spawned_minigame):
+				spawned_minigame.queue_free()
+				spawned_minigame = null
+			
+			# Ripristiniamo la grafica della cutscene
+			portrait.visible = true
+			if has_node("Dim"):
+				$Dim.visible = true
+		
 		# GESTIONE MINIGIOCO
 		if tag == "minigame_menu":
 			var menu_scene = preload("res://scenes/ui/cutscenes/innkeeper/ContrastMinigame.tscn")
@@ -71,23 +101,15 @@ func _on_balloon_line_changed(line: DialogueLine) -> void:
 # FUNZIONE CHIAMATA DAL SEGNALE DI VITTORIA DEL MINIGIOCO
 func _on_minigame_verification(is_successful: bool) -> void:
 	if is_successful:
-		print("Cutscene: Vinto! Avvio dialogo di successo...")
-		# Distruggiamo il minigioco
-		spawned_minigame.queue_free()
-		spawned_minigame = null 
+		print("Cutscene: Vinto! Avvio dialogo di successo sopra il minigioco...")
+		# NON chiudiamo più il minigioco e NON riaccendiamo il portrait qui!
+		# Lasciamo che se ne occupino i tag del Dialogue Manager.
 		
-		# Ripristiniamo la UI della cutscene
-		portrait.visible = true 
-		if has_node("Dim"):
-			$Dim.visible = true
-		
-		# Facciamo partire il dialogo finale
 		if is_instance_valid(balloon):
 			balloon.start(current_resource, "win_reaction")
 			
 	else:
 		print("Cutscene: Fallito! Avvio dialogo di errore...")
-		# Facciamo apparire SOLO il balloon (il minigioco resta aperto dietro)
 		if is_instance_valid(balloon):
 			balloon.start(current_resource, "fail_reaction")
 
@@ -117,4 +139,10 @@ func _end_cutscene() -> void:
 	current_resource = null
 	current_impairment = null
 	cutscene_finished.emit()
+	
+	# SPEGNIAMO LO SHADER DELLA CATARATTA
+	var shaders = get_tree().get_nodes_in_group("cataract_shader")
+	if shaders.size() > 0:
+		shaders[0].toggle_effect(false)
+		
 	queue_free()

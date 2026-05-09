@@ -2,7 +2,7 @@ extends CanvasLayer
 
 @onready var color_rect: ColorRect = $ColorRect
 
-# --- DECLARATION THAT MUST NE AT THE TOP ---
+# --- DECLARATION THAT MUST BE AT THE TOP ---
 var is_active: bool = false
 var tween: Tween
 
@@ -15,14 +15,22 @@ const TRANSITION_TIME = 0.8
 # -----------------------------------------------------
 
 func _ready() -> void:
+	# FONDAMENTALE: Ignora la pausa del gioco per permettere le animazioni
+	process_mode = Node.PROCESS_MODE_ALWAYS 
+	
+	# Aggiungiamo questo nodo a un gruppo per trovarlo facilmente dalla cutscene
+	add_to_group("cataract_shader") 
+	
 	visible = true 
 	_update_shader(0.0, 0.0, 0.0, 1.0) # Initial reset
 
-func _input(event: InputEvent) -> void:
-	# Link to action button that acts as the toggle button
-	if event.is_action_pressed("toggle_mirror_of_resonance") and not event.is_echo():
-		is_active = !is_active
-		_animate_vision(is_active)
+# --- _input rimosso! Il tasto M non funziona più. ---
+
+# Nuova funzione richiamabile dall'esterno per forzare l'attivazione/disattivazione
+func toggle_effect(activate: bool) -> void:
+	if is_active == activate: return # Evita di riprodurre l'animazione se è già nello stato corretto
+	is_active = activate
+	_animate_vision(is_active)
 
 func _animate_vision(activate: bool) -> void:
 	if tween:
