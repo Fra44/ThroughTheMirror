@@ -54,17 +54,15 @@ func _on_balloon_line_changed(line: DialogueLine) -> void:
 		if tag == "show_debug" and current_impairment != null:
 			wait_for_debug = true
 				
-		# ACCENSIONE SHADER CATARATTA
-		if tag == "activate_shader":
-			# Troviamo lo shader tramite il gruppo che abbiamo creato prima
-			var shaders = get_tree().get_nodes_in_group("cataract_shader")
-			if shaders.size() > 0:
-				shaders[0].toggle_effect(true)
-		# ACCENSIONE SHADER CATARATTA (che hai già)
+		# ACCENSIONE SHADER CATARATTA (o futuri shader)
 		if tag == "activate_shader":
 			var shaders = get_tree().get_nodes_in_group("cataract_shader")
 			if shaders.size() > 0:
 				shaders[0].toggle_effect(true)
+			
+			# NUOVA POSIZIONE: Inseriamo i dati nel manuale ESATTAMENTE ora!
+			if current_impairment and DiscoveryManager:
+				DiscoveryManager.discover_impairment(current_impairment)
 				
 		# SPEGNIMENTO SHADER (Nuovo!)
 		if tag == "deactivate_shader":
@@ -119,17 +117,13 @@ func _on_dialogue_ended(resource: DialogueResource) -> void:
 		if spawned_minigame != null and is_instance_valid(spawned_minigame):
 			get_tree().paused = true
 			
-			# IL BALLOON SI È APPENA CHIUSO! CONTROLLIAMO SE DOBBIAMO MOSTRARE IL DEBUG
 			if wait_for_debug and DebugManager:
 				DebugManager.setup_display(current_impairment)
-				wait_for_debug = false # Resettiamo la variabile
+				wait_for_debug = false 
 				
 			return
 			
-		# REGISTRAZIONE SCOPERTA E FINE VERA (codice invariato)
-		if current_impairment and DiscoveryManager:
-			DiscoveryManager.discover_impairment(current_impairment)
-			
+		# (Abbiamo rimosso DiscoveryManager da qui!)
 		_end_cutscene()
 
 func _end_cutscene() -> void:

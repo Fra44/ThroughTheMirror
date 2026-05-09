@@ -100,7 +100,6 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="MirrorHUD" type="Control" parent="." unique_id=595831992]
-visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -119,23 +118,31 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -103.0
-offset_top = -84.0
-offset_right = -47.0
-offset_bottom = -33.0
+offset_left = -105.0
+offset_top = -85.0
+offset_right = -45.0
+offset_bottom = -12.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
 
 [node name="PanelContainer2" type="PanelContainer" parent="MirrorHUD/MarginContainer" unique_id=1555647359]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_gfles")
 
-[node name="HBoxContainer" type="VBoxContainer" parent="MirrorHUD/MarginContainer/PanelContainer2" unique_id=1204480468]
+[node name="MarginContainer" type="MarginContainer" parent="MirrorHUD/MarginContainer/PanelContainer2" unique_id=1512842788]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="HBoxContainer" type="VBoxContainer" parent="MirrorHUD/MarginContainer/PanelContainer2/MarginContainer" unique_id=1204480468]
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="MirrorButton" type="TextureButton" parent="MirrorHUD/MarginContainer/PanelContainer2/HBoxContainer" unique_id=1797091477]
+[node name="MirrorButton" type="TextureButton" parent="MirrorHUD/MarginContainer/PanelContainer2/MarginContainer/HBoxContainer" unique_id=1797091477]
 material = SubResource("ShaderMaterial_gfles")
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
@@ -144,3 +151,9 @@ texture_normal = ExtResource("4_imuuq")
 texture_disabled = ExtResource("5_kwc50")
 ignore_texture_size = true
 stretch_mode = 5
+
+[node name="Status" type="Label" parent="MirrorHUD/MarginContainer/PanelContainer2/MarginContainer/HBoxContainer" unique_id=1257876467]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "ON"
+horizontal_alignment = 1

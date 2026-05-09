@@ -20,6 +20,7 @@ func _ready() -> void:
 	
 	# Aggiungiamo questo nodo a un gruppo per trovarlo facilmente dalla cutscene
 	add_to_group("cataract_shader") 
+	add_to_group("visual_shaders")
 	
 	visible = true 
 	_update_shader(0.0, 0.0, 0.0, 1.0) # Initial reset

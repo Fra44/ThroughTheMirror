@@ -55,7 +55,7 @@ layout_mode = 2
 theme_override_constants/line_spacing = 3
 theme_override_constants/paragraph_spacing = 0
 theme_override_font_sizes/font_size = 18
-text = "MIRROR OF RESONANCE - DIAGNOSIS"
+text = "New data Added to Manual! Short summary:"
 
 [node name="HSeparator" type="HSeparator" parent="Anchor/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1600857697]
 layout_mode = 2

@@ -22,7 +22,6 @@ func _ready():
 func setup_display(data: ImpairmentData):
 	if not data: return
 	
-	title_label.text = "MIRROR OF RESONANCE - DIAGNOSIS"
 	status_label.text = "STATUS: VISUAL IMPAIRMENT DETECTED - " + data.name.to_upper()
 	error_label.text = "ERROR: " + data.short_info
 	
