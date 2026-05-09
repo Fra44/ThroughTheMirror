@@ -138,9 +138,9 @@ custom_minimum_size = Vector2(50, 60)
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -35.5
+offset_top = -60.0
 offset_right = 185.0
-offset_bottom = 76.0
+offset_bottom = 52.0
 grow_vertical = 2
 theme_override_constants/margin_left = 10
 
