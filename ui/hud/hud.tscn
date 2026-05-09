@@ -24,10 +24,20 @@ shader = ExtResource("2_kwc50")
 shader_parameter/line_color = Color(0, 0, 0, 1)
 shader_parameter/line_thickness = 10.0
 
+[sub_resource type="LabelSettings" id="LabelSettings_gfles"]
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kwc50"]
 shader = ExtResource("2_kwc50")
 shader_parameter/line_color = Color(0, 0, 0, 1)
 shader_parameter/line_thickness = 10.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_aixkq"]
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gfles"]
 bg_color = Color(0.6784314, 0.77254903, 0.7882353, 0.32941177)
@@ -95,6 +105,7 @@ offset_top = -2.0
 offset_right = 40.0
 offset_bottom = 14.0
 text = "[S]"
+label_settings = SubResource("LabelSettings_gfles")
 vertical_alignment = 2
 
 [node name="BookButton" type="TextureButton" parent="ToolsHUD/MarginContainer/PanelContainer/HBoxContainer" unique_id=19928958]
@@ -113,6 +124,7 @@ offset_top = -2.0
 offset_right = 40.0
 offset_bottom = 14.0
 text = "[M]"
+label_settings = SubResource("LabelSettings_aixkq")
 
 [node name="MirrorHUD" type="Control" parent="." unique_id=595831992]
 visible = false

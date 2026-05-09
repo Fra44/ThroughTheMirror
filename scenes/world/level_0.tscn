@@ -1,16 +1,12 @@
 [gd_scene format=3 uid="uid://uo67bb47v2ye"]
 
 [ext_resource type="PackedScene" uid="uid://c70072y8peuih" path="res://scenes/world/overworld.tscn" id="1_6vksw"]
-[ext_resource type="PackedScene" uid="uid://4to86fcqodrf" path="res://scenes/world/locations/tavern/tavern.tscn" id="2_7umm2"]
 
 [node name="World" type="Node2D" unique_id=853261510]
 position = Vector2(95, 47)
 
 [node name="Overworld" parent="." unique_id=1589885129 instance=ExtResource("1_6vksw")]
 position = Vector2(129, 52)
-
-[node name="Tavern" parent="." unique_id=141820022 instance=ExtResource("2_7umm2")]
-position = Vector2(336, -6)
 
 [node name="SpawnPoints" type="Node2D" parent="." unique_id=934246133]
 
