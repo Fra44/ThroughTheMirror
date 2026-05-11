@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cxritvgbvgv87"]
+
+[ext_resource type="Script" uid="uid://b48jmry8u4fqu" path="res://scenes/ui/cutscenes/guardian/guardian_cutscene.gd" id="1_1lqxm"]
+[ext_resource type="Texture2D" uid="uid://d2dll7aplou1e" path="res://scenes/ui/cutscenes/images/guardian.png" id="1_hjm3w"]
+[ext_resource type="PackedScene" uid="uid://b1phbvg720r51" path="res://dialogue/balloon.tscn" id="2_1lqxm"]
+
+[node name="GuardianCutscene" type="CanvasLayer" unique_id=8902443 groups=["ray_symbol_preview_red"]]
+script = ExtResource("1_1lqxm")
+
+[node name="Dim" type="ColorRect" parent="." unique_id=1299269925]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Portrait" type="TextureRect" parent="." unique_id=1100551326]
+texture_filter = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_hjm3w")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Balloon" parent="." unique_id=1434168376 instance=ExtResource("2_1lqxm")]

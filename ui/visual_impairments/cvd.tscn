@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://y7ctrfosw8ff"]
+
+[ext_resource type="Shader" uid="uid://wxk3xa0rtg5o" path="res://ui/visual_impairments/cvd.gdshader" id="1_5j7vv"]
+[ext_resource type="Script" uid="uid://ctf40d1d8bjg5" path="res://ui/visual_impairments/cvd.gd" id="1_og34f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_og34f"]
+shader = ExtResource("1_5j7vv")
+shader_parameter/intensity = 1.0
+
+[node name="Cvd" type="CanvasLayer" unique_id=1074007541]
+process_mode = 3
+layer = 50
+script = ExtResource("1_og34f")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=737829014]
+material = SubResource("ShaderMaterial_og34f")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

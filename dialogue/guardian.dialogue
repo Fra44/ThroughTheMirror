@@ -1,0 +1,37 @@
+~ start
+Guard: Halt! I can't let you in. [#portrait=res://scenes/ui/cutscenes/images/guardian_closed.png]
+Guard: The gate uses these two magical signals, but I am not sure which one opens it... The colors are too similar for me.
+: You activate your power, and see as he sees. [#activate_shader]
+Guard: See? I can't tell them apart. Please help me! [#portrait=res://scenes/ui/cutscenes/images/guardian_sad.png]
+: A window with some hints appears. [#show_debug] [#pan_camera] [#minigame_menu]
+=> END
+
+
+~ fail_reaction
+Guard: Mmm... I still cannot tell which one is which. [#portrait=res://scenes/ui/cutscenes/images/guardian_sad.png]
+=> END
+
+
+~ circle
+Guard: Ah! Now the two signals are easily distinguishable! [#deactivate_shader] [#show_symbols] [#portrait=res://scenes/ui/cutscenes/images/guardian_circle.png]
+Guard: I can finally understand the mechanism without relying on color alone. [#portrait=res://scenes/ui/cutscenes/images/guardian_circle_happy.png]
+Guard: Symbols provide clarity, no matter how colors are perceived. [#close_minigame] [#open_gate] [#reset_camera]
+Guard: Very well! You may enter. [#portrait=res://scenes/ui/cutscenes/images/guardian_circle_letting.png]
+=> END
+
+
+~ tick
+Guard: Ah! Now the two signals are easily distinguishable! [#deactivate_shader] [#show_symbols] [#portrait=res://scenes/ui/cutscenes/images/guardian_tick.png]
+Guard: I can finally understand the mechanism without relying on color alone. [#portrait=res://scenes/ui/cutscenes/images/guardian_tick_happy.png]
+Guard: Symbols provide clarity, no matter how colors are perceived. [#close_minigame] [#open_gate] [#reset_camera]
+Guard: Very well! You may enter. [#portrait=res://scenes/ui/cutscenes/images/guardian_tick_letting.png]
+=> END
+
+
+~ win_reaction
+=> tick
+
+
+~ already_helped
+Guard: Thank you again, Architect. Proceed to the castle. [#portrait=res://scenes/ui/cutscenes/images/guardian_tick_letting.png]
+=> END

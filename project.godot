@@ -49,6 +49,14 @@ version_control/autoload_on_startup=true
 
 enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/godot_mcp/plugin.cfg")
 
+[global_group]
+
+rays_minigame_camera_target=""
+MainCamera=""
+ray_symbol_preview_green=""
+ray_symbol_preview_red=""
+gate_door=""
+
 [gui]
 
 theme/custom_font="uid://bilp6nbwu0vof"
@@ -124,7 +132,7 @@ ui_book={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://dialogue/test_dialogue.dialogue", "res://dialogue/innkeeper.dialogue")
+locale/translations_pot_files=PackedStringArray("res://dialogue/test_dialogue.dialogue", "res://dialogue/innkeeper.dialogue", "res://dialogue/guardian.dialogue")
 
 [layer_names]
 

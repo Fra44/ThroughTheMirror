@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WCAGData" format=3 uid="uid://de05c61r4wnnp"]
+
+[ext_resource type="Script" uid="uid://mgn4yar0d3vn" path="res://global/resources/wcag_data.gd" id="1_do5y7"]
+
+[resource]
+script = ExtResource("1_do5y7")
+id = "1.4.1"
+title = "Use of Color"
+short_description = "This criterion states that color must not be the only way to convey information, actions, or status changes."
+long_description = "The WCAG 2.1 success criterion 1.4.1 – Use of Color ensures that users can understand content even if they cannot perceive colors correctly, such as people with color vision deficiencies or low vision.
+
+The guideline states that color alone cannot be used to:
+
+- communicate information,
+- indicate actions,
+- show errors or required fields,
+- distinguish interface elements.
+
+For example, error messages should not rely only on red text, and links should not be identifiable only through color differences. Additional visual cues such as icons, labels, patterns, or underlines should also be provided.
+
+The criterion aims to improve accessibility for users with color blindness, reduced vision, aging-related visual changes, or monochrome displays, ensuring that information remains understandable regardless of color perception."
+metadata/_custom_type_script = "uid://mgn4yar0d3vn"

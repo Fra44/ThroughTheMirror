@@ -48,6 +48,10 @@ func _on_confirm_button_pressed() -> void:
 	
 	if ratio >= MIN_CONTRAST:
 		verification_requested.emit(true)
+		
+		# ---> NUOVO: SALVIAMO LO STATO <---
+		if DiscoveryManager:
+			DiscoveryManager.level_states["menu_solved"] = true
 	else:
 		verification_requested.emit(false)
 

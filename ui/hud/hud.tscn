@@ -127,7 +127,6 @@ text = "[M]"
 label_settings = SubResource("LabelSettings_aixkq")
 
 [node name="MirrorHUD" type="Control" parent="." unique_id=595831992]
-visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5

@@ -21,7 +21,9 @@ vframes = 3
 position = Vector2(0, 2.2875)
 shape = SubResource("RectangleShape2D_pbffu")
 
-[node name="InteractionArea" type="Area2D" parent="." unique_id=2036747924]
+[node name="Actionable" type="Area2D" parent="." unique_id=2036747924]
+collision_layer = 16
+collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=602401849]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionable" unique_id=602401849]
 shape = SubResource("CircleShape2D_acf7a")

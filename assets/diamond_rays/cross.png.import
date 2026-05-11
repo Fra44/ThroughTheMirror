@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brgaxh2ugrjbp"
-path="res://.godot/imported/guard.png-fe932e6f3688ac32a79431d2345fc08b.ctex"
+uid="uid://b2wkewjvon0jh"
+path="res://.godot/imported/cross.png-5d831298deb6ac4bad7d993807e13c47.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/npcs/guard/guard.png"
-dest_files=["res://.godot/imported/guard.png-fe932e6f3688ac32a79431d2345fc08b.ctex"]
+source_file="res://assets/diamond_rays/cross.png"
+dest_files=["res://.godot/imported/cross.png-5d831298deb6ac4bad7d993807e13c47.ctex"]
 
 [params]
 
