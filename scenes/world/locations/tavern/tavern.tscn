@@ -32,7 +32,7 @@ collision_enabled = false
 
 [node name="Decorations" type="TileMapLayer" parent="." unique_id=1855728635]
 position = Vector2(-132, -73)
-tile_map_data = PackedByteArray("AAAKAAEAAgAYAAYAAAAHAAUAAgAbAAYAAAAHAAQAAgAcAAYAAAAMAAIAAgAZAAQAAAAMAAgAAgAcAAcAAAAHAAAAAgAYAAEAAAAHAAMAAgAbAAgAAAALAAcAAgAbAAgAAAAMAAcAAgAbAAgAAAAKAAkAAgAcAAgAAAAPAAoAAgAcAAgAAAALAAQAAgAaAAgAAAANAAQAAgAaAAgAAAAJAAIAAgAaAAgAAAA=")
+tile_map_data = PackedByteArray("AAAKAAEAAgAYAAYAAAAHAAUAAgAbAAYAAAAHAAQAAgAcAAYAAAAMAAgAAgAcAAcAAAAHAAAAAgAYAAEAAAAHAAMAAgAbAAgAAAALAAcAAgAbAAgAAAAMAAcAAgAbAAgAAAAKAAkAAgAcAAgAAAAPAAoAAgAcAAgAAAALAAQAAgAaAAgAAAANAAQAAgAaAAgAAAAJAAIAAgAaAAgAAAA=")
 tile_set = ExtResource("1_jnydx")
 
 [node name="moved" type="TileMapLayer" parent="Decorations" unique_id=1083099801]
@@ -57,4 +57,4 @@ target_scene_path = "uid://c70072y8peuih"
 target_spawn_id = "OutsideTavern"
 
 [node name="Innkeeper" parent="." unique_id=659102842 instance=ExtResource("3_3jqi7")]
-position = Vector2(80, -34.9)
+position = Vector2(69, -35)

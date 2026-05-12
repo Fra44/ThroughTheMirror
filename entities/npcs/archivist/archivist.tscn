@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://dc2g03j4xdn0p"]
 
 [ext_resource type="Texture2D" uid="uid://c6r8v58l7fh67" path="res://entities/npcs/archivist/granny.png" id="1_x11do"]
+[ext_resource type="Script" uid="uid://ca55rpbx6ii3l" path="res://entities/npcs/archivist/actionable.gd" id="2_pbffu"]
+[ext_resource type="Resource" uid="uid://d2ae3okydjy7g" path="res://global/resources/impairments/blindness.tres" id="3_agtc2"]
+[ext_resource type="Resource" uid="uid://b4vgi7s6jt547" path="res://dialogue/archivist.dialogue" id="4_4xmhj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pbffu"]
 size = Vector2(5.75, 11.425)
@@ -25,6 +28,9 @@ shape = SubResource("RectangleShape2D_pbffu")
 [node name="Actionable" type="Area2D" parent="." unique_id=2036747924]
 collision_layer = 16
 collision_mask = 0
+script = ExtResource("2_pbffu")
+impairment = ExtResource("3_agtc2")
+dialogue_resource = ExtResource("4_4xmhj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Actionable" unique_id=602401849]
 position = Vector2(0, 24)

@@ -24,20 +24,19 @@ tile_set = ExtResource("1_mtqyg")
 [node name="Foreground" type="TileMapLayer" parent="." unique_id=1010477632]
 z_index = 1
 position = Vector2(-131, -96)
-tile_map_data = PackedByteArray("AAAJAAUAAgAaAAUAAAA=")
 tile_set = ExtResource("1_mtqyg")
 collision_enabled = false
 
 [node name="torchs" type="TileMapLayer" parent="Foreground" unique_id=1964337678]
 z_index = 1
 position = Vector2(0, 7)
-tile_map_data = PackedByteArray("AAAJAAUAAgAaAAUAAAALAP7/AQASAAoAAAAHAAIAAQASAAoAAAAHAPr/AQASAAoAAAALAPb/AQASAAoAAAAHAPL/AQASAAoAAAALAO7/AQASAAoAAAAHAOr/AQASAAoAAAALAOb/AQASAAoAAAA=")
+tile_map_data = PackedByteArray("AAALAP7/AQASAAoAAAAHAAIAAQASAAoAAAAHAPr/AQASAAoAAAALAPb/AQASAAoAAAAHAPL/AQASAAoAAAALAO7/AQASAAoAAAAHAOr/AQASAAoAAAALAOb/AQASAAoAAAA=")
 tile_set = ExtResource("1_mtqyg")
 collision_enabled = false
 
 [node name="Decorations" type="TileMapLayer" parent="." unique_id=952752633]
 position = Vector2(-131, -96)
-tile_map_data = PackedByteArray("AAAJAAAAAQAaAAgAAAAJAAEAAQAaAAkAAAA=")
+tile_map_data = PackedByteArray("AAAJAAAAAQAaAAgAAAAJAAEAAQAaAAkAAAAIAAUAAgAaAAUAAAAJAAUAAgAaAAUAAAAKAAUAAgAaAAUAAAA=")
 tile_set = ExtResource("1_mtqyg")
 
 [node name="SpawnPoints" type="Node2D" parent="." unique_id=1504815922]
@@ -63,6 +62,26 @@ scale = Vector2(4.715, 4.715)
 target_scene_path = "uid://c446i8jf4uw6c"
 target_spawn_id = "InsideCastleEntranceSx"
 
+[node name="HallwayDxInsideUp" type="Marker2D" parent="SpawnPoints" unique_id=748597811]
+position = Vector2(5, -550)
+
+[node name="TeleportInsideCastleUpDx" parent="SpawnPoints" unique_id=361320053 instance=ExtResource("2_36kds")]
+position = Vector2(11, -605)
+rotation = -1.5707964
+scale = Vector2(4.715, 4.715)
+target_scene_path = "uid://c446i8jf4uw6c"
+target_spawn_id = "InsideCastleUpDx"
+
+[node name="HallwaySxInsideUp" type="Marker2D" parent="SpawnPoints" unique_id=305357907]
+position = Vector2(-558, -550)
+
+[node name="InsideCastleUpSx" parent="SpawnPoints" unique_id=1144180527 instance=ExtResource("2_36kds")]
+position = Vector2(-552, -605)
+rotation = -1.5707964
+scale = Vector2(4.715, 4.715)
+target_scene_path = "uid://c446i8jf4uw6c"
+target_spawn_id = "InsideCastleUpSx"
+
 [node name="HallwaySx" type="Node2D" parent="." unique_id=174752525]
 position = Vector2(-563, 0)
 
@@ -85,17 +104,18 @@ tile_set = ExtResource("1_mtqyg")
 [node name="Foreground2" type="TileMapLayer" parent="HallwaySx" unique_id=26190579]
 z_index = 1
 position = Vector2(-131, -96)
-tile_map_data = PackedByteArray("AAAJAAUAAgAaAAUAAAAJAAMAAQAXAAwAAAA=")
+tile_map_data = PackedByteArray("AAAJAAMAAQAXAAwAAAA=")
 tile_set = ExtResource("1_mtqyg")
 collision_enabled = false
 
 [node name="torchs" type="TileMapLayer" parent="HallwaySx/Foreground2" unique_id=1742631573]
 z_index = 1
 position = Vector2(0, 7)
-tile_map_data = PackedByteArray("AAAJAAUAAgAaAAUAAAALAP7/AQASAAoAAAAHAAIAAQASAAoAAAAHAPr/AQASAAoAAAALAPb/AQASAAoAAAAHAPL/AQASAAoAAAALAO7/AQASAAoAAAAHAOr/AQASAAoAAAALAOb/AQASAAoAAAA=")
+tile_map_data = PackedByteArray("AAALAP7/AQASAAoAAAAHAAIAAQASAAoAAAAHAPr/AQASAAoAAAALAPb/AQASAAoAAAAHAPL/AQASAAoAAAALAO7/AQASAAoAAAAHAOr/AQASAAoAAAALAOb/AQASAAoAAAA=")
 tile_set = ExtResource("1_mtqyg")
 collision_enabled = false
 
 [node name="Decorations2" type="TileMapLayer" parent="HallwaySx" unique_id=118529813]
 position = Vector2(-131, -96)
+tile_map_data = PackedByteArray("AAAIAAUAAgAaAAUAAAAJAAUAAgAaAAUAAAAKAAUAAgAaAAUAAAA=")
 tile_set = ExtResource("1_mtqyg")

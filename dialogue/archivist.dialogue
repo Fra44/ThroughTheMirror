@@ -1,0 +1,21 @@
+~ start
+Archivist: Welcome, Architect. I am the Archivist of this castle. [#portrait=res://scenes/ui/cutscenes/images/archivist_normal.png]
+Archivist: I do not need sight to read a prophecy. But the magic must speak clearly.
+Archivist: My screen reader cannot make sense of this orb. It just says: "Visual Prophecy underscore Final Magic".
+: You activate your power to hear what she hears. [#activate_shader]
+: The world fades to dark, and the Mirror's interface appears. [#show_debug] [#minigame_menu]
+=> END
+
+~ fail_reaction
+Archivist: No... the screen reader is still reading nonsense. I cannot see the prophecy.
+=> END
+
+~ win_reaction
+Archivist: "A dragon flying over a burning castle"... I see it perfectly now! [#deactivate_shader] 
+Archivist: Symbols and words provide clarity, no matter how the world is perceived. [#close_minigame] [#show_dragon]
+Archivist: It is Kalipso! The great dragon is returning! You must hurry!
+=> END
+
+~ already_helped
+Archivist: Thank you for giving words to the magic, Architect. 
+=> END

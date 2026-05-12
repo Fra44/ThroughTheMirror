@@ -3,6 +3,7 @@
 [ext_resource type="TileSet" uid="uid://bvleur4rtmgit" path="res://assets/full_tileset.tres" id="1_rmief"]
 [ext_resource type="PackedScene" uid="uid://bjkerwdjwf4ip" path="res://global/Teleport_Trigger.tscn" id="2_bxtc7"]
 [ext_resource type="PackedScene" uid="uid://dc2g03j4xdn0p" path="res://entities/npcs/archivist/archivist.tscn" id="3_bxtc7"]
+[ext_resource type="PackedScene" uid="uid://dkbblm8ypy082" path="res://ui/visual_impairments/blindness.tscn" id="4_5f70n"]
 
 [node name="Library" type="Node2D" unique_id=739832775]
 
@@ -25,7 +26,7 @@ tile_set = ExtResource("1_rmief")
 [node name="Foreground" type="TileMapLayer" parent="." unique_id=2068027810]
 z_index = 1
 position = Vector2(-131, -86)
-tile_map_data = PackedByteArray("AAAJAAUAAgAaAAUAAAAJAPv/AgAdAAoAAAAIAPv/AgAYAAYAAAAKAPv/AgAYAAYAAAARAPr/AgAdAAoAAAAQAPb/AgAdAAoAAAARAPz/AgAdAAoAAAABAPv/AgAdAAoAAAABAPb/AgAdAAoAAAACAPb/AgAdAAoAAAACAAQAAgAdAAoAAAADAAQAAgAdAAoAAAAEAAQAAgAdAAoAAAAQAAQAAgAdAAoAAAAPAAQAAgAUAAsAAAARAPv/AgAUAAsAAAAIAPb/AgAUAAoAAAAKAPf/AgAUAAoAAAAOAAQAAgAZAAUAAAALAPn/AgAZAAQAAAA=")
+tile_map_data = PackedByteArray("AAARAPr/AgAdAAoAAAAQAPb/AgAdAAoAAAARAPz/AgAdAAoAAAABAPv/AgAdAAoAAAABAPb/AgAdAAoAAAACAPb/AgAdAAoAAAACAAQAAgAdAAoAAAADAAQAAgAdAAoAAAAEAAQAAgAdAAoAAAAQAAQAAgAdAAoAAAAPAAQAAgAUAAsAAAARAPv/AgAUAAsAAAAIAPb/AgAUAAoAAAAKAPf/AgAUAAoAAAAOAAQAAgAZAAUAAAALAPn/AgAZAAQAAAA=")
 tile_set = ExtResource("1_rmief")
 collision_enabled = false
 
@@ -38,12 +39,17 @@ collision_enabled = false
 
 [node name="Decorations" type="TileMapLayer" parent="." unique_id=675622649]
 position = Vector2(-131, -96)
-tile_map_data = PackedByteArray("AAAEAPj/AAAZAAQAAAAOAPf/AgAUAAoAAAAJAPf/AgAdAAwAAAAJAPj/AgAdAA0AAAAIAP7/AgAVAAwAAAAIAP//AgAVAA0AAAAIAAAAAgAVAA4AAAAJAP7/AgAWAAwAAAAJAP//AgAWAA0AAAAJAAAAAgAWAA4AAAAKAP7/AgAXAAwAAAAKAP//AgAXAA0AAAAKAAAAAgAXAA4AAAAIAPz/AgAZAAoAAAAJAPz/AgAaAAoAAAAKAPz/AgAbAAoAAAAHAPv/AgAbAAkAAAAIAPr/AgAdAAoAAAABAPr/AgAaAAYAAAAOAPj/AAAZAAQAAAADAAIAAgAaAAYAAAALAAIAAgAUAAsAAAAMAAEAAgAUAAsAAAARAAQAAgAYAAYAAAAQAAMAAgAZAAQAAAALAPr/AgAcAAoAAAALAPv/AgAZAAYAAAA=")
+tile_map_data = PackedByteArray("AAAEAPj/AAAZAAQAAAAOAPf/AgAUAAoAAAAJAPf/AgAdAAwAAAAJAPj/AgAdAA0AAAAIAP7/AgAVAAwAAAAIAP//AgAVAA0AAAAIAAAAAgAVAA4AAAAJAP7/AgAWAAwAAAAJAP//AgAWAA0AAAAJAAAAAgAWAA4AAAAKAP7/AgAXAAwAAAAKAP//AgAXAA0AAAAKAAAAAgAXAA4AAAAIAPz/AgAZAAoAAAAJAPz/AgAaAAoAAAAKAPz/AgAbAAoAAAAHAPv/AgAbAAkAAAAIAPr/AgAdAAoAAAABAPr/AgAaAAYAAAAOAPj/AAAZAAQAAAADAAIAAgAaAAYAAAALAAIAAgAUAAsAAAAMAAEAAgAUAAsAAAARAAQAAgAYAAYAAAAQAAMAAgAZAAQAAAALAPr/AgAcAAoAAAALAPv/AgAZAAYAAAAJAAUAAgAaAAUAAAA=")
 tile_set = ExtResource("1_rmief")
 
 [node name="book1" type="TileMapLayer" parent="Decorations" unique_id=886259370]
 position = Vector2(8, 4)
 tile_map_data = PackedByteArray("AAAPAAMAAgAZAAQAAAA=")
+tile_set = ExtResource("1_rmief")
+
+[node name="crystalBall" type="TileMapLayer" parent="Decorations" unique_id=338932321]
+position = Vector2(17, 10)
+tile_map_data = PackedByteArray("AAAHAPv/AgAYAAYAAAAIAPv/AgAdAAoAAAAJAPv/AgAYAAYAAAA=")
 tile_set = ExtResource("1_rmief")
 
 [node name="book2" type="TileMapLayer" parent="Decorations" unique_id=1965539894]
@@ -66,3 +72,5 @@ target_spawn_id = "OutsideLibrary"
 
 [node name="Archivist" parent="." unique_id=652356716 instance=ExtResource("3_bxtc7")]
 position = Vector2(25, -181)
+
+[node name="Blindness" parent="." unique_id=803015099 instance=ExtResource("4_5f70n")]

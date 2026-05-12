@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="WCAGData" format=3 uid="uid://ba18dfmv5egsx"]
+
+[ext_resource type="Script" uid="uid://mgn4yar0d3vn" path="res://global/resources/wcag_data.gd" id="1_qbmxy"]
+
+[resource]
+script = ExtResource("1_qbmxy")
+id = "1.1.1"
+title = "Non-Text Content"
+short_description = "This criterion requires all meaningful non-text elements, such as images or icons, to include text alternatives that convey the same purpose or information."
+long_description = "The WCAG 2.1 success criterion 1.1.1 – Non-text Content ensures that users can access information presented through images, icons, charts, audio, or other non-text elements.
+
+The guideline requires meaningful non-text content to provide equivalent text alternatives, such as alt text for images, labels for controls, or descriptions for multimedia content. These alternatives allow assistive technologies like screen readers to communicate the same information to users.
+
+The criterion also defines exceptions:
+
+The main goal is to ensure that content remains accessible regardless of how users perceive information, supporting people with visual impairments, deafblindness, or other accessibility needs."
+metadata/_custom_type_script = "uid://mgn4yar0d3vn"

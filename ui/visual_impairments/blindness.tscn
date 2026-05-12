@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dkbblm8ypy082"]
+
+[ext_resource type="Script" uid="uid://gmxwy6w3gre6" path="res://ui/visual_impairments/blindness.gd" id="1_gjmhq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gjmhq"]
+
+[node name="Blindness" type="CanvasLayer" unique_id=803015099]
+layer = 50
+script = ExtResource("1_gjmhq")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2048381253]
+material = SubResource("ShaderMaterial_gjmhq")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.039215688, 0.039215688, 0.101960786, 1)

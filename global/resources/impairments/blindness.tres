@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="ImpairmentData" format=3 uid="uid://d2ae3okydjy7g"]
+
+[ext_resource type="Texture2D" uid="uid://bltycvovv4i4j" path="res://assets/book/logo_impairments/blindness_icon.png" id="1_biwb8"]
+[ext_resource type="Script" uid="uid://dry85ilgnq64e" path="res://global/resources/impairment_data.gd" id="1_rjvph"]
+[ext_resource type="Resource" uid="uid://ba18dfmv5egsx" path="res://global/resources/wcag/wcag_1_1_1.tres" id="1_yt0pc"]
+
+[resource]
+script = ExtResource("1_rjvph")
+name = "Blindness"
+icon = ExtResource("1_biwb8")
+short_info = "NULL OR GENERIC ALT-TEXT"
+manual_text = "Blindness is a condition involving partial or complete loss of vision. It can range from low vision to total blindness, where a person cannot perceive light at all. The condition may be congenital or acquired later in life due to disease, injury, or aging.
+
+There are several forms of blindness, including:
+
+- partial blindness (some remaining vision),
+- total blindness,
+- congenital blindness,
+- legal blindness, typically defined as vision of 20/200 or worse even with correction.
+
+Blindness can result from many causes, such as cataracts, glaucoma, retinal diseases, diabetes-related conditions, neurological damage, or sudden vision loss.
+
+Although some forms of vision loss can be treated or improved, others are permanent. Rehabilitation services, assistive technologies, and accessibility tools can help people maintain independence and everyday functionality."
+related_wcag = ExtResource("1_yt0pc")
+metadata/_custom_type_script = "uid://dry85ilgnq64e"
