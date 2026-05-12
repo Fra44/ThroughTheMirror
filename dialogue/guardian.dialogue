@@ -1,9 +1,13 @@
 ~ start
-Guard: Halt! I can't let you in. [#portrait=res://scenes/ui/cutscenes/images/guardian_closed.png]
-Guard: The gate uses these two magical signals, but I am not sure which one opens it... The colors are too similar for me.
-: You activate your power, and see as he sees. [#activate_shader]
-Guard: See? I can't tell them apart. Please help me! [#portrait=res://scenes/ui/cutscenes/images/guardian_sad.png]
-: A window with some hints appears. [#show_debug] [#pan_camera] [#minigame_menu]
+Guard: Halt! I can't let you pass. [#portrait=res://scenes/ui/cutscenes/images/guardian_closed.png]
+Guard: I am the Guardian of this castle, I would love to let you  in, but I am struggling with the magical mechanism of this gate... [#portrait=res://scenes/ui/cutscenes/images/guardian_sad.png]
+Guard: The gate uses these two magical signals, but I am not sure which one opens it. The colors are too similar for me. [#portrait=res://scenes/ui/cutscenes/images/guardian_closed.png]
+Guard: And if I interact with the wrong crystal, you will certainly die! 
+Guard: It is so frustrating to not being able to do the only job I have to do... [#portrait=res://scenes/ui/cutscenes/images/guardian_sad.png]
+: You activate your power, and start to see as he sees. 
+Guard: See? I can't tell them apart. Please help me! [#portrait=res://scenes/ui/cutscenes/images/guardian_closed.png] [#activate_shader]  
+: Now you can try to help the guard by fixing the code behind the magical mechanism of the gate. [#pan_camera] [#show_debug][#minigame_menu]
+: Read more about the problem in the manual.
 => END
 
 
@@ -14,17 +18,17 @@ Guard: Mmm... I still cannot tell which one is which. [#portrait=res://scenes/ui
 
 ~ circle
 Guard: Ah! Now the two signals are easily distinguishable! [#deactivate_shader] [#show_symbols] [#portrait=res://scenes/ui/cutscenes/images/guardian_circle.png]
-Guard: I can finally understand the mechanism without relying on color alone. [#portrait=res://scenes/ui/cutscenes/images/guardian_circle_happy.png]
-Guard: Symbols provide clarity, no matter how colors are perceived. [#close_minigame] [#open_gate] [#reset_camera]
+Guard: Thank you! I can finally understand the mechanism! [#portrait=res://scenes/ui/cutscenes/images/guardian_circle_happy.png] [#close_minigame] [#open_gate] [#reset_camera]
 Guard: Very well! You may enter. [#portrait=res://scenes/ui/cutscenes/images/guardian_circle_letting.png]
+Guard: I heard that the archivist was worried about something... Maybe you should go and check on her! [#portrait=res://scenes/ui/cutscenes/images/guardian_circle.png]
 => END
 
 
 ~ tick
 Guard: Ah! Now the two signals are easily distinguishable! [#deactivate_shader] [#show_symbols] [#portrait=res://scenes/ui/cutscenes/images/guardian_tick.png]
-Guard: I can finally understand the mechanism without relying on color alone. [#portrait=res://scenes/ui/cutscenes/images/guardian_tick_happy.png]
-Guard: Symbols provide clarity, no matter how colors are perceived. [#close_minigame] [#open_gate] [#reset_camera]
+Guard: Thank you! I can finally understand the mechanism! [#portrait=res://scenes/ui/cutscenes/images/guardian_tick_happy.png]  [#close_minigame] [#open_gate] [#reset_camera]
 Guard: Very well! You may enter. [#portrait=res://scenes/ui/cutscenes/images/guardian_tick_letting.png]
+Guard: I heard that the archivist was worried about something... Maybe you should go and check on her! [#portrait=res://scenes/ui/cutscenes/images/guardian_tick.png]
 => END
 
 
