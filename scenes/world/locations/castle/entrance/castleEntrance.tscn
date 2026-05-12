@@ -29,7 +29,7 @@ collision_enabled = false
 
 [node name="Decorations" type="TileMapLayer" parent="." unique_id=100147306]
 position = Vector2(-131, -96)
-tile_map_data = PackedByteArray("AAARAPH/AQAcAAcAAAARAPL/AgASAAsAAAARAPP/AgASAAwAAAASAPH/AQAdAAcAAAASAPL/AgATAAsAAAASAPP/AgATAAwAAAAIAPr/AQAcAAcAAAAIAPv/AgASAAsAAAAIAPz/AgASAAwAAAAJAPr/AQAdAAcAAAAJAPv/AgATAAsAAAAJAPz/AgATAAwAAAANAPr/AgAYAAAAAAAEAPr/AgAYAAAAAAA=")
+tile_map_data = PackedByteArray("AAAIAPr/AQAcAAcAAAAIAPv/AgASAAsAAAAIAPz/AgASAAwAAAAJAPr/AQAdAAcAAAAJAPv/AgATAAsAAAAJAPz/AgATAAwAAAANAPr/AgAYAAAAAAAEAPr/AgAYAAAAAAA=")
 tile_set = ExtResource("1_qevml")
 
 [node name="SpawnPoints" type="Node2D" parent="." unique_id=80876279]
@@ -38,9 +38,27 @@ position = Vector2(8, 0)
 [node name="InsideCastle" type="Marker2D" parent="SpawnPoints" unique_id=853628864]
 position = Vector2(0, -12)
 
+[node name="InsideCastleEntranceSx" type="Marker2D" parent="SpawnPoints" unique_id=575575169]
+position = Vector2(-128, -128)
+
+[node name="InsideCastleEntranceDx" type="Marker2D" parent="SpawnPoints" unique_id=913139059]
+position = Vector2(136, -128)
+
 [node name="TeleportOutsideCastle" parent="SpawnPoints" unique_id=1236967530 instance=ExtResource("2_3srqa")]
 position = Vector2(8, 24)
 rotation = -1.5707964
 scale = Vector2(4.715, 4.715)
 target_scene_path = "uid://c70072y8peuih"
 target_spawn_id = "OutsideCastle"
+
+[node name="TeleportHallwayDx" parent="SpawnPoints" unique_id=259305222 instance=ExtResource("2_3srqa")]
+position = Vector2(143.99998, -184)
+scale = Vector2(5.975, 5.975)
+target_scene_path = "uid://duxerjpkdbbvs"
+target_spawn_id = "HallwayDx"
+
+[node name="TeleportHallwaySx" parent="SpawnPoints" unique_id=1239185432 instance=ExtResource("2_3srqa")]
+position = Vector2(-128.00003, -184)
+scale = Vector2(5.975, 5.975)
+target_scene_path = "uid://duxerjpkdbbvs"
+target_spawn_id = "HallwaySx"
