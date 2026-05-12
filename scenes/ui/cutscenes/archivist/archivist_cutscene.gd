@@ -31,9 +31,18 @@ func start_cutscene(dialogue_res: Resource, impairment: ImpairmentData, title: S
 
 func _on_balloon_line_changed(line: DialogueLine) -> void:
 	for tag in line.tags:
+		# Gestione cambio immagine: # portrait=res://...
 		if tag.begins_with("portrait="):
 			var path = tag.split("=")[1].strip_edges()
-			if ResourceLoader.exists(path): portrait.texture = load(path)
+			if ResourceLoader.exists(path):
+				var tex = load(path)
+				portrait.texture = tex # Aggiorna il ritratto della cutscene
+				
+				# ---> LA MAGIA: Se il minigioco è aperto, mandiamo l'immagine anche a lui! <---
+				if spawned_minigame != null and spawned_minigame.has_method("update_image"):
+					spawned_minigame.update_image(tex)
+			else:
+				push_warning("Cutscene: Immagine non trovata: " + path)
 		
 		if tag == "show_debug" and current_impairment != null:
 			wait_for_debug = true
@@ -56,11 +65,6 @@ func _on_balloon_line_changed(line: DialogueLine) -> void:
 			portrait.visible = true
 			if has_node("Dim"): $Dim.visible = true
 				
-		# --- MOSTRA IL DRAGO NELLA SFERA ---
-		if tag == "show_dragon":
-			var orb = get_tree().get_first_node_in_group("prophecy_orb")
-			if orb and orb.has_method("reveal_dragon"):
-				orb.reveal_dragon()
 		
 		# --- CARICA IL MINIGIOCO ALT TEXT ---
 		if tag == "minigame_menu":
@@ -68,8 +72,14 @@ func _on_balloon_line_changed(line: DialogueLine) -> void:
 			var menu_instance = menu_scene.instantiate()
 			get_tree().root.add_child(menu_instance)
 			spawned_minigame = menu_instance
+			
+			# --- NUOVA LOGICA: Passiamo l'immagine attuale IMMEDIATAMENTE ---
+			if spawned_minigame.has_method("update_image") and portrait.texture != null:
+				spawned_minigame.update_image(portrait.texture)
+			
 			if spawned_minigame.has_signal("verification_requested"):
 				spawned_minigame.verification_requested.connect(_on_minigame_verification)
+			
 			portrait.visible = false
 			if has_node("Dim"): $Dim.visible = false
 

@@ -29,7 +29,7 @@ func _ready() -> void:
 	drop_zone.option_dropped.connect(_on_option_dropped)
 	
 	# Troviamo tutti i pannellini delle opzioni e colleghiamo il loro bottoncino audio
-	var options_container = $MainPanel/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/GridContainer
+	var options_container = $CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/GridContainer
 	for option_panel in options_container.get_children():
 		if option_panel.has_signal("play_requested"):
 			option_panel.play_requested.connect(_play_audio)
@@ -74,3 +74,7 @@ func _on_run_pressed() -> void:
 		verification_requested.emit(true)
 	else:
 		verification_requested.emit(false)
+# Funzione chiamata dalla Cutscene per cambiare l'immagine al volo!
+func update_image(new_texture: Texture2D) -> void:
+	if %CrystalBallImage:
+		%CrystalBallImage.texture = new_texture
