@@ -48,10 +48,10 @@ tile_set = ExtResource("1_jnydx")
 
 [node name="SpawnPoints" type="Node2D" parent="." unique_id=1930942913]
 
-[node name="InsideDoor" type="Marker2D" parent="SpawnPoints" unique_id=1570682214]
+[node name="InsideTavern" type="Marker2D" parent="SpawnPoints" unique_id=1570682214]
 position = Vector2(52, 94)
 
-[node name="TeleportTrigger" parent="SpawnPoints" unique_id=720813871 instance=ExtResource("2_l2lv1")]
+[node name="TeleportOutsideTavern" parent="SpawnPoints" unique_id=720813871 instance=ExtResource("2_l2lv1")]
 position = Vector2(52, 118)
 target_scene_path = "uid://c70072y8peuih"
 target_spawn_id = "OutsideTavern"
