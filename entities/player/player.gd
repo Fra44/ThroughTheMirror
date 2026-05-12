@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var actionable_finder: Area2D = $Direction/ActionableFinder
 
 # Velocità regolabile dall'Inspector
-@export var speed: float = 600.0 
+@export var speed: float = 300.0 
 
 # --- NUOVA VARIABILE DI STATO ---
 var is_talking: bool = false

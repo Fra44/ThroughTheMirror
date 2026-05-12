@@ -62,3 +62,12 @@ position = Vector2(-128.00003, -184)
 scale = Vector2(5.975, 5.975)
 target_scene_path = "uid://duxerjpkdbbvs"
 target_spawn_id = "HallwaySx"
+
+[node name="OutsideLibrary" type="Marker2D" parent="SpawnPoints" unique_id=73122497]
+position = Vector2(0, -112)
+
+[node name="TeleportLibrary" parent="SpawnPoints" unique_id=1269645175 instance=ExtResource("2_3srqa")]
+position = Vector2(8, -168)
+scale = Vector2(4, 4)
+target_scene_path = "uid://ddg3b8h0uwqit"
+target_spawn_id = "InsideLibrary"
