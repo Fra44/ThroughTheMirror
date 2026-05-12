@@ -46,6 +46,19 @@ tile_map_data = PackedByteArray("AAD+//r/AQAUAAgAAAD///r/AQAUAAgAAAAAAPr/AQAUAAg
 tile_set = ExtResource("1_het3u")
 collision_enabled = false
 
+[node name="fire1" type="TileMapLayer" parent="Foreground" unique_id=1037974142]
+z_index = 1
+tile_map_data = PackedByteArray("AAAnAOj/AwAdAAYAAFAnAOz/AwAdAAYAAFAiAOb/AwAdAAYAAGAiAOr/AwAdAAYAAGAiAO7/AwAdAAYAAGA=")
+tile_set = ExtResource("1_het3u")
+collision_enabled = false
+
+[node name="fire2" type="TileMapLayer" parent="Foreground" unique_id=1286208956]
+z_index = 1
+position = Vector2(8, 0)
+tile_map_data = PackedByteArray("AAAiAOj/AwAdAAYAAGAiAOr/AwAdAAYAAGAmAOb/AwAdAAYAAFAmAOr/AwAdAAYAAFAmAOz/AwAdAAYAAFAmAO7/AwAdAAYAAFA=")
+tile_set = ExtResource("1_het3u")
+collision_enabled = false
+
 [node name="SpawnPoints" type="Node2D" parent="." unique_id=676204888]
 
 [node name="OutsideTavern" type="Marker2D" parent="SpawnPoints" unique_id=1609965993]
