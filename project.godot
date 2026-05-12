@@ -132,7 +132,7 @@ ui_book={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://dialogue/test_dialogue.dialogue", "res://dialogue/innkeeper.dialogue", "res://dialogue/guardian.dialogue")
+locale/translations_pot_files=PackedStringArray("res://dialogue/test_dialogue.dialogue", "res://dialogue/innkeeper.dialogue", "res://dialogue/guardian.dialogue", "res://dialogue/signs.dialogue")
 
 [layer_names]
 
