@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bat2hcihyj5dj" path="res://entities/player/character_premade_01_idle.png" id="1_symyc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_abrql"]
-size = Vector2(14, 3)
+size = Vector2(11, 3)
 
 [sub_resource type="Animation" id="Animation_symyc"]
 length = 0.001
@@ -26,7 +26,7 @@ _data = {
 script = ExtResource("1_abrql")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2112129482]
-position = Vector2(0, 8)
+position = Vector2(-0.5, 8)
 shape = SubResource("RectangleShape2D_abrql")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1069740663]
