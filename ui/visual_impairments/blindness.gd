@@ -7,7 +7,7 @@ var tween: Tween
 
 # L'opacità massima: 0.95 lascia intravedere qualcosina (il 5% del mondo di gioco)
 const TARGET_ALPHA = 0.90 
-const TRANSITION_TIME = 1.0 
+const TRANSITION_TIME = 2 
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS 

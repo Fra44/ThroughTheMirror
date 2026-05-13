@@ -95,7 +95,7 @@ columns = 2
 
 [node name="Num1" type="Label" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid" unique_id=2076485680]
 layout_mode = 2
-text = "1"
+text = "  1"
 
 [node name="Line1" type="RichTextLabel" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid" unique_id=1351234803]
 custom_minimum_size = Vector2(220, 0)
@@ -104,7 +104,7 @@ text = "<figure>"
 
 [node name="Num2" type="Label" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid" unique_id=688326740]
 layout_mode = 2
-text = "2"
+text = "  2"
 
 [node name="Line2" type="RichTextLabel" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid" unique_id=1269800421]
 layout_mode = 2
@@ -113,7 +113,7 @@ scroll_active = false
 
 [node name="Num3" type="Label" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid" unique_id=530225151]
 layout_mode = 2
-text = "3"
+text = "  3"
 
 [node name="DropContainer" type="HBoxContainer" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid" unique_id=2065661014]
 layout_mode = 2
@@ -152,7 +152,7 @@ vertical_alignment = 1
 
 [node name="Num4" type="Label" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid" unique_id=474501094]
 layout_mode = 2
-text = "4"
+text = "  4"
 
 [node name="Line4" type="RichTextLabel" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid" unique_id=1947112344]
 layout_mode = 2
@@ -170,117 +170,121 @@ layout_mode = 2
 [node name="Title" type="Label" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox" unique_id=724118536]
 layout_mode = 2
 text = "Available Alt-Text Options (Drag into code!)"
+horizontal_alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox" unique_id=1255395825]
+[node name="CenterContainer" type="CenterContainer" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox" unique_id=889032544]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/CenterContainer" unique_id=1255395825]
 layout_mode = 2
 columns = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/GridContainer" unique_id=939053913]
+[node name="PanelContainer" type="PanelContainer" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/CenterContainer/GridContainer" unique_id=939053913]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_3ce8f")
 script = ExtResource("4_u4ver")
 audio_stream = ExtResource("5_t7ofs")
 
-[node name="MarginContainer" type="MarginContainer" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/GridContainer/PanelContainer" unique_id=108044878]
+[node name="MarginContainer" type="MarginContainer" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/CenterContainer/GridContainer/PanelContainer" unique_id=108044878]
 layout_mode = 2
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/GridContainer/PanelContainer/MarginContainer" unique_id=199425160]
+[node name="HBoxContainer" type="HBoxContainer" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/CenterContainer/GridContainer/PanelContainer/MarginContainer" unique_id=199425160]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/GridContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=805365460]
+[node name="Label" type="Label" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/CenterContainer/GridContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=805365460]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Prophecy_v4_final.ma
 gic"
 
-[node name="PlayAudioButton" type="TextureButton" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/GridContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=2133826647]
+[node name="PlayAudioButton" type="TextureButton" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/CenterContainer/GridContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=2133826647]
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 4
 texture_normal = ExtResource("3_ugsm5")
 
-[node name="PanelContainer2" type="PanelContainer" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/GridContainer" unique_id=341476470]
+[node name="PanelContainer2" type="PanelContainer" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/CenterContainer/GridContainer" unique_id=341476470]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_3ce8f")
 script = ExtResource("4_u4ver")
 audio_stream = ExtResource("6_u4ver")
 
-[node name="MarginContainer" type="MarginContainer" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/GridContainer/PanelContainer2" unique_id=291726890]
+[node name="MarginContainer" type="MarginContainer" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/CenterContainer/GridContainer/PanelContainer2" unique_id=291726890]
 layout_mode = 2
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/GridContainer/PanelContainer2/MarginContainer" unique_id=105564384]
+[node name="HBoxContainer" type="HBoxContainer" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/CenterContainer/GridContainer/PanelContainer2/MarginContainer" unique_id=105564384]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/GridContainer/PanelContainer2/MarginContainer/HBoxContainer" unique_id=517751878]
+[node name="Label" type="Label" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/CenterContainer/GridContainer/PanelContainer2/MarginContainer/HBoxContainer" unique_id=517751878]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Image of a dragon"
 
-[node name="PlayAudioButton" type="TextureButton" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/GridContainer/PanelContainer2/MarginContainer/HBoxContainer" unique_id=1553213293]
+[node name="PlayAudioButton" type="TextureButton" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/CenterContainer/GridContainer/PanelContainer2/MarginContainer/HBoxContainer" unique_id=1553213293]
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 4
 texture_normal = ExtResource("3_ugsm5")
 
-[node name="PanelContainer3" type="PanelContainer" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/GridContainer" unique_id=123685857]
+[node name="PanelContainer3" type="PanelContainer" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/CenterContainer/GridContainer" unique_id=123685857]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_3ce8f")
 script = ExtResource("4_u4ver")
 audio_stream = ExtResource("8_jbsve")
 
-[node name="MarginContainer" type="MarginContainer" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/GridContainer/PanelContainer3" unique_id=2126281852]
+[node name="MarginContainer" type="MarginContainer" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/CenterContainer/GridContainer/PanelContainer3" unique_id=2126281852]
 layout_mode = 2
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/GridContainer/PanelContainer3/MarginContainer" unique_id=1423685427]
+[node name="HBoxContainer" type="HBoxContainer" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/CenterContainer/GridContainer/PanelContainer3/MarginContainer" unique_id=1423685427]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/GridContainer/PanelContainer3/MarginContainer/HBoxContainer" unique_id=869137724]
+[node name="Label" type="Label" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/CenterContainer/GridContainer/PanelContainer3/MarginContainer/HBoxContainer" unique_id=869137724]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "A dragon prophecy"
 
-[node name="PlayAudioButton" type="TextureButton" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/GridContainer/PanelContainer3/MarginContainer/HBoxContainer" unique_id=148340592]
+[node name="PlayAudioButton" type="TextureButton" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/CenterContainer/GridContainer/PanelContainer3/MarginContainer/HBoxContainer" unique_id=148340592]
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 4
 texture_normal = ExtResource("3_ugsm5")
 
-[node name="PanelContainer4" type="PanelContainer" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/GridContainer" unique_id=1448557399]
+[node name="PanelContainer4" type="PanelContainer" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/CenterContainer/GridContainer" unique_id=1448557399]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_3ce8f")
 script = ExtResource("4_u4ver")
 audio_stream = ExtResource("9_t7ofs")
 
-[node name="MarginContainer" type="MarginContainer" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/GridContainer/PanelContainer4" unique_id=1709094297]
+[node name="MarginContainer" type="MarginContainer" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/CenterContainer/GridContainer/PanelContainer4" unique_id=1709094297]
 layout_mode = 2
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/GridContainer/PanelContainer4/MarginContainer" unique_id=475234577]
+[node name="HBoxContainer" type="HBoxContainer" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/CenterContainer/GridContainer/PanelContainer4/MarginContainer" unique_id=475234577]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/GridContainer/PanelContainer4/MarginContainer/HBoxContainer" unique_id=1527316407]
+[node name="Label" type="Label" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/CenterContainer/GridContainer/PanelContainer4/MarginContainer/HBoxContainer" unique_id=1527316407]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "A dragon flying over 
 a burning castle"
 horizontal_alignment = 1
 
-[node name="PlayAudioButton" type="TextureButton" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/GridContainer/PanelContainer4/MarginContainer/HBoxContainer" unique_id=491177092]
+[node name="PlayAudioButton" type="TextureButton" parent="CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/CenterContainer/GridContainer/PanelContainer4/MarginContainer/HBoxContainer" unique_id=491177092]
 layout_mode = 2
 size_flags_vertical = 4
 texture_normal = ExtResource("3_ugsm5")

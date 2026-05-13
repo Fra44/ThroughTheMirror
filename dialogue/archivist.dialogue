@@ -1,24 +1,27 @@
 ~ start
-Archivist: Welcome. I am the Archivist of this castle. [#portrait=res://scenes/ui/cutscenes/images/archivist_normal.png]
-Archivist: I do not need sight to read a prophecy. But the magic must speak clearly. And I have a problem with this prophecy. [#portrait=res://scenes/ui/cutscenes/images/archivist_sad.png]
-Archivist: My magical screen reader cannot make sense of this orb. It just says: "Visual Prophecy underscore Final Magic". [#portrait=res://scenes/ui/cutscenes/images/crystall_ball.png]
-: You activate your power to see as she does. [#activate_shader] [#portrait=res://scenes/ui/cutscenes/images/crystall_ball_prophecy.png]
-: The world fades to dark. The magical Archivist is blind! [#show_debug] [#minigame_menu] 
-: Read about this in the Manual.
-Archivist: I fear this is important... 
+Archivist: Welcome. I am the Magical Archivist of this castle. [#portrait=res://scenes/ui/cutscenes/images/archivist_normal.png]
+Archivist: I am responsible for all the magical writings and prophecies that speak about both the past and the future of the Lands of the Prism. 
+Archivist: I do not need sight to read a prophecy. But the magic must speak clearly. And I have a problem with the prophecy I have been analyzing today. [#portrait=res://scenes/ui/cutscenes/images/archivist_sad.png]
+Archivist: My magical screen reader cannot make sense of the description attached to this orb. It just says: "Visual prophecy underscore final dot magic". What is it supposed to mean? [#portrait=res://scenes/ui/cutscenes/images/crystall_ball.png]
+Archivist: I fear this may be important... 
+: You activate your power to perceive the world as she does. [#activate_shader] [#portrait=res://scenes/ui/cutscenes/images/crystall_ball_prophecy.png]
+: The world fades to darkness. Through the Mirror of Resonance, you experience the world as the Archivist does.
+: The problem is not the orb itself, but the text used to describe it.
+: You should try to help her! Read more about this problem in the Manual. [#show_debug] [#minigame_menu] 
+
 => END
 
 ~ fail_reaction
-Archivist: No... the screen reader is still reading nonsense. I cannot see the prophecy.
+Archivist: No... the screen reader is still reading something unclear. I cannot understand the prophecy.
 => END
 
 ~ win_reaction
-Archivist: "A dragon flying over a burning castle"... I see it perfectly now! [#deactivate_shader] 
+Archivist: "A dragon flying over a burning castle"... Now the prophecy speaks clearly. [#deactivate_shader] 
 Archivist: It is Kalipso!!! The great dragon is returning! You must hurry! [#close_minigame] [#portrait=res://scenes/ui/cutscenes/images/prophecy_expanded.png]
-Archivist: You have to reach the Herald immediately, the reign must know! We need a hero to save us from the dragon!
-Archivist: She usually wanders around the castle, go look for her!
+Archivist: You have to reach the Herald immediately. She can make a royal announcement and warn the whole realm! We need a hero to save us from the dragon!
+Archivist: She usually wanders around the castle. Go look for her!
 => END
 
 ~ already_helped
-Archivist: Hurry up! You have to find the Herald! She should be somewhere in the castle!
+Archivist: Hurry! You have to find the Herald! She should be somewhere in the castle!
 => END

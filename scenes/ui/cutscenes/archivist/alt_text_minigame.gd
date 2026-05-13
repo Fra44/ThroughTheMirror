@@ -29,7 +29,7 @@ func _ready() -> void:
 	drop_zone.option_dropped.connect(_on_option_dropped)
 	
 	# Troviamo tutti i pannellini delle opzioni e colleghiamo il loro bottoncino audio
-	var options_container = $CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/GridContainer
+	var options_container = $CrystalBallImage/CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/OptionsPanel/OptionsVBox/CenterContainer/GridContainer
 	for option_panel in options_container.get_children():
 		if option_panel.has_signal("play_requested"):
 			option_panel.play_requested.connect(_play_audio)
