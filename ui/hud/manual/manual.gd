@@ -5,6 +5,9 @@ const ENTRY_SCENE = preload("res://ui/hud/manual/ManualEntry.tscn")
 # Stato di apertura del manuale
 var is_open: bool = false
 
+# Memorizza se il gioco era già in pausa prima di aprire il manuale
+var was_paused_before_manual: bool = false
+
 # --- NUOVO BOTTONE DI CHIUSURA ---
 # ATTENZIONE: Trascina il tuo nuovo CloseButton dall'albero della scena qui per assicurarti che il percorso sia esatto!
 @onready var close_button = $MainContainer/BookBackground/LeftPage/CloseButton 
@@ -25,19 +28,40 @@ var is_open: bool = false
 var current_related_wcag: Resource = null
 # ---------------------------------------
 
-func close_manual():
-	is_open = false
-	visible = false
-	get_tree().paused = false
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-
 func open_manual():
 	is_open = true
 	visible = true
 	update_impairment_list()
 	_clear_details()
+	
+	# --- NUOVA LOGICA DI PAUSA ---
+	# Salviamo lo stato attuale PRIMA di forzare la pausa
+	was_paused_before_manual = get_tree().paused
 	get_tree().paused = true
+	# -----------------------------
+	
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+func close_manual():
+	is_open = false
+	visible = false
+	
+	# --- NUOVA LOGICA DI PAUSA ---
+	# Ripristiniamo lo stato esattamente com'era prima!
+	get_tree().paused = was_paused_before_manual
+	# -----------------------------
+	
+	# (Opzionale) Se nel gioco normale nascondi il mouse, potresti voler
+	# rimetterlo invisibile qui, a patto che was_paused_before_manual sia false!
+	# Ma per ora teniamo la tua logica:
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+func toggle_manual():
+	# Invece di riscrivere tutto, richiamiamo le funzioni che abbiamo appena sistemato!
+	if is_open:
+		close_manual()
+	else:
+		open_manual()
 
 func _ready():
 	hide() 
@@ -63,18 +87,6 @@ func _on_focus_changed(node: Control):
 func _gui_input(event):
 	if event is InputEventMouseButton and event.pressed:
 		print("Click registrato dal Manuale a coordinate: ", event.position)
-
-func toggle_manual():
-	is_open = !is_open
-	visible = is_open
-	if is_open:
-		update_impairment_list() 
-		_clear_details()
-		get_tree().paused = true 
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE) 
-	else:
-		get_tree().paused = false 
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func update_impairment_list():
 	_clear_list()

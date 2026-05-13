@@ -5,7 +5,6 @@
 
 [node name="InnkeeperCutscene" type="CanvasLayer" unique_id=1748519904]
 process_mode = 3
-layer = 150
 script = ExtResource("1_cctmk")
 
 [node name="Dim" type="ColorRect" parent="." unique_id=1379194886]
