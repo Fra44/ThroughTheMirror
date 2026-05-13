@@ -2,7 +2,7 @@ extends Area2D
 
 # 1. Carichiamo la scena specifica della cutscene del guardiano
 # (Assicurati di creare questa scena duplicando quella dell'innkeeper!)
-const CUTSCENE_SCENE = preload("res://scenes/ui/cutscenes/guardian/guardian_cutscene.tscn")
+const CUTSCENE_SCENE = preload("res://scenes/cutscenes/guardian/guardian_cutscene.tscn")
 
 @export var impairment: ImpairmentData   
 @export var dialogue_resource: DialogueResource
@@ -44,5 +44,5 @@ func action() -> void:
 		dialogue_resource, 
 		impairment, 
 		dialogue_start, 
-		"res://scenes/ui/cutscenes/images/guardian.png" # <--- L'immagine aggiornata
+		"res://scenes/cutscenes/images/guardian.png" # <--- L'immagine aggiornata
 	)

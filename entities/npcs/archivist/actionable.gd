@@ -1,6 +1,6 @@
 extends Area2D
 
-const CUTSCENE_SCENE = preload("res://scenes/ui/cutscenes/archivist/archivist_cutscene.tscn")
+const CUTSCENE_SCENE = preload("res://scenes/cutscenes/archivist/archivist_cutscene.tscn")
 
 @export var impairment: ImpairmentData   
 @export var dialogue_resource: DialogueResource
@@ -27,5 +27,5 @@ func action() -> void:
 		dialogue_resource, 
 		impairment, 
 		dialogue_start, 
-		"res://scenes/ui/cutscenes/images/archivist.png" # <--- Inserisci qui l'immagine dell'archivista
+		"res://scenes/cutscenes/images/archivist.png" # <--- Inserisci qui l'immagine dell'archivista
 	)

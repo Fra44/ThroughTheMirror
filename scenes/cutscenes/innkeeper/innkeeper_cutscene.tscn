@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://t4p61ig103jp"]
+
+[ext_resource type="Script" uid="uid://wy1e7v4uaxdd" path="res://scenes/cutscenes/innkeeper/innkeeper_cutscene.gd" id="1_cctmk"]
+[ext_resource type="PackedScene" uid="uid://b1phbvg720r51" path="res://dialogue/balloon.tscn" id="2_g4qma"]
+
+[node name="InnkeeperCutscene" type="CanvasLayer" unique_id=1748519904]
+process_mode = 3
+script = ExtResource("1_cctmk")
+
+[node name="Dim" type="ColorRect" parent="." unique_id=1379194886]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Portrait" type="TextureRect" parent="." unique_id=542925962]
+texture_filter = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Balloon" parent="." unique_id=1434168376 instance=ExtResource("2_g4qma")]

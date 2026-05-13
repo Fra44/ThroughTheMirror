@@ -2,10 +2,10 @@
 
 Innkeeper: Hi! Welcome to the tavern!
 Innkeeper: The realm is going to have a lot of visitors in the next days! The launch of the game is going to be a fantastic moment for everybody! 
-Innkeeper: But I'm feeling a bit anxious... [#portrait=res://scenes/ui/cutscenes/images/conversation_innkeeper_sad.png]
-Innkeeper: My sight has gotten worse, and I am not able to read the only thing that I actually have to read to the visitors, the menu of the tavern! [#portrait=res://scenes/ui/cutscenes/images/conversation_innkeeper_angry.png]
-Innkeeper: If only there was somebody that could help me... [#portrait=res://scenes/ui/cutscenes/images/conversation_innkeeper_sad.png]
-Innkeeper: What? You are the developer of the game?? [#portrait=res://scenes/ui/cutscenes/images/conversation_innkeeper_surprised.png]
+Innkeeper: But I'm feeling a bit anxious... [#portrait=res://scenes/cutscenes/images/conversation_innkeeper_sad.png]
+Innkeeper: My sight has gotten worse, and I am not able to read the only thing that I actually have to read to the visitors, the menu of the tavern! [#portrait=res://scenes/cutscenes/images/conversation_innkeeper_angry.png]
+Innkeeper: If only there was somebody that could help me... [#portrait=res://scenes/cutscenes/images/conversation_innkeeper_sad.png]
+Innkeeper: What? You are the developer of the game?? [#portrait=res://scenes/cutscenes/images/conversation_innkeeper_surprised.png]
 Innkeeper: Please help me, creator!
 : Here you have the menu. As you can see, it is not clearly visible. [#minigame_menu]
 : Imagine the poor innkeeper, that has cataracts! [#activate_shader]
@@ -18,10 +18,10 @@ Innkeeper: Mmmh, no, I still can't see properly...
 
 ~ win_reaction
 Innkeeper: Oh! Now I can see clearly! [#deactivate_shader]
-Innkeeper: You are my saviour! Thank you! [#close_minigame] [#portrait=res://scenes/ui/cutscenes/images/conversation_innkeeper_happy.png]
+Innkeeper: You are my saviour! Thank you! [#close_minigame] [#portrait=res://scenes/cutscenes/images/conversation_innkeeper_happy.png]
 Innkeeper: I bet there are other people that would really need your help!
-Innkeeper: Actually, I remember hearing some really noisy visitors the other day, they were speaking of some problem in the castle... [#portrait=res://scenes/ui/cutscenes/images/conversation_innkeeper_angry.png]
-Innkeeper: But I know you will help also them, right? [#portrait=res://scenes/ui/cutscenes/images/conversation_innkeeper_happy.png]
+Innkeeper: Actually, I remember hearing some really noisy visitors the other day, they were speaking of some problem in the castle... [#portrait=res://scenes/cutscenes/images/conversation_innkeeper_angry.png]
+Innkeeper: But I know you will help also them, right? [#portrait=res://scenes/cutscenes/images/conversation_innkeeper_happy.png]
 Innkeeper: See you soon, creator!
 => END
 

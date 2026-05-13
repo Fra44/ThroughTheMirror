@@ -1,6 +1,6 @@
 extends Area2D
 
-const CUTSCENE_SCENE = preload("res://scenes/ui/cutscenes/innkeeper/innkeeper_cutscene.tscn")
+const CUTSCENE_SCENE = preload("res://scenes/cutscenes/innkeeper/innkeeper_cutscene.tscn")
 
 @export var impairment: ImpairmentData   
 @export var dialogue_resource: DialogueResource
@@ -42,5 +42,5 @@ func action() -> void:
 		dialogue_resource, 
 		impairment, 
 		"start", 
-		"res://scenes/ui/cutscenes/images/conversation_innkeeper_happy.png"
+		"res://scenes/cutscenes/images/conversation_innkeeper_happy.png"
 	)
