@@ -16,6 +16,9 @@ var was_paused_before_manual: bool = false
 @onready var impairment_list = $MainContainer/BookBackground/LeftPage/MarginContainer/VBoxContainer/ScrollContainer/ImpairmentList
 @onready var title_label = $MainContainer/BookBackground/RightPage/MarginContainer/DetailView/IconFrame/Title
 @onready var description = $MainContainer/BookBackground/RightPage/MarginContainer/DetailView/ScrollContainer/Description
+# (Mettile sotto alle altre @onready che hai già)
+@onready var list_scroll = $MainContainer/BookBackground/LeftPage/MarginContainer/VBoxContainer/ScrollContainer
+@onready var detail_scroll = $MainContainer/BookBackground/RightPage/MarginContainer/DetailView/ScrollContainer
 
 # --- AGGIUNTE PER LE WCAG CORRELATE ---
 @onready var related_wcag_container = $MainContainer/BookBackground/RightPage/MarginContainer/DetailView/RelatedWcagContainer
@@ -105,6 +108,9 @@ func update_wcag_list():
 func _clear_list():
 	for child in impairment_list.get_children():
 		child.queue_free()
+	
+	# Riporta lo scroll della lista in alto
+	list_scroll.scroll_vertical = 0
 
 func _add_entry(data):
 	var new_entry = ENTRY_SCENE.instantiate()
@@ -149,6 +155,10 @@ func _on_jump_button_pressed():
 func _clear_details():
 	title_label.text = ""
 	description.text = ""
+	
+	# Riporta lo scroll del testo in alto
+	detail_scroll.scroll_vertical = 0
+	
 	related_wcag_container.modulate.a = 0
 	
 	if icon:
