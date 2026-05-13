@@ -46,7 +46,19 @@ func _place_player_at_spawn(spawn_id: StringName) -> void:
 	if spawn_points_node != null:
 		var spawn = spawn_points_node.get_node_or_null(String(spawn_id))
 		if spawn != null:
+			# 1. Teletrasportiamo fisicamente il giocatore
 			player.global_position = spawn.global_position
+			
+			# --- 2. FIX GLITCH TELECAMERA ---
+			var cam = get_tree().get_first_node_in_group("MainCamera")
+			if cam:
+				# Se hai il "Position Smoothing" attivo, evita che la telecamera scivoli
+				if cam.position_smoothing_enabled:
+					cam.reset_smoothing()
+				
+				# Forza la telecamera a inquadrare subito la nuova posizione saltando il frame vuoto
+				cam.force_update_scroll()
+			# --------------------------------
 			return
 
 	push_warning("Spawn point not found: %s" % String(spawn_id))

@@ -126,7 +126,6 @@ position = Vector2(593, -492)
 [node name="GreenGem" type="Node2D" parent="GateMechanism" unique_id=1148137585]
 
 [node name="SpriteGreenGem" type="Sprite2D" parent="GateMechanism/GreenGem" unique_id=1886812479]
-z_index = 1
 position = Vector2(641, -512)
 scale = Vector2(0.115064874, 0.115064874)
 texture = ExtResource("4_fxtkv")
