@@ -137,7 +137,7 @@ position = Vector2(641, -512)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="GateMechanism/GreenGem/StaticBody2D" unique_id=335263256]
-position = Vector2(641, -512)
+position = Vector2(0, 26)
 shape = SubResource("RectangleShape2D_espw7")
 metadata/_edit_group_ = true
 
@@ -150,7 +150,6 @@ scale = Vector2(0.05, 0.05)
 texture = ExtResource("5_eccxn")
 
 [node name="RedGem" type="Node2D" parent="GateMechanism" unique_id=1191163833]
-z_index = 1
 
 [node name="SpriteRedGem" type="Sprite2D" parent="GateMechanism/RedGem" unique_id=1738234338]
 position = Vector2(545, -512)
@@ -163,7 +162,7 @@ position = Vector2(545, -512)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GateMechanism/RedGem/StaticBody2D" unique_id=134191304]
-position = Vector2(545, -512)
+position = Vector2(0, 25)
 shape = SubResource("RectangleShape2D_espw7")
 
 [node name="symbolRed" type="Sprite2D" parent="GateMechanism/RedGem" unique_id=811058865 groups=["ray_symbol_preview_red"]]

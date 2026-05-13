@@ -95,19 +95,19 @@ text = "    <signal name=\"green\">"
 layout_mode = 2
 text = "3"
 
-[node name="RedDropContainer" type="HBoxContainer" parent="MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid" unique_id=1219677437]
+[node name="GreenDropContainer" type="HBoxContainer" parent="MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid" unique_id=1219677437]
 layout_mode = 2
 
-[node name="Ident" type="Label" parent="MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid/RedDropContainer" unique_id=1584805097]
+[node name="Ident" type="Label" parent="MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid/GreenDropContainer" unique_id=1584805097]
 layout_mode = 2
 text = "  "
 
-[node name="TagOpen" type="RichTextLabel" parent="MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid/RedDropContainer" unique_id=359260237]
+[node name="TagOpen" type="RichTextLabel" parent="MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid/GreenDropContainer" unique_id=359260237]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 text = "      <marker>"
 
-[node name="DropZoneRed" type="RichTextLabel" parent="MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid/RedDropContainer" unique_id=1175789314]
+[node name="DropZoneGreen" type="RichTextLabel" parent="MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid/GreenDropContainer" unique_id=1175789314]
 clip_contents = false
 custom_minimum_size = Vector2(115, 0)
 layout_mode = 2
@@ -118,7 +118,7 @@ text = "[i] drag symbol here[/i]"
 scroll_active = false
 script = ExtResource("2_qk8un")
 
-[node name="TagClose2" type="RichTextLabel" parent="MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid/RedDropContainer" unique_id=376619267]
+[node name="TagClose2" type="RichTextLabel" parent="MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid/GreenDropContainer" unique_id=376619267]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 text = "</marker>"
@@ -151,19 +151,19 @@ text = "    <signal name=\"red\">"
 layout_mode = 2
 text = "7"
 
-[node name="GreenDropContainer" type="HBoxContainer" parent="MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid" unique_id=67283445]
+[node name="RedDropContainer" type="HBoxContainer" parent="MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid" unique_id=67283445]
 layout_mode = 2
 
-[node name="Ident" type="Label" parent="MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid/GreenDropContainer" unique_id=586035545]
+[node name="Ident" type="Label" parent="MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid/RedDropContainer" unique_id=586035545]
 layout_mode = 2
 text = "  "
 
-[node name="TagOpen" type="RichTextLabel" parent="MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid/GreenDropContainer" unique_id=1835070134]
+[node name="TagOpen" type="RichTextLabel" parent="MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid/RedDropContainer" unique_id=1835070134]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 text = "      <marker>"
 
-[node name="DropZoneGreen" type="RichTextLabel" parent="MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid/GreenDropContainer" unique_id=300487936]
+[node name="DropZoneRed" type="RichTextLabel" parent="MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid/RedDropContainer" unique_id=300487936]
 clip_contents = false
 custom_minimum_size = Vector2(115, 0)
 layout_mode = 2
@@ -175,7 +175,7 @@ scroll_active = false
 script = ExtResource("2_qk8un")
 ray_color = "red"
 
-[node name="TagClose" type="RichTextLabel" parent="MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid/GreenDropContainer" unique_id=1715587749]
+[node name="TagClose" type="RichTextLabel" parent="MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid/RedDropContainer" unique_id=1715587749]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 text = "</marker>"
