@@ -221,14 +221,6 @@ texture = ExtResource("3_6agcu")
 expand_mode = 2
 script = ExtResource("4_6agcu")
 
-[node name="Cross" type="TextureRect" parent="MarginContainer/MainPanel/Background/Padding/MainVBox/MarkersPanel/MarkersVBox/SymbolsHBox" unique_id=1794301726]
-custom_minimum_size = Vector2(30, 30)
-layout_mode = 2
-texture = ExtResource("5_qk8un")
-expand_mode = 2
-script = ExtResource("4_6agcu")
-symbol_name = "cross"
-
 [node name="ArrowUp" type="TextureRect" parent="MarginContainer/MainPanel/Background/Padding/MainVBox/MarkersPanel/MarkersVBox/SymbolsHBox" unique_id=1857653381]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
@@ -236,6 +228,14 @@ texture = ExtResource("6_h8bp8")
 expand_mode = 2
 script = ExtResource("4_6agcu")
 symbol_name = "arrowUp"
+
+[node name="Tick" type="TextureRect" parent="MarginContainer/MainPanel/Background/Padding/MainVBox/MarkersPanel/MarkersVBox/SymbolsHBox" unique_id=1152039609]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("10_fj6i0")
+expand_mode = 2
+script = ExtResource("4_6agcu")
+symbol_name = "tick"
 
 [node name="Plus" type="TextureRect" parent="MarginContainer/MainPanel/Background/Padding/MainVBox/MarkersPanel/MarkersVBox/SymbolsHBox" unique_id=662695963]
 custom_minimum_size = Vector2(30, 30)
@@ -253,6 +253,14 @@ expand_mode = 2
 script = ExtResource("4_6agcu")
 symbol_name = "arrowDown"
 
+[node name="Cross" type="TextureRect" parent="MarginContainer/MainPanel/Background/Padding/MainVBox/MarkersPanel/MarkersVBox/SymbolsHBox" unique_id=1794301726]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("5_qk8un")
+expand_mode = 2
+script = ExtResource("4_6agcu")
+symbol_name = "cross"
+
 [node name="Hash" type="TextureRect" parent="MarginContainer/MainPanel/Background/Padding/MainVBox/MarkersPanel/MarkersVBox/SymbolsHBox" unique_id=1464874416]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
@@ -260,14 +268,6 @@ texture = ExtResource("9_jbbfr")
 expand_mode = 2
 script = ExtResource("4_6agcu")
 symbol_name = "hash"
-
-[node name="Tick" type="TextureRect" parent="MarginContainer/MainPanel/Background/Padding/MainVBox/MarkersPanel/MarkersVBox/SymbolsHBox" unique_id=1152039609]
-custom_minimum_size = Vector2(30, 30)
-layout_mode = 2
-texture = ExtResource("10_fj6i0")
-expand_mode = 2
-script = ExtResource("4_6agcu")
-symbol_name = "tick"
 
 [node name="HSeparator3" type="HSeparator" parent="MarginContainer/MainPanel/Background/Padding/MainVBox" unique_id=1765852553]
 layout_mode = 2

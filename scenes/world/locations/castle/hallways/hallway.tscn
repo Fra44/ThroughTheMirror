@@ -18,7 +18,7 @@ tile_set = ExtResource("1_mtqyg")
 [node name="invisible walls" type="TileMapLayer" parent="Obstacles" unique_id=1687199234]
 visible = false
 position = Vector2(-131, 80)
-tile_map_data = PackedByteArray("AAAOAAAAAAAOAAAAAAAPAAAAAAAOAAAAAAAQAAAAAAAOAAAAAAASAAAAAAAOAAAAAAATAAAAAAAOAAAAAAAUAAAAAAAOAAAAAAA=")
+tile_map_data = PackedByteArray("AAAOAAAAAAAOAAAAAAAPAAAAAAAOAAAAAAAQAAAAAAAOAAAAAAASAAAAAAAOAAAAAAATAAAAAAAOAAAAAAAUAAAAAAAOAAAAAAARAAAAAAAOAAAAAAA=")
 tile_set = ExtResource("1_mtqyg")
 
 [node name="Foreground" type="TileMapLayer" parent="." unique_id=1010477632]
@@ -98,7 +98,7 @@ tile_set = ExtResource("1_mtqyg")
 [node name="invisible walls" type="TileMapLayer" parent="HallwaySx/Obstacles2" unique_id=1164554636]
 visible = false
 position = Vector2(-131, 80)
-tile_map_data = PackedByteArray("AAAOAAAAAAAOAAAAAAAPAAAAAAAOAAAAAAAQAAAAAAAOAAAAAAASAAAAAAAOAAAAAAATAAAAAAAOAAAAAAAUAAAAAAAOAAAAAAA=")
+tile_map_data = PackedByteArray("AAAOAAAAAAAOAAAAAAAPAAAAAAAOAAAAAAAQAAAAAAAOAAAAAAASAAAAAAAOAAAAAAATAAAAAAAOAAAAAAAUAAAAAAAOAAAAAAARAAAAAAAOAAAAAAA=")
 tile_set = ExtResource("1_mtqyg")
 
 [node name="Foreground2" type="TileMapLayer" parent="HallwaySx" unique_id=26190579]
