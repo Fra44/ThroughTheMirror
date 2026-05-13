@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://b8piom45mf0mx" path="res://scenes/world/gate.gd" id="5_yfnw3"]
 [ext_resource type="Script" uid="uid://e7ett3l6ch0c" path="res://scenes/world/rays_minigame_camera_target.gd" id="6_espw7"]
 [ext_resource type="Texture2D" uid="uid://dbfcpvu7tvhmx" path="res://assets/diamond_rays/circle_red.png" id="7_s753n"]
+[ext_resource type="Script" uid="uid://4ijayon7j3xk" path="res://scenes/world/ray_symbol.gd" id="8_bppwh"]
 [ext_resource type="PackedScene" uid="uid://y7ctrfosw8ff" path="res://ui/visual_impairments/cvd.tscn" id="9_s753n"]
 [ext_resource type="Script" uid="uid://b7jbp502bkhqp" path="res://scenes/world/actionableSign.gd" id="13_yfnw3"]
 [ext_resource type="Resource" uid="uid://coi313p71u6y8" path="res://dialogue/signs.dialogue" id="14_ic2ev"]
@@ -162,6 +163,7 @@ z_index = 1
 position = Vector2(641.2, -499)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("5_eccxn")
+script = ExtResource("8_bppwh")
 
 [node name="RedGem" type="Node2D" parent="GateMechanism" unique_id=1191163833]
 
@@ -186,6 +188,8 @@ z_index = 1
 position = Vector2(544.5, -499)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("7_s753n")
+script = ExtResource("8_bppwh")
+ray_color = "red"
 
 [node name="RaysMinigameCameraTarget" type="Marker2D" parent="GateMechanism" unique_id=1668544951 groups=["rays_minigame_camera_target"]]
 process_mode = 3
