@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8fjlv0l55paq"
-path="res://.godot/imported/arrow_down.png-5baca2ee4651b65b3ec68244979855c7.ctex"
+uid="uid://hgih8la5nifa"
+path="res://.godot/imported/plus_green.png-85fe7c2eae55d8007e83c0f9ae9c22b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/diamond_rays/arrow_down.png"
-dest_files=["res://.godot/imported/arrow_down.png-5baca2ee4651b65b3ec68244979855c7.ctex"]
+source_file="res://assets/diamond_rays/plus_green.png"
+dest_files=["res://.godot/imported/plus_green.png-85fe7c2eae55d8007e83c0f9ae9c22b4.ctex"]
 
 [params]
 

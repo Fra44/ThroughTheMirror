@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="thesis game"
+config/name="Through the Mirror: The Sight of Others"
 run/main_scene="res://scenes/main/main.tscn"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="uid://6c487avh78gh"

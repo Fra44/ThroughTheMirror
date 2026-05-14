@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lr8228epeeqf"
-path="res://.godot/imported/arrow_up.png-2b4bd1e223af9db50b4454967b50f7cb.ctex"
+uid="uid://df2hitsuujj3q"
+path="res://.godot/imported/arrowDown_red.png-127b7b2b9f09abdb893f318daa26a55c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/diamond_rays/arrow_up.png"
-dest_files=["res://.godot/imported/arrow_up.png-2b4bd1e223af9db50b4454967b50f7cb.ctex"]
+source_file="res://assets/diamond_rays/arrowDown_red.png"
+dest_files=["res://.godot/imported/arrowDown_red.png-127b7b2b9f09abdb893f318daa26a55c.ctex"]
 
 [params]
 

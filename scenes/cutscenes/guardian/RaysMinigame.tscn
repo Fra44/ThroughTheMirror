@@ -5,9 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://62f5vfqylfa5" path="res://assets/diamond_rays/circle.png" id="3_6agcu"]
 [ext_resource type="Script" uid="uid://df2l6fo8bmx2y" path="res://scenes/cutscenes/guardian/draggable_symbol.gd" id="4_6agcu"]
 [ext_resource type="Texture2D" uid="uid://b2wkewjvon0jh" path="res://assets/diamond_rays/cross.png" id="5_qk8un"]
-[ext_resource type="Texture2D" uid="uid://lr8228epeeqf" path="res://assets/diamond_rays/arrow_up.png" id="6_h8bp8"]
+[ext_resource type="Texture2D" uid="uid://lr8228epeeqf" path="res://assets/diamond_rays/arrowUp.png" id="6_h8bp8"]
 [ext_resource type="Texture2D" uid="uid://dp2uafkjooktk" path="res://assets/diamond_rays/plus.png" id="7_31gfx"]
-[ext_resource type="Texture2D" uid="uid://c8fjlv0l55paq" path="res://assets/diamond_rays/arrow_down.png" id="8_le1sw"]
+[ext_resource type="Texture2D" uid="uid://c8fjlv0l55paq" path="res://assets/diamond_rays/arrowDown.png" id="8_le1sw"]
 [ext_resource type="Texture2D" uid="uid://bxy37an6n4emh" path="res://assets/diamond_rays/hash.png" id="9_jbbfr"]
 [ext_resource type="Texture2D" uid="uid://b71ueine8msvr" path="res://assets/diamond_rays/tick.png" id="10_fj6i0"]
 
