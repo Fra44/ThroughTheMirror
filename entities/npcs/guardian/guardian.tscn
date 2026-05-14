@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://d3arlvv8cpllj" path="res://dialogue/guardian.dialogue" id="4_distp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f8q51"]
-size = Vector2(11.5, 13.700001)
+size = Vector2(11.5, 18.7)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x1mx7"]
 radius = 17.8
@@ -21,7 +21,7 @@ hframes = 5
 vframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1288017672]
-position = Vector2(-1.73, 17.15)
+position = Vector2(-1.73, 19.65)
 shape = SubResource("RectangleShape2D_f8q51")
 
 [node name="Actionable" type="Area2D" parent="." unique_id=1511953679]
