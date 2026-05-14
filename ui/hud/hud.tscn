@@ -104,7 +104,7 @@ layout_mode = 0
 offset_top = -2.0
 offset_right = 40.0
 offset_bottom = 14.0
-text = "[S]"
+text = "[Esc]"
 label_settings = SubResource("LabelSettings_gfles")
 vertical_alignment = 2
 
