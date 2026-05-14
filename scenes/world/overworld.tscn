@@ -15,6 +15,13 @@
 [ext_resource type="PackedScene" uid="uid://y7ctrfosw8ff" path="res://ui/visual_impairments/cvd.tscn" id="9_s753n"]
 [ext_resource type="Script" uid="uid://b7jbp502bkhqp" path="res://scenes/world/actionableSign.gd" id="13_yfnw3"]
 [ext_resource type="Resource" uid="uid://coi313p71u6y8" path="res://dialogue/signs.dialogue" id="14_ic2ev"]
+[ext_resource type="PackedScene" uid="uid://pfdjwuamjoqe" path="res://entities/npcs/misc/npc_misc.tscn" id="16_koevj"]
+[ext_resource type="Texture2D" uid="uid://cyco8co8tbnsn" path="res://entities/npcs/misc/character_premade_02_idle.png" id="17_mrb77"]
+[ext_resource type="Texture2D" uid="uid://dofgepld661hw" path="res://entities/npcs/misc/character_premade_04_idle.png" id="18_hu3i1"]
+[ext_resource type="Resource" uid="uid://cpkpmd1b7jgve" path="res://dialogue/npc_misc.dialogue" id="18_nwxhm"]
+[ext_resource type="Resource" uid="uid://dmqassvu56ril" path="res://global/resources/impairments/cataracts.tres" id="19_nmeri"]
+[ext_resource type="Texture2D" uid="uid://cgof4c67y0ycr" path="res://entities/npcs/misc/character_premade_09_idle.png" id="19_nwxhm"]
+[ext_resource type="Script" uid="uid://ckfg1h5v57jr2" path="res://scenes/world/stairs_barrier.gd" id="22_mupvu"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_xwc2a"]
 a = Vector2(-44.52588, 0)
@@ -25,6 +32,9 @@ size = Vector2(23, 17)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ic2ev"]
 radius = 17.8
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mupvu"]
+size = Vector2(61.5, 20)
 
 [node name="Overworld" type="Node2D" unique_id=1589885129]
 script = ExtResource("1_ap4hg")
@@ -133,7 +143,6 @@ shape = SubResource("SegmentShape2D_xwc2a")
 
 [node name="Guard" parent="." unique_id=96672729 instance=ExtResource("3_373mm")]
 position = Vector2(593, -492)
-metadata/_edit_lock_ = true
 
 [node name="GateMechanism" type="Node2D" parent="." unique_id=256311869]
 metadata/_edit_lock_ = true
@@ -229,3 +238,38 @@ dialogue_start = "tavern_sign"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Signs/SignTavern/SignActionable" unique_id=213088005]
 position = Vector2(-1.8, 8)
 shape = SubResource("CircleShape2D_ic2ev")
+
+[node name="Npcs" type="Node2D" parent="." unique_id=1159785082]
+
+[node name="NpcMisc1" parent="Npcs" unique_id=1034618845 instance=ExtResource("16_koevj")]
+position = Vector2(567, -237)
+npc_sprite = ExtResource("17_mrb77")
+dialogue_resource = ExtResource("18_nwxhm")
+dialogue_start = "npc1"
+required_impairment = ExtResource("19_nmeri")
+is_stairs_blocker = true
+
+[node name="NpcMisc2" parent="Npcs" unique_id=1755543115 instance=ExtResource("16_koevj")]
+position = Vector2(588, -229)
+npc_sprite = ExtResource("18_hu3i1")
+dialogue_resource = ExtResource("18_nwxhm")
+dialogue_start = "npc2"
+required_impairment = ExtResource("19_nmeri")
+is_stairs_blocker = true
+
+[node name="NpcMisc3" parent="Npcs" unique_id=1538580125 instance=ExtResource("16_koevj")]
+position = Vector2(611, -237)
+npc_sprite = ExtResource("19_nwxhm")
+dialogue_resource = ExtResource("18_nwxhm")
+dialogue_start = "npc3"
+required_impairment = ExtResource("19_nmeri")
+is_stairs_blocker = true
+
+[node name="StairsBarrier" type="StaticBody2D" parent="Npcs" unique_id=382448721]
+position = Vector2(561, -256)
+script = ExtResource("22_mupvu")
+required_impairment = ExtResource("19_nmeri")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Npcs/StairsBarrier" unique_id=1237817733]
+position = Vector2(31.25, 8)
+shape = SubResource("RectangleShape2D_mupvu")

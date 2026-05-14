@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://pfdjwuamjoqe"]
+
+[ext_resource type="Script" uid="uid://ch5ebcoyiots4" path="res://entities/npcs/misc/npc_misc.gd" id="1_g0si2"]
+[ext_resource type="Texture2D" uid="uid://cyco8co8tbnsn" path="res://entities/npcs/misc/character_premade_02_idle.png" id="2_wcebh"]
+[ext_resource type="Script" uid="uid://drawgs7wmemyi" path="res://entities/npcs/misc/actionable.gd" id="3_x5t7k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f5sp0"]
+size = Vector2(13.333334, 10.85)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g0si2"]
+size = Vector2(26, 26)
+
+[node name="NpcMisc" type="StaticBody2D" unique_id=1808179372]
+script = ExtResource("1_g0si2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=863201997]
+z_index = 1
+texture = ExtResource("2_wcebh")
+hframes = 2
+vframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1426995149]
+position = Vector2(2.3841858e-07, 5.8625)
+scale = Vector2(1.5, 1.5)
+shape = SubResource("RectangleShape2D_f5sp0")
+
+[node name="Actionable" type="Area2D" parent="." unique_id=1513500205]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("3_x5t7k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionable" unique_id=2112961905]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_g0si2")
