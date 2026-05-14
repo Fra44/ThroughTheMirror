@@ -9,12 +9,16 @@ script = ExtResource("1_7niso")
 name = "Cataracts"
 icon = ExtResource("1_bk1tu")
 short_info = "CONTRAST RATIO 1.17:1"
-manual_text = "Cataract is a condition in which the eye’s lens becomes cloudy, reducing vision quality and potentially leading to blindness. It is most commonly associated with aging, but it can also occur in children, after eye injuries, or due to diseases such as glaucoma and diabetes.
+manual_text = "[b][u]CLINICAL OVERVIEW[/u][/b]
+A cataract is a condition in which the eye's lens becomes cloudy, significantly reducing vision quality and potentially leading to blindness. This opacification obstructs light from reaching the retina.  
 
-It is one of the leading causes of blindness worldwide, particularly in regions with limited access to eye care, even though cataracts can usually be treated through surgery.
-
-Risk factors include steroid use, radiation exposure, smoking, and ultraviolet light. While there is no guaranteed prevention, reducing smoking and UV exposure may help delay its development.
-
-The World Health Organization supports countries in improving eye care systems to reduce the global impact of cataracts."
+[b][u]CAUSES AND RISKS[/u][/b]
+[indent]
+[b]•[/b] Commonly associated with aging, but can occur due to injuries, or diseases like glaucoma and diabetes.
+[b]•[/b] Risk factors include steroid use, radiation exposure, smoking, and ultraviolet (UV) light.
+[b]•[/b] It is a leading cause of blindness worldwide, although it is usually treatable through surgery.
+[/indent] 
+[b][u]VISUAL IMPACT[/u][/b]
+This impairment manifests as a significant loss of contrast and a “foggy” or blurred overlay in the individual’s vision, making text nearly impossible to read when placed on similar-colored backgrounds."
 related_wcag = ExtResource("1_f072e")
 metadata/_custom_type_script = "uid://dry85ilgnq64e"

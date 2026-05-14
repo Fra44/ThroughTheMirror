@@ -9,17 +9,15 @@ script = ExtResource("1_rjvph")
 name = "Blindness"
 icon = ExtResource("1_biwb8")
 short_info = "NULL OR GENERIC ALT-TEXT"
-manual_text = "Blindness is a condition involving partial or complete loss of vision. It can range from low vision to total blindness, where a person cannot perceive light at all. The condition may be congenital or acquired later in life due to disease, injury, or aging.
+manual_text = "[b][u]CLINICAL OVERVIEW[/u][/b]
+Blindness is a condition involving partial or complete loss of vision. It can range from low vision to total blindness, where a person cannot perceive light at all.
 
-There are several forms of blindness, including:
-
-- partial blindness (some remaining vision),
-- total blindness,
-- congenital blindness,
-- legal blindness, typically defined as vision of 20/200 or worse even with correction.
-
-Blindness can result from many causes, such as cataracts, glaucoma, retinal diseases, diabetes-related conditions, neurological damage, or sudden vision loss.
-
-Although some forms of vision loss can be treated or improved, others are permanent. Rehabilitation services, assistive technologies, and accessibility tools can help people maintain independence and everyday functionality."
+[b][u]FORMS & CAUSES[/u][/b]
+[indent]
+[b]•[/b] Forms include partial blindness, total blindness, congenital blindness, and legal blindness.
+[b]•[/b] Legal blindness is typically defined as vision of 20/200 or worse even with correction.
+[b]•[/b] It can result from many causes, such as cataracts, glaucoma, retinal diseases, or neurological damage.
+[b]•[/b] Accessibility tools and assistive technologies can help people maintain independence and functionality.
+[/indent]"
 related_wcag = ExtResource("1_yt0pc")
 metadata/_custom_type_script = "uid://dry85ilgnq64e"

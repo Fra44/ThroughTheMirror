@@ -7,9 +7,15 @@ script = ExtResource("1_qbmxy")
 id = "1.1.1"
 title = "Non-Text Content"
 short_description = "This criterion requires all meaningful non-text elements, such as images or icons, to include text alternatives that convey the same purpose or information."
-long_description = "The WCAG 2.1 success criterion 1.1.1 – Non-text Content ensures that users can access information presented through images, icons, charts, audio, or other non-text elements.
+long_description = "[b][u]OBJECTIVE[/u][/b]
+The WCAG 2.1 success criterion 1.1.1 - Non-text Content ensures that users can access information presented through images, icons, charts, or other non-text elements.
 
-The guideline requires meaningful non-text content to provide equivalent text alternatives, such as alt text for images, labels for controls, or descriptions for multimedia content. These alternatives allow assistive technologies like screen readers to communicate the same information to users.
-
-The main goal is to ensure that content remains accessible regardless of how users perceive information, supporting people with visual impairments, deafblindness, or other accessibility needs."
+[b][u]TECHNICAL REQUIREMENTS[/u][/b]
+[indent]
+[b]•[/b] Meaningful non-text content must provide equivalent text alternatives, such as alt text.
+[b]•[/b] These alternatives allow assistive technologies like screen readers to communicate the same information to users.
+[b]•[/b] The goal is to ensure content remains accessible regardless of how users perceive information.
+[/indent]
+[b][u]TIP[/u][/b]
+Fix the code by providing a descriptive sentence in the 'alt' attribute. A good text alternative explains what the image depicts so that a screen reader can announce it correctly."
 metadata/_custom_type_script = "uid://mgn4yar0d3vn"

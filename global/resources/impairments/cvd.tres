@@ -9,12 +9,15 @@ script = ExtResource("1_mnd1t")
 name = "Deuteranopia (CVD)"
 icon = ExtResource("1_05ify")
 short_info = "SEMANTIC MEANING BOUND TO HUE CHANNEL ONLY"
-manual_text = "Color Vision Deficiency (CVD) is a visual condition in which people have difficulty distinguishing specific colors or color shades. The most common form is red-green deficiency, although blue-yellow deficiency and complete color blindness are rarer forms.
+manual_text = "[b][u]CLINICAL OVERVIEW[/u][/b]
+Color Vision Deficiency (CVD) is a visual condition in which people have difficulty distinguishing specific colors or color shades. It is caused by abnormalities in the cone cells of the retina that detect color.
 
-CVD is usually inherited and caused by abnormalities in the cone cells of the retina that detect color. It affects men more frequently because the related genes are linked to the X chromosome. In some cases, it can also develop later in life due to eye diseases, injuries, aging, or medication side effects. 
-
-People with CVD may struggle with tasks that rely on color differentiation, such as reading color-coded information or identifying certain objects. Diagnosis is commonly performed through color vision tests like the Ishihara test.
-
-There is currently no cure for inherited CVD, although assistive technologies and special lenses may help improve color distinction in some situations."
+[b][u]VARIATIONS & DEMOGRAPHICS[/u][/b]
+[indent]
+[b]•[/b] The most common form is red-green deficiency (also called Deuteranopia), although blue-yellow deficiency and complete color blindness are rarer forms.
+[b]•[/b] It affects men more frequently because the related genes are linked to the X chromosome.
+[b]•[/b] Diagnosis is commonly performed through color vision tests like the Ishihara test.
+[b]•[/b] There is currently no cure for inherited CVD, though assistive technologies may help in some situations.
+[/indent]"
 related_wcag = ExtResource("1_2x1d4")
 metadata/_custom_type_script = "uid://dry85ilgnq64e"

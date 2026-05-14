@@ -181,6 +181,7 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
 text = "Testo di prova per vedere come viene visualizzato qui dentro nel mio bellissimo libro
 A
 A
