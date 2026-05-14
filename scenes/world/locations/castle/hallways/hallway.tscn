@@ -36,7 +36,7 @@ collision_enabled = false
 
 [node name="Decorations" type="TileMapLayer" parent="." unique_id=952752633]
 position = Vector2(-131, -96)
-tile_map_data = PackedByteArray("AAAJAAAAAQAaAAgAAAAJAAEAAQAaAAkAAAAIAAUAAgAaAAUAAAAJAAUAAgAaAAUAAAAKAAUAAgAaAAUAAAA=")
+tile_map_data = PackedByteArray("AAAIAAUAAgAaAAUAAAAJAAUAAgAaAAUAAAAKAAUAAgAaAAUAAAALAAEAAgAaAA0AAAAHAAAAAgAaAA0AAAA=")
 tile_set = ExtResource("1_mtqyg")
 
 [node name="SpawnPoints" type="Node2D" parent="." unique_id=1504815922]
@@ -104,7 +104,6 @@ tile_set = ExtResource("1_mtqyg")
 [node name="Foreground2" type="TileMapLayer" parent="HallwaySx" unique_id=26190579]
 z_index = 1
 position = Vector2(-131, -96)
-tile_map_data = PackedByteArray("AAAJAAMAAQAXAAwAAAA=")
 tile_set = ExtResource("1_mtqyg")
 collision_enabled = false
 
@@ -117,5 +116,5 @@ collision_enabled = false
 
 [node name="Decorations2" type="TileMapLayer" parent="HallwaySx" unique_id=118529813]
 position = Vector2(-131, -96)
-tile_map_data = PackedByteArray("AAAIAAUAAgAaAAUAAAAJAAUAAgAaAAUAAAAKAAUAAgAaAAUAAAA=")
+tile_map_data = PackedByteArray("AAAIAAUAAgAaAAUAAAAJAAUAAgAaAAUAAAAKAAUAAgAaAAUAAAALAAQAAQAXAAwAAAA=")
 tile_set = ExtResource("1_mtqyg")
