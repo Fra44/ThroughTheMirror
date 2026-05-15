@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="WCAGData" format=3 uid="uid://b7h2a8akc6vrx"]
+
+[ext_resource type="Script" uid="uid://mgn4yar0d3vn" path="res://global/resources/wcag_data.gd" id="1_ccm7c"]
+
+[resource]
+script = ExtResource("1_ccm7c")
+id = "1.4.10"
+title = "Reflow"
+metadata/_custom_type_script = "uid://mgn4yar0d3vn"

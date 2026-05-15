@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dah5t4l6v0g7j"]
+
+[ext_resource type="Shader" uid="uid://5rnk3gd3faq1" path="res://ui/visual_impairments/low_vision.gdshader" id="1_7ayvs"]
+[ext_resource type="Script" uid="uid://cw0jtiyl3r5ns" path="res://ui/visual_impairments/low_vision.gd" id="1_ak1s8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ak1s8"]
+shader = ExtResource("1_7ayvs")
+
+[node name="LowVision" type="CanvasLayer" unique_id=1379506221]
+layer = 50
+script = ExtResource("1_ak1s8")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1891566888]
+material = SubResource("ShaderMaterial_ak1s8")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

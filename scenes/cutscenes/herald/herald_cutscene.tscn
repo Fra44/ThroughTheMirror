@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://da35ox7vuwxqn"]
+
+[ext_resource type="Script" uid="uid://cy52ouawxv8m3" path="res://scenes/cutscenes/herald/herald_cutscene.gd" id="1_covld"]
+[ext_resource type="PackedScene" uid="uid://b1phbvg720r51" path="res://dialogue/balloon.tscn" id="2_dtj6s"]
+
+[node name="HeraldCutscene" type="CanvasLayer" unique_id=1029018987]
+script = ExtResource("1_covld")
+
+[node name="Dim" type="ColorRect" parent="." unique_id=281443067]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Portrait" type="TextureRect" parent="." unique_id=601593700]
+texture_filter = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Balloon" parent="." unique_id=1434168376 instance=ExtResource("2_dtj6s")]
