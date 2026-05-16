@@ -5,8 +5,10 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ak1s8"]
 shader = ExtResource("1_7ayvs")
+shader_parameter/blur_amount = 0.0
 
 [node name="LowVision" type="CanvasLayer" unique_id=1379506221]
+process_mode = 3
 layer = 50
 script = ExtResource("1_ak1s8")
 

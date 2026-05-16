@@ -9,7 +9,7 @@
 size = Vector2(15, 34)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5bwdk"]
-radius = 12.0
+radius = 19.0
 
 [node name="Herald" type="CharacterBody2D" unique_id=777789410]
 

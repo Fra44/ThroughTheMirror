@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_2nrxl")
 name = "Severe Low Vision"
-short_info = "Low vision!!!"
+short_info = "FIXED-WIDTH CONTAINER DETECTED"
 manual_text = "Low vision cannot be fully corrected with glasses. Users often rely on Screen Magnifiers to enlarge the text up to 400%"
 related_wcag = ExtResource("1_l6m8n")
 metadata/_custom_type_script = "uid://dry85ilgnq64e"
