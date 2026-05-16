@@ -11,6 +11,7 @@ signal debug_window_requested
 @onready var preview_label: RichTextLabel = %PreviewLabel
 @onready var run_button: Button = %RunCodeButton
 @onready var parchment: NinePatchRect = %Parchment
+@onready var background_image: TextureRect = %BackgroundImage
 
 @onready var code_editor: CanvasLayer = %CodeEditor
 @onready var code_editor_panel: Control = $CodeEditor/MarginContainer/MainPanel
@@ -24,7 +25,7 @@ const INVALID_WIDTH: float = 2000.0
 
 const MIN_SCROLL_HEIGHT: float = 260.0
 
-const TEXT_MARGIN_LEFT: float = 170.0
+const TEXT_MARGIN_LEFT: float = 165.0
 const TEXT_MARGIN_RIGHT: float = 135.0
 const TEXT_MARGIN_TOP: float = 68.0
 const TEXT_MARGIN_BOTTOM: float = 62.0
@@ -34,9 +35,11 @@ const ZOOMED_FONT_SIZE: int = 96
 
 const EDITOR_SLIDE_DISTANCE: float = 520.0
 const WALK_DEMO_DISTANCE: float = 900.0
+const BACKGROUND_WALK_DISTANCE: float = 260.0
 
 var editor_start_offset: Vector2
 var parchment_start_position: Vector2
+var background_start_position: Vector2
 
 var is_running_code: bool = false
 var intro_finished: bool = false
@@ -55,6 +58,7 @@ func _ready() -> void:
 	
 	editor_start_offset = code_editor.offset
 	parchment_start_position = parchment.position
+	background_start_position = background_image.position
 	
 	_setup_options()
 	
@@ -144,9 +148,12 @@ func play_intro_sequence() -> void:
 	
 	# 5. Zoom magico.
 	await _request_dialogue_step("scroll_zoom")
-	_set_preview_font_size(ZOOMED_FONT_SIZE)
-	await get_tree().process_frame
-	
+
+	decree_text = placeholder_text
+	preview_label.text = decree_text
+
+	await _animate_preview_font_size(TINY_FONT_SIZE, ZOOMED_FONT_SIZE, 1.1)
+
 	await _wait(0.35)
 	
 	# 6. Bug: espansione orizzontale.
@@ -361,10 +368,19 @@ func _show_pre_wrap_scroll(target_width: float) -> void:
 func _play_horizontal_reading_demo() -> void:
 	var tween: Tween = create_tween()
 	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	tween.set_parallel(true)
+	
 	tween.tween_property(
 		parchment,
 		"position:x",
 		parchment_start_position.x - WALK_DEMO_DISTANCE,
+		2.2
+	)
+	
+	tween.tween_property(
+		background_image,
+		"position:x",
+		background_start_position.x - BACKGROUND_WALK_DISTANCE,
 		2.2
 	)
 	
@@ -374,10 +390,19 @@ func _play_horizontal_reading_demo() -> void:
 func _return_parchment_to_center() -> void:
 	var tween: Tween = create_tween()
 	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	tween.set_parallel(true)
+	
 	tween.tween_property(
 		parchment,
 		"position:x",
 		parchment_start_position.x,
+		0.65
+	)
+	
+	tween.tween_property(
+		background_image,
+		"position:x",
+		background_start_position.x,
 		0.65
 	)
 	
@@ -455,6 +480,17 @@ func _set_preview_font_size(font_size: int) -> void:
 	preview_label.add_theme_font_size_override("normal_font_size", font_size)
 	preview_label.queue_redraw()
 
+func _animate_preview_font_size(from_size: int, to_size: int, duration: float) -> void:
+	var steps: int = 18
+	var step_time: float = duration / float(steps)
+	
+	for i in range(steps + 1):
+		var t: float = float(i) / float(steps)
+		var current_size: int = int(lerp(float(from_size), float(to_size), t))
+		
+		_set_preview_font_size(current_size)
+		await get_tree().process_frame
+		await _wait(step_time)
 
 func _wait(seconds: float) -> void:
 	await get_tree().create_timer(seconds, true).timeout
