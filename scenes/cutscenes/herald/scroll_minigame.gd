@@ -59,6 +59,10 @@ func _on_run_pressed() -> void:
 	else:
 		verification_requested.emit(false)
 
-# Funzione obbligatoria nel caso la cutscene provi a passarti l'immagine (come nell'Archivista)
+# Funzione chiamata dalla Cutscene per cambiare l'immagine al volo!
 func update_image(tex: Texture2D) -> void:
-	pass
+	if %BackgroundImage:
+		%BackgroundImage.texture = tex
+		
+		# Opzionale: scuriamo leggermente l'immagine di sfondo per far risaltare di più il minigioco
+		%BackgroundImage.modulate = Color(0.5, 0.5, 0.5, 1.0)

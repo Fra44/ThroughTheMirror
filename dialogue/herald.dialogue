@@ -1,10 +1,10 @@
 ~ start
-Herald: Hi! Nice to meet you, I'm the herald of the Lands of the Prism! [#portrait=res://scenes/ui/cutscenes/images/herald_normal.png]
-Herald: Oh, this is a disaster! I must announce an urgent message to the kingdom, but this scroll is impossible to read. [#portrait=res://scenes/ui/cutscenes/images/herald_sad.png]
+Herald: Hi! Nice to meet you, I'm the herald of the Lands of the Prism! [#portrait=res://scenes/cutscenes/images/herald_normal.png]
+Herald: Oh, this is a disaster! I must announce an urgent message to the kingdom, but this scroll is impossible to read. [#portrait=res://scenes/cutscenes/images/herald_sad.png]
 Herald: The text is too tiny. I can't focus on the letters...
 : You activate your power to see as she does. [#activate_shader] 
 : The world becomes blurry. Reading normal text is impossible without tools. [#show_debug] 
-Herald: Exactly! So I use my magical lens to zoom in... but watch what happens to the parchment! [#minigame_menu] 
+Herald: Exactly! So I use my magical lens to zoom in... but watch what happens to the parchment! [#minigame_menu] [#portrait=res://scenes/cutscenes/images/hallway_empty.png]
 => END
 
 ~ fail_reaction
@@ -13,7 +13,7 @@ Herald: No, it's still broken. I have to walk sideways just to read a single sen
 
 ~ win_reaction
 Herald: Ah! The text wraps perfectly now. I can read it at any zoom level! [#deactivate_shader]
-Herald: Wait... "A great dragon named Kalipso approaches..." [#close_minigame] [#portrait=res://scenes/ui/cutscenes/images/herald_shocked.png]
+Herald: Wait... "A great dragon named Kalipso approaches..." [#close_minigame] [#portrait=res://scenes/cutscenes/images/herald_shocked.png]
 Herald: Kalipso?! We must warn the King immediately! Hear ye, hear ye!
 => END
 

@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b5djnnhpwwbb4" path="res://assets/scroll/scroll.png" id="1_6c6c1"]
 [ext_resource type="Script" uid="uid://bbokptboa5i2n" path="res://scenes/cutscenes/herald/scroll_minigame.gd" id="1_65dd5"]
+[ext_resource type="Texture2D" uid="uid://bron4cx8xftgs" path="res://scenes/cutscenes/images/hallway_empty.png" id="2_mfnou"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mfnou"]
 bg_color = Color(0.13725491, 0.13725491, 0.13725491, 1)
@@ -16,16 +17,25 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [node name="ScrollMinigame" type="CanvasLayer" unique_id=2050342460]
-scale = Vector2(0.5, 0.5)
-transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
 script = ExtResource("1_65dd5")
+
+[node name="BackgroundImage" type="TextureRect" parent="." unique_id=1740896157]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_mfnou")
+expand_mode = 1
 
 [node name="Parchment" type="NinePatchRect" parent="." unique_id=1265747376]
 custom_minimum_size = Vector2(400, 300)
-offset_left = 640.0
-offset_top = 192.0
-offset_right = 1344.0
-offset_bottom = 576.0
+offset_left = 368.0
+offset_top = 96.0
+offset_right = 1072.0
+offset_bottom = 480.0
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_6c6c1")
 region_rect = Rect2(41.441162, 69.38342, 1373.708, 939.54236)
 patch_margin_left = 150
