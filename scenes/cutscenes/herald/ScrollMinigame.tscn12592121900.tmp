@@ -36,7 +36,7 @@ offset_left = 184.0
 offset_top = 48.0
 offset_right = 888.0
 offset_bottom = 432.0
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_6c6c1")
 region_rect = Rect2(41.441162, 69.38342, 1373.708, 939.54236)
 patch_margin_left = 150
@@ -59,7 +59,6 @@ text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
 scroll_active = false
 
 [node name="CodeEditor" type="CanvasLayer" parent="." unique_id=495523744]
-unique_name_in_owner = true
 layer = 51
 
 [node name="MarginContainer" type="MarginContainer" parent="CodeEditor" unique_id=574870009]
@@ -184,7 +183,7 @@ layout_mode = 2
 text = "  "
 
 [node name="TagOpen" type="RichTextLabel" parent="CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid/LineSpace" unique_id=811055284]
-custom_minimum_size = Vector2(104, 0)
+custom_minimum_size = Vector2(55, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "      white-space:
@@ -200,9 +199,9 @@ popup/item_0/text = "nowrap"
 popup/item_0/id = 0
 popup/item_1/text = "normal"
 popup/item_1/id = 1
-popup/item_2/text = "pre"
+popup/item_2/text = "hidden"
 popup/item_2/id = 2
-popup/item_3/text = "pre-wrap"
+popup/item_3/text = "fixed"
 popup/item_3/id = 3
 
 [node name="TagClose2" type="RichTextLabel" parent="CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid/LineSpace" unique_id=1570557599]
