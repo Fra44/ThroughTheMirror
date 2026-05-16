@@ -1,11 +1,13 @@
 [gd_resource type="Resource" script_class="ImpairmentData" format=3 uid="uid://c6tymx7qw8kpp"]
 
+[ext_resource type="Texture2D" uid="uid://ck6apr4akc6i7" path="res://assets/book/logo_impairments/low_vision_icon.png" id="1_2nrxl"]
 [ext_resource type="Resource" uid="uid://b7h2a8akc6vrx" path="res://global/resources/wcag/wcag_1_4_10.tres" id="1_l6m8n"]
 [ext_resource type="Script" uid="uid://dry85ilgnq64e" path="res://global/resources/impairment_data.gd" id="2_2nrxl"]
 
 [resource]
 script = ExtResource("2_2nrxl")
 name = "Severe Low Vision"
+icon = ExtResource("1_2nrxl")
 short_info = "FIXED-WIDTH CONTAINER DETECTED"
 manual_text = "Low vision cannot be fully corrected with glasses. Users often rely on Screen Magnifiers to enlarge the text up to 400%"
 related_wcag = ExtResource("1_l6m8n")
