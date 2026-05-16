@@ -3,6 +3,7 @@
 [ext_resource type="TileSet" uid="uid://bvleur4rtmgit" path="res://assets/full_tileset.tres" id="1_qevml"]
 [ext_resource type="PackedScene" uid="uid://bjkerwdjwf4ip" path="res://global/Teleport_Trigger.tscn" id="2_3srqa"]
 [ext_resource type="PackedScene" uid="uid://cf7w5va7vp8u7" path="res://entities/npcs/herald/herald.tscn" id="3_qevml"]
+[ext_resource type="PackedScene" uid="uid://dah5t4l6v0g7j" path="res://ui/visual_impairments/low_vision.tscn" id="4_3srqa"]
 
 [node name="CastleEntrance" type="Node2D" unique_id=2019313179]
 
@@ -94,3 +95,6 @@ target_spawn_id = "InsideLibrary"
 
 [node name="Herald" parent="." unique_id=777789410 instance=ExtResource("3_qevml")]
 position = Vector2(-78, -622)
+
+[node name="LowVision" parent="." unique_id=1379506221 instance=ExtResource("4_3srqa")]
+visible = false
