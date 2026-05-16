@@ -1,20 +1,64 @@
 ~ start
 Herald: Hi! Nice to meet you, I'm the Royal Herald of the Lands of the Prism! [#portrait=res://scenes/cutscenes/images/herald_normal.png]
 Herald: Oh, this is a disaster! I cannot even prepare a basic announcement with this magical scroll. [#portrait=res://scenes/cutscenes/images/herald_sad.png]
-Herald: The text is far too tiny, and when I use my magical lens to zoom in, everything stretches sideways.
-Herald: Look, it is not even a real announcement yet... just placeholder text for testing the decree.
-: You activate the Mirror of Resonance to see as she does. [#activate_shader]
-: The world becomes blurred, and reading small text becomes almost impossible. [#show_debug]
-Herald: Exactly! Now watch what happens when I try to enlarge the text.
-: The magical scroll should reshape itself when magnified, but its layout spell is broken.
-: Fix the scroll so that enlarged text can wrap instead of forcing horizontal reading. [#minigame_menu] [#portrait=res://scenes/cutscenes/images/hallway_empty.png]
+Herald: Something is wrong with it, but it is easier if I show you. [#show_debug] [#minigame_menu] [#portrait=res://scenes/cutscenes/images/hallway_empty.png]
+=> END
+
+
+~ scroll_closed
+Herald: This is my magical scroll. It should help me prepare royal announcements.
+=> END
+
+
+~ scroll_small_text
+Herald: Normally, it opens like this.
+=> END
+
+
+~ scroll_cannot_read
+Herald: But the text is far too small for me to read comfortably.
+=> END
+
+
+~ scroll_activate_mirror
+Herald: Use the Mirror of Resonance. Try to see the scroll as I see it.
+=> END
+
+
+~ scroll_low_vision
+Herald: Now the text becomes almost impossible to read without help.
+=> END
+
+
+~ scroll_zoom
+Herald: So I use the scroll's magic to enlarge the text.
+=> END
+
+
+~ scroll_sideways_bug
+Herald: But instead of adapting, the parchment stretches sideways.
+=> END
+
+
+~ scroll_walk_corridor
+Herald: To read it, I have to walk along the corridor.
+=> END
+
+
+~ scroll_corridor_explanation
+Herald: That is why I use this hallway. It is wide enough... but it is exhausting.
+=> END
+
+
+~ scroll_fix_prompt
+Herald: The scroll should stop growing sideways and let the text wrap downward. Can you fix the layout spell?
 => END
 
 
 ~ fail_reaction
 Herald: No, it is still broken. [#portrait=res://scenes/cutscenes/images/herald_sad.png]
 Herald: The text still forces me to move sideways instead of adapting to the scroll.
-Herald: Try again. The scroll needs to keep a flexible width and allow the text to wrap. [#retry_minigame]
+Herald: Try again. A fixed width may still break when the text is enlarged. The scroll needs a flexible width and wrapping text. [#retry_minigame]
 => END
 
 

@@ -1,6 +1,10 @@
 extends CanvasLayer
 
 signal verification_requested(is_successful: bool)
+signal shader_activation_requested
+signal dialogue_step_requested(title: String)
+signal dialogue_step_finished
+signal debug_window_requested
 
 @onready var width_option: OptionButton = %WidthOption
 @onready var space_option: OptionButton = %SpaceOption
@@ -8,39 +12,39 @@ signal verification_requested(is_successful: bool)
 @onready var run_button: Button = %RunCodeButton
 @onready var parchment: NinePatchRect = %Parchment
 
-# CodeEditor è un CanvasLayer, non un Control.
 @onready var code_editor: CanvasLayer = %CodeEditor
-
-# Pannello interno del CodeEditor, usato per fade-in/fade-out.
 @onready var code_editor_panel: Control = $CodeEditor/MarginContainer/MainPanel
 
-# I valori del codice CSS sono "logical pixels".
-# La scena mostra il risultato dopo la lente magica dell'Herald,
-# quindi le larghezze fisse vengono amplificate visivamente.
+const CLOSED_SCROLL_WIDTH: float = 170.0
+const NORMAL_SCROLL_WIDTH: float = 680.0
 const BROKEN_SCROLL_WIDTH: float = 3200.0
 const FIXED_SCROLL_WIDTH: float = 560.0
 const WIDTH_800: float = 1600.0
 const INVALID_WIDTH: float = 2000.0
 
-const MIN_SCROLL_HEIGHT: float = 190.0
+const MIN_SCROLL_HEIGHT: float = 260.0
 
 const TEXT_MARGIN_LEFT: float = 170.0
-const TEXT_MARGIN_RIGHT: float = 100.0
-const TEXT_MARGIN_TOP: float = 55.0
-const TEXT_MARGIN_BOTTOM: float = 55.0
+const TEXT_MARGIN_RIGHT: float = 135.0
+const TEXT_MARGIN_TOP: float = 68.0
+const TEXT_MARGIN_BOTTOM: float = 62.0
 
 const TINY_FONT_SIZE: int = 18
 const ZOOMED_FONT_SIZE: int = 96
 
 const EDITOR_SLIDE_DISTANCE: float = 520.0
+const WALK_DEMO_DISTANCE: float = 900.0
 
 var editor_start_offset: Vector2
+var parchment_start_position: Vector2
+
 var is_running_code: bool = false
 var intro_finished: bool = false
+var intro_started: bool = false
+var waiting_for_dialogue_step: bool = false
 
-# Placeholder volutamente lungo: serve a mostrare bene il problema del layout rotto.
-var placeholder_text: String = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scrollum magicum testandum est. Hear ye, hear ye, placeholder words of the royal decree flow across the parchment until the proper layout spell is restored. Integer luctus, sapien non facilisis tincidunt, nunc erat cursus libero, vitae luctus ipsum neque at lorem. Donec nuntius regni nondum scriptus est, sed pergamena iam probanda est. Audi famam illius Solus in hostes ruit Et patriam servavit Audi famam illius Cucurrit quaeque Tetigit destruens Audi famam illius Audi famam illius Spes omnibus, mihi quoque Terror omnibus, mihi quoque Ille iuxta me Ille iuxta me Socii sunt mihi Qui olim viri fortes Rivalesque erant Saeve certando pugnandoque Splendor crescit"
-# Testo narrativo finale, usabile dopo il fix se vorrai mostrarlo prima di chiudere.
+var placeholder_text: String = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scrollum magicum testandum est. Hear ye, hear ye, placeholder words of the royal decree flow across the parchment until the proper layout spell is restored. Integer luctus, sapien non facilisis tincidunt, nunc erat cursus libero, vitae luctus ipsum neque at lorem. Donec nuntius regni nondum scriptus est, sed pergamena iam probanda est. The Royal Herald cannot use this magical scroll while the text refuses to wrap and stretches endlessly across the castle hallway."
+
 var announcement_text: String = "Hear ye, hear ye! A great dragon named Kalipso approaches our lands. Be brave, be ready, and may the light protect the kingdom."
 
 var decree_text: String = ""
@@ -50,6 +54,7 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	
 	editor_start_offset = code_editor.offset
+	parchment_start_position = parchment.position
 	
 	_setup_options()
 	
@@ -67,6 +72,15 @@ func _ready() -> void:
 	code_editor_panel.modulate.a = 0.0
 	run_button.disabled = true
 	
+	visible = false
+
+
+func show_ui() -> void:
+	if intro_started:
+		return
+	
+	intro_started = true
+	visible = true
 	call_deferred("play_intro_sequence")
 
 
@@ -96,35 +110,94 @@ func play_intro_sequence() -> void:
 	decree_text = placeholder_text
 	preview_label.text = decree_text
 	
-	# 1. Stato iniziale: testo piccolo.
+	parchment.position = parchment_start_position
+	
+	# 1. Scroll chiuso.
+	preview_label.visible = false
 	_set_preview_font_size(TINY_FONT_SIZE)
 	preview_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_set_label_rect(1.0, 1.0)
+	_resize_parchment_instant(Vector2(CLOSED_SCROLL_WIDTH, MIN_SCROLL_HEIGHT))
 	
-	_set_label_rect(FIXED_SCROLL_WIDTH - TEXT_MARGIN_LEFT - TEXT_MARGIN_RIGHT, 400.0)
-	_resize_parchment_instant(Vector2(FIXED_SCROLL_WIDTH, MIN_SCROLL_HEIGHT))
+	await _request_dialogue_step("scroll_closed")
 	
-	await _wait(0.8)
+	# 2. Lo scroll si apre normalmente.
+	await _resize_parchment(Vector2(NORMAL_SCROLL_WIDTH, MIN_SCROLL_HEIGHT))
 	
-	# 2. Zoom magico: il testo diventa grande.
+	preview_label.visible = true
+	_set_preview_font_size(TINY_FONT_SIZE)
+	preview_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_set_label_rect(NORMAL_SCROLL_WIDTH - TEXT_MARGIN_LEFT - TEXT_MARGIN_RIGHT, MIN_SCROLL_HEIGHT - TEXT_MARGIN_TOP - TEXT_MARGIN_BOTTOM)
+	
+	await _request_dialogue_step("scroll_small_text")
+	
+	# 3. Herald non riesce a leggere.
+	await _request_dialogue_step("scroll_cannot_read")
+	
+	# 4. Attivazione Mirror / shader.
+	await _request_dialogue_step("scroll_activate_mirror")
+	shader_activation_requested.emit()
+	
+	await _wait(0.6)
+	
+	await _request_dialogue_step("scroll_low_vision")
+	
+	# 5. Zoom magico.
+	await _request_dialogue_step("scroll_zoom")
 	_set_preview_font_size(ZOOMED_FONT_SIZE)
 	await get_tree().process_frame
 	
 	await _wait(0.35)
 	
-	# 3. Comportamento rotto: testo grande + nowrap + pergamena orizzontale.
+	# 6. Bug: espansione orizzontale.
+	await _request_dialogue_step("scroll_sideways_bug")
 	await _animate_scroll_state("1920px", "nowrap")
 	
-	await _wait(0.4)
+	await _wait(0.3)
 	
-	# 4. Compare l'editor.
+	# 7. Camminata nel corridoio.
+	await _request_dialogue_step("scroll_walk_corridor")
+	await _play_horizontal_reading_demo()
+	
+	await _request_dialogue_step("scroll_corridor_explanation")
+	
+	# 8. Ritorno al centro.
+	await _return_parchment_to_center()
+	
+	await _request_dialogue_step("scroll_fix_prompt")
+	
+	# 9. Ora mostriamo Debug Window + CodeEditor insieme.
+	debug_window_requested.emit()
+	await _wait(0.15)
 	await _show_code_editor()
-	
+
 	intro_finished = true
 
 
+func _request_dialogue_step(title: String) -> void:
+	waiting_for_dialogue_step = true
+	dialogue_step_requested.emit(title)
+	
+	var timeout_timer: SceneTreeTimer = get_tree().create_timer(12.0, true)
+	
+	while waiting_for_dialogue_step:
+		if timeout_timer.time_left <= 0.0:
+			push_warning("ScrollMinigame: dialogue step timed out: " + title)
+			waiting_for_dialogue_step = false
+			break
+		
+		await get_tree().process_frame
+
+
+func notify_dialogue_step_finished() -> void:
+	waiting_for_dialogue_step = false
+
+
+func is_waiting_for_dialogue_step() -> bool:
+	return waiting_for_dialogue_step
+
+
 func _on_option_changed(_index: int) -> void:
-	# Non aggiorniamo la pergamena in tempo reale.
-	# Il risultato visivo appare solo dopo Run Code.
 	pass
 
 
@@ -138,11 +211,12 @@ func _on_run_pressed() -> void:
 	var final_width: String = width_option.get_item_text(width_option.selected)
 	var final_space: String = space_option.get_item_text(space_option.selected)
 	
-	# Accettiamo sia normal sia pre-wrap, perché entrambe permettono il wrapping.
 	var is_successful: bool = final_width == "100%" and (final_space == "normal" or final_space == "pre-wrap")
 	
 	await _hide_code_editor()
 	await _wait(0.15)
+	
+	parchment.position = parchment_start_position
 	
 	await _animate_scroll_state(final_width, final_space)
 	
@@ -157,12 +231,14 @@ func prepare_retry() -> void:
 	if is_running_code:
 		return
 	
+	parchment.position = parchment_start_position
 	await _show_code_editor()
 
 
 func reset_minigame() -> void:
 	width_option.select(0)
 	space_option.select(0)
+	intro_started = false
 	await play_intro_sequence()
 
 
@@ -170,6 +246,7 @@ func show_final_announcement() -> void:
 	decree_text = announcement_text
 	preview_label.text = decree_text
 	_set_preview_font_size(ZOOMED_FONT_SIZE)
+	parchment.position = parchment_start_position
 	await _animate_scroll_state("100%", "normal")
 
 
@@ -204,13 +281,11 @@ func _get_target_width(current_width: String) -> float:
 
 
 func _show_horizontal_scroll(target_width: float) -> void:
-	# white-space: nowrap;
-	# Il testo non va a capo e la pergamena cresce in orizzontale.
 	preview_label.autowrap_mode = TextServer.AUTOWRAP_OFF
 	
 	var content_width: float = target_width - TEXT_MARGIN_LEFT - TEXT_MARGIN_RIGHT
 	
-	_set_label_rect(content_width, 400.0)
+	_set_label_rect(content_width, 500.0)
 	
 	await get_tree().process_frame
 	
@@ -228,13 +303,11 @@ func _show_horizontal_scroll(target_width: float) -> void:
 
 
 func _show_wrapped_scroll(target_width: float) -> void:
-	# white-space: normal;
-	# Il testo va a capo e la pergamena cresce verso il basso.
 	preview_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	
 	var content_width: float = target_width - TEXT_MARGIN_LEFT - TEXT_MARGIN_RIGHT
 	
-	_set_label_rect(content_width, 2400.0)
+	_set_label_rect(content_width, 2600.0)
 	
 	await get_tree().process_frame
 	
@@ -247,13 +320,11 @@ func _show_wrapped_scroll(target_width: float) -> void:
 
 
 func _show_pre_scroll(target_width: float) -> void:
-	# white-space: pre;
-	# Lo trattiamo come comportamento rigido: non risolve davvero il problema.
 	preview_label.autowrap_mode = TextServer.AUTOWRAP_OFF
 	
 	var content_width: float = target_width - TEXT_MARGIN_LEFT - TEXT_MARGIN_RIGHT
 	
-	_set_label_rect(content_width, 400.0)
+	_set_label_rect(content_width, 500.0)
 	
 	await get_tree().process_frame
 	
@@ -271,13 +342,11 @@ func _show_pre_scroll(target_width: float) -> void:
 
 
 func _show_pre_wrap_scroll(target_width: float) -> void:
-	# white-space: pre-wrap;
-	# Anche questo wrappa, quindi viene accettato come soluzione.
 	preview_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	
 	var content_width: float = target_width - TEXT_MARGIN_LEFT - TEXT_MARGIN_RIGHT
 	
-	_set_label_rect(content_width, 2400.0)
+	_set_label_rect(content_width, 2600.0)
 	
 	await get_tree().process_frame
 	
@@ -287,6 +356,32 @@ func _show_pre_wrap_scroll(target_width: float) -> void:
 	)
 	
 	await _resize_parchment(Vector2(target_width, needed_height))
+
+
+func _play_horizontal_reading_demo() -> void:
+	var tween: Tween = create_tween()
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	tween.tween_property(
+		parchment,
+		"position:x",
+		parchment_start_position.x - WALK_DEMO_DISTANCE,
+		2.2
+	)
+	
+	await tween.finished
+
+
+func _return_parchment_to_center() -> void:
+	var tween: Tween = create_tween()
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	tween.tween_property(
+		parchment,
+		"position:x",
+		parchment_start_position.x,
+		0.65
+	)
+	
+	await tween.finished
 
 
 func _set_label_rect(label_width: float, label_height: float) -> void:
@@ -316,6 +411,12 @@ func _resize_parchment_instant(target_size: Vector2) -> void:
 func _update_label_after_resize(parchment_size: Vector2) -> void:
 	var label_width: float = parchment_size.x - TEXT_MARGIN_LEFT - TEXT_MARGIN_RIGHT
 	var label_height: float = parchment_size.y - TEXT_MARGIN_TOP - TEXT_MARGIN_BOTTOM
+	
+	if label_width < 1.0:
+		label_width = 1.0
+	
+	if label_height < 1.0:
+		label_height = 1.0
 	
 	preview_label.position = Vector2(TEXT_MARGIN_LEFT, TEXT_MARGIN_TOP)
 	preview_label.size = Vector2(label_width, label_height)

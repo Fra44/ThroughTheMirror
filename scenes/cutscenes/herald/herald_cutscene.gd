@@ -9,6 +9,7 @@ var current_resource: Resource = null
 var current_impairment: ImpairmentData = null 
 var spawned_minigame: Node = null
 var wait_for_debug: bool = false
+var pending_retry_minigame: bool = false
 
 
 func _ready() -> void:
@@ -47,7 +48,6 @@ func start_cutscene(
 func _on_balloon_line_changed(line: DialogueLine) -> void:
 	for tag in line.tags:
 		
-		# --- CAMBIO RITRATTO / IMMAGINE ---
 		if tag.begins_with("portrait="):
 			var path: String = tag.split("=")[1].strip_edges()
 			
@@ -55,7 +55,6 @@ func _on_balloon_line_changed(line: DialogueLine) -> void:
 				var tex: Texture2D = load(path)
 				portrait.texture = tex
 				
-				# Se il minigioco è aperto, mandiamo l'immagine anche a lui.
 				if spawned_minigame != null and is_instance_valid(spawned_minigame):
 					if spawned_minigame.has_method("update_image"):
 						spawned_minigame.update_image(tex)
@@ -63,31 +62,18 @@ func _on_balloon_line_changed(line: DialogueLine) -> void:
 				push_warning("Cutscene: Immagine non trovata: " + path)
 		
 		
-		# --- DEBUG WINDOW / MIRROR DIAGNOSIS ---
 		if tag == "show_debug" and current_impairment != null:
 			wait_for_debug = true
 		
 		
-		# --- ATTIVA SHADER LOW VISION ---
 		if tag == "activate_shader":
-			var shaders: Array = get_tree().get_nodes_in_group("low_vision_shader")
-			
-			if shaders.size() > 0:
-				shaders[0].toggle_effect(true)
-			
-			if current_impairment and DiscoveryManager:
-				DiscoveryManager.discover_impairment(current_impairment)
+			_activate_low_vision_shader()
 		
 		
-		# --- DISATTIVA SHADER LOW VISION ---
 		if tag == "deactivate_shader":
-			var shaders: Array = get_tree().get_nodes_in_group("low_vision_shader")
-			
-			if shaders.size() > 0:
-				shaders[0].toggle_effect(false)
+			_deactivate_low_vision_shader()
 		
 		
-		# --- CHIUDI MINIGIOCO ---
 		if tag == "close_minigame":
 			if spawned_minigame != null and is_instance_valid(spawned_minigame):
 				spawned_minigame.queue_free()
@@ -99,16 +85,10 @@ func _on_balloon_line_changed(line: DialogueLine) -> void:
 				$Dim.visible = true
 		
 		
-		# --- RITENTA MINIGIOCO DOPO FAIL ---
 		if tag == "retry_minigame":
-			if spawned_minigame != null and is_instance_valid(spawned_minigame):
-				if spawned_minigame.has_method("prepare_retry"):
-					spawned_minigame.prepare_retry()
-				else:
-					push_warning("HeraldCutscene: il minigioco non ha prepare_retry().")
+			pending_retry_minigame = true
 		
 		
-		# --- CARICA IL MINIGIOCO SCROLL ---
 		if tag == "minigame_menu":
 			if spawned_minigame != null and is_instance_valid(spawned_minigame):
 				return
@@ -119,17 +99,51 @@ func _on_balloon_line_changed(line: DialogueLine) -> void:
 			get_tree().root.add_child(menu_instance)
 			spawned_minigame = menu_instance
 			
-			# Passiamo l'immagine attuale immediatamente.
 			if spawned_minigame.has_method("update_image") and portrait.texture != null:
 				spawned_minigame.update_image(portrait.texture)
 			
 			if spawned_minigame.has_signal("verification_requested"):
 				spawned_minigame.verification_requested.connect(_on_minigame_verification)
 			
+			if spawned_minigame.has_signal("shader_activation_requested"):
+				spawned_minigame.shader_activation_requested.connect(_on_minigame_shader_activation_requested)
+			
+			if spawned_minigame.has_signal("dialogue_step_requested"):
+				spawned_minigame.dialogue_step_requested.connect(_on_minigame_dialogue_step_requested)
+			
+			if spawned_minigame.has_signal("debug_window_requested"):
+				spawned_minigame.debug_window_requested.connect(_on_minigame_debug_window_requested)
+			
 			portrait.visible = false
 			
 			if has_node("Dim"):
 				$Dim.visible = false
+
+
+func _activate_low_vision_shader() -> void:
+	var shaders: Array = get_tree().get_nodes_in_group("low_vision_shader")
+	
+	if shaders.size() > 0:
+		shaders[0].toggle_effect(true)
+	
+	if current_impairment and DiscoveryManager:
+		DiscoveryManager.discover_impairment(current_impairment)
+
+
+func _deactivate_low_vision_shader() -> void:
+	var shaders: Array = get_tree().get_nodes_in_group("low_vision_shader")
+	
+	if shaders.size() > 0:
+		shaders[0].toggle_effect(false)
+
+
+func _on_minigame_shader_activation_requested() -> void:
+	_activate_low_vision_shader()
+
+
+func _on_minigame_dialogue_step_requested(title: String) -> void:
+	if is_instance_valid(balloon):
+		balloon.start(current_resource, title)
 
 
 func _on_minigame_verification(is_successful: bool) -> void:
@@ -144,25 +158,31 @@ func _on_minigame_verification(is_successful: bool) -> void:
 func _on_dialogue_ended(resource: DialogueResource) -> void:
 	if resource == current_resource:
 		
-		# Se il minigioco è ancora aperto, la cutscene non deve finire.
 		if spawned_minigame != null and is_instance_valid(spawned_minigame):
 			get_tree().paused = true
 			
-			# Manteniamo la tua logica originale:
-			# dopo show_debug, prepara la finestra debug e poi mostra eventualmente la UI del minigioco.
-			if wait_for_debug and DebugManager:
-				DebugManager.setup_display(current_impairment)
-				wait_for_debug = false 
+			if spawned_minigame.has_method("show_ui"):
+				spawned_minigame.show_ui()
+			
+			if pending_retry_minigame:
+				pending_retry_minigame = false
 				
-				await get_tree().create_timer(1.0).timeout
-				
-				if spawned_minigame.has_method("show_ui"):
-					spawned_minigame.show_ui()
+				if spawned_minigame.has_method("prepare_retry"):
+					spawned_minigame.prepare_retry()
+			
+			if spawned_minigame.has_method("is_waiting_for_dialogue_step"):
+				if spawned_minigame.is_waiting_for_dialogue_step():
+					if spawned_minigame.has_method("notify_dialogue_step_finished"):
+						spawned_minigame.notify_dialogue_step_finished()
 			
 			return
 		
 		_end_cutscene()
 
+func _on_minigame_debug_window_requested() -> void:
+	if wait_for_debug and DebugManager:
+		DebugManager.setup_display(current_impairment)
+		wait_for_debug = false
 
 func _end_cutscene() -> void:
 	if DebugManager and DebugManager.visible:
@@ -176,7 +196,6 @@ func _end_cutscene() -> void:
 	current_impairment = null
 	cutscene_finished.emit()
 	
-	# Spegniamo lo shader low vision alla fine.
 	var shaders: Array = get_tree().get_nodes_in_group("low_vision_shader")
 	
 	if shaders.size() > 0:
