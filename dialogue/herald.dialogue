@@ -68,7 +68,7 @@ Herald: The text still forces me to walk sideways instead of adapting to the scr
 
 
 ~ win_reaction
-Herald: Ah! Now the text wraps properly. [#portrait=res://scenes/cutscenes/images/herald_determinedwd.png]
+Herald: Ah! Now the text wraps properly. [#portrait=res://scenes/cutscenes/images/herald_determined.png]
 Herald: I can finally use the scroll without chasing the sentence across the hallway! [#deactivate_shader]
 Herald: So... what did you need me to announce?
 : You tell her about Kalipso, the dragon foreseen by the Archivist. [#close_minigame]
