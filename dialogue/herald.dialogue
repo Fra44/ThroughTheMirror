@@ -1,6 +1,7 @@
 ~ start
-Herald: Hi! Nice to meet you, I'm the Royal Herald of the Lands of the Prism! [#portrait=res://scenes/cutscenes/images/herald_normal.png]
-Herald: Oh, this is a disaster! I cannot even prepare a basic announcement with this magical scroll. [#portrait=res://scenes/cutscenes/images/herald_sad.png]
+Herald: Hi! I'm the Royal Herald of the Lands of the Prism! [#portrait=res://scenes/cutscenes/images/herald_normal.png]
+Herald: Oh! You are the creator of the game! Nice to meet you!
+Herald: Well, I could use your help. I cannot even prepare a basic announcement with my magical scroll... [#portrait=res://scenes/cutscenes/images/herald_sad.png]
 Herald: Something is wrong with it, but it is easier if I show you. [#show_debug] [#minigame_menu] [#portrait=res://scenes/cutscenes/images/hallway_empty.png]
 => END
 
@@ -26,12 +27,12 @@ Herald: But the text is far too small for me to read comfortably.
 
 
 ~ scroll_activate_mirror
-Herald: Use the Mirror of Resonance. Try to see the scroll as I see it.
+Herald: Oh! Yes, try to use your power! Finally somebody will understand my problem!
 => END
 
 
 ~ scroll_low_vision
-Herald: Now the text becomes almost impossible to read without help.
+: You use your power and start to see as she does. Everything becomes blurry.
 => END
 
 
@@ -41,7 +42,7 @@ Herald: So I use the scroll's magic to enlarge the text.
 
 
 ~ scroll_sideways_bug
-Herald: But instead of adapting, the parchment stretches sideways.
+Herald: But instead of adapting, the parchment stretches sideways!
 => END
 
 
@@ -56,28 +57,28 @@ Herald: That is why I use this hallway. It is wide enough... but it is exhaustin
 
 
 ~ scroll_fix_prompt
-Herald: The scroll should stop growing sideways and let the text wrap downward. Can you fix the layout spell?
+: The scroll should stop growing sideways and let the text wrap downward. Can you fix the layout spell?
 => END
 
 
 ~ fail_reaction
 Herald: No, it is still broken. [#portrait=res://scenes/cutscenes/images/herald_sad.png]
-Herald: The text still forces me to move sideways instead of adapting to the scroll.
-Herald: Try again. A fixed width may still break when the text is enlarged. The scroll needs a flexible width and wrapping text. [#retry_minigame]
+Herald: The text still forces me to walk sideways instead of adapting to the scroll. [#retry_minigame]
 => END
 
 
 ~ win_reaction
-Herald: Ah! Now the text wraps properly. [#portrait=res://scenes/cutscenes/images/herald_motivated.png]
+Herald: Ah! Now the text wraps properly. [#portrait=res://scenes/cutscenes/images/herald_determinedwd.png]
 Herald: I can finally use the scroll without chasing the sentence across the hallway! [#deactivate_shader]
-Herald: So, Architect... what did you need me to announce?
-: You tell her about Kalipso, the dragon foreseen by the Archivist.
+Herald: So... what did you need me to announce?
+: You tell her about Kalipso, the dragon foreseen by the Archivist. [#close_minigame]
 Herald: Kalipso?! Then we must warn the kingdom immediately! [#portrait=res://scenes/cutscenes/images/herald_shocked.png]
-Herald: I will prepare the royal announcement at once!
-Herald: Hear ye, hear ye! A great dragon approaches the kingdom! [#close_minigame]
+Herald: Hopefully a brave knight will come to help us!
+Herald: I will prepare the royal announcement at once! [#portrait=res://scenes/cutscenes/images/herald_determined.png]
+Herald: Hear ye, hear ye! A great dragon approaches the kingdom!
 => END
 
 
 ~ already_helped
-Herald: The kingdom is preparing for the dragon, Architect. Thank you for your help! [#portrait=res://scenes/cutscenes/images/herald_normal.png]
+Herald: The kingdom is preparing for the dragon. Thank you for your help! [#portrait=res://scenes/cutscenes/images/herald_normal.png]
 => END
