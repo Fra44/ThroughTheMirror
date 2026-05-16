@@ -2,16 +2,24 @@ extends CanvasLayer
 
 var manual_instance: Node = null
 
-# --- RIFERIMENTI AI NODI ---
+# --- RIFERIMENTI AI NODI MIRROR & MANUALE ---
 @onready var mirror_button = $MirrorHUD/MarginContainer/PanelContainer2/MarginContainer/HBoxContainer/MirrorButton
 @onready var status_label = $MirrorHUD/MarginContainer/PanelContainer2/MarginContainer/HBoxContainer/Status
-
-# Portiamo il bottone del libro fuori dal _ready così possiamo cambiargli la texture ovunque
 @onready var book_button = $ToolsHUD/MarginContainer/PanelContainer/HBoxContainer/BookButton
+
+# --- RIFERIMENTI AI NODI DELLE IMPOSTAZIONI (Usa gli Unique Names %) ---
+@onready var settings_button = %SettingsButton
+@onready var settings_overlay = %SettingsOverlay
+@onready var volume_slider = %VolumeSlider
+@onready var close_button = %CloseMenuButton
+@onready var main_menu_button = %MainMenuButton
 
 # --- TEXTURE DEL MANUALE ---
 var normal_book_texture: Texture2D
 var notification_book_texture = preload("res://assets/book/book_notification_icon.png")
+
+# --- AUDIO ---
+var master_bus = AudioServer.get_bus_index("Master")
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -19,20 +27,66 @@ func _ready():
 	# Salviamo la texture originale impostata nell'editor
 	normal_book_texture = book_button.texture_normal
 	
+	# --- CONNESSIONI SEGNALI MANUALE E SETTINGS ---
 	book_button.pressed.connect(_on_book_button_pressed)
+	settings_button.pressed.connect(_on_settings_button_pressed)
+	close_button.pressed.connect(_close_settings)
+	main_menu_button.pressed.connect(_on_main_menu_pressed)
+	volume_slider.value_changed.connect(_on_volume_changed)
+	
+	# --- SETUP INIZIALE IMPOSTAZIONI ---
+	settings_overlay.visible = false
+	var current_db = AudioServer.get_bus_volume_db(master_bus)
+	volume_slider.value = db_to_linear(current_db)
 	
 	# ASCOLTIAMO IL DISCOVERY MANAGER
 	if DiscoveryManager:
 		DiscoveryManager.new_discovery.connect(_on_new_discovery)
 
 func _process(_delta):
+	# Scorciatoia da tastiera per il manuale (es. tasto M)
 	if Input.is_action_just_pressed("ui_book"):
 		_on_book_button_pressed()
+		
+	# Scorciatoia da tastiera per le impostazioni (opzionale, es. tasto ESC o S)
+	# if Input.is_action_just_pressed("ui_cancel"):
+	# 	if settings_overlay.visible:
+	# 		_close_settings()
+	# 	else:
+	# 		_on_settings_button_pressed()
 		
 	# Chiamiamo la funzione di aggiornamento UI ad ogni frame
 	_update_mirror_hud()
 
-# --- NUOVA FUNZIONE: SCATTA QUANDO VIENE FATTA UNA SCOPERTA ---
+# --- GESTIONE IMPOSTAZIONI ---
+
+func _on_settings_button_pressed() -> void:
+	# Mettiamo in pausa il gioco e mostriamo il menu
+	get_tree().paused = true
+	settings_overlay.visible = true
+
+func _close_settings() -> void:
+	# Togliamo la pausa e nascondiamo il menu
+	get_tree().paused = false
+	settings_overlay.visible = false
+
+func _on_volume_changed(value: float) -> void:
+	# Il volume in Godot non è lineare ma logaritmico (Decibel)
+	# Convertiamo il valore dello slider (da 0.0 a 1.0) in decibel
+	AudioServer.set_bus_volume_db(master_bus, linear_to_db(value))
+	
+	# Se lo slider è a 0, mutiamo completamente il bus per sicurezza
+	AudioServer.set_bus_mute(master_bus, value == 0.0)
+
+func _on_main_menu_pressed() -> void:
+	# Quando crei il Main Menu, rimuovi il print e scommenta la riga sotto!
+	print("Caricamento Main Menu in corso... (Crea la scena prima!)")
+	
+	get_tree().paused = false # Togliamo la pausa prima di cambiare scena!
+	# get_tree().change_scene_to_file("res://scenes/menus/MainMenu.tscn") 
+
+# --- GESTIONE SCOPERTE ED HUD ---
+
 func _on_new_discovery(_item) -> void:
 	# Cambiamo la texture per mostrare la notifica
 	book_button.texture_normal = notification_book_texture
@@ -56,7 +110,6 @@ func _update_mirror_hud() -> void:
 		
 	# Aggiorniamo il bottone
 	mirror_button.disabled = not is_any_shader_active
-
 
 func _on_book_button_pressed():
 	# QUANDO IL MANUALE VIENE APERTO, RIMUOVIAMO LA NOTIFICA

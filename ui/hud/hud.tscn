@@ -90,6 +90,7 @@ layout_mode = 2
 theme_override_constants/separation = 4
 
 [node name="SettingsButton" type="TextureButton" parent="ToolsHUD/MarginContainer/PanelContainer/HBoxContainer" unique_id=1562454299]
+unique_name_in_owner = true
 material = SubResource("ShaderMaterial_o2lis")
 custom_minimum_size = Vector2(50, 45)
 layout_mode = 2
@@ -182,3 +183,66 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 13
 text = "ON"
 horizontal_alignment = 1
+
+[node name="SettingsOverlay" type="ColorRect" parent="." unique_id=406523774]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="MenuPanel" type="PanelContainer" parent="SettingsOverlay" unique_id=518838293]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -30.0
+offset_right = 20.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="SettingsOverlay/MenuPanel" unique_id=823389362]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsOverlay/MenuPanel/MarginContainer" unique_id=1824329777]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="SettingsOverlay/MenuPanel/MarginContainer/VBoxContainer" unique_id=843859107]
+layout_mode = 2
+text = "SETTINGS"
+horizontal_alignment = 1
+
+[node name="VolumeHBox" type="HBoxContainer" parent="SettingsOverlay/MenuPanel/MarginContainer/VBoxContainer" unique_id=1675956990]
+layout_mode = 2
+
+[node name="VolumeLabel" type="Label" parent="SettingsOverlay/MenuPanel/MarginContainer/VBoxContainer/VolumeHBox" unique_id=1741933350]
+layout_mode = 2
+text = "Volume"
+
+[node name="VolumeSlider" type="HSlider" parent="SettingsOverlay/MenuPanel/MarginContainer/VBoxContainer/VolumeHBox" unique_id=1889367862]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 10.0
+ticks_position = 3
+
+[node name="MainMenuButton" type="Button" parent="SettingsOverlay/MenuPanel/MarginContainer/VBoxContainer" unique_id=1442777036]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Quit to Title"
+
+[node name="CloseMenuButton" type="Button" parent="SettingsOverlay/MenuPanel/MarginContainer/VBoxContainer" unique_id=329528217]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Close"
