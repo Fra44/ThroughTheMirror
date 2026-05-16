@@ -89,8 +89,8 @@ layout_mode = 2
 
 [node name="Description" type="Label" parent="CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox" unique_id=1372138588]
 layout_mode = 2
-text = "Fix the code in order to describe the content of the 
-crystal ball properly"
+text = "Fix the code below in order to make the 
+scroll behave in the correct way"
 
 [node name="HSeparator" type="HSeparator" parent="CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox" unique_id=730322351]
 layout_mode = 2

@@ -8,11 +8,11 @@ Yaaawn.........
 
 ~ npc3
 We had planned to go eat something in the tavern, but the innkeeper cannot tell us how much do things cost!!
-I don't want to spend all my savings in a pizza.
+I don't want to spend all my savings on a pizza.
 => END
 
 ~ npc1_tavern
-Finally, some good food! And I can actually read the menu now!
+Finally, some good food! And I can finally read the menu now!
 => END
 
 ~ npc2_tavern

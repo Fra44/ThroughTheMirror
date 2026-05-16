@@ -4,6 +4,11 @@ Herald: Oh, this is a disaster! I cannot even prepare a basic announcement with 
 Herald: Something is wrong with it, but it is easier if I show you. [#show_debug] [#minigame_menu] [#portrait=res://scenes/cutscenes/images/hallway_empty.png]
 => END
 
+~ not_ready
+Herald: Oh, hello there! I'm the Royal Herald of the Lands of the Prism. [#portrait=res://scenes/cutscenes/images/herald_normal.png]
+Herald: I usually prepare announcements for the kingdom, but there is nothing urgent to proclaim right now.
+Herald: If you discover something important, come back and tell me!
+=> END
 
 ~ scroll_closed
 Herald: This is my magical scroll. It should help me prepare royal announcements.
