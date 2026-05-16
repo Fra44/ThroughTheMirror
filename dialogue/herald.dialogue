@@ -1,13 +1,12 @@
 ~ start
 Herald: Hi! Nice to meet you, I'm the Royal Herald of the Lands of the Prism! [#portrait=res://scenes/cutscenes/images/herald_normal.png]
-Herald: Oh, this is a disaster! I must announce an urgent message to the kingdom, but this scroll is impossible to read. [#portrait=res://scenes/cutscenes/images/herald_sad.png]
-Herald: The text is far too tiny. I cannot focus on the letters properly.
+Herald: Oh, this is a disaster! I cannot even prepare a basic announcement with this magical scroll. [#portrait=res://scenes/cutscenes/images/herald_sad.png]
+Herald: The text is far too tiny, and when I use my magical lens to zoom in, everything stretches sideways.
+Herald: Look, it is not even a real announcement yet... just placeholder text for testing the decree.
 : You activate the Mirror of Resonance to see as she does. [#activate_shader]
 : The world becomes blurred, and reading small text becomes almost impossible. [#show_debug]
-Herald: Exactly! That is why I use my magical lens to zoom in...
-Herald: But when the text becomes larger, the parchment stretches only sideways.
-Herald: I have to walk along the hallway just to read a single sentence!
-: The magical scroll should be able to reshape itself, but its layout spell is broken.
+Herald: Exactly! Now watch what happens when I try to enlarge the text.
+: The magical scroll should reshape itself when magnified, but its layout spell is broken.
 : Fix the scroll so that enlarged text can wrap instead of forcing horizontal reading. [#minigame_menu] [#portrait=res://scenes/cutscenes/images/hallway_empty.png]
 => END
 
@@ -20,11 +19,12 @@ Herald: Try again. The scroll needs to keep a flexible width and allow the text 
 
 
 ~ win_reaction
-Herald: Ah! Now the text wraps perfectly. [#portrait=res://scenes/cutscenes/images/herald_motivated.png]
-Herald: I can read it at this size without chasing the sentence across the hallway! [#deactivate_shader]
-Herald: Let me read the message...
-Herald: "A great dragon named Kalipso approaches our lands..." [#portrait=res://scenes/cutscenes/images/herald_shocked.png]
-Herald: Kalipso?! We must warn the King immediately!
+Herald: Ah! Now the text wraps properly. [#portrait=res://scenes/cutscenes/images/herald_motivated.png]
+Herald: I can finally use the scroll without chasing the sentence across the hallway! [#deactivate_shader]
+Herald: So, Architect... what did you need me to announce?
+: You tell her about Kalipso, the dragon foreseen by the Archivist.
+Herald: Kalipso?! Then we must warn the kingdom immediately! [#portrait=res://scenes/cutscenes/images/herald_shocked.png]
+Herald: I will prepare the royal announcement at once!
 Herald: Hear ye, hear ye! A great dragon approaches the kingdom! [#close_minigame]
 => END
 

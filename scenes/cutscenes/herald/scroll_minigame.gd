@@ -11,24 +11,26 @@ signal verification_requested(is_successful: bool)
 # CodeEditor è un CanvasLayer, non un Control.
 @onready var code_editor: CanvasLayer = %CodeEditor
 
-# Questo invece è il pannello interno che possiamo sfumare con modulate.
-# Controlla che il path sia corretto nella tua scena.
+# Pannello interno del CodeEditor, usato per fade-in/fade-out.
 @onready var code_editor_panel: Control = $CodeEditor/MarginContainer/MainPanel
 
-const BROKEN_SCROLL_WIDTH: float = 1300.0
-const FIXED_SCROLL_WIDTH: float = 520.0
-const WIDTH_800: float = 800.0
-const INVALID_WIDTH: float = 1000.0
+# I valori del codice CSS sono "logical pixels".
+# La scena mostra il risultato dopo la lente magica dell'Herald,
+# quindi le larghezze fisse vengono amplificate visivamente.
+const BROKEN_SCROLL_WIDTH: float = 3200.0
+const FIXED_SCROLL_WIDTH: float = 560.0
+const WIDTH_800: float = 1600.0
+const INVALID_WIDTH: float = 2000.0
 
-const MIN_SCROLL_HEIGHT: float = 180.0
+const MIN_SCROLL_HEIGHT: float = 190.0
 
-const TEXT_MARGIN_LEFT: float = 110.0
-const TEXT_MARGIN_RIGHT: float = 110.0
+const TEXT_MARGIN_LEFT: float = 170.0
+const TEXT_MARGIN_RIGHT: float = 100.0
 const TEXT_MARGIN_TOP: float = 55.0
 const TEXT_MARGIN_BOTTOM: float = 55.0
 
 const TINY_FONT_SIZE: int = 18
-const ZOOMED_FONT_SIZE: int = 72
+const ZOOMED_FONT_SIZE: int = 96
 
 const EDITOR_SLIDE_DISTANCE: float = 520.0
 
@@ -36,7 +38,12 @@ var editor_start_offset: Vector2
 var is_running_code: bool = false
 var intro_finished: bool = false
 
-var decree_text: String = "Hear ye, hear ye! A great dragon named Kalipso approaches our lands. Be brave, be ready, and may the light protect the kingdom."
+# Placeholder volutamente lungo: serve a mostrare bene il problema del layout rotto.
+var placeholder_text: String = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scrollum magicum testandum est. Hear ye, hear ye, placeholder words of the royal decree flow across the parchment until the proper layout spell is restored. Integer luctus, sapien non facilisis tincidunt, nunc erat cursus libero, vitae luctus ipsum neque at lorem. Donec nuntius regni nondum scriptus est, sed pergamena iam probanda est. Audi famam illius Solus in hostes ruit Et patriam servavit Audi famam illius Cucurrit quaeque Tetigit destruens Audi famam illius Audi famam illius Spes omnibus, mihi quoque Terror omnibus, mihi quoque Ille iuxta me Ille iuxta me Socii sunt mihi Qui olim viri fortes Rivalesque erant Saeve certando pugnandoque Splendor crescit"
+# Testo narrativo finale, usabile dopo il fix se vorrai mostrarlo prima di chiudere.
+var announcement_text: String = "Hear ye, hear ye! A great dragon named Kalipso approaches our lands. Be brave, be ready, and may the light protect the kingdom."
+
+var decree_text: String = ""
 
 
 func _ready() -> void:
@@ -52,6 +59,8 @@ func _ready() -> void:
 	
 	preview_label.scroll_active = false
 	preview_label.fit_content = false
+	
+	decree_text = placeholder_text
 	preview_label.text = decree_text
 	
 	code_editor.visible = false
@@ -84,9 +93,11 @@ func play_intro_sequence() -> void:
 	code_editor_panel.modulate.a = 0.0
 	run_button.disabled = true
 	
-	# 1. Stato iniziale: testo piccolo.
+	decree_text = placeholder_text
 	preview_label.text = decree_text
-	preview_label.add_theme_font_size_override("normal_font_size", TINY_FONT_SIZE)
+	
+	# 1. Stato iniziale: testo piccolo.
+	_set_preview_font_size(TINY_FONT_SIZE)
 	preview_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	
 	_set_label_rect(FIXED_SCROLL_WIDTH - TEXT_MARGIN_LEFT - TEXT_MARGIN_RIGHT, 400.0)
@@ -95,7 +106,7 @@ func play_intro_sequence() -> void:
 	await _wait(0.8)
 	
 	# 2. Zoom magico: il testo diventa grande.
-	preview_label.add_theme_font_size_override("normal_font_size", ZOOMED_FONT_SIZE)
+	_set_preview_font_size(ZOOMED_FONT_SIZE)
 	await get_tree().process_frame
 	
 	await _wait(0.35)
@@ -112,8 +123,8 @@ func play_intro_sequence() -> void:
 
 
 func _on_option_changed(_index: int) -> void:
-	# Non aggiorniamo la pergamena mentre il player cambia opzioni.
-	# Il risultato visivo deve apparire solo dopo Run Code.
+	# Non aggiorniamo la pergamena in tempo reale.
+	# Il risultato visivo appare solo dopo Run Code.
 	pass
 
 
@@ -126,7 +137,9 @@ func _on_run_pressed() -> void:
 	
 	var final_width: String = width_option.get_item_text(width_option.selected)
 	var final_space: String = space_option.get_item_text(space_option.selected)
-	var is_successful: bool = final_width == "100%" and final_space == "normal"
+	
+	# Accettiamo sia normal sia pre-wrap, perché entrambe permettono il wrapping.
+	var is_successful: bool = final_width == "100%" and (final_space == "normal" or final_space == "pre-wrap")
 	
 	await _hide_code_editor()
 	await _wait(0.15)
@@ -151,6 +164,13 @@ func reset_minigame() -> void:
 	width_option.select(0)
 	space_option.select(0)
 	await play_intro_sequence()
+
+
+func show_final_announcement() -> void:
+	decree_text = announcement_text
+	preview_label.text = decree_text
+	_set_preview_font_size(ZOOMED_FONT_SIZE)
+	await _animate_scroll_state("100%", "normal")
 
 
 func _animate_scroll_state(width_value: String, space_value: String) -> void:
@@ -214,7 +234,7 @@ func _show_wrapped_scroll(target_width: float) -> void:
 	
 	var content_width: float = target_width - TEXT_MARGIN_LEFT - TEXT_MARGIN_RIGHT
 	
-	_set_label_rect(content_width, 2000.0)
+	_set_label_rect(content_width, 2400.0)
 	
 	await get_tree().process_frame
 	
@@ -252,12 +272,12 @@ func _show_pre_scroll(target_width: float) -> void:
 
 func _show_pre_wrap_scroll(target_width: float) -> void:
 	# white-space: pre-wrap;
-	# Wrappa, ma non è la soluzione ufficiale del puzzle.
+	# Anche questo wrappa, quindi viene accettato come soluzione.
 	preview_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	
 	var content_width: float = target_width - TEXT_MARGIN_LEFT - TEXT_MARGIN_RIGHT
 	
-	_set_label_rect(content_width, 2000.0)
+	_set_label_rect(content_width, 2400.0)
 	
 	await get_tree().process_frame
 	
@@ -327,6 +347,12 @@ func _show_code_editor() -> void:
 	await tween.finished
 	
 	run_button.disabled = false
+
+
+func _set_preview_font_size(font_size: int) -> void:
+	preview_label.remove_theme_font_size_override("normal_font_size")
+	preview_label.add_theme_font_size_override("normal_font_size", font_size)
+	preview_label.queue_redraw()
 
 
 func _wait(seconds: float) -> void:

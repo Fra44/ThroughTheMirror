@@ -100,8 +100,6 @@ func _on_balloon_line_changed(line: DialogueLine) -> void:
 		
 		
 		# --- RITENTA MINIGIOCO DOPO FAIL ---
-		# Questo è il nuovo tag da usare nel dialogue:
-		# [#retry_minigame]
 		if tag == "retry_minigame":
 			if spawned_minigame != null and is_instance_valid(spawned_minigame):
 				if spawned_minigame.has_method("prepare_retry"):
