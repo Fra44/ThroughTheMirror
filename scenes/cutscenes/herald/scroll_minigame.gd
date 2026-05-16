@@ -37,6 +37,11 @@ const EDITOR_SLIDE_DISTANCE: float = 520.0
 const WALK_DEMO_DISTANCE: float = 900.0
 const BACKGROUND_WALK_DISTANCE: float = 260.0
 
+const SUCCESS_VERTICAL_SCROLL_DISTANCE: float = 820.0
+const SUCCESS_VERTICAL_SCROLL_DURATION: float = 2
+const SUCCESS_RETURN_DURATION: float = 0.45
+
+
 var editor_start_offset: Vector2
 var parchment_start_position: Vector2
 var background_start_position: Vector2
@@ -185,14 +190,7 @@ func _request_dialogue_step(title: String) -> void:
 	waiting_for_dialogue_step = true
 	dialogue_step_requested.emit(title)
 	
-	var timeout_timer: SceneTreeTimer = get_tree().create_timer(12.0, true)
-	
 	while waiting_for_dialogue_step:
-		if timeout_timer.time_left <= 0.0:
-			push_warning("ScrollMinigame: dialogue step timed out: " + title)
-			waiting_for_dialogue_step = false
-			break
-		
 		await get_tree().process_frame
 
 
@@ -224,12 +222,22 @@ func _on_run_pressed() -> void:
 	await _wait(0.15)
 	
 	parchment.position = parchment_start_position
+	background_image.position = background_start_position
 	
 	await _animate_scroll_state(final_width, final_space)
 	
-	await _wait(0.45)
-	
-	verification_requested.emit(is_successful)
+	if is_successful:
+		# Solo in caso di vittoria:
+		# mostriamo che ora lo scroll può essere letto verticalmente.
+		await _play_success_vertical_scroll_demo()
+		
+		# Il ritorno parte insieme al balloon di vittoria.
+		_start_success_return_to_initial_position()
+		
+		verification_requested.emit(true)
+	else:
+		await _wait(0.45)
+		verification_requested.emit(false)
 	
 	is_running_code = false
 
@@ -386,6 +394,37 @@ func _play_horizontal_reading_demo() -> void:
 	
 	await tween.finished
 
+func _play_success_vertical_scroll_demo() -> void:
+	var tween: Tween = create_tween()
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	
+	tween.tween_property(
+		parchment,
+		"position:y",
+		parchment_start_position.y - SUCCESS_VERTICAL_SCROLL_DISTANCE,
+		SUCCESS_VERTICAL_SCROLL_DURATION
+	)
+	
+	await tween.finished
+
+func _start_success_return_to_initial_position() -> void:
+	var tween: Tween = create_tween()
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	tween.set_parallel(true)
+	
+	tween.tween_property(
+		parchment,
+		"position:x",
+		parchment_start_position.x,
+		SUCCESS_RETURN_DURATION
+	)
+	
+	tween.tween_property(
+		parchment,
+		"position:y",
+		parchment_start_position.y,
+		SUCCESS_RETURN_DURATION
+	)
 
 func _return_parchment_to_center() -> void:
 	var tween: Tween = create_tween()

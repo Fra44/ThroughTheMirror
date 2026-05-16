@@ -21,8 +21,8 @@ script = ExtResource("1_65dd5")
 
 [node name="BackgroundImage" type="TextureRect" parent="." unique_id=1740896157]
 unique_name_in_owner = true
-offset_right = 1020.0
-offset_bottom = 340.0
+offset_right = 1070.0
+offset_bottom = 365.0
 texture = ExtResource("2_mfnou")
 expand_mode = 1
 
@@ -58,7 +58,6 @@ scroll_active = false
 [node name="CodeEditor" type="CanvasLayer" parent="." unique_id=495523744]
 unique_name_in_owner = true
 layer = 51
-visible = false
 
 [node name="MarginContainer" type="MarginContainer" parent="CodeEditor" unique_id=574870009]
 offset_left = 8.0
