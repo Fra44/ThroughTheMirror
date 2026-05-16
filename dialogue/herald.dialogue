@@ -1,22 +1,34 @@
 ~ start
-Herald: Hi! Nice to meet you, I'm the herald of the Lands of the Prism! [#portrait=res://scenes/cutscenes/images/herald_normal.png]
+Herald: Hi! Nice to meet you, I'm the Royal Herald of the Lands of the Prism! [#portrait=res://scenes/cutscenes/images/herald_normal.png]
 Herald: Oh, this is a disaster! I must announce an urgent message to the kingdom, but this scroll is impossible to read. [#portrait=res://scenes/cutscenes/images/herald_sad.png]
-Herald: The text is too tiny. I can't focus on the letters...
-: You activate your power to see as she does. [#activate_shader] 
-: The world becomes blurry. Reading normal text is impossible without tools. [#show_debug] 
-Herald: Exactly! So I use my magical lens to zoom in... but watch what happens to the parchment! [#minigame_menu] [#portrait=res://scenes/cutscenes/images/hallway_empty.png]
+Herald: The text is far too tiny. I cannot focus on the letters properly.
+: You activate the Mirror of Resonance to see as she does. [#activate_shader]
+: The world becomes blurred, and reading small text becomes almost impossible. [#show_debug]
+Herald: Exactly! That is why I use my magical lens to zoom in...
+Herald: But when the text becomes larger, the parchment stretches only sideways.
+Herald: I have to walk along the hallway just to read a single sentence!
+: The magical scroll should be able to reshape itself, but its layout spell is broken.
+: Fix the scroll so that enlarged text can wrap instead of forcing horizontal reading. [#minigame_menu] [#portrait=res://scenes/cutscenes/images/hallway_empty.png]
 => END
+
 
 ~ fail_reaction
-Herald: No, it's still broken. I have to walk sideways just to read a single sentence!
+Herald: No, it is still broken. [#portrait=res://scenes/cutscenes/images/herald_sad.png]
+Herald: The text still forces me to move sideways instead of adapting to the scroll.
+Herald: Try again. The scroll needs to keep a flexible width and allow the text to wrap. [#retry_minigame]
 => END
+
 
 ~ win_reaction
-Herald: Ah! The text wraps perfectly now. I can read it at any zoom level! [#deactivate_shader]
-Herald: Wait... "A great dragon named Kalipso approaches..." [#close_minigame] [#portrait=res://scenes/cutscenes/images/herald_shocked.png]
-Herald: Kalipso?! We must warn the King immediately! Hear ye, hear ye!
+Herald: Ah! Now the text wraps perfectly. [#portrait=res://scenes/cutscenes/images/herald_motivated.png]
+Herald: I can read it at this size without chasing the sentence across the hallway! [#deactivate_shader]
+Herald: Let me read the message...
+Herald: "A great dragon named Kalipso approaches our lands..." [#portrait=res://scenes/cutscenes/images/herald_shocked.png]
+Herald: Kalipso?! We must warn the King immediately!
+Herald: Hear ye, hear ye! A great dragon approaches the kingdom! [#close_minigame]
 => END
 
+
 ~ already_helped
-Herald: The kingdom is preparing for the dragon, Architect. Thank you for your help!
+Herald: The kingdom is preparing for the dragon, Architect. Thank you for your help! [#portrait=res://scenes/cutscenes/images/herald_normal.png]
 => END
