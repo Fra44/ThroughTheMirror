@@ -2,7 +2,7 @@ extends CanvasLayer
 
 var manual_instance: Node = null
 
-# --- RIFERIMENTI AI NODI MIRROR & MANUALE ---
+# --- RIFERIMENTI AI NODI MIRROR E MANUALE (Lasciati intatti come i tuoi originali) ---
 @onready var mirror_button = $MirrorHUD/MarginContainer/PanelContainer2/MarginContainer/HBoxContainer/MirrorButton
 @onready var status_label = $MirrorHUD/MarginContainer/PanelContainer2/MarginContainer/HBoxContainer/Status
 @onready var book_button = $ToolsHUD/MarginContainer/PanelContainer/HBoxContainer/BookButton
@@ -14,9 +14,9 @@ var manual_instance: Node = null
 @onready var close_button = %CloseMenuButton
 @onready var main_menu_button = %MainMenuButton
 
-# --- RIFERIMENTO AL TUTORIAL ---
-@onready var tutorial_panel = %TutorialPanel
-var tutorial_fade_started: bool = false # NUOVO LUCCHETTO: ci dice se il timer è già partito
+# --- RIFERIMENTO AL TUTORIAL (Assicurati che il nodo si chiami %TutorialPanel nell'editor) ---
+@onready var tutorial_panel = get_node_or_null("%TutorialPanel")
+var tutorial_fade_started: bool = false # Il lucchetto per il timer
 
 # --- TEXTURE DEL MANUALE ---
 var normal_book_texture: Texture2D
@@ -44,8 +44,7 @@ func _ready():
 	volume_slider.value = db_to_linear(current_db)
 	
 	# --- SETUP INIZIALE TUTORIAL ---
-	# Assicuriamoci che il tutorial sia visibile all'avvio
-	if tutorial_panel:
+	if tutorial_panel != null:
 		tutorial_panel.visible = true
 		tutorial_panel.modulate.a = 1.0
 	
@@ -53,44 +52,46 @@ func _ready():
 	if DiscoveryManager:
 		DiscoveryManager.new_discovery.connect(_on_new_discovery)
 
-# --- GESTIONE INPUT (Per Tutorial e Scorciatoie) ---
+# --- CONTROLLO INPUT PER IL TUTORIAL ---
 func _input(event: InputEvent) -> void:
-	# 1. CONTROLLO TUTORIAL: Se l'animazione NON è ancora partita e premiamo un tasto
-	if not tutorial_fade_started and tutorial_panel != null:
+	# Controlliamo il movimento solo se il tutorial c'è e non è già in dissolvenza
+	if tutorial_panel != null and not tutorial_fade_started:
 		if event.is_action_pressed("ui_up") or event.is_action_pressed("ui_down") or \
 		   event.is_action_pressed("ui_left") or event.is_action_pressed("ui_right"):
 			_start_tutorial_sequence()
 
-	# 2. SCORCIATOIE DA TASTIERA
-	if event.is_action_pressed("ui_book"): 
+func _process(_delta):
+	# Scorciatoia da tastiera per il manuale (es. tasto M)
+	if Input.is_action_just_pressed("ui_book"):
 		_on_book_button_pressed()
-
-	if event.is_action_pressed("ui_settings"):
+		
+	# Scorciatoia da tastiera per le impostazioni (tasto P)
+	if Input.is_action_just_pressed("ui_settings"):
 		if settings_overlay.visible:
 			_close_settings()
 		else:
 			_on_settings_button_pressed()
+		
+	# Chiamiamo la funzione di aggiornamento UI ad ogni frame
+	_update_mirror_hud()
 
-# --- LOGICA SCOMPARSA TUTORIAL AGGIORNATA ---
+
+# --- LOGICA SCOMPARSA TUTORIAL ---
 func _start_tutorial_sequence() -> void:
-	# Chiudiamo il lucchetto! Così se il giocatore continua a camminare, questa funzione non riparte
-	tutorial_fade_started = true
+	tutorial_fade_started = true # Chiudiamo il lucchetto
 	
-	# 1. IL DELAY: Aspettiamo 2.5 secondi prima di iniziare a sfumare
-	# (così il giocatore ha il tempo di leggere anche se ha già iniziato a muoversi)
+	# 1. Delay di lettura
 	await get_tree().create_timer(2.5).timeout
-	
-	# Controllo di sicurezza nel caso il giocatore abbia chiuso il gioco o cambiato scena nel frattempo
 	if tutorial_panel == null: return
 	
-	# 2. LA DISSOLVENZA ALLUNGATA
+	# 2. Dissolvenza lunga
 	var tween = create_tween()
-	# Sfuma l'alpha da 1.0 a 0.0 in 3.0 secondi (il doppio rispetto a prima!)
 	tween.tween_property(tutorial_panel, "modulate:a", 0.0, 3.0)
 	
 	await tween.finished
-	if tutorial_panel:
+	if tutorial_panel != null:
 		tutorial_panel.visible = false
+
 
 # --- GESTIONE IMPOSTAZIONI ---
 func _on_settings_button_pressed() -> void:
@@ -115,8 +116,8 @@ func _on_new_discovery(_item) -> void:
 
 func _update_mirror_hud() -> void:
 	var is_any_shader_active = false
-	var shaders = get_tree().get_nodes_in_group("visual_shaders")
 	
+	var shaders = get_tree().get_nodes_in_group("visual_shaders")
 	for shader in shaders:
 		if "is_active" in shader and shader.is_active:
 			is_any_shader_active = true
