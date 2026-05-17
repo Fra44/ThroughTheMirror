@@ -28,7 +28,6 @@ func open_door() -> void:
 
 func close_door() -> void:
 	texture = texture_close
-	print("Cancello: Chiuso!")
 	
 	# Riattiviamo la collisione
 	var collision = get_node_or_null("StaticBody2D/CollisionShape2D")
