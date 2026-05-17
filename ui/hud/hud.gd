@@ -7,12 +7,16 @@ var manual_instance: Node = null
 @onready var status_label = $MirrorHUD/MarginContainer/PanelContainer2/MarginContainer/HBoxContainer/Status
 @onready var book_button = $ToolsHUD/MarginContainer/PanelContainer/HBoxContainer/BookButton
 
-# --- RIFERIMENTI AI NODI DELLE IMPOSTAZIONI (Usa gli Unique Names %) ---
+# --- RIFERIMENTI AI NODI DELLE IMPOSTAZIONI ---
 @onready var settings_button = %SettingsButton
 @onready var settings_overlay = %SettingsOverlay
 @onready var volume_slider = %VolumeSlider
 @onready var close_button = %CloseMenuButton
 @onready var main_menu_button = %MainMenuButton
+
+# --- RIFERIMENTO AL TUTORIAL ---
+@onready var tutorial_panel = %TutorialPanel
+var tutorial_fade_started: bool = false # NUOVO LUCCHETTO: ci dice se il timer è già partito
 
 # --- TEXTURE DEL MANUALE ---
 var normal_book_texture: Texture2D
@@ -39,87 +43,93 @@ func _ready():
 	var current_db = AudioServer.get_bus_volume_db(master_bus)
 	volume_slider.value = db_to_linear(current_db)
 	
+	# --- SETUP INIZIALE TUTORIAL ---
+	# Assicuriamoci che il tutorial sia visibile all'avvio
+	if tutorial_panel:
+		tutorial_panel.visible = true
+		tutorial_panel.modulate.a = 1.0
+	
 	# ASCOLTIAMO IL DISCOVERY MANAGER
 	if DiscoveryManager:
 		DiscoveryManager.new_discovery.connect(_on_new_discovery)
 
-func _process(_delta):
-	# Scorciatoia da tastiera per il manuale (es. tasto M)
-	if Input.is_action_just_pressed("ui_book"):
+# --- GESTIONE INPUT (Per Tutorial e Scorciatoie) ---
+func _input(event: InputEvent) -> void:
+	# 1. CONTROLLO TUTORIAL: Se l'animazione NON è ancora partita e premiamo un tasto
+	if not tutorial_fade_started and tutorial_panel != null:
+		if event.is_action_pressed("ui_up") or event.is_action_pressed("ui_down") or \
+		   event.is_action_pressed("ui_left") or event.is_action_pressed("ui_right"):
+			_start_tutorial_sequence()
+
+	# 2. SCORCIATOIE DA TASTIERA
+	if event.is_action_pressed("ui_book"): 
 		_on_book_button_pressed()
 
-	# Scorciatoia da tastiera per le impostazioni (apre/chiude il pannello impostazioni)
-	if Input.is_action_just_pressed("ui_settings"):
+	if event.is_action_pressed("ui_settings"):
 		if settings_overlay.visible:
 			_close_settings()
 		else:
 			_on_settings_button_pressed()
-		
-	# Scorciatoia da tastiera per le impostazioni (opzionale, es. tasto ESC o S)
-	# if Input.is_action_just_pressed("ui_cancel"):
-	# 	if settings_overlay.visible:
-	# 		_close_settings()
-	# 	else:
-	# 		_on_settings_button_pressed()
-		
-	# Chiamiamo la funzione di aggiornamento UI ad ogni frame
-	_update_mirror_hud()
+
+# --- LOGICA SCOMPARSA TUTORIAL AGGIORNATA ---
+func _start_tutorial_sequence() -> void:
+	# Chiudiamo il lucchetto! Così se il giocatore continua a camminare, questa funzione non riparte
+	tutorial_fade_started = true
+	
+	# 1. IL DELAY: Aspettiamo 2.5 secondi prima di iniziare a sfumare
+	# (così il giocatore ha il tempo di leggere anche se ha già iniziato a muoversi)
+	await get_tree().create_timer(2.5).timeout
+	
+	# Controllo di sicurezza nel caso il giocatore abbia chiuso il gioco o cambiato scena nel frattempo
+	if tutorial_panel == null: return
+	
+	# 2. LA DISSOLVENZA ALLUNGATA
+	var tween = create_tween()
+	# Sfuma l'alpha da 1.0 a 0.0 in 3.0 secondi (il doppio rispetto a prima!)
+	tween.tween_property(tutorial_panel, "modulate:a", 0.0, 3.0)
+	
+	await tween.finished
+	if tutorial_panel:
+		tutorial_panel.visible = false
 
 # --- GESTIONE IMPOSTAZIONI ---
-
 func _on_settings_button_pressed() -> void:
-	# Mettiamo in pausa il gioco e mostriamo il menu
 	get_tree().paused = true
 	settings_overlay.visible = true
 
 func _close_settings() -> void:
-	# Togliamo la pausa e nascondiamo il menu
 	get_tree().paused = false
 	settings_overlay.visible = false
 
 func _on_volume_changed(value: float) -> void:
-	# Il volume in Godot non è lineare ma logaritmico (Decibel)
-	# Convertiamo il valore dello slider (da 0.0 a 1.0) in decibel
 	AudioServer.set_bus_volume_db(master_bus, linear_to_db(value))
-	
-	# Se lo slider è a 0, mutiamo completamente il bus per sicurezza
 	AudioServer.set_bus_mute(master_bus, value == 0.0)
 
 func _on_main_menu_pressed() -> void:
-	# Quando crei il Main Menu, rimuovi il print e scommenta la riga sotto!
-	print("Caricamento Main Menu in corso...")
-	
-	get_tree().paused = false # Togliamo la pausa prima di cambiare scena!
+	get_tree().paused = false 
 	get_tree().change_scene_to_file("res://scenes/main/MainMenu.tscn") 
 
 # --- GESTIONE SCOPERTE ED HUD ---
-
 func _on_new_discovery(_item) -> void:
-	# Cambiamo la texture per mostrare la notifica
 	book_button.texture_normal = notification_book_texture
 
 func _update_mirror_hud() -> void:
 	var is_any_shader_active = false
-	
-	# Controlliamo tutti gli shader presenti nel gioco
 	var shaders = get_tree().get_nodes_in_group("visual_shaders")
+	
 	for shader in shaders:
-		# Se anche solo UNO è attivo, flagghiamo a true e interrompiamo il ciclo
 		if "is_active" in shader and shader.is_active:
 			is_any_shader_active = true
 			break
 			
-	# Aggiorniamo la Label
 	if is_any_shader_active:
 		status_label.text = "ON"
 	else:
 		status_label.text = "OFF"
 		
-	# Aggiorniamo il bottone
 	mirror_button.disabled = not is_any_shader_active
 
 func _on_book_button_pressed():
-	# QUANDO IL MANUALE VIENE APERTO, RIMUOVIAMO LA NOTIFICA
 	book_button.texture_normal = normal_book_texture
 	
 	if manual_instance == null:
@@ -133,7 +143,6 @@ func _on_book_button_pressed():
 		manual_instance.open_manual()
 
 func _set_pause_mode_recursive(node: Node, mode: int) -> void:
-	# Set process_mode for this node and all children so UI works while game paused
 	node.process_mode = mode 
 	for child in node.get_children():
 		if child is Node:

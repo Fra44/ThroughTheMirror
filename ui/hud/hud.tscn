@@ -54,6 +54,13 @@ shader = ExtResource("2_kwc50")
 shader_parameter/line_color = Color(0, 0, 0, 1)
 shader_parameter/line_thickness = 10.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aixkq"]
+bg_color = Color(0, 0, 0, 0.5921569)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [node name="Hud" type="CanvasLayer" unique_id=2050006127]
 layer = 100
 script = ExtResource("1_e0nub")
@@ -246,3 +253,63 @@ text = "Quit to Title"
 unique_name_in_owner = true
 layout_mode = 2
 text = "Close Settings"
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=789268613]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="TutorialPanel" type="PanelContainer" parent="MarginContainer" unique_id=1950545952]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aixkq")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TutorialPanel" unique_id=517642559]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="GridContainer" parent="MarginContainer/TutorialPanel/MarginContainer" unique_id=259766684]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="MarginContainer/TutorialPanel/MarginContainer/HBoxContainer" unique_id=1043355700]
+layout_mode = 2
+text = "Movement:"
+
+[node name="Label5" type="Label" parent="MarginContainer/TutorialPanel/MarginContainer/HBoxContainer" unique_id=426360144]
+layout_mode = 2
+text = "[WASD]"
+
+[node name="Label2" type="Label" parent="MarginContainer/TutorialPanel/MarginContainer/HBoxContainer" unique_id=353176761]
+layout_mode = 2
+text = "Open settings:"
+
+[node name="Label6" type="Label" parent="MarginContainer/TutorialPanel/MarginContainer/HBoxContainer" unique_id=1365614336]
+layout_mode = 2
+text = "[P]"
+
+[node name="Label3" type="Label" parent="MarginContainer/TutorialPanel/MarginContainer/HBoxContainer" unique_id=991230887]
+layout_mode = 2
+text = "Open Manual:"
+
+[node name="Label7" type="Label" parent="MarginContainer/TutorialPanel/MarginContainer/HBoxContainer" unique_id=1784078369]
+layout_mode = 2
+text = "[M]"
+
+[node name="Label4" type="Label" parent="MarginContainer/TutorialPanel/MarginContainer/HBoxContainer" unique_id=641927690]
+layout_mode = 2
+text = "Interact:"
+
+[node name="Label8" type="Label" parent="MarginContainer/TutorialPanel/MarginContainer/HBoxContainer" unique_id=1582395832]
+layout_mode = 2
+text = "[ENTER]"
