@@ -73,10 +73,10 @@ func _on_start_button_pressed() -> void:
 	tween.set_parallel(true)
 	
 	# Fade-out dello schermo verso il nero
-	tween.tween_property(fade_overlay, "modulate:a", 1.0, 0.45)
+	tween.tween_property(fade_overlay, "modulate:a", 1.0, 0.8)
 	
 	# Fade-out del bottone insieme allo sfondo
-	tween.tween_property(start_button, "modulate:a", 0.0, 0.45)
+	tween.tween_property(start_button, "modulate:a", 0.0, 0.8)
 	
 	await tween.finished
 	
