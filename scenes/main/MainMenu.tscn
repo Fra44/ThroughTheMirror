@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://c4pesi6ctle1g"]
+
+[ext_resource type="Script" uid="uid://dtulxflf5j0kg" path="res://scenes/main/main_menu.gd" id="1_qi05h"]
+[ext_resource type="Texture2D" uid="uid://c2fuvw7ntvgkb" path="res://assets/title_screen2.png" id="2_uort0"]
+[ext_resource type="Texture2D" uid="uid://d21q6ek4vm2ya" path="res://assets/start_button.png" id="3_v3gjy"]
+[ext_resource type="Texture2D" uid="uid://c2owloodwox30" path="res://assets/start_button_pressed.png" id="4_i65kw"]
+[ext_resource type="Texture2D" uid="uid://ge3k2gsmqayt" path="res://assets/start_button_hover.png" id="5_blefk"]
+
+[node name="MainMenu" type="Control" unique_id=1644605772]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qi05h")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=336199647]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.398, 0.398)
+texture = ExtResource("2_uort0")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="FadeOverlay" type="ColorRect" parent="." unique_id=1266887763]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(2000, 1000)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=723612158]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.79
+offset_top = 96.875
+offset_right = 82.21
+offset_bottom = 179.8753
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="StartButton" type="TextureButton" parent="MarginContainer" unique_id=967884771]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("3_v3gjy")
+texture_pressed = ExtResource("4_i65kw")
+texture_hover = ExtResource("5_blefk")
+ignore_texture_size = true
+stretch_mode = 5
+
+[connection signal="pressed" from="MarginContainer/StartButton" to="." method="_on_start_button_pressed"]
