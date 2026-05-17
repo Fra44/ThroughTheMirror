@@ -47,6 +47,13 @@ func _process(_delta):
 	# Scorciatoia da tastiera per il manuale (es. tasto M)
 	if Input.is_action_just_pressed("ui_book"):
 		_on_book_button_pressed()
+
+	# Scorciatoia da tastiera per le impostazioni (apre/chiude il pannello impostazioni)
+	if Input.is_action_just_pressed("ui_settings"):
+		if settings_overlay.visible:
+			_close_settings()
+		else:
+			_on_settings_button_pressed()
 		
 	# Scorciatoia da tastiera per le impostazioni (opzionale, es. tasto ESC o S)
 	# if Input.is_action_just_pressed("ui_cancel"):
@@ -80,10 +87,10 @@ func _on_volume_changed(value: float) -> void:
 
 func _on_main_menu_pressed() -> void:
 	# Quando crei il Main Menu, rimuovi il print e scommenta la riga sotto!
-	print("Caricamento Main Menu in corso... (Crea la scena prima!)")
+	print("Caricamento Main Menu in corso...")
 	
 	get_tree().paused = false # Togliamo la pausa prima di cambiare scena!
-	# get_tree().change_scene_to_file("res://scenes/menus/MainMenu.tscn") 
+	get_tree().change_scene_to_file("res://scenes/main/MainMenu.tscn") 
 
 # --- GESTIONE SCOPERTE ED HUD ---
 

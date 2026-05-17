@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Through the Mirror: The Sight of Others"
-run/main_scene="res://scenes/main/main.tscn"
+run/main_scene="uid://c4pesi6ctle1g"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="uid://6c487avh78gh"
 config/windows_native_icon="res://assets/logo.ico"
@@ -35,7 +35,7 @@ runtime/state_autoload_shortcuts=[null, null]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/mode=3
+window/size/mode=4
 window/size/initial_position_type=0
 window/size/resizable=false
 window/stretch/mode="canvas_items"
@@ -128,6 +128,11 @@ toggle_mirror_of_resonance={
 ui_book={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":77,"key_label":0,"unicode":109,"location":0,"echo":false,"script":null)
+]
+}
+ui_settings={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":80,"key_label":0,"unicode":112,"location":0,"echo":false,"script":null)
 ]
 }
 

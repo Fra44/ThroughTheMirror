@@ -245,4 +245,4 @@ text = "Quit to Title"
 [node name="CloseMenuButton" type="Button" parent="SettingsOverlay/MenuPanel/MarginContainer/VBoxContainer" unique_id=329528217]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Close"
+text = "Close Settings"
