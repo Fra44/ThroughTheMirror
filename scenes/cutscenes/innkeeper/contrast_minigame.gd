@@ -4,7 +4,7 @@ extends CanvasLayer
 @onready var ratio_label = $RatioDisplay/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/RatioValue
 @onready var color_picker = $ColorPickerDisplay/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/ColorPickerButton
 
-# --- NUOVI RIFERIMENTI AI PANNELLI PRINCIPALI ---
+# --- RIFERIMENTI AI PANNELLI PRINCIPALI ---
 @onready var color_picker_display = $ColorPickerDisplay
 @onready var ratio_display = $RatioDisplay
 
@@ -14,7 +14,7 @@ extends CanvasLayer
 const BG_COLOR = Color("eac388") 
 const MIN_CONTRAST = 4.5
 
-# NUOVO SEGNALE: Passa "true" se il contrasto è ok, "false" se non lo è
+# SEGNALE: Passa "true" se il contrasto è ok, "false" se non lo è
 signal verification_requested(is_successful: bool)
 
 var current_color: Color 
@@ -33,26 +33,42 @@ func _ready():
 	if confirm_button:
 		confirm_button.pressed.connect(_on_confirm_button_pressed)
 
-# --- NUOVA FUNZIONE: Chiamata dalla cutscene per rivelare i controlli ---
+# --- FUNZIONE CHIAMATA DALLA CUTSCENE ---
 func show_ui() -> void:
 	if color_picker_display: color_picker_display.show()
 	if ratio_display: ratio_display.show()
+	
+	# [TELEMETRIA] Inizio misurazione del Time on Task per il Livello 1
+	if has_node("/root/TelemetryManager"):
+		TelemetryManager.start_level("L1")
 
 func _on_confirm_button_pressed() -> void:
 	var ratio = calculate_contrast(current_color, BG_COLOR)
 	print("Minigame: Contrasto calcolato: ", ratio)
 	
-	# Forziamo la chiusura del popup dei colori se è aperto, per far vedere bene il dialogo
+	# Forziamo la chiusura del popup dei colori se è aperto
 	if color_picker.get_popup().visible:
 		color_picker.get_popup().hide()
 	
 	if ratio >= MIN_CONTRAST:
+		# [TELEMETRIA] Risoluzione corretta e stop del timer
+		if has_node("/root/TelemetryManager"):
+			TelemetryManager.end_level("L1")
+			
+			# Print di debug richiesto per la validazione
+			var stats = TelemetryManager.stats["L1"]
+			print("[TELEMETRIA L1] Completato. Tempo totale: ", snapped(stats["total_time"], 0.1), "s | Tentativi falliti: ", stats["fails"])
+		
 		verification_requested.emit(true)
 		
-		# ---> NUOVO: SALVIAMO LO STATO <---
 		if DiscoveryManager:
 			DiscoveryManager.level_states["menu_solved"] = true
 	else:
+		# [TELEMETRIA] Errore utente registrato
+		if has_node("/root/TelemetryManager"):
+			TelemetryManager.track_fail("L1")
+			print("[TELEMETRIA L1] Fallimento registrato. Totale attuale: ", TelemetryManager.stats["L1"]["fails"])
+			
 		verification_requested.emit(false)
 
 func _on_color_picker_button_color_changed(color):
