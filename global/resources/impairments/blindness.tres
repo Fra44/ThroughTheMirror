@@ -14,8 +14,8 @@ Blindness is a condition involving partial or complete loss of vision. According
 
 [b][u]FORMS & CAUSES[/u][/b]
 [indent]
-[b]•[/b] [b]Total Blindness:[/b] A complete lack of light perception. Users rely exclusively on assistive technologies like screen readers or Braille displays.
-[b]•[/b] [b]Light Perception:[/b] The ability to perceive light and shadows without distinguishing shapes.
+[b]•[/b] [u]Total Blindness:[/u] A complete lack of light perception. Users rely exclusively on assistive technologies like screen readers or Braille displays.
+[b]•[/b] [u]Light Perception:[/u] The ability to perceive light and shadows without distinguishing shapes.
 [b]•[/b] The \"disability\" in software occurs when the UI lacks the semantic structure necessary for screen readers to translate visual layouts into navigable information.
 [/indent]"
 related_wcag = ExtResource("1_yt0pc")

@@ -42,7 +42,7 @@ var questions = [
 			"1 in 500 (0.2%)"
 		],
 		"correct": 1,
-		"fact": "CVD affects approximately 1 in 12 men and 1 in 200 women of Northern European ancestry. This makes color-only communication a real accessibility risk."
+		"fact": "Correct! CVD affects approximately 1 in 12 men and 1 in 200 women of Northern European ancestry. This makes color-only communication a real accessibility risk."
 	},
 	{
 		"q": "Why is using ONLY a red border to indicate a form error a bad practice?",

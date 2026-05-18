@@ -22,7 +22,7 @@ grow_vertical = 2
 script = ExtResource("1_yus7e")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=483356756]
-custom_minimum_size = Vector2(450, 360)
+custom_minimum_size = Vector2(515, 360)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

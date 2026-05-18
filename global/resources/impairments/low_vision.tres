@@ -14,8 +14,8 @@ Low vision represents a reduced visual acuity that cannot be fully corrected wit
 
 [b][u]EFFECTS & DAILY CHALLENGES[/u][/b]
 [indent]
-[b]•[/b] [b]Acuity Loss & Field of Vision:[/b] Causes global blurriness or blind spots (Scotoma, Tunnel Vision).
-[b]•[/b] [b]Photophobia:[/b] Extreme sensitivity to light, making bright \"light mode\" interfaces painful.
+[b]•[/b] [u]Acuity Loss & Field of Vision:[/u] Causes global blurriness or blind spots (Scotoma, Tunnel Vision).
+[b]•[/b] [u]Photophobia:[/u] Extreme sensitivity to light, making bright \"light mode\" interfaces painful.
 [b]•[/b] These users often rely on magnification tools or larger text to read. If layouts are not adaptable, reading becomes exhausting.
 [/indent]"
 related_wcag = ExtResource("1_l6m8n")

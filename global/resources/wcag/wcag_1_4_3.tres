@@ -12,10 +12,10 @@ The WCAG 2.1 success criterion 1.4.3 - Contrast (Minimum) ensures that text rema
 
 [b][u]TECHNICAL REQUIREMENTS[/u][/b]
 [indent]
-[b]•[/b] [b]Normal Text:[/b] Requires a contrast ratio of at least 4.5:1.
-[b]•[/b] [b]Large/Bold Text:[/b] Requires a contrast ratio of at least 3:1.
-[b]•[/b] [b]Scope:[/b] The rule also applies to images of text and text shown during interactions such as hover or focus states.
-[b]•[/b] [b]Exemptions:[/b] Decorative text, inactive elements, and logos are exempt.
+[b]•[/b] [u]Normal Text:[/u] Requires a contrast ratio of at least 4.5:1.
+[b]•[/b] [u]Large/Bold Text:[/u] Requires a contrast ratio of at least 3:1.
+[b]•[/b] [u]Scope:[/u] The rule also applies to images of text and text shown during interactions such as hover or focus states.
+[b]•[/b] [u]Exemptions:[/u] Decorative text, inactive elements, and logos are exempt.
 [/indent]
 [b][u]TIP[/u][/b]
 Use the color picker to change the color of the text in foreground. Ensure that the numeric contrast ratio meets the requirement for clear readability."
