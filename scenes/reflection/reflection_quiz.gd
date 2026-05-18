@@ -40,6 +40,12 @@ func _ready():
 			buttons[i].pressed.connect(_on_answer_pressed.bind(i))
 			
 	_show_question()
+	
+	# ---> NUOVO: Effetto Fade In per il Quiz
+	modulate.a = 0.0 # Partiamo invisibili
+	var tween = create_tween()
+	# Riappariamo dolcemente in 1.5 secondi
+	tween.tween_property(self, "modulate:a", 1.0, 1.5)
 
 func _show_question():
 	fact_panel.hide()
@@ -135,4 +141,4 @@ func _copy_data_and_exit():
 		DisplayServer.clipboard_set("[Test Telemetry Data]")
 		
 	# Scommenta la riga sotto e inserisci il vero link quando lo avrai pronto!
-	# OS.shell_open("https://il_tuo_link_nettskjema_qui")
+	OS.shell_open("https://nettskjema.no/a/629384")

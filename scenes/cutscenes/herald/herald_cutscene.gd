@@ -10,6 +10,7 @@ var current_impairment: ImpairmentData = null
 var spawned_minigame: Node = null
 var wait_for_debug: bool = false
 var pending_retry_minigame: bool = false
+var trigger_quiz_at_end: bool = false
 
 
 func _ready() -> void:
@@ -148,6 +149,7 @@ func _on_minigame_dialogue_step_requested(title: String) -> void:
 
 func _on_minigame_verification(is_successful: bool) -> void:
 	if is_successful:
+		trigger_quiz_at_end = true # <--- NUOVO: Ci ricordiamo che ha vinto!
 		if is_instance_valid(balloon):
 			balloon.start(current_resource, "win_reaction")
 	else:
@@ -191,14 +193,44 @@ func _end_cutscene() -> void:
 	if spawned_minigame == null or not is_instance_valid(spawned_minigame):
 		get_tree().paused = false
 	
-	visible = false
+	visible = false # Nasconde l'UI della cutscene (mostrando l'Overworld)
 	current_resource = null
 	current_impairment = null
 	cutscene_finished.emit()
 	
 	var shaders: Array = get_tree().get_nodes_in_group("low_vision_shader")
-	
 	if shaders.size() > 0:
 		shaders[0].toggle_effect(false)
 	
+	# ---> NUOVO: Decidiamo se distruggere la cutscene o avviare il finale
+	if trigger_quiz_at_end:
+		_play_ending_transition()
+	else:
+		queue_free()
+
+func _play_ending_transition() -> void:
+	# 1. Creiamo un rettangolo nero che copre tutto lo schermo
+	var fade_layer = CanvasLayer.new()
+	fade_layer.layer = 100 # Abbastanza alto da coprire l'overworld
+	get_tree().root.add_child(fade_layer)
+	
+	var black_rect = ColorRect.new()
+	black_rect.color = Color(0, 0, 0, 0) # Inizia trasparente
+	black_rect.set_anchors_preset(Control.PRESET_FULL_RECT)
+	fade_layer.add_child(black_rect)
+	
+	# 2. Creiamo l'animazione (Fade Out)
+	var tween = create_tween()
+	# Impostiamo su PROCESS_ALWAYS così funziona anche se il gioco ha strane pause
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS) 
+	# Sfuma verso il nero (alpha 1.0) in 2 secondi
+	tween.tween_property(black_rect, "color:a", 1.0, 2.0) 
+	
+	await tween.finished
+	
+	# 3. Ora che è tutto nero, cambiamo scena!
+	get_tree().change_scene_to_file("res://scenes/reflection/ReflectionQuiz.tscn")
+	
+	# 4. Pulizia finale
+	fade_layer.queue_free()
 	queue_free()
