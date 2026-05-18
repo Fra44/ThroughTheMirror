@@ -25,6 +25,7 @@ cataract="*uid://cbtyfug4t25yq"
 DiscoveryManager="*uid://djwhlakuxewtw"
 DebugManager="*uid://c28oh04cy721k"
 Manual="*uid://dxtqymvv2c562"
+TelemetryManager="*uid://dci2dva1n36t5"
 
 [dialogue_manager]
 
@@ -35,6 +36,7 @@ runtime/state_autoload_shortcuts=[null, null]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=4
 window/size/initial_position_type=0
 window/size/resizable=false
 window/stretch/mode="canvas_items"

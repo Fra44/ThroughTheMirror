@@ -140,8 +140,16 @@ func _on_book_button_pressed():
 		
 	if manual_instance.visible:
 		manual_instance.close_manual()
+		
+		# --- TELEMETRIA: Il manuale si sta chiudendo ---
+		if has_node("/root/TelemetryManager"):
+			TelemetryManager.track_manual_close()
 	else:
 		manual_instance.open_manual()
+		
+		# --- TELEMETRIA: Il manuale si sta aprendo ---
+		if has_node("/root/TelemetryManager"):
+			TelemetryManager.track_manual_open()
 
 func _set_pause_mode_recursive(node: Node, mode: int) -> void:
 	node.process_mode = mode 
