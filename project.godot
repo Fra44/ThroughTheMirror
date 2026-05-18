@@ -20,7 +20,6 @@ config/windows_native_icon="res://assets/logo.ico"
 
 MCPRuntime="*uid://qshpbdluw3j0"
 DialogueManager="*uid://c3rodes2l3gxb"
-State="*uid://koyanq64kv14"
 cataract="*uid://cbtyfug4t25yq"
 DiscoveryManager="*uid://djwhlakuxewtw"
 DebugManager="*uid://c28oh04cy721k"

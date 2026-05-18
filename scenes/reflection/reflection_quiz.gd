@@ -40,6 +40,9 @@ var final_data: String = ""
 # INSERISCI QUI IL VERO LINK DEL TUO FORM NETTSKJEMA.
 var form_url: String = "https://nettskjema.no/a/629384"
 
+var wcag_url: String = "https://www.w3.org/WAI/standards-guidelines/wcag/"
+var who_url: String = "https://www.who.int/news-room/fact-sheets/detail/blindness-and-visual-impairment"
+
 
 func _ready() -> void:
 	next_button.pressed.connect(_on_next_pressed)
@@ -192,11 +195,15 @@ func _open_results_popup() -> void:
 func _show_web_copy_popup(data: String, target_url: String) -> void:
 	var safe_data := JSON.stringify(data)
 	var safe_url := JSON.stringify(target_url)
+	var safe_wcag_url := JSON.stringify(wcag_url)
+	var safe_who_url := JSON.stringify(who_url)
 
 	var js_code := """
 	(function() {
 		const data = %s;
 		const formUrl = %s;
+		const wcagUrl = %s;
+		const whoUrl = %s;
 
 		const oldOverlay = document.getElementById("godot-copy-overlay");
 		if (oldOverlay) {
@@ -238,7 +245,7 @@ func _show_web_copy_popup(data: String, target_url: String) -> void:
 		textarea.value = data;
 		textarea.readOnly = true;
 		textarea.style.width = "100%%";
-		textarea.style.height = "160px";
+		textarea.style.height = "150px";
 		textarea.style.marginTop = "12px";
 		textarea.style.marginBottom = "16px";
 		textarea.style.fontSize = "14px";
@@ -293,6 +300,43 @@ func _show_web_copy_popup(data: String, target_url: String) -> void:
 			overlay.remove();
 		};
 
+		const resourcesBox = document.createElement("div");
+		resourcesBox.style.marginTop = "22px";
+		resourcesBox.style.paddingTop = "16px";
+		resourcesBox.style.borderTop = "1px solid rgba(255,255,255,0.35)";
+
+		const resourcesTitle = document.createElement("h3");
+		resourcesTitle.textContent = "Further resources";
+		resourcesTitle.style.margin = "0 0 8px 0";
+
+		const resourcesText = document.createElement("p");
+		resourcesText.textContent = "You can learn more about accessibility guidelines and visual impairments through these resources.";
+		resourcesText.style.margin = "0 0 12px 0";
+
+		const wcagButton = document.createElement("button");
+		wcagButton.textContent = "WCAG Guidelines";
+		wcagButton.style.marginRight = "12px";
+		wcagButton.style.padding = "10px 16px";
+		wcagButton.style.cursor = "pointer";
+
+		wcagButton.onclick = function() {
+			window.open(wcagUrl, "_blank");
+		};
+
+		const whoButton = document.createElement("button");
+		whoButton.textContent = "WHO: Visual Impairment";
+		whoButton.style.padding = "10px 16px";
+		whoButton.style.cursor = "pointer";
+
+		whoButton.onclick = function() {
+			window.open(whoUrl, "_blank");
+		};
+
+		resourcesBox.appendChild(resourcesTitle);
+		resourcesBox.appendChild(resourcesText);
+		resourcesBox.appendChild(wcagButton);
+		resourcesBox.appendChild(whoButton);
+
 		box.appendChild(title);
 		box.appendChild(instructions);
 		box.appendChild(textarea);
@@ -300,12 +344,14 @@ func _show_web_copy_popup(data: String, target_url: String) -> void:
 		box.appendChild(openButton);
 		box.appendChild(closeButton);
 		box.appendChild(status);
+		box.appendChild(resourcesBox);
+
 		overlay.appendChild(box);
 		document.body.appendChild(overlay);
 
 		textarea.focus();
 		textarea.select();
 	})();
-	""" % [safe_data, safe_url]
+	""" % [safe_data, safe_url, safe_wcag_url, safe_who_url]
 
 	JavaScriptBridge.eval(js_code)

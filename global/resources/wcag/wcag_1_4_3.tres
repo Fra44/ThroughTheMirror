@@ -18,5 +18,5 @@ The WCAG 2.1 success criterion 1.4.3 - Contrast (Minimum) ensures that text rema
 [b]•[/b] [b]Exemptions:[/b] Decorative text, inactive elements, and logos are exempt.
 [/indent]
 [b][u]TIP[/u][/b]
-Use the color picker to change the color of the text in foreground. Ensure that the numeric contrast ratio meets the 4.5:1 requirement for clear readability."
+Use the color picker to change the color of the text in foreground. Ensure that the numeric contrast ratio meets the requirement for clear readability."
 metadata/_custom_type_script = "uid://mgn4yar0d3vn"
