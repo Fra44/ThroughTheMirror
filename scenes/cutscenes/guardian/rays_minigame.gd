@@ -28,6 +28,10 @@ func _ready() -> void:
 # Chiamato dalla cutscene dopo il pan della camera
 func show_ui() -> void:
 	main_panel.show()
+	
+	# [TELEMETRIA] Inizio misurazione del Time on Task per il Livello 2
+	if has_node("/root/TelemetryManager"):
+		TelemetryManager.start_level("L2")
 
 func _on_run_button_pressed() -> void:
 	print("Minigame: Avvio validazione codice...")
@@ -40,9 +44,14 @@ func _on_run_button_pressed() -> void:
 	var red_is_correct = (current_symbol_red == "cross")
 	
 	# Verifichiamo se entrambe le condizioni sono soddisfatte
-	# Verifichiamo se entrambe le condizioni sono soddisfatte
 	if green_is_correct and red_is_correct:
 		print("Risultato: CODICE CORRETTO! Emissione vittoria...")
+		
+		# [TELEMETRIA] Risoluzione corretta e stop del timer
+		if has_node("/root/TelemetryManager"):
+			TelemetryManager.end_level("L2")
+			var stats = TelemetryManager.stats["L2"]
+			print("[TELEMETRIA L2] Completato. Tempo totale: ", snapped(stats["total_time"], 0.1), "s | Tentativi falliti: ", stats["fails"])
 		
 		# ---> NUOVO: SALVIAMO LO STATO E I SIMBOLI SCELTI <---
 		if DiscoveryManager:
@@ -55,6 +64,12 @@ func _on_run_button_pressed() -> void:
 
 	else:
 		print("Risultato: CODICE ERRATO. Emissione fallimento...")
+		
+		# [TELEMETRIA] Errore utente registrato
+		if has_node("/root/TelemetryManager"):
+			TelemetryManager.track_fail("L2")
+			print("[TELEMETRIA L2] Fallimento registrato. Totale attuale: ", TelemetryManager.stats["L2"]["fails"])
+			
 		# Opzionale: potresti voler resettare la UI o far apparire un messaggio di errore
 		verification_requested.emit(false, "")
 
@@ -85,9 +100,3 @@ func update_symbol_for_ray(ray_color: String, symbol_name: String) -> void:
 		
 	# ---> QUI INVIAMO IL SEGNALE ALL'ESTERNO <---
 	preview_symbol_updated.emit(ray_color, symbol_name)
-	
-	# Qui in futuro potremo aggiungere il codice per far apparire
-	# il simbolino visivo direttamente sui cristalli della mappa!
-		
-	# ---> QUI PUOI INVIARE UN SEGNALE O CHIAMARE UNA FUNZIONE PER MOSTRARE 
-	# IN TEMPO REALE IL SIMBOLO SUI CRISTALLI DELLA MAPPA <---
