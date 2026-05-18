@@ -456,7 +456,12 @@ func _return_parchment_to_center() -> void:
 		0.65
 	)
 	
-	background_image.position.x = background_start_position.x
+	tween.tween_property(
+		background_image,
+		"position:x",
+		background_start_position.x,
+		0.65
+	)
 	
 	await tween.finished
 
