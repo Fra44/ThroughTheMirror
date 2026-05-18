@@ -184,6 +184,11 @@ func play_intro_sequence() -> void:
 	await _show_code_editor()
 
 	intro_finished = true
+	
+	# [TELEMETRIA] L'introduzione è finita e l'utente ha il controllo dell'interfaccia:
+	# facciamo partire il timer per il Livello 4 qui per calcolare il vero Time on Task.
+	if has_node("/root/TelemetryManager"):
+		TelemetryManager.start_level("L4")
 
 
 func _request_dialogue_step(title: String) -> void:
@@ -227,6 +232,12 @@ func _on_run_pressed() -> void:
 	await _animate_scroll_state(final_width, final_space)
 	
 	if is_successful:
+		# [TELEMETRIA] Risoluzione corretta e arresto del cronometro
+		if has_node("/root/TelemetryManager"):
+			TelemetryManager.end_level("L4")
+			var stats = TelemetryManager.stats["L4"]
+			print("[TELEMETRIA L4] Completato. Tempo totale: ", snapped(stats["total_time"], 0.1), "s | Tentativi falliti: ", stats["fails"])
+			
 		# Solo in caso di vittoria:
 		# mostriamo che ora lo scroll può essere letto verticalmente.
 		await _play_success_vertical_scroll_demo()
@@ -236,6 +247,11 @@ func _on_run_pressed() -> void:
 		
 		verification_requested.emit(true)
 	else:
+		# [TELEMETRIA] Errore di configurazione del codice, incremento dei fallimenti
+		if has_node("/root/TelemetryManager"):
+			TelemetryManager.track_fail("L4")
+			print("[TELEMETRIA L4] Fallimento registrato. Totale attuale: ", TelemetryManager.stats["L4"]["fails"])
+			
 		await _wait(0.45)
 		verification_requested.emit(false)
 	
@@ -438,12 +454,7 @@ func _return_parchment_to_center() -> void:
 		0.65
 	)
 	
-	tween.tween_property(
-		background_image,
-		"position:x",
-		background_start_position.x,
-		0.65
-	)
+	background_image.position.x = background_start_position.x
 	
 	await tween.finished
 
