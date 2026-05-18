@@ -100,8 +100,10 @@ var questions = [
 	}
 ]
 
+
 var current_q: int = 0
 var quiz_finished: bool = false
+var quiz_started: bool = false
 var final_data: String = ""
 
 # INSERISCI QUI IL VERO LINK DEL TUO FORM NETTSKJEMA.
@@ -119,7 +121,7 @@ func _ready() -> void:
 		if buttons[i] is Button:
 			buttons[i].pressed.connect(_on_answer_pressed.bind(i))
 
-	_show_question()
+	_show_intro_screen()
 	_play_fade_in()
 
 
@@ -127,6 +129,26 @@ func _play_fade_in() -> void:
 	modulate.a = 0.0
 	var tween := create_tween()
 	tween.tween_property(self, "modulate:a", 1.0, 1.5)
+
+
+func _show_intro_screen() -> void:
+	quiz_started = false
+	quiz_finished = false
+	current_q = 0
+
+	answers_container.hide()
+	fact_panel.show()
+
+	question_label.text = "Reflection Quiz"
+
+	fact_label.text = (
+		"You are about to start a short questionnaire about the game and the accessibility concepts you explored.\n\n"
+		+ "The questions will ask you to connect situations from the game to real accessibility issues, visual impairments, and WCAG guidelines.\n\n"
+		+ "After each answer, you will receive a short explanation."
+	)
+
+	next_button.text = "Start Quiz"
+	next_button.show()
 
 
 func _show_question() -> void:
@@ -201,6 +223,12 @@ func _show_feedback(correct: bool) -> void:
 
 
 func _on_next_pressed() -> void:
+	if not quiz_started:
+		quiz_started = true
+		current_q = 0
+		_show_question()
+		return
+
 	if quiz_finished:
 		_open_results_popup()
 		return
