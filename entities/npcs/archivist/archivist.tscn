@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dc2g03j4xdn0p"]
 
-[ext_resource type="Texture2D" uid="uid://c6r8v58l7fh67" path="res://entities/npcs/archivist/granny.png" id="1_x11do"]
+[ext_resource type="Texture2D" uid="uid://dbhxy5ccgt6b1" path="res://entities/npcs/archivist/archivist.png" id="1_agtc2"]
 [ext_resource type="Script" uid="uid://ca55rpbx6ii3l" path="res://entities/npcs/archivist/actionable.gd" id="2_pbffu"]
 [ext_resource type="Resource" uid="uid://d2ae3okydjy7g" path="res://global/resources/impairments/blindness.tres" id="3_agtc2"]
 [ext_resource type="Resource" uid="uid://b4vgi7s6jt547" path="res://dialogue/archivist.dialogue" id="4_4xmhj"]
@@ -15,10 +15,8 @@ size = Vector2(20, 50)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=174769482]
 z_index = 1
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_x11do")
-hframes = 5
-vframes = 3
+scale = Vector2(0.015, 0.015)
+texture = ExtResource("1_agtc2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1247619821]
 position = Vector2(0, 2.2875)

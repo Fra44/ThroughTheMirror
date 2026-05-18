@@ -71,7 +71,7 @@ target_scene_path = "uid://c446i8jf4uw6c"
 target_spawn_id = "OutsideLibrary"
 
 [node name="Archivist" parent="." unique_id=652356716 instance=ExtResource("3_bxtc7")]
-position = Vector2(25, -181)
+position = Vector2(25, -179)
 
 [node name="Blindness" parent="." unique_id=803015099 instance=ExtResource("4_5f70n")]
 visible = false
