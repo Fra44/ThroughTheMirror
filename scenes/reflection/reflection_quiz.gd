@@ -10,27 +10,94 @@ extends Control
 
 # --- DATI DEL QUIZ ---
 var questions = [
+	
+	# --- LEVEL 1: CATARACT & CONTRAST ---
 	{
-		"q": "Why is the Alt Text attribute important for images?",
+		"q": "In the cataract level, what accessibility problem did the low-contrast text create?",
 		"options": [
-			"To improve colors",
-			"For users relying on Screen Readers",
-			"To load the image faster"
+			"It made the text harder to perceive against the background",
+			"It made the text too large for the screen",
+			"It prevented screen readers from reading the page"
 		],
-		"correct": 1,
-		"fact": "Correct! Alt Text helps screen reader users understand the meaning of images. Without it, an image can become invisible to blind users."
+		"correct": 0,
+		"fact": "Correct! Cataracts can reduce contrast sensitivity and create a foggy or blurred visual effect. Low-contrast text can therefore become very difficult to read."
 	},
 	{
-		"q": "What is the 'Reflow' (WCAG 1.4.10) that you applied to the scroll?",
+		"q": "What is the minimum contrast ratio required for normal text under WCAG 1.4.3?",
 		"options": [
-			"A way to change fonts",
-			"The adaptation of text when zooming",
-			"A transparency effect"
+			"3:1",
+			"4.5:1",
+			"7:1"
 		],
 		"correct": 1,
-		"fact": "Correct! Reflow allows content to adapt when users zoom in, reducing the need for horizontal scrolling."
+		"fact": "Correct! Normal text requires a 4.5:1 ratio, while large or bold text can use a 3:1 ratio. This ensures text is readable through a cloudy lens."
+	},
+	
+	# --- LEVEL 2: CVD & USE OF COLOR ---
+	{
+		"q": "How common can Color Vision Deficiency (CVD) be among men?",
+		"options": [
+			"1 in 50 (2%)",
+			"1 in 12 (8%)",
+			"1 in 500 (0.2%)"
+		],
+		"correct": 1,
+		"fact": "CVD affects approximately 1 in 12 men and 1 in 200 women of Northern European ancestry. This makes color-only communication a real accessibility risk."
+	},
+	{
+		"q": "Why is using ONLY a red border to indicate a form error a bad practice?",
+		"options": [
+			"Red is always forbidden in accessible interfaces",
+			"Borders make forms load more slowly",
+			"Users with CVD might not distinguish it from a normal border"
+		],
+		"correct": 2,
+		"fact": "Correct! WCAG 1.4.1 states that color alone cannot be used to convey information. You should always provide redundant visual cues, like an icon or text label."
+	},
+	
+	# --- LEVEL 3: BLINDNESS & ALT TEXT ---
+	{
+		"q": "In the blindness level, what did the alt attribute provide?",
+		"options": [
+			"A visual filter for the image",
+			"A text alternative that assistive technologies can communicate",
+			"A faster way to download the image"
+		],
+		"correct": 1,
+		"fact": "Correct! Alt text allows screen readers to communicate the meaning of meaningful images. Without it, important visual content may be inaccessible to blind users."
+	},
+	{
+		"q": "Which WCAG criterion was represented by the blindness level?",
+		"options": [
+			"WCAG 1.4.3 Contrast (Minimum)",
+			"WCAG 1.1.1 Non-text Content",
+			"WCAG 1.4.10 Reflow"
+		],
+		"correct": 1,
+		"fact": "Correct! WCAG 1.1.1 requires meaningful non-text content, such as images and icons, to provide equivalent text alternatives."
+	},
+	
+	# --- LEVEL 4: LOW VISION & REFLOW ---
+	{
+		"q": "In the low vision level, what was wrong with the fixed-width scroll?",
+		"options": [
+			"It forced users to scroll horizontally when content was enlarged",
+			"It made the text invisible to screen readers",
+			"It used color as the only cue"
+		],
+		"correct": 0,
+		"fact": "Correct! Fixed-width layouts can break when users zoom or enlarge text. This can force horizontal scrolling, making reading slow and uncomfortable."
+	},
+	{
+		"q": "Which CSS idea best supported reflow in the low vision level?",
+		"options": [
+			"Use a very large fixed width",
+			"Prevent all line breaks with white-space: nowrap",
+			"Use a flexible width and allow text wrapping"
+		],
+		"correct": 2,
+		"fact": "Correct! Reflow is supported by flexible layouts and wrapping text. WCAG 1.4.10 aims to keep content readable and usable when zoomed up to 400%."
 	}
-	# Aggiungi qui le altre domande.
 ]
 
 var current_q: int = 0
