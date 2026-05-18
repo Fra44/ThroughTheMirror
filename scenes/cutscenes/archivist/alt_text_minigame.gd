@@ -36,6 +36,14 @@ func _ready() -> void:
 			
 	_update_drop_zone_ui()
 
+# --- FUNZIONE CHIAMATA DALLA CUTSCENE ---
+func show_ui() -> void:
+	self.show() # O qualsiasi cosa usi per mostrare la UI
+	
+	# [TELEMETRIA] Inizio misurazione del Time on Task per il Livello 3
+	if has_node("/root/TelemetryManager"):
+		TelemetryManager.start_level("L3")
+
 func _on_option_dropped(text: String, audio: AudioStream) -> void:
 	# Rimuoviamo gli "a capo" invisibili (\n e \r) dalla stringa
 	var cleaned_text = text.replace("\n", "").replace("\r", "")
@@ -62,6 +70,21 @@ func _on_reset_pressed() -> void:
 	_update_drop_zone_ui()
 
 func _on_run_pressed() -> void:
+	# --- VERIFICA VITTORIA E TELEMETRIA (Prima dell'audio!) ---
+	var is_correct = (current_dropped_text == CORRECT_ANSWER)
+	
+	if is_correct:
+		# [TELEMETRIA] Risoluzione corretta e stop del timer
+		if has_node("/root/TelemetryManager"):
+			TelemetryManager.end_level("L3")
+			var stats = TelemetryManager.stats["L3"]
+			print("[TELEMETRIA L3] Completato. Tempo totale: ", snapped(stats["total_time"], 0.1), "s | Tentativi falliti: ", stats["fails"])
+	else:
+		# [TELEMETRIA] Errore utente registrato
+		if has_node("/root/TelemetryManager"):
+			TelemetryManager.track_fail("L3")
+			print("[TELEMETRIA L3] Fallimento registrato. Totale attuale: ", TelemetryManager.stats["L3"]["fails"])
+
 	# Suoniamo l'audio della scelta attuale
 	if current_dropped_audio != null:
 		_play_audio(current_dropped_audio)
@@ -69,11 +92,9 @@ func _on_run_pressed() -> void:
 		# Aspettiamo che l'audio finisca prima di dire se hai vinto/perso
 		await audio_player.finished 
 	
-	# Verifica vittoria
-	if current_dropped_text == CORRECT_ANSWER:
-		verification_requested.emit(true)
-	else:
-		verification_requested.emit(false)
+	# Emettiamo il segnale di vittoria o fallimento alla fine
+	verification_requested.emit(is_correct)
+
 # Funzione chiamata dalla Cutscene per cambiare l'immagine al volo!
 func update_image(new_texture: Texture2D) -> void:
 	if %CrystalBallImage:
