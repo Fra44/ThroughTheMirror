@@ -54,6 +54,12 @@ func track_fail(id: String):
 
 # Genera la stringa finale compatta per il copia-incolla
 func get_summary_string() -> String:
+	# ---> NUOVO: Chiudiamo il cronometro del manuale prima di generare la stringa!
+	if _current_manual_start > 0.0:
+		var time_spent = Time.get_unix_time_from_system() - _current_manual_start
+		total_manual_time += time_spent
+		_current_manual_start = 0.0
+		
 	var s = "[ID: %s] | " % session_id
 	
 	# 1. Stampiamo le statistiche per OGNI livello (L1, L2, L3, L4)

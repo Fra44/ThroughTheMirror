@@ -140,10 +140,7 @@ func _on_book_button_pressed():
 		
 	if manual_instance.visible:
 		manual_instance.close_manual()
-		
-		# --- TELEMETRIA: Il manuale si sta chiudendo ---
-		if has_node("/root/TelemetryManager"):
-			TelemetryManager.track_manual_close()
+		# Ho rimosso la telemetria qui, ci pensa close_manual()!
 	else:
 		manual_instance.open_manual()
 		

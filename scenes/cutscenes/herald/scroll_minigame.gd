@@ -232,39 +232,30 @@ func _on_run_pressed() -> void:
 	await _animate_scroll_state(final_width, final_space)
 	
 	if is_successful:
+		# [TELEMETRIA] Vittoria vera!
 		if has_node("/root/TelemetryManager"):
 			TelemetryManager.end_level("L4")
+			
+			# ---> QUESTE SONO LE DUE RIGHE CHE MANCAVANO <---
+			var stats = TelemetryManager.stats["L4"]
+			print("[TELEMETRIA L4] Completato. Tempo totale: ", snapped(stats["total_time"], 0.1), "s | Tentativi falliti: ", stats["fails"])
 			
 		await _play_success_vertical_scroll_demo()
 		_start_success_return_to_initial_position()
 		
-		# Rimettiamo solo il segnale pulito!
+		# Emettiamo la VITTORIA alla cutscene
 		verification_requested.emit(true)
 		
 	else:
-		# [TELEMETRIA] Errore di configurazione del codice, incremento dei fallimenti
+		# [TELEMETRIA] Fallimento vero!
 		if has_node("/root/TelemetryManager"):
 			TelemetryManager.track_fail("L4")
 			print("[TELEMETRIA L4] Fallimento registrato. Totale attuale: ", TelemetryManager.stats["L4"]["fails"])
 			
 		await _wait(0.45)
+		
+		# Emettiamo il FALLIMENTO alla cutscene
 		verification_requested.emit(false)
-		
-		verification_requested.emit(true)
-		
-		# ---> INIZIO CODICE TEMPORANEO PER TESTARE IL QUIZ <---
-		# Creiamo un piccolo delay senza bloccare il nodo
-		await get_tree().create_timer(1.5).timeout
-		
-		# Carichiamo la scena come "livello sovrapposto"
-		var quiz_scene = load("res://scenes/reflection/ReflectionQuiz.tscn")
-		if quiz_scene:
-			var quiz_instance = quiz_scene.instantiate()
-			# Aggiungiamo il quiz in cima a tutto, alla radice del gioco
-			get_tree().root.add_child(quiz_instance)
-		else:
-			print("ERRORE: Impossibile trovare la scena del Quiz al percorso indicato!")
-		# ---> FINE CODICE TEMPORANEO <---
 	
 	is_running_code = false
 

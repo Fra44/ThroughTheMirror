@@ -58,6 +58,8 @@ func close_manual():
 	# rimetterlo invisibile qui, a patto che was_paused_before_manual sia false!
 	# Ma per ora teniamo la tua logica:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	if has_node("/root/TelemetryManager"):
+		TelemetryManager.track_manual_close()
 
 func toggle_manual():
 	# Invece di riscrivere tutto, richiamiamo le funzioni che abbiamo appena sistemato!
