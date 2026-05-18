@@ -5,22 +5,22 @@ extends Control
 @onready var question_label = $PanelContainer/MarginContainer/VBoxContainer/QuestionLabel
 @onready var answers_container = $PanelContainer/MarginContainer/VBoxContainer/AnswersContainer
 @onready var fact_panel = %FactPanel
-@onready var fact_label = %FactPanel/Label
+@onready var fact_label = %FactPanel/MarginContainer/Label
 @onready var next_button = %NextButton
 
 # --- DATI DEL QUIZ ---
 var questions = [
 	{
-		"q": "Perché è importante l'attributo Alt Text nelle immagini?",
-		"options": ["Per migliorare i colori", "Per gli utenti che usano Screen Reader", "Per caricare l'immagine prima"],
+		"q": "Why is the Alt Text attribute important for images?",
+		"options": ["To improve colors", "For users relying on Screen Readers", "To load the image faster"],
 		"correct": 1,
-		"fact": "Esatto! Nel 2024, il 54% dei siti web ha ancora immagini senza Alt Text, rendendo il web 'invisibile' a milioni di persone cieche."
+		"fact": "Correct! In 2024, 54% of websites still have images without Alt Text, making the web 'invisible' to millions of blind people."
 	},
 	{
-		"q": "Cos'è il 'Reflow' (WCAG 1.4.10) che hai applicato alla pergamena?",
-		"options": ["Un modo per cambiare font", "L'adattamento del testo quando si zooma", "Un effetto di trasparenza"],
+		"q": "What is the 'Reflow' (WCAG 1.4.10) that you applied to the scroll?",
+		"options": ["A way to change fonts", "The adaptation of text when zooming", "A transparency effect"],
 		"correct": 1,
-		"fact": "Esatto! Il Reflow permette di zoomare fino al 400% senza scorrimento orizzontale. Senza di esso, leggere una pagina è come guardare attraverso uno spioncino."
+		"fact": "Correct! Reflow allows zooming up to 400% without horizontal scrolling. Without it, reading a page is like looking through a peephole."
 	}
 	# Aggiungi le altre 2 qui...
 ]
@@ -48,36 +48,57 @@ func _show_question():
 	var q_data = questions[current_q]
 	question_label.text = q_data["q"]
 	
-	# Gestione intelligente dei bottoni: mostra solo quelli necessari
 	var buttons = answers_container.get_children()
 	for i in range(buttons.size()):
 		var btn = buttons[i]
+		
+		# ---> NUOVO: Resettiamo i colori delle risposte precedenti
+		btn.remove_theme_color_override("font_disabled_color")
+		btn.remove_theme_color_override("font_color")
+		
 		if i < q_data["options"].size():
 			btn.text = q_data["options"][i]
 			btn.show()
-			btn.disabled = false # Riabilitiamo il bottone per la nuova domanda
+			btn.disabled = false 
 		else:
-			btn.hide() # Nascondiamo i bottoni extra
+			btn.hide()
 
 func _on_answer_pressed(index: int):
-	# Disabilitiamo tutti i bottoni per evitare che il giocatore ne clicchi due
-	for btn in answers_container.get_children():
-		btn.disabled = true
-		
-	var correct = (index == questions[current_q]["correct"])
+	var correct_index = questions[current_q]["correct"]
+	var correct = (index == correct_index)
 	
-	# Registriamo il risultato per la telemetria (Controllo se hai già creato l'Autoload)
+	# ---> NUOVO: Logica dei colori sui bottoni
+	var buttons = answers_container.get_children()
+	for i in range(buttons.size()):
+		var btn = buttons[i]
+		btn.disabled = true # Blocchiamo i click
+		
+		if i < questions[current_q]["options"].size():
+			if i == correct_index:
+				# La risposta corretta diventa VERDE
+				btn.add_theme_color_override("font_disabled_color", Color("4ade80"))
+			elif i == index:
+				# Se hai cliccato una risposta sbagliata, diventa ROSSA
+				btn.add_theme_color_override("font_disabled_color", Color("f87171"))
+			else:
+				# Le altre risposte non cliccate diventano grigie/mezze trasparenti
+				btn.add_theme_color_override("font_disabled_color", Color(0.6, 0.6, 0.6, 0.5))
+	
+	# Registriamo il risultato per la telemetria
 	if has_node("/root/TelemetryManager"):
 		TelemetryManager.quiz_results.append(1 if correct else 0)
 	
-	# Mostriamo il feedback
+	# Mostriamo il feedback correggendo il problema del testo "Sbagliato... Esatto!"
+	var fact_text = questions[current_q]["fact"]
 	if correct:
-		fact_label.text = questions[current_q]["fact"]
+		fact_label.text = fact_text
 	else:
-		fact_label.text = "Sbagliato, ma non preoccuparti! " + questions[current_q]["fact"]
+		# Rimuoviamo "Correct! " dalla stringa originale per non creare contraddizioni
+		var cleaned_fact = fact_text.replace("Correct! ", "").replace("Correct!", "")
+		fact_label.text = "Wrong, but don't worry!\n" + cleaned_fact
 		
 	fact_panel.show()
-	next_button.text = "Prossima Domanda"
+	next_button.text = "Next Question"
 	next_button.show()
 
 func _on_next_pressed():
@@ -95,23 +116,23 @@ func _on_next_pressed():
 
 func _show_final_screen():
 	quiz_finished = true
-	question_label.text = "Congratulazioni, hai completato la tua formazione da Architetto dell'Accessibilità!"
+	question_label.text = "Congratulations, you have completed your training as an Accessibility Architect!"
 	
 	# Nascondiamo le vecchie risposte e il pannello delle info
 	answers_container.hide()
 	fact_panel.hide()
 	
 	# Ricicliamo il bottone Next come grande chiamata all'azione finale
-	next_button.text = "Copia Dati e Vai al Questionario"
+	next_button.text = "Copy Data and Go to Questionnaire"
 	next_button.show()
 
 func _copy_data_and_exit():
 	if has_node("/root/TelemetryManager"):
 		var data = TelemetryManager.get_summary_string()
 		DisplayServer.clipboard_set(data)
-		print("Dati copiati negli appunti: ", data)
+		print("Data copied to clipboard: ", data)
 	else:
-		DisplayServer.clipboard_set("[Dati Telemetria di Prova]")
+		DisplayServer.clipboard_set("[Test Telemetry Data]")
 		
 	# Scommenta la riga sotto e inserisci il vero link quando lo avrai pronto!
 	# OS.shell_open("https://il_tuo_link_nettskjema_qui")
