@@ -64,7 +64,7 @@ theme_override_constants/line_separation = 3
 theme_override_font_sizes/normal_font_size = 18
 theme_override_font_sizes/bold_font_size = 18
 bbcode_enabled = true
-text = "New data Added to [color=yellow]Manual[/color]! Short summary:"
+text = "New data Added to [color=#FFD966]Codex[/color]! Short summary:"
 fit_content = true
 
 [node name="HSeparator" type="HSeparator" parent="Anchor/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1600857697]

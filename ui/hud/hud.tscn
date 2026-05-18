@@ -131,7 +131,7 @@ layout_mode = 0
 offset_top = -2.0
 offset_right = 40.0
 offset_bottom = 14.0
-text = "[M]"
+text = "[C]"
 label_settings = SubResource("LabelSettings_aixkq")
 
 [node name="MirrorHUD" type="Control" parent="." unique_id=595831992]
@@ -269,6 +269,7 @@ theme_override_constants/margin_bottom = 5
 
 [node name="TutorialPanel" type="PanelContainer" parent="MarginContainer" unique_id=1950545952]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(249.03, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_aixkq")
 
@@ -279,38 +280,29 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="HBoxContainer" type="GridContainer" parent="MarginContainer/TutorialPanel/MarginContainer" unique_id=259766684]
+[node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer/TutorialPanel/MarginContainer" unique_id=1090597031]
 layout_mode = 2
-columns = 2
 
-[node name="Label" type="Label" parent="MarginContainer/TutorialPanel/MarginContainer/HBoxContainer" unique_id=1043355700]
+[node name="Label" type="RichTextLabel" parent="MarginContainer/TutorialPanel/MarginContainer/HBoxContainer" unique_id=1718815744]
 layout_mode = 2
-text = "Movement:"
+bbcode_enabled = true
+text = "Move with [color=#FFD966][lb]WASD[rb][/color] or [color=#FFD966][lb]Arrow Keys[rb][/color]"
+fit_content = true
 
-[node name="Label5" type="Label" parent="MarginContainer/TutorialPanel/MarginContainer/HBoxContainer" unique_id=426360144]
+[node name="Label2" type="RichTextLabel" parent="MarginContainer/TutorialPanel/MarginContainer/HBoxContainer" unique_id=1126907749]
 layout_mode = 2
-text = "[WASD]"
+bbcode_enabled = true
+text = "Press [color=#FFD966][lb]P[rb][/color] to open Settings"
+fit_content = true
 
-[node name="Label2" type="Label" parent="MarginContainer/TutorialPanel/MarginContainer/HBoxContainer" unique_id=353176761]
+[node name="Label3" type="RichTextLabel" parent="MarginContainer/TutorialPanel/MarginContainer/HBoxContainer" unique_id=1742578084]
 layout_mode = 2
-text = "Open settings:"
+bbcode_enabled = true
+text = "Press [color=#FFD966][lb]C[rb][/color] to open the Resonance Codex"
+fit_content = true
 
-[node name="Label6" type="Label" parent="MarginContainer/TutorialPanel/MarginContainer/HBoxContainer" unique_id=1365614336]
+[node name="Label4" type="RichTextLabel" parent="MarginContainer/TutorialPanel/MarginContainer/HBoxContainer" unique_id=450911661]
 layout_mode = 2
-text = "[P]"
-
-[node name="Label3" type="Label" parent="MarginContainer/TutorialPanel/MarginContainer/HBoxContainer" unique_id=991230887]
-layout_mode = 2
-text = "Open Manual:"
-
-[node name="Label7" type="Label" parent="MarginContainer/TutorialPanel/MarginContainer/HBoxContainer" unique_id=1784078369]
-layout_mode = 2
-text = "[M]"
-
-[node name="Label4" type="Label" parent="MarginContainer/TutorialPanel/MarginContainer/HBoxContainer" unique_id=641927690]
-layout_mode = 2
-text = "Interact:"
-
-[node name="Label8" type="Label" parent="MarginContainer/TutorialPanel/MarginContainer/HBoxContainer" unique_id=1582395832]
-layout_mode = 2
-text = "[ENTER]"
+bbcode_enabled = true
+text = "Press [color=#FFD966][lb]Enter[rb][/color] to Interact 	"
+fit_content = true
