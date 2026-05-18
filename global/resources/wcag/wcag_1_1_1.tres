@@ -12,8 +12,8 @@ The WCAG 2.1 success criterion 1.1.1 - Non-text Content ensures that users can a
 
 [b][u]TECHNICAL REQUIREMENTS[/u][/b]
 [indent]
-[b]•[/b] Meaningful non-text content must provide equivalent text alternatives, such as alt text.
-[b]•[/b] These alternatives allow assistive technologies like screen readers to communicate the same information to users.
+[b]•[/b] Meaningful non-text content must provide equivalent text alternatives, such as ARIA labels or 'alt' attributes.
+[b]•[/b] These alternatives allow assistive technologies to communicate the same information to users.
 [b]•[/b] The goal is to ensure content remains accessible regardless of how users perceive information.
 [/indent]
 [b][u]TIP[/u][/b]

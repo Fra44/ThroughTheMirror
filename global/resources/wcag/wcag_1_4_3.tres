@@ -8,7 +8,7 @@ id = "1.4.3"
 title = "Minimum Contrast"
 short_description = "This criterion requires text to have sufficient contrast against its background, with a minimum ratio of 4.5:1 for normal text."
 long_description = "[b][u]OBJECTIVE[/u][/b]
-The WCAG 2.1 success criterion 1.4.3 - Contrast (Minimum) ensures that text remains readable for users with visual impairments or reduced contrast sensitivity. Low contrast can make content difficult to perceive regardless of color differences.
+The WCAG 2.1 success criterion 1.4.3 - Contrast (Minimum) ensures that text remains readable for users with visual impairments or reduced contrast sensitivity.
 
 [b][u]TECHNICAL REQUIREMENTS[/u][/b]
 [indent]

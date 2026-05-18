@@ -10,14 +10,13 @@ name = "Deuteranopia (CVD)"
 icon = ExtResource("1_05ify")
 short_info = "SEMANTIC MEANING BOUND TO HUE CHANNEL ONLY"
 manual_text = "[b][u]CLINICAL OVERVIEW[/u][/b]
-Color Vision Deficiency (CVD) is a visual condition in which people have difficulty distinguishing specific colors or color shades. It is caused by abnormalities in the cone cells of the retina that detect color.
+Color Vision Deficiency (CVD) primarily involves a reduced ability to distinguish between specific wavelengths of light. It is caused by the absence (anopia) or malfunctioning (anomaly) of one of the three types of cone cells in the retina.
 
 [b][u]VARIATIONS & DEMOGRAPHICS[/u][/b]
 [indent]
-[b]•[/b] The most common form is red-green deficiency (also called Deuteranopia), although blue-yellow deficiency and complete color blindness are rarer forms.
-[b]•[/b] It affects men more frequently because the related genes are linked to the X chromosome.
-[b]•[/b] Diagnosis is commonly performed through color vision tests like the Ishihara test.
-[b]•[/b] There is currently no cure for inherited CVD, though assistive technologies may help in some situations.
+[b]•[/b] [b]Red-Green Deficiency:[/b] Protan (red cones) and Deutan (green cones) are the most prevalent forms, making reds and greens easily confused.
+[b]•[/b] [b]Blue-Yellow (Tritan) & Achromatopsia:[/b] Rarer forms affecting blue cones or causing a total lack of color perception.
+[b]•[/b] It affects approximately 1 in 12 men (8%) and 1 in 200 women (0.5%) of Northern European ancestry, due to X chromosome linkage.
 [/indent]"
 related_wcag = ExtResource("1_2x1d4")
 metadata/_custom_type_script = "uid://dry85ilgnq64e"

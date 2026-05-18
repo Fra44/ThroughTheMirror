@@ -15,10 +15,10 @@ A cataract is a condition in which the eye's lens becomes cloudy, significantly 
 [b][u]CAUSES AND RISKS[/u][/b]
 [indent]
 [b]•[/b] Commonly associated with aging, but can occur due to injuries, or diseases like glaucoma and diabetes.
-[b]•[/b] Risk factors include steroid use, radiation exposure, smoking, and ultraviolet (UV) light.
-[b]•[/b] It is a leading cause of blindness worldwide, although it is usually treatable through surgery.
-[/indent] 
+[b]•[/b] Globally, at least 2.2 billion people have a near or distance vision impairment, and cataracts are a leading cause.
+[b]•[/b] It is usually treatable through surgery, but remains a major barrier in digital environments.
+[/indent]
 [b][u]VISUAL IMPACT[/u][/b]
-This impairment manifests as a significant loss of contrast and a “foggy” or blurred overlay in the individual’s vision, making text nearly impossible to read when placed on similar-colored backgrounds."
+This impairment manifests as a significant loss of contrast and a “foggy” or blurred overlay in the individual’s vision, making text nearly impossible to read when placed on similar-colored backgrounds. According to the WebAIM 2025 report, low contrast text affects 81.0% of all analyzed websites, representing a massive obstacle for these users."
 related_wcag = ExtResource("1_f072e")
 metadata/_custom_type_script = "uid://dry85ilgnq64e"

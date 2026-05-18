@@ -10,14 +10,13 @@ name = "Blindness"
 icon = ExtResource("1_biwb8")
 short_info = "NULL OR GENERIC ALT-TEXT"
 manual_text = "[b][u]CLINICAL OVERVIEW[/u][/b]
-Blindness is a condition involving partial or complete loss of vision. It can range from low vision to total blindness, where a person cannot perceive light at all.
+Blindness is a condition involving partial or complete loss of vision. According to recent global estimates, it affects approximately 43.2 million people worldwide.
 
 [b][u]FORMS & CAUSES[/u][/b]
 [indent]
-[b]•[/b] Forms include partial blindness, total blindness, congenital blindness, and legal blindness.
-[b]•[/b] Legal blindness is typically defined as vision of 20/200 or worse even with correction.
-[b]•[/b] It can result from many causes, such as cataracts, glaucoma, retinal diseases, or neurological damage.
-[b]•[/b] Accessibility tools and assistive technologies can help people maintain independence and functionality.
+[b]•[/b] [b]Total Blindness:[/b] A complete lack of light perception. Users rely exclusively on assistive technologies like screen readers or Braille displays.
+[b]•[/b] [b]Light Perception:[/b] The ability to perceive light and shadows without distinguishing shapes.
+[b]•[/b] The \"disability\" in software occurs when the UI lacks the semantic structure necessary for screen readers to translate visual layouts into navigable information.
 [/indent]"
 related_wcag = ExtResource("1_yt0pc")
 metadata/_custom_type_script = "uid://dry85ilgnq64e"

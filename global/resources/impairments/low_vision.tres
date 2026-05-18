@@ -10,14 +10,13 @@ name = "Severe Low Vision"
 icon = ExtResource("1_2nrxl")
 short_info = "FIXED-WIDTH CONTAINER DETECTED"
 manual_text = "[b][u]CLINICAL OVERVIEW[/u][/b]
-Low vision is a visual impairment that cannot be fully corrected with glasses, contact lenses, surgery, or medical treatment. Unlike total blindness, people with low vision usually retain some usable sight, but visual tasks can still be difficult or impossible without support.
+Low vision represents a reduced visual acuity that cannot be fully corrected with standard glasses. Around 295 million people worldwide have moderate or severe vision impairment (MSVI), with a further 257 million experiencing mild impairment.
 
 [b][u]EFFECTS & DAILY CHALLENGES[/u][/b]
 [indent]
-[b]•[/b] Low vision can affect central vision, peripheral vision, contrast sensitivity, depth perception, night vision, and resistance to glare.
-[b]•[/b] It can make everyday activities harder, including reading, recognizing faces, using computers, driving, or navigating unfamiliar spaces.
-[b]•[/b] Common causes include aging-related eye diseases, glaucoma, cataracts, diabetic retinopathy, injuries, or congenital conditions.
-[b]•[/b] Assistive technologies, magnification tools, larger text, improved contrast, and adaptable layouts can help people access information more comfortably.
+[b]•[/b] [b]Acuity Loss & Field of Vision:[/b] Causes global blurriness or blind spots (Scotoma, Tunnel Vision).
+[b]•[/b] [b]Photophobia:[/b] Extreme sensitivity to light, making bright \"light mode\" interfaces painful.
+[b]•[/b] These users often rely on magnification tools or larger text to read. If layouts are not adaptable, reading becomes exhausting.
 [/indent]"
 related_wcag = ExtResource("1_l6m8n")
 metadata/_custom_type_script = "uid://dry85ilgnq64e"
