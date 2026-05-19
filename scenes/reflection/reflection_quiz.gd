@@ -245,7 +245,7 @@ func _show_final_screen() -> void:
 	quiz_finished = true
 	final_data = _get_telemetry_data()
 
-	question_label.text = "Congratulations, you have completed your training as an Accessibility Architect!"
+	question_label.text = "Congratulations, you have completed your journey of Resonance!"
 
 	answers_container.hide()
 	fact_panel.show()

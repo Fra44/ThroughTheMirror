@@ -18,9 +18,9 @@ var stats = {
 var quiz_results = []
 
 func _ready():
-	# Generiamo un ID anonimo univoco all'avvio (es. Arch_4821)
+	# Generiamo un ID anonimo univoco all'avvio (es. id_4821)
 	randomize()
-	session_id = "Arch_" + str(randi() % 9000 + 1000)
+	session_id = "p_" + str(randi() % 9000 + 1000)
 
 func track_manual_open():
 	manual_opens += 1
@@ -31,8 +31,8 @@ func track_manual_close():
 		var time_spent = Time.get_unix_time_from_system() - _current_manual_start
 		total_manual_time += time_spent
 		_current_manual_start = 0.0 # Resettiamo per la prossima volta
-		print("number of manual opening:" + str(manual_opens))
-		print("total time of manual opened:" + str(total_manual_time))
+		print("number of codex opening:" + str(manual_opens))
+		print("total time of codex opened:" + str(total_manual_time))
 
 func start_level(id: String):
 	if stats.has(id):
@@ -74,6 +74,6 @@ func get_summary_string() -> String:
 			quiz_str += ","
 			
 	# 3. Infine, aggiungiamo i dati del manuale (aperture e tempo) e i risultati del quiz
-	s += "| [Manual: %d (%.0fs)] | [Quiz: %s]" % [manual_opens, total_manual_time, quiz_str]
+	s += "| [Codex: %d (%.0fs)] | [Quiz: %s]" % [manual_opens, total_manual_time, quiz_str]
 	
 	return s

@@ -229,7 +229,7 @@ func _play_ending_transition() -> void:
 	await tween.finished
 	
 	# 3. Ora che è tutto nero, cambiamo scena!
-	get_tree().change_scene_to_file("res://scenes/reflection/ReflectionQuiz.tscn")
+	get_tree().change_scene_to_file("res://scenes/cutscenes/outro/GameOutro.tscn")
 	
 	# 4. Pulizia finale
 	fade_layer.queue_free()

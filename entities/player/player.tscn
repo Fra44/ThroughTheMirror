@@ -216,7 +216,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_down",
-"speed": 4.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -227,7 +227,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_left",
-"speed": 4.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -238,7 +238,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_right",
-"speed": 4.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -249,7 +249,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_up",
-"speed": 4.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -423,7 +423,7 @@ shape = SubResource("RectangleShape2D_abrql")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1924347249]
 sprite_frames = SubResource("SpriteFrames_jjk8f")
-animation = &"walk_down"
+animation = &"idle_up"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1841351269 groups=["MainCamera"]]
 process_mode = 3

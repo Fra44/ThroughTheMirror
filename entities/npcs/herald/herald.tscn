@@ -7,7 +7,7 @@
 [ext_resource type="Resource" uid="uid://61akl8p7n6bs" path="res://dialogue/herald.dialogue" id="4_au5l7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sgogx"]
-size = Vector2(15, 34)
+size = Vector2(15, 36)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5bwdk"]
 radius = 19.0
@@ -19,7 +19,7 @@ z_index = 1
 texture = ExtResource("1_krrav")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=781722917]
-position = Vector2(-0.5, 5)
+position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_sgogx")
 
 [node name="Actionable" type="Area2D" parent="." unique_id=1578364785]

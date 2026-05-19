@@ -1,10 +1,10 @@
-[gd_scene format=3 uid="uid://ull42s7xamni"]
+[gd_scene format=3 uid="uid://c8gm4suhbtlyg"]
 
-[ext_resource type="Script" uid="uid://doa8awhefv43j" path="res://scenes/cutscenes/intro/game_intro.gd" id="1_attn4"]
-[ext_resource type="PackedScene" uid="uid://b1phbvg720r51" path="res://dialogue/balloon.tscn" id="2_jxuhy"]
+[ext_resource type="Script" uid="uid://doa8awhefv43j" path="res://scenes/cutscenes/intro/game_intro.gd" id="1_hcnlg"]
+[ext_resource type="PackedScene" uid="uid://b1phbvg720r51" path="res://dialogue/balloon.tscn" id="2_fsncj"]
 
 [node name="GameIntro" type="CanvasLayer" unique_id=869446152]
-script = ExtResource("1_attn4")
+script = ExtResource("1_hcnlg")
 
 [node name="Portrait" type="TextureRect" parent="." unique_id=1914243330]
 anchors_preset = 15
@@ -24,4 +24,4 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Balloon" parent="." unique_id=1434168376 instance=ExtResource("2_jxuhy")]
+[node name="Balloon" parent="." unique_id=1434168376 instance=ExtResource("2_fsncj")]
