@@ -86,7 +86,7 @@ func _start_tutorial_sequence() -> void:
 	
 	# 2. Dissolvenza lunga
 	var tween = create_tween()
-	tween.tween_property(tutorial_panel, "modulate:a", 0.0, 3.0)
+	tween.tween_property(tutorial_panel, "modulate:a", 0.0, 10.0)
 	
 	await tween.finished
 	if tutorial_panel != null:

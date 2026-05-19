@@ -55,7 +55,7 @@ shader_parameter/line_color = Color(0, 0, 0, 1)
 shader_parameter/line_thickness = 10.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aixkq"]
-bg_color = Color(0, 0, 0, 0.5921569)
+bg_color = Color(0, 0, 0, 0.78431374)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -269,7 +269,7 @@ theme_override_constants/margin_bottom = 5
 
 [node name="TutorialPanel" type="PanelContainer" parent="MarginContainer" unique_id=1950545952]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(249.03, 0)
+custom_minimum_size = Vector2(266.045, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_aixkq")
 
@@ -289,6 +289,12 @@ bbcode_enabled = true
 text = "Move with [color=#FFD966][lb]WASD[rb][/color] or [color=#FFD966][lb]Arrow Keys[rb][/color]"
 fit_content = true
 
+[node name="Label5" type="RichTextLabel" parent="MarginContainer/TutorialPanel/MarginContainer/HBoxContainer" unique_id=1620660608]
+layout_mode = 2
+bbcode_enabled = true
+text = "Run with [color=#FFD966][lb]Shift[rb][/color] "
+fit_content = true
+
 [node name="Label2" type="RichTextLabel" parent="MarginContainer/TutorialPanel/MarginContainer/HBoxContainer" unique_id=1126907749]
 layout_mode = 2
 bbcode_enabled = true
@@ -304,5 +310,5 @@ fit_content = true
 [node name="Label4" type="RichTextLabel" parent="MarginContainer/TutorialPanel/MarginContainer/HBoxContainer" unique_id=450911661]
 layout_mode = 2
 bbcode_enabled = true
-text = "Press [color=#FFD966][lb]Enter[rb][/color] to Interact 	"
+text = "Press [color=#FFD966][lb]Enter[rb][/color] or [color=#FFD966][lb]Spacebar[rb][/color] to Interact 	"
 fit_content = true
