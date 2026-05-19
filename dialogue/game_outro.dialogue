@@ -1,0 +1,69 @@
+~ start
+
+: The final barrier had been revealed. [#portrait=res://scenes/cutscenes/images/outro_world_restored.png] [#fade_in=8.0]
+: The last message had been rewritten.
+: The final path had been made clear.
+
+: The Lands of the Prism were no longer silent.
+: Signs could be understood.
+: Words could be reached.
+: Signals no longer depended on color alone.
+: The world had begun to answer more than one way of perceiving it.
+
+: But the kingdom was not safe yet.
+: Far beyond the restored paths, Kalipso still waited.
+: The dragon of the prophecy had awakened.
+: And the final battle could no longer be delayed.
+
+: Across the kingdom, the Royal Herald carried the news. [#portrait=res://scenes/cutscenes/images/outro_herald_announcement.png] [#cinematic=2.5]
+: The roads were open.
+: The gates could be reached.
+: The warning could finally be understood.
+: For the first time, the call for help could travel through the whole realm.
+
+: And because of that...
+: The hero could finally arrive. [#portrait=res://scenes/cutscenes/images/outro_hero_arrives.png] [#cinematic=2.3]
+
+: Across the restored paths, the hero crossed the kingdom.
+: The people of the Lands of the Prism watched as the final gate opened.
+: The adventure that had once been blocked could now continue.
+
+: At the end of the path, Kalipso was waiting. [#portrait=res://scenes/cutscenes/images/outro_dragon_battle.png] [#cinematic=2.5]
+: The dragon of the prophecy had risen before the kingdom.
+: But this time, the hero could reach the battlefield.
+: And every change made along the journey had led to this moment.
+
+: And so, the hero faced the dragon. [#fade_out]
+
+: The battle became a story. [#portrait=res://scenes/cutscenes/images/outro_dragon_defeated.png] [#fade_in] [#cinematic=2.5]
+: The story became a legend.
+: And the legend became the ending the world had been waiting for.
+
+: The game was finally complete.
+
+: The End. [#fade_out]
+
+: You woke up at your desk. [#portrait=res://scenes/cutscenes/images/outro_developer_wakes.png] [#fade_in=6.0] [#cinematic=7.0]
+: The room was quiet.
+: The monitor was still on.
+: The game was running.
+
+: No errors.
+: No warnings.
+: No blocked paths.
+
+: For a moment, it felt like a dream.
+
+: Then you saw it.
+
+: The Resonance Codex was lying beside your keyboard. [#portrait=res://scenes/cutscenes/images/outro_codex.png] [#cinematic=1.5]
+: Its pages were filled with everything you had discovered.
+: Not just notes about the game.
+: Knowledge about how worlds can include, guide, and welcome more people.
+
+: The final build was ready.
+
+: But this time, you understood what that really meant.
+
+: Your game was ready to be shared. [#fade_out=8.0]
+=> END
