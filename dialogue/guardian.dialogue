@@ -7,7 +7,7 @@ Guard: It is so frustrating to not being able to do the only job I have to do...
 : You activate your power, and start to see as he sees. 
 Guard: See? I can't tell them apart. Please help me! [#portrait=res://scenes/cutscenes/images/guardian_closed.png] [#activate_shader]  
 : Now you can try to help the guard by fixing the code behind the magical mechanism of the gate. [#pan_camera] [#show_debug][#minigame_menu]
-: Read more about the problem in the manual.
+: Read more about the problem in the Resonance Codex.
 => END
 
 

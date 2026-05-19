@@ -9,7 +9,7 @@ Innkeeper: What? You are the developer of the game?? [#portrait=res://scenes/cut
 Innkeeper: Please help me, creator!
 : Here you have the menu. As you can see, it is not clearly visible. [#minigame_menu]
 : Imagine the poor innkeeper, that has cataracts! [#activate_shader]
-: Try to help him by fixing the menu! Read more about the problem in the manual. You can open it by clicking on the icon on the right, or by pressing the {M} key [#show_debug]
+: Try to help him by fixing the menu! Read more about the problem in the Resonance Codex. [#show_debug]
 => END
 
 ~ fail_reaction

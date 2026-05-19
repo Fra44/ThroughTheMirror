@@ -58,6 +58,7 @@ Herald: That is why I use this hallway. It is wide enough... but it is exhaustin
 
 ~ scroll_fix_prompt
 : The scroll should stop growing sideways and let the text wrap downward. Can you fix the layout spell?
+: Read more about the problem in the Resonance Codex.
 => END
 
 

@@ -1,5 +1,7 @@
 ~ start
-Archivist: Welcome. I am the Magical Archivist of this castle. [#portrait=res://scenes/cutscenes/images/archivist_normal.png]
+???: You have arrived. I was waiting for you. [#portrait=res://scenes/cutscenes/images/archivist_normal.png]
+???: We met when you first crossed into this world.
+Archivist: I am the Magical Archivist of this castle.
 Archivist: I am responsible for all the magical writings and prophecies that speak about both the past and the future of the Lands of the Prism. 
 Archivist: I do not need sight to read a prophecy. But the magic must speak clearly. And I have a problem with the prophecy I have been analyzing today. [#portrait=res://scenes/cutscenes/images/archivist_sad.png]
 Archivist: My magical screen reader cannot make sense of the description attached to this orb. It just says: "Visual prophecy underscore final dot magic". What is it supposed to mean? [#portrait=res://scenes/cutscenes/images/crystall_ball.png]
@@ -7,7 +9,7 @@ Archivist: I fear this may be important...
 : You activate your power to perceive the world as she does. [#activate_shader] [#portrait=res://scenes/cutscenes/images/crystall_ball_prophecy.png]
 : The world fades to darkness. Through the Mirror of Resonance, you experience the world as the Archivist does.
 : The problem is not the orb itself, but the text used to describe it.
-: You should try to help her! Read more about this problem in the Manual. [#show_debug] [#minigame_menu] 
+: You should try to help her! Read more about this problem in the Resonance Codex. [#show_debug] [#minigame_menu] 
 
 => END
 
