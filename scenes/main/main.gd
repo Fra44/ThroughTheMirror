@@ -7,23 +7,24 @@ signal level_changed(level_path: String)
 @onready var current_level_container: Node = $CurrentLevel
 @onready var player: Node2D = $Actors/Player
 
-# --- NUOVO: RIFERIMENTO AL SIPARIO NERO ---
-# Assicurati che il percorso combaci con la gerarchia che hai appena creato in main.tscn!
+# Riferimento al sipario nero
 @onready var transition_rect: ColorRect = $TransitionLayer/ColorRect
 
 var current_level_instance: Node = null
 var is_transitioning: bool = false # Sicurezza anti-spam
 
+
 func _ready() -> void:
 	if transition_rect:
-		transition_rect.modulate.a = 0.0 # Assicuriamoci che sia invisibile all'inizio
-		
+		transition_rect.modulate.a = 0.0
+	
 	if not initial_level_path.is_empty():
 		change_level(initial_level_path, &"Default")
 		
 	var hud_scene = preload("res://ui/hud/hud.tscn")
 	var hud_instance = hud_scene.instantiate()
 	add_child(hud_instance)
+
 
 func change_level(path: String, spawn_id: StringName = &"") -> void:
 	if path.is_empty():
@@ -33,21 +34,25 @@ func change_level(path: String, spawn_id: StringName = &"") -> void:
 	# Se stiamo già cambiando livello, blocchiamo richieste duplicate
 	if is_transitioning:
 		return
+	
 	is_transitioning = true
+	
+	# Blocchiamo il player anche da Main, per sicurezza
+	_set_player_movement_locked(true)
 
 	var packed_scene := load(path) as PackedScene
 	if packed_scene == null:
 		push_error("Failed to load level scene: %s" % path)
 		is_transitioning = false
+		_set_player_movement_locked(false)
 		return
 
-	# --- 1. FADE IN (Schermo Nero) ---
-	var tween_in = create_tween()
-	# Sfuma il canale Alpha da 0 a 1 in 0.25 secondi (molto rapido e fluido)
-	tween_in.tween_property(transition_rect, "modulate:a", 1.0, 0.25)
-	await tween_in.finished
+	# --- 1. FADE IN: schermo nero ---
+	if transition_rect:
+		var tween_in = create_tween()
+		tween_in.tween_property(transition_rect, "modulate:a", 1.0, 0.25)
+		await tween_in.finished
 	
-	# Aspettiamo un extra frame per far "riposare" il motore
 	await get_tree().process_frame
 
 	# --- 2. LOGICA DI TELETRASPORTO AL BUIO ---
@@ -55,13 +60,16 @@ func change_level(path: String, spawn_id: StringName = &"") -> void:
 
 	if spawn_id != StringName():
 		var spawn_points_node = next_level.get_node_or_null("SpawnPoints")
+		
 		if spawn_points_node != null:
 			var spawn = spawn_points_node.get_node_or_null(String(spawn_id))
+			
 			if spawn != null:
 				var destination = spawn.global_position
 				player.global_position = destination
 				
 				var cam = get_tree().get_first_node_in_group("MainCamera")
+				
 				if cam:
 					var was_smoothing = cam.position_smoothing_enabled
 					cam.position_smoothing_enabled = false
@@ -69,7 +77,7 @@ func change_level(path: String, spawn_id: StringName = &"") -> void:
 					cam.reset_smoothing()
 					cam.force_update_scroll()
 					cam.position_smoothing_enabled = was_smoothing
-					
+
 	if current_level_instance != null and is_instance_valid(current_level_instance):
 		current_level_container.remove_child(current_level_instance)
 		current_level_instance.queue_free()
@@ -79,14 +87,26 @@ func change_level(path: String, spawn_id: StringName = &"") -> void:
 
 	level_changed.emit(path)
 	
-	# Aspettiamo giusto un decimo di secondo per assicurarci che Godot 
-	# abbia caricato le nuove texture del livello (cancelli, ecc.)
+	# Aspettiamo un attimo per assicurarci che Godot abbia caricato il nuovo livello
 	await get_tree().create_timer(0.1).timeout
 
-	# --- 3. FADE OUT (Torna la luce) ---
-	var tween_out = create_tween()
-	tween_out.tween_property(transition_rect, "modulate:a", 0.0, 0.25)
-	await tween_out.finished
+	# --- 3. FADE OUT: torna la luce ---
+	if transition_rect:
+		var tween_out = create_tween()
+		tween_out.tween_property(transition_rect, "modulate:a", 0.0, 0.25)
+		await tween_out.finished
 
-	# Sblocco
+	# Sblocco finale
+	_set_player_movement_locked(false)
 	is_transitioning = false
+
+
+func _set_player_movement_locked(locked: bool) -> void:
+	if not is_instance_valid(player):
+		return
+	
+	if "is_talking" in player:
+		player.is_talking = locked
+	
+	if "velocity" in player:
+		player.velocity = Vector2.ZERO
