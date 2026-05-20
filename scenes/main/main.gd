@@ -11,33 +11,51 @@ signal level_changed(level_path: String)
 @onready var transition_rect: ColorRect = $TransitionLayer/ColorRect
 
 var current_level_instance: Node = null
-var is_transitioning: bool = false # Sicurezza anti-spam
+var is_transitioning: bool = false
+
+# Serve solo per distinguere il primissimo caricamento dai cambi livello normali
+var is_first_load: bool = true
 
 
 func _ready() -> void:
+	# Fondamentale: la scena main deve partire già completamente nera.
+	# Così Godot non mostra HUD/player/livello per un frame prima del caricamento.
 	if transition_rect:
-		transition_rect.modulate.a = 0.0
+		transition_rect.visible = true
+		transition_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		transition_rect.modulate.a = 1.0
 	
+	# Carichiamo il primo livello mentre lo schermo è già nero.
 	if not initial_level_path.is_empty():
-		change_level(initial_level_path, &"Default")
-		
+		await change_level(initial_level_path, &"Default", true)
+	
+	# Creiamo l'HUD mentre lo schermo è ancora nero.
 	var hud_scene = preload("res://ui/hud/hud.tscn")
 	var hud_instance = hud_scene.instantiate()
 	add_child(hud_instance)
+	
+	# Aspettiamo un frame, così HUD, livello, player e camera hanno tempo
+	# di stabilizzarsi prima di mostrare qualcosa.
+	await get_tree().process_frame
+	
+	# Fade-in iniziale lento della schermata completa.
+	if transition_rect:
+		var startup_tween := create_tween()
+		startup_tween.tween_property(transition_rect, "modulate:a", 0.0, 5.0)
+		await startup_tween.finished
+	
+	is_first_load = false
 
 
-func change_level(path: String, spawn_id: StringName = &"") -> void:
+func change_level(path: String, spawn_id: StringName = &"", skip_fade_in: bool = false) -> void:
 	if path.is_empty():
 		push_error("change_level called with an empty path")
 		return
 
-	# Se stiamo già cambiando livello, blocchiamo richieste duplicate
 	if is_transitioning:
 		return
 	
 	is_transitioning = true
-	
-	# Blocchiamo il player anche da Main, per sicurezza
 	_set_player_movement_locked(true)
 
 	var packed_scene := load(path) as PackedScene
@@ -48,10 +66,13 @@ func change_level(path: String, spawn_id: StringName = &"") -> void:
 		return
 
 	# --- 1. FADE IN: schermo nero ---
-	if transition_rect:
-		var tween_in = create_tween()
+	# Nel primo caricamento lo schermo è già nero, quindi non serve rifare il fade-in.
+	if transition_rect and not skip_fade_in:
+		var tween_in := create_tween()
 		tween_in.tween_property(transition_rect, "modulate:a", 1.0, 0.25)
 		await tween_in.finished
+	elif transition_rect:
+		transition_rect.modulate.a = 1.0
 	
 	await get_tree().process_frame
 
@@ -87,16 +108,16 @@ func change_level(path: String, spawn_id: StringName = &"") -> void:
 
 	level_changed.emit(path)
 	
-	# Aspettiamo un attimo per assicurarci che Godot abbia caricato il nuovo livello
 	await get_tree().create_timer(0.1).timeout
 
 	# --- 3. FADE OUT: torna la luce ---
-	if transition_rect:
-		var tween_out = create_tween()
+	# Nel primo caricamento NON lo facciamo qui.
+	# Lo gestisce _ready(), dopo aver creato anche l'HUD.
+	if transition_rect and not skip_fade_in:
+		var tween_out := create_tween()
 		tween_out.tween_property(transition_rect, "modulate:a", 0.0, 0.25)
 		await tween_out.finished
 
-	# Sblocco finale
 	_set_player_movement_locked(false)
 	is_transitioning = false
 
