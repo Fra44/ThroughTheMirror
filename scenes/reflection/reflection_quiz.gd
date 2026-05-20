@@ -128,7 +128,7 @@ func _ready() -> void:
 func _play_fade_in() -> void:
 	modulate.a = 0.0
 	var tween := create_tween()
-	tween.tween_property(self, "modulate:a", 1.0, 1.5)
+	tween.tween_property(self, "modulate:a", 1.0, 7.0)
 
 
 func _show_intro_screen() -> void:
@@ -183,7 +183,11 @@ func _on_answer_pressed(index: int) -> void:
 	_save_quiz_result(correct)
 	_show_feedback(correct)
 
-	next_button.text = "Next Question"
+	if current_q == questions.size() - 1:
+		next_button.text = "Conclude"
+	else:
+		next_button.text = "Next Question"
+
 	next_button.show()
 
 
