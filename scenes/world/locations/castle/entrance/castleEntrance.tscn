@@ -39,59 +39,65 @@ tile_set = ExtResource("1_qevml")
 position = Vector2(8, -5)
 
 [node name="InsideCastle" type="Marker2D" parent="SpawnPoints" unique_id=853628864]
-position = Vector2(0, -12)
+position = Vector2(5, -15)
 
 [node name="InsideCastleEntranceSx" type="Marker2D" parent="SpawnPoints" unique_id=575575169]
-position = Vector2(-128, -128)
+position = Vector2(-131, -133)
 
 [node name="InsideCastleEntranceDx" type="Marker2D" parent="SpawnPoints" unique_id=913139059]
-position = Vector2(136, -128)
+position = Vector2(141, -133)
 
 [node name="InsideCastleUpSx" type="Marker2D" parent="SpawnPoints" unique_id=84819173]
-position = Vector2(-126, -518)
+position = Vector2(-130, -504)
 
 [node name="InsideCastleUpDx" type="Marker2D" parent="SpawnPoints" unique_id=917269219]
-position = Vector2(138, -518)
+position = Vector2(142, -504)
 
 [node name="TeleportOutsideCastle" parent="SpawnPoints" unique_id=1236967530 instance=ExtResource("2_3srqa")]
-position = Vector2(5, 14)
+position = Vector2(5, 4)
 rotation = -1.5707964
 scale = Vector2(2.495, 2.495)
 target_scene_path = "uid://c70072y8peuih"
 target_spawn_id = "OutsideCastle"
+trigger_size = Vector2(1, 12)
 
 [node name="TeleportHallwayDx" parent="SpawnPoints" unique_id=259305222 instance=ExtResource("2_3srqa")]
-position = Vector2(143.99998, -184)
+position = Vector2(141, -141)
 scale = Vector2(5.975, 5.975)
 target_scene_path = "uid://duxerjpkdbbvs"
 target_spawn_id = "HallwayDx"
+trigger_size = Vector2(8, 1)
 
 [node name="TeleportHallwaySx" parent="SpawnPoints" unique_id=1239185432 instance=ExtResource("2_3srqa")]
-position = Vector2(-128.00003, -184)
+position = Vector2(-131, -141)
 scale = Vector2(5.975, 5.975)
 target_scene_path = "uid://duxerjpkdbbvs"
 target_spawn_id = "HallwaySx"
+trigger_size = Vector2(8.04, 1.04)
 
 [node name="TeleportHallwayDxUp" parent="SpawnPoints" unique_id=139403761 instance=ExtResource("2_3srqa")]
-position = Vector2(144.00002, -456.00003)
+position = Vector2(142, -490.99997)
 scale = Vector2(5.975, 5.975)
 target_scene_path = "uid://duxerjpkdbbvs"
 target_spawn_id = "HallwayDxInsideUp"
+trigger_size = Vector2(8, 1)
 
 [node name="TeleportHallwaySxUp" parent="SpawnPoints" unique_id=828095052 instance=ExtResource("2_3srqa")]
-position = Vector2(-128, -456.00003)
+position = Vector2(-130, -489.99997)
 scale = Vector2(5.975, 5.975)
 target_scene_path = "uid://duxerjpkdbbvs"
 target_spawn_id = "HallwaySxInsideUp"
+trigger_size = Vector2(8, 1)
 
 [node name="OutsideLibrary" type="Marker2D" parent="SpawnPoints" unique_id=73122497]
-position = Vector2(0, -112)
+position = Vector2(5, -132)
 
 [node name="TeleportLibrary" parent="SpawnPoints" unique_id=1269645175 instance=ExtResource("2_3srqa")]
-position = Vector2(5, -166)
+position = Vector2(5, -140)
 scale = Vector2(4, 4)
 target_scene_path = "uid://ddg3b8h0uwqit"
 target_spawn_id = "InsideLibrary"
+trigger_size = Vector2(4, 1)
 
 [node name="Herald" parent="." unique_id=777789410 instance=ExtResource("3_qevml")]
 position = Vector2(-78, -622)

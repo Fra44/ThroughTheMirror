@@ -61,14 +61,15 @@ tile_set = ExtResource("1_rmief")
 position = Vector2(8, 0)
 
 [node name="InsideLibrary" type="Marker2D" parent="SpawnPoints" unique_id=1028947253]
-position = Vector2(8, -16)
+position = Vector2(13, -11)
 
 [node name="TeleportOutsideLibrary" parent="SpawnPoints" unique_id=1236967530 instance=ExtResource("2_bxtc7")]
-position = Vector2(16, 16.000002)
+position = Vector2(13, 0)
 rotation = -1.5707964
 scale = Vector2(4.715, 4.715)
 target_scene_path = "uid://c446i8jf4uw6c"
 target_spawn_id = "OutsideLibrary"
+trigger_size = Vector2(1, 3)
 
 [node name="Archivist" parent="." unique_id=652356716 instance=ExtResource("3_bxtc7")]
 position = Vector2(25, -179)

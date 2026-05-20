@@ -86,25 +86,27 @@ metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
 [node name="OutsideTavern" type="Marker2D" parent="SpawnPoints" unique_id=1609965993]
-position = Vector2(-72, -190)
+position = Vector2(-72, -189)
 
 [node name="TeleportInsideTavern" parent="SpawnPoints" unique_id=720813871 instance=ExtResource("2_het3u")]
-position = Vector2(-72, -199)
+position = Vector2(-72, -195)
 target_scene_path = "uid://4to86fcqodrf"
 target_spawn_id = "InsideTavern"
+trigger_size = Vector2(16.82, 4.93)
 
 [node name="OutsideCastle" type="Marker2D" parent="SpawnPoints" unique_id=869535832]
-position = Vector2(595, -504)
+position = Vector2(595, -503)
 
 [node name="TeleportInsideCastle" parent="SpawnPoints" unique_id=1236967530 instance=ExtResource("2_het3u")]
-position = Vector2(595, -518)
+position = Vector2(595, -516)
 target_scene_path = "uid://c446i8jf4uw6c"
 target_spawn_id = "InsideCastle"
 
 [node name="TeleportInsideCastleDEBUG" parent="SpawnPoints" unique_id=114060254 instance=ExtResource("2_het3u")]
-position = Vector2(296, -261)
+position = Vector2(293, -257)
 target_scene_path = "uid://c446i8jf4uw6c"
 target_spawn_id = "InsideCastle"
+trigger_size = Vector2(10, 6)
 
 [node name="Castle" type="Node2D" parent="." unique_id=1144003607]
 position = Vector2(289, -300)

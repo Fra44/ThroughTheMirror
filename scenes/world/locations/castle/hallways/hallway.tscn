@@ -45,49 +45,6 @@ position = Vector2(-131, -96)
 tile_map_data = PackedByteArray("AAAIAAUAAgAaAAUAAAAJAAUAAgAaAAUAAAAKAAUAAgAaAAUAAAALAAEAAgAaAA0AAAAHAAAAAgAaAA0AAAA=")
 tile_set = ExtResource("1_mtqyg")
 
-[node name="SpawnPoints" type="Node2D" parent="." unique_id=1504815922]
-position = Vector2(8, 0)
-
-[node name="HallwayDx" type="Marker2D" parent="SpawnPoints" unique_id=2023278776]
-position = Vector2(8, -16)
-
-[node name="TeleportOutsideHallwayDx" parent="SpawnPoints" unique_id=1236967530 instance=ExtResource("2_36kds")]
-position = Vector2(16, 16.000002)
-rotation = -1.5707964
-scale = Vector2(4.715, 4.715)
-target_scene_path = "uid://c446i8jf4uw6c"
-target_spawn_id = "InsideCastleEntranceDx"
-
-[node name="HallwaySx" type="Marker2D" parent="SpawnPoints" unique_id=728489108]
-position = Vector2(-555, -16)
-
-[node name="TeleportOutsideHallwaySx" parent="SpawnPoints" unique_id=192404199 instance=ExtResource("2_36kds")]
-position = Vector2(-547, 16.000002)
-rotation = -1.5707964
-scale = Vector2(4.715, 4.715)
-target_scene_path = "uid://c446i8jf4uw6c"
-target_spawn_id = "InsideCastleEntranceSx"
-
-[node name="HallwayDxInsideUp" type="Marker2D" parent="SpawnPoints" unique_id=748597811]
-position = Vector2(5, -550)
-
-[node name="TeleportInsideCastleUpDx" parent="SpawnPoints" unique_id=361320053 instance=ExtResource("2_36kds")]
-position = Vector2(11, -605)
-rotation = -1.5707964
-scale = Vector2(4.715, 4.715)
-target_scene_path = "uid://c446i8jf4uw6c"
-target_spawn_id = "InsideCastleUpDx"
-
-[node name="HallwaySxInsideUp" type="Marker2D" parent="SpawnPoints" unique_id=305357907]
-position = Vector2(-558, -550)
-
-[node name="InsideCastleUpSx" parent="SpawnPoints" unique_id=1144180527 instance=ExtResource("2_36kds")]
-position = Vector2(-552, -605)
-rotation = -1.5707964
-scale = Vector2(4.715, 4.715)
-target_scene_path = "uid://c446i8jf4uw6c"
-target_spawn_id = "InsideCastleUpSx"
-
 [node name="HallwaySx" type="Node2D" parent="." unique_id=174752525]
 position = Vector2(-563, 0)
 
@@ -129,3 +86,50 @@ collision_enabled = false
 position = Vector2(-131, -96)
 tile_map_data = PackedByteArray("AAAIAAUAAgAaAAUAAAAJAAUAAgAaAAUAAAAKAAUAAgAaAAUAAAALAAQAAQAXAAwAAAA=")
 tile_set = ExtResource("1_mtqyg")
+
+[node name="SpawnPoints" type="Node2D" parent="." unique_id=1504815922]
+position = Vector2(8, 0)
+
+[node name="HallwayDx" type="Marker2D" parent="SpawnPoints" unique_id=2023278776]
+position = Vector2(13, -13)
+
+[node name="TeleportOutsideHallwayDx" parent="SpawnPoints" unique_id=1236967530 instance=ExtResource("2_36kds")]
+position = Vector2(13, 1.9073486e-06)
+rotation = -1.5707964
+scale = Vector2(4.715, 4.715)
+target_scene_path = "uid://c446i8jf4uw6c"
+target_spawn_id = "InsideCastleEntranceDx"
+trigger_size = Vector2(1, 10)
+
+[node name="HallwaySx" type="Marker2D" parent="SpawnPoints" unique_id=728489108]
+position = Vector2(-549, -13)
+
+[node name="TeleportOutsideHallwaySx" parent="SpawnPoints" unique_id=192404199 instance=ExtResource("2_36kds")]
+position = Vector2(-549, -1)
+rotation = -1.5707964
+scale = Vector2(4.715, 4.715)
+target_scene_path = "uid://c446i8jf4uw6c"
+target_spawn_id = "InsideCastleEntranceSx"
+trigger_size = Vector2(1, 10)
+
+[node name="HallwayDxInsideUp" type="Marker2D" parent="SpawnPoints" unique_id=748597811]
+position = Vector2(14, -569)
+
+[node name="TeleportInsideCastleUpDx" parent="SpawnPoints" unique_id=361320053 instance=ExtResource("2_36kds")]
+position = Vector2(14, -576)
+rotation = -1.5707964
+scale = Vector2(4.715, 4.715)
+target_scene_path = "uid://c446i8jf4uw6c"
+target_spawn_id = "InsideCastleUpDx"
+trigger_size = Vector2(1, 11)
+
+[node name="HallwaySxInsideUp" type="Marker2D" parent="SpawnPoints" unique_id=305357907]
+position = Vector2(-550, -569)
+
+[node name="InsideCastleUpSx" parent="SpawnPoints" unique_id=1144180527 instance=ExtResource("2_36kds")]
+position = Vector2(-551, -577.00006)
+rotation = -1.5707964
+scale = Vector2(4.715, 4.715)
+target_scene_path = "uid://c446i8jf4uw6c"
+target_spawn_id = "InsideCastleUpSx"
+trigger_size = Vector2(1, 11)
