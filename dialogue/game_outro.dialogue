@@ -43,7 +43,7 @@
 
 : The End. [#fade_out]
 
-: You woke up at your desk. [#portrait=res://scenes/cutscenes/images/outro_developer_wakes.png] [#fade_in=6.0] [#cinematic=7.0]
+: You woke up at your desk. [#portrait=res://scenes/cutscenes/images/outro_developer_wakes.png] [#fade_in=3.0] [#cinematic=5.0]
 : The room was quiet.
 : The monitor was still on.
 : The game was running.
