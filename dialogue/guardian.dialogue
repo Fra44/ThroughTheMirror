@@ -37,5 +37,5 @@ Guard: I heard that the archivist was worried about something... Maybe you shoul
 
 
 ~ already_helped
-Guard: Thank you again, Architect. Proceed to the castle. [#portrait=res://scenes/cutscenes/images/guardian_tick_letting.png]
+Guard: Thank you again, Developer. Proceed to the castle. [#portrait=res://scenes/cutscenes/images/guardian_tick_letting.png]
 => END
