@@ -107,7 +107,7 @@ var quiz_started: bool = false
 var final_data: String = ""
 
 # INSERISCI QUI IL VERO LINK DEL TUO FORM NETTSKJEMA.
-var form_url: String = "https://nettskjema.no/a/629384"
+var form_url: String = "https://nettskjema.no/a/630352"
 
 var wcag_url: String = "https://www.w3.org/WAI/standards-guidelines/wcag/"
 var who_url: String = "https://www.who.int/news-room/fact-sheets/detail/blindness-and-visual-impairment"
