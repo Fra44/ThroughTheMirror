@@ -96,7 +96,7 @@ func _set_tutorial_dimmed(dimmed: bool) -> void:
 		return
 	
 	if dimmed:
-		tutorial_panel.modulate.a = 0.55
+		tutorial_panel.modulate.a = 0.65
 	else:
 		tutorial_panel.modulate.a = 1.0
 

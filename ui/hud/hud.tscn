@@ -253,15 +253,15 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Quit to Title"
 
-[node name="CloseMenuButton" type="Button" parent="SettingsOverlay/MenuPanel/MarginContainer/VBoxContainer" unique_id=329528217]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Close Settings"
-
 [node name="ShowControlsButton" type="Button" parent="SettingsOverlay/MenuPanel/MarginContainer/VBoxContainer" unique_id=1947279545]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Show Controls"
+
+[node name="CloseMenuButton" type="Button" parent="SettingsOverlay/MenuPanel/MarginContainer/VBoxContainer" unique_id=329528217]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Close Settings"
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=789268613]
 anchors_preset = 2
