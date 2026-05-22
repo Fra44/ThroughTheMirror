@@ -2,7 +2,7 @@ extends CanvasLayer
 
 var manual_instance: Node = null
 
-# --- RIFERIMENTI AI NODI MIRROR E MANUALE (Lasciati intatti come i tuoi originali) ---
+# --- RIFERIMENTI AI NODI MIRROR E MANUALE ---
 @onready var mirror_button = $MirrorHUD/MarginContainer/PanelContainer2/MarginContainer/HBoxContainer/MirrorButton
 @onready var status_label = $MirrorHUD/MarginContainer/PanelContainer2/MarginContainer/HBoxContainer/Status
 @onready var book_button = $ToolsHUD/MarginContainer/PanelContainer/HBoxContainer/BookButton
@@ -13,8 +13,9 @@ var manual_instance: Node = null
 @onready var volume_slider = %VolumeSlider
 @onready var close_button = %CloseMenuButton
 @onready var main_menu_button = %MainMenuButton
+@onready var show_control_button = get_node_or_null("%ShowControlsButton")
 
-# --- RIFERIMENTO AL TUTORIAL (Assicurati che il nodo si chiami %TutorialPanel nell'editor) ---
+# --- RIFERIMENTO AL TUTORIAL ---
 @onready var tutorial_panel = get_node_or_null("%TutorialPanel")
 @onready var tutorial_close_button = get_node_or_null("%CloseButton")
 
@@ -24,6 +25,7 @@ var notification_book_texture = preload("res://assets/book/book_notification_ico
 
 # --- AUDIO ---
 var master_bus = AudioServer.get_bus_index("Master")
+
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -37,6 +39,9 @@ func _ready():
 	close_button.pressed.connect(_close_settings)
 	main_menu_button.pressed.connect(_on_main_menu_pressed)
 	volume_slider.value_changed.connect(_on_volume_changed)
+	
+	if show_control_button != null:
+		show_control_button.pressed.connect(_on_show_control_pressed)
 	
 	# --- SETUP INIZIALE IMPOSTAZIONI ---
 	settings_overlay.visible = false
@@ -57,44 +62,80 @@ func _ready():
 
 
 func _process(_delta):
-	# Scorciatoia da tastiera per il manuale (es. tasto M)
+	# Scorciatoia da tastiera per il manuale
 	if Input.is_action_just_pressed("ui_book"):
 		_on_book_button_pressed()
 		
-	# Scorciatoia da tastiera per le impostazioni (tasto P)
+	# Scorciatoia da tastiera per le impostazioni
 	if Input.is_action_just_pressed("ui_settings"):
 		if settings_overlay.visible:
 			_close_settings()
 		else:
 			_on_settings_button_pressed()
 		
-	# Chiamiamo la funzione di aggiornamento UI ad ogni frame
+	# Aggiorna lo stato del Mirror HUD
 	_update_mirror_hud()
 
+
+# --- GESTIONE TUTORIAL ---
 func _on_tutorial_close_pressed() -> void:
 	if tutorial_panel != null:
 		tutorial_panel.visible = false
+
+
+func show_tutorial_panel() -> void:
+	if tutorial_panel == null:
+		return
+	
+	tutorial_panel.visible = true
+	tutorial_panel.modulate.a = 1.0
+
+
+func _set_tutorial_dimmed(dimmed: bool) -> void:
+	if tutorial_panel == null:
+		return
+	
+	if dimmed:
+		tutorial_panel.modulate.a = 0.55
+	else:
+		tutorial_panel.modulate.a = 1.0
+
+
+func _on_show_control_pressed() -> void:
+	# Chiudiamo prima le impostazioni, così il tutorial non resta sotto l'overlay.
+	_close_settings()
+	
+	# Poi mostriamo di nuovo il tutorial dei comandi.
+	show_tutorial_panel()
+
 
 # --- GESTIONE IMPOSTAZIONI ---
 func _on_settings_button_pressed() -> void:
 	get_tree().paused = true
 	settings_overlay.visible = true
+	_set_tutorial_dimmed(true)
+
 
 func _close_settings() -> void:
 	get_tree().paused = false
 	settings_overlay.visible = false
+	_set_tutorial_dimmed(false)
+
 
 func _on_volume_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(master_bus, linear_to_db(value))
 	AudioServer.set_bus_mute(master_bus, value == 0.0)
 
+
 func _on_main_menu_pressed() -> void:
 	get_tree().paused = false 
 	get_tree().change_scene_to_file("res://scenes/main/MainMenu.tscn") 
 
+
 # --- GESTIONE SCOPERTE ED HUD ---
 func _on_new_discovery(_item) -> void:
 	book_button.texture_normal = notification_book_texture
+
 
 func _update_mirror_hud() -> void:
 	var is_any_shader_active = false
@@ -112,6 +153,7 @@ func _update_mirror_hud() -> void:
 		
 	mirror_button.disabled = not is_any_shader_active
 
+
 func _on_book_button_pressed():
 	book_button.texture_normal = normal_book_texture
 	
@@ -122,13 +164,12 @@ func _on_book_button_pressed():
 		
 	if manual_instance.visible:
 		manual_instance.close_manual()
-		# Ho rimosso la telemetria qui, ci pensa close_manual()!
 	else:
 		manual_instance.open_manual()
 		
-		# --- TELEMETRIA: Il manuale si sta aprendo ---
 		if has_node("/root/TelemetryManager"):
 			TelemetryManager.track_manual_open()
+
 
 func _set_pause_mode_recursive(node: Node, mode: int) -> void:
 	node.process_mode = mode 
