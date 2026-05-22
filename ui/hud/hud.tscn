@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bll6nxcgfagdg" path="res://assets/hud/mirror/mirror_icon.png" id="4_imuuq"]
 [ext_resource type="Texture2D" uid="uid://dufox1na1nd7i" path="res://assets/hud/mirror/mirror_BW_icon.png" id="5_kwc50"]
 [ext_resource type="Texture2D" uid="uid://dsmetvvhjlmdk" path="res://assets/book/book_open_icon.png" id="6_aixkq"]
+[ext_resource type="Texture2D" uid="uid://bq1i6srsqcflw" path="res://assets/hud/UI_TravelBook_IconCross01a.png" id="9_aixkq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e0nub"]
 bg_color = Color(0.8454806, 0.72517806, 0.6224164, 0.78431374)
@@ -283,13 +284,29 @@ theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
 [node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer/TutorialPanel/MarginContainer" unique_id=1090597031]
+layout_direction = 2
 layout_mode = 2
 
-[node name="Label" type="RichTextLabel" parent="MarginContainer/TutorialPanel/MarginContainer/HBoxContainer" unique_id=1718815744]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TutorialPanel/MarginContainer/HBoxContainer" unique_id=418504993]
+layout_mode = 2
+
+[node name="Label2" type="RichTextLabel" parent="MarginContainer/TutorialPanel/MarginContainer/HBoxContainer/HBoxContainer" unique_id=1718815744]
 layout_mode = 2
 bbcode_enabled = true
-text = "Move with [color=#FFD966][lb]WASD[rb][/color] or [color=#FFD966][lb]Arrow Keys[rb][/color]"
+text = "Move with [color=#FFD966][lb]WASD[rb][/color] or [color=#FFD966][lb]Arrow Keys[rb][/color]    "
 fit_content = true
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 2
+
+[node name="CloseButton" type="Button" parent="MarginContainer/TutorialPanel/MarginContainer/HBoxContainer/HBoxContainer" unique_id=736108521]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_vertical = 0
+icon = ExtResource("9_aixkq")
+alignment = 2
+icon_alignment = 2
 
 [node name="Label5" type="RichTextLabel" parent="MarginContainer/TutorialPanel/MarginContainer/HBoxContainer" unique_id=1620660608]
 layout_mode = 2

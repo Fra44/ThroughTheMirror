@@ -16,7 +16,7 @@ var manual_instance: Node = null
 
 # --- RIFERIMENTO AL TUTORIAL (Assicurati che il nodo si chiami %TutorialPanel nell'editor) ---
 @onready var tutorial_panel = get_node_or_null("%TutorialPanel")
-var tutorial_fade_started: bool = false # Il lucchetto per il timer
+@onready var tutorial_close_button = get_node_or_null("%CloseButton")
 
 # --- TEXTURE DEL MANUALE ---
 var normal_book_texture: Texture2D
@@ -47,18 +47,14 @@ func _ready():
 	if tutorial_panel != null:
 		tutorial_panel.visible = true
 		tutorial_panel.modulate.a = 1.0
-	
+
+	if tutorial_close_button != null:
+		tutorial_close_button.pressed.connect(_on_tutorial_close_pressed)
+		
 	# ASCOLTIAMO IL DISCOVERY MANAGER
 	if DiscoveryManager:
 		DiscoveryManager.new_discovery.connect(_on_new_discovery)
 
-# --- CONTROLLO INPUT PER IL TUTORIAL ---
-func _input(event: InputEvent) -> void:
-	# Controlliamo il movimento solo se il tutorial c'è e non è già in dissolvenza
-	if tutorial_panel != null and not tutorial_fade_started:
-		if event.is_action_pressed("ui_up") or event.is_action_pressed("ui_down") or \
-		   event.is_action_pressed("ui_left") or event.is_action_pressed("ui_right"):
-			_start_tutorial_sequence()
 
 func _process(_delta):
 	# Scorciatoia da tastiera per il manuale (es. tasto M)
@@ -75,23 +71,9 @@ func _process(_delta):
 	# Chiamiamo la funzione di aggiornamento UI ad ogni frame
 	_update_mirror_hud()
 
-
-# --- LOGICA SCOMPARSA TUTORIAL ---
-func _start_tutorial_sequence() -> void:
-	tutorial_fade_started = true # Chiudiamo il lucchetto
-	
-	# 1. Delay di lettura
-	await get_tree().create_timer(2.5).timeout
-	if tutorial_panel == null: return
-	
-	# 2. Dissolvenza lunga
-	var tween = create_tween()
-	tween.tween_property(tutorial_panel, "modulate:a", 0.0, 10.0)
-	
-	await tween.finished
+func _on_tutorial_close_pressed() -> void:
 	if tutorial_panel != null:
 		tutorial_panel.visible = false
-
 
 # --- GESTIONE IMPOSTAZIONI ---
 func _on_settings_button_pressed() -> void:

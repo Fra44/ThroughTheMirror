@@ -34,12 +34,7 @@ func _ready() -> void:
 	# Blocchiamo il player durante il fade-in iniziale e il primo hint.
 	_set_player_movement_locked(true)
 	
-	# Creiamo l'HUD mentre lo schermo è ancora nero.
-	var hud_scene = preload("res://ui/hud/hud.tscn")
-	var hud_instance = hud_scene.instantiate()
-	add_child(hud_instance)
-	
-	# Aspettiamo un frame, così HUD, livello, player e camera hanno tempo
+	# Aspettiamo un frame, così livello, player e camera hanno tempo
 	# di stabilizzarsi prima di mostrare qualcosa.
 	await get_tree().process_frame
 	
@@ -51,6 +46,11 @@ func _ready() -> void:
 	
 	# Mostra un primo hint solo al primo ingresso nel mondo.
 	await _show_first_world_hint()
+	
+	# Creiamo l'HUD solo DOPO il dialogo iniziale.
+	var hud_scene = preload("res://ui/hud/hud.tscn")
+	var hud_instance = hud_scene.instantiate()
+	add_child(hud_instance)
 	
 	_set_player_movement_locked(false)
 	is_first_load = false
@@ -152,7 +152,8 @@ func _show_first_world_hint() -> void:
 	
 	var balloon = DialogueManager.show_dialogue_balloon(first_world_hint_dialogue, "start")
 	
-	# Se il balloon espone un segnale di fine dialogo, aspettiamo.
-	# Se nel tuo progetto il segnale ha un nome diverso, usa quello che usi già negli NPC.
-	if balloon != null and balloon.has_signal("dialogue_ended"):
-		await balloon.dialogue_ended
+	if balloon == null:
+		return
+	
+	# Aspetta che il balloon venga effettivamente chiuso/rimosso.
+	await balloon.tree_exited
