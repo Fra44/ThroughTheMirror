@@ -16,6 +16,8 @@ var is_transitioning: bool = false
 # Serve solo per distinguere il primissimo caricamento dai cambi livello normali
 var is_first_load: bool = true
 
+var first_world_hint_dialogue: DialogueResource = preload("res://dialogue/first_world_hint.dialogue")
+var first_world_hint_shown: bool = false
 
 func _ready() -> void:
 	# Fondamentale: la scena main deve partire già completamente nera.
@@ -28,6 +30,9 @@ func _ready() -> void:
 	# Carichiamo il primo livello mentre lo schermo è già nero.
 	if not initial_level_path.is_empty():
 		await change_level(initial_level_path, &"Default", true)
+	
+	# Blocchiamo il player durante il fade-in iniziale e il primo hint.
+	_set_player_movement_locked(true)
 	
 	# Creiamo l'HUD mentre lo schermo è ancora nero.
 	var hud_scene = preload("res://ui/hud/hud.tscn")
@@ -44,6 +49,10 @@ func _ready() -> void:
 		startup_tween.tween_property(transition_rect, "modulate:a", 0.0, 5.0)
 		await startup_tween.finished
 	
+	# Mostra un primo hint solo al primo ingresso nel mondo.
+	await _show_first_world_hint()
+	
+	_set_player_movement_locked(false)
 	is_first_load = false
 
 
@@ -131,3 +140,19 @@ func _set_player_movement_locked(locked: bool) -> void:
 	
 	if "velocity" in player:
 		player.velocity = Vector2.ZERO
+
+func _show_first_world_hint() -> void:
+	if first_world_hint_shown:
+		return
+	
+	first_world_hint_shown = true
+	
+	if first_world_hint_dialogue == null:
+		return
+	
+	var balloon = DialogueManager.show_dialogue_balloon(first_world_hint_dialogue, "start")
+	
+	# Se il balloon espone un segnale di fine dialogo, aspettiamo.
+	# Se nel tuo progetto il segnale ha un nome diverso, usa quello che usi già negli NPC.
+	if balloon != null and balloon.has_signal("dialogue_ended"):
+		await balloon.dialogue_ended

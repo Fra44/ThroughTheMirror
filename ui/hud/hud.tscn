@@ -314,10 +314,3 @@ layout_mode = 2
 bbcode_enabled = true
 text = "Press [color=#FFD966][lb]Enter[rb][/color] or [color=#FFD966][lb]Spacebar[rb][/color] to Interact "
 fit_content = true
-
-[node name="Label6" type="RichTextLabel" parent="MarginContainer/TutorialPanel/MarginContainer/HBoxContainer" unique_id=1111558538]
-visible = false
-layout_mode = 2
-bbcode_enabled = true
-text = "The Mirror of Resonance activates automatically near hidden barriers."
-fit_content = true

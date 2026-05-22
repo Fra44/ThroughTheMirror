@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://crfu6ne84h3pf"
+path="res://.godot/imported/first_world_hint.dialogue-cc4ecace4d0d617c9f126944da2cddd3.tres"
+
+[deps]
+
+source_file="res://dialogue/first_world_hint.dialogue"
+dest_files=["res://.godot/imported/first_world_hint.dialogue-cc4ecace4d0d617c9f126944da2cddd3.tres"]
+
+[params]
+
+defaults=true
