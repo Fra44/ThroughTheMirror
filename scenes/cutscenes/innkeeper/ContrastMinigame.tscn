@@ -152,9 +152,10 @@ offset_right = 185.0
 offset_bottom = 52.0
 grow_vertical = 2
 theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 7
 
 [node name="PanelContainer" type="PanelContainer" parent="ColorPickerDisplay/MarginContainer2" unique_id=670289165]
-custom_minimum_size = Vector2(40, 130)
+custom_minimum_size = Vector2(40, 115)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_rhhg3")
 
@@ -176,7 +177,6 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 17
 text = "Click the button below
  to edit the menu color
-
 [Enter] to apply"
 horizontal_alignment = 1
 

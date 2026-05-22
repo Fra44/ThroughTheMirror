@@ -248,11 +248,6 @@ size_flags_horizontal = 3
 max_value = 10.0
 ticks_position = 3
 
-[node name="MainMenuButton" type="Button" parent="SettingsOverlay/MenuPanel/MarginContainer/VBoxContainer" unique_id=1442777036]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Quit to Title"
-
 [node name="ShowControlsButton" type="Button" parent="SettingsOverlay/MenuPanel/MarginContainer/VBoxContainer" unique_id=1947279545]
 unique_name_in_owner = true
 layout_mode = 2
@@ -262,6 +257,11 @@ text = "Show Controls"
 unique_name_in_owner = true
 layout_mode = 2
 text = "Close Settings"
+
+[node name="MainMenuButton" type="Button" parent="SettingsOverlay/MenuPanel/MarginContainer/VBoxContainer" unique_id=1442777036]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Quit to Title"
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=789268613]
 anchors_preset = 2
