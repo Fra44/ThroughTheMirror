@@ -151,10 +151,10 @@ offset_top = -60.0
 offset_right = 185.0
 offset_bottom = 52.0
 grow_vertical = 2
-theme_override_constants/margin_left = 10
+theme_override_constants/margin_left = 5
 
 [node name="PanelContainer" type="PanelContainer" parent="ColorPickerDisplay/MarginContainer2" unique_id=670289165]
-custom_minimum_size = Vector2(40, 40)
+custom_minimum_size = Vector2(40, 130)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_rhhg3")
 
@@ -174,11 +174,14 @@ theme_override_constants/separation = 3
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 17
-text = "Click here to edit color
+text = "Click the button below
+ to edit the menu color
+
 [Enter] to apply"
 horizontal_alignment = 1
 
 [node name="ColorPickerButton" type="ColorPickerButton" parent="ColorPickerDisplay/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer" unique_id=743867836]
+custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 size_flags_vertical = 3
 expand_icon = true
