@@ -8,7 +8,9 @@ Innkeeper: If only there was somebody that could help me... [#portrait=res://sce
 Innkeeper: What? You are the developer of the game?? [#portrait=res://scenes/cutscenes/images/conversation_innkeeper_surprised.png]
 Innkeeper: Please help me, creator!
 : Here you have the menu. As you can see, it is not clearly visible. [#minigame_menu]
-: Imagine the poor innkeeper, that has cataracts! [#activate_shader]
+: Imagine the poor innkeeper, that has cataracts!
+: The Mirror of Resonance has awakened automatically. [#activate_shader]
+: You are now perceiving the world through another experience.
 : Try to help him by fixing the menu! Read more about the problem in the Resonance Codex. [#show_debug]
 => END
 

@@ -36,14 +36,16 @@
 ???: To heal this world, you must first learn to perceive it through other experiences.
 
 ???: Take the Mirror of Resonance. [#portrait=res://scenes/cutscenes/images/intro_archivist_mirror.png] [#cinematic=0.5] [#show_mirror]
-???: It will help you sense the barriers that others encounter. [#portrait=res://scenes/cutscenes/images/intro_mirror.png] [#cinematic=0.5]
+???: It will not need to be used by hand. [#portrait=res://scenes/cutscenes/images/intro_mirror.png] [#cinematic=0.5]
+???: When someone faces a hidden barrier, the Mirror will awaken and reveal their experience to you.
 ???: Not to judge them.
 ???: But to understand what the world asks of them. [#portrait=res://scenes/cutscenes/images/intro_archivist_mirror.png]
 
 ???: And take the Resonance Codex. [#portrait=res://scenes/cutscenes/images/intro_archivist_mirror_codex.png] [#cinematic=0.5] [#show_codex]
-???: It will record your discoveries. [#portrait=res://scenes/cutscenes/images/intro_codex.png] [#cinematic=0.5]
+???: You may open it whenever you wish. [#portrait=res://scenes/cutscenes/images/intro_codex.png] [#cinematic=0.5]
+???: It will record your discoveries.
 ???: Within its pages, you will find knowledge that every developer should carry.
-???: Knowledge about accessibility, design, and the many ways people interact with digital worlds. 
+???: Knowledge about accessibility, design, and the many ways people interact with digital worlds.
 
 ???: Help the inhabitants of the Lands of the Prism. [#portrait=res://scenes/cutscenes/images/intro_archivist_mirror_codex.png]
 ???: Listen to their needs. Understand the barriers.

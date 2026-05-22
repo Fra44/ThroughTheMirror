@@ -124,9 +124,9 @@ func _update_mirror_hud() -> void:
 			break
 			
 	if is_any_shader_active:
-		status_label.text = "ON"
+		status_label.text = " Status: \nAwakened"
 	else:
-		status_label.text = "OFF"
+		status_label.text = " Status: \nDormant"
 		
 	mirror_button.disabled = not is_any_shader_active
 

@@ -159,21 +159,23 @@ offset_right = -25.0
 offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_right = 5
 
 [node name="PanelContainer2" type="PanelContainer" parent="MirrorHUD/MarginContainer" unique_id=1555647359]
+custom_minimum_size = Vector2(72, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_gfles")
 
 [node name="MarginContainer" type="MarginContainer" parent="MirrorHUD/MarginContainer/PanelContainer2" unique_id=1512842788]
 layout_mode = 2
 theme_override_constants/margin_left = 2
-theme_override_constants/margin_top = 3
+theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
 [node name="HBoxContainer" type="VBoxContainer" parent="MirrorHUD/MarginContainer/PanelContainer2/MarginContainer" unique_id=1204480468]
 layout_mode = 2
-theme_override_constants/separation = 4
+theme_override_constants/separation = 0
 
 [node name="MirrorButton" type="TextureButton" parent="MirrorHUD/MarginContainer/PanelContainer2/MarginContainer/HBoxContainer" unique_id=1797091477]
 material = SubResource("ShaderMaterial_gfles")
@@ -310,5 +312,12 @@ fit_content = true
 [node name="Label4" type="RichTextLabel" parent="MarginContainer/TutorialPanel/MarginContainer/HBoxContainer" unique_id=450911661]
 layout_mode = 2
 bbcode_enabled = true
-text = "Press [color=#FFD966][lb]Enter[rb][/color] or [color=#FFD966][lb]Spacebar[rb][/color] to Interact 	"
+text = "Press [color=#FFD966][lb]Enter[rb][/color] or [color=#FFD966][lb]Spacebar[rb][/color] to Interact "
+fit_content = true
+
+[node name="Label6" type="RichTextLabel" parent="MarginContainer/TutorialPanel/MarginContainer/HBoxContainer" unique_id=1111558538]
+visible = false
+layout_mode = 2
+bbcode_enabled = true
+text = "The Mirror of Resonance activates automatically near hidden barriers."
 fit_content = true
