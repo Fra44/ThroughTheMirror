@@ -6,6 +6,7 @@ var manual_instance: Node = null
 @onready var mirror_button = $MirrorHUD/MarginContainer/PanelContainer2/MarginContainer/HBoxContainer/MirrorButton
 @onready var status_label = $MirrorHUD/MarginContainer/PanelContainer2/MarginContainer/HBoxContainer/Status
 @onready var book_button = $ToolsHUD/MarginContainer/PanelContainer/HBoxContainer/BookButton
+@onready var mirror_panel = $MirrorHUD/MarginContainer/PanelContainer2
 
 # --- RIFERIMENTI AI NODI DELLE IMPOSTAZIONI ---
 @onready var settings_button = %SettingsButton
@@ -25,6 +26,10 @@ var notification_book_texture = preload("res://assets/book/book_notification_ico
 
 # --- AUDIO ---
 var master_bus = AudioServer.get_bus_index("Master")
+
+# Colori per il panel del Mirror: originale (#adc5c954) e awakened (#b0cf5954)
+var normal_panel_color: Color = Color(173.0/255.0, 197.0/255.0, 201.0/255.0, 84.0/255.0)
+var awakened_panel_color: Color = Color(176.0/255.0, 207.0/255.0, 89.0/255.0, 84.0/255.0)
 
 
 func _ready():
@@ -47,6 +52,12 @@ func _ready():
 	settings_overlay.visible = false
 	var current_db = AudioServer.get_bus_volume_db(master_bus)
 	volume_slider.value = db_to_linear(current_db)
+
+	# Salviamo il colore originale del panel mirror (prendendo la StyleBox se presente)
+	if mirror_panel:
+		var sb = mirror_panel.get_theme_stylebox("panel")
+		if sb and sb is StyleBoxFlat:
+			normal_panel_color = sb.bg_color
 	
 	# --- SETUP INIZIALE TUTORIAL ---
 	if tutorial_panel != null:
@@ -145,12 +156,22 @@ func _update_mirror_hud() -> void:
 		if "is_active" in shader and shader.is_active:
 			is_any_shader_active = true
 			break
-			
+
 	if is_any_shader_active:
 		status_label.text = " Status: \nAwakened"
+		# Impostiamo il colore del panel quando il mirror è attivo (awakened)
+		if mirror_panel:
+			var sb_on = mirror_panel.get_theme_stylebox("panel")
+			if sb_on and sb_on is StyleBoxFlat:
+				sb_on.bg_color = awakened_panel_color
 	else:
 		status_label.text = " Status: \nDormant"
-		
+		# Ripristiniamo il colore originale quando dormiente
+		if mirror_panel:
+			var sb_off = mirror_panel.get_theme_stylebox("panel")
+			if sb_off and sb_off is StyleBoxFlat:
+				sb_off.bg_color = normal_panel_color
+	
 	mirror_button.disabled = not is_any_shader_active
 
 
