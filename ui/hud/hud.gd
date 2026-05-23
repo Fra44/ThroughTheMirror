@@ -19,6 +19,7 @@ var manual_instance: Node = null
 # --- RIFERIMENTO AL TUTORIAL ---
 @onready var tutorial_panel = get_node_or_null("%TutorialPanel")
 @onready var tutorial_close_button = get_node_or_null("%CloseButton")
+var _tutorial_auto_closed: bool = false
 
 # --- TEXTURE DEL MANUALE ---
 var normal_book_texture: Texture2D
@@ -70,6 +71,22 @@ func _ready():
 	# ASCOLTIAMO IL DISCOVERY MANAGER
 	if DiscoveryManager:
 		DiscoveryManager.new_discovery.connect(_on_new_discovery)
+
+	# Proviamo a connetterci al DialogueManager in modo robusto (usa Engine.get_singleton)
+	_connect_dialogue_manager()
+
+func _connect_dialogue_manager() -> void:
+	var dm = Engine.get_singleton("DialogueManager")
+	if dm:
+		var cb_start = Callable(self, "_on_dialogue_started")
+		var cb_got = Callable(self, "_on_got_dialogue")
+		if not dm.is_connected("dialogue_started", cb_start):
+			dm.dialogue_started.connect(cb_start)
+		if not dm.is_connected("got_dialogue", cb_got):
+			dm.got_dialogue.connect(cb_got)
+	else:
+		# Riprovare al prossimo frame (il singleton potrebbe registrarsi più tardi)
+		call_deferred("_connect_dialogue_manager")
 
 
 func _process(_delta):
@@ -146,6 +163,24 @@ func _on_main_menu_pressed() -> void:
 # --- GESTIONE SCOPERTE ED HUD ---
 func _on_new_discovery(_item) -> void:
 	book_button.texture_normal = notification_book_texture
+
+
+func _on_dialogue_started(resource) -> void:
+	# Chiudiamo automaticamente il pannello tutorial alla prima conversazione
+	if _tutorial_auto_closed:
+		return
+	_tutorial_auto_closed = true
+	if tutorial_panel != null:
+		tutorial_panel.visible = false
+
+
+func _on_got_dialogue(line) -> void:
+	# Fallback: chiudiamo il tutorial se viene emessa una linea di dialogo
+	if _tutorial_auto_closed:
+		return
+	_tutorial_auto_closed = true
+	if tutorial_panel != null:
+		tutorial_panel.visible = false
 
 
 func _update_mirror_hud() -> void:
