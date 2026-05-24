@@ -60,7 +60,7 @@ layout_mode = 2
 
 [node name="Description" type="Label" parent="MarginContainer/MainPanel/Background/Padding/MainVBox" unique_id=1620870539]
 layout_mode = 2
-text = "Define the markers that will fix the rays"
+text = "Mark the safe and dangerous signals"
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/MainPanel/Background/Padding/MainVBox" unique_id=1891399403]
 layout_mode = 2
@@ -114,7 +114,7 @@ layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_ma6sm")
 bbcode_enabled = true
-text = "[i] drag symbol here[/i]"
+text = "[i] safe marker here[/i]"
 scroll_active = false
 script = ExtResource("2_qk8un")
 
@@ -165,12 +165,12 @@ text = "      <marker>"
 
 [node name="DropZoneRed" type="RichTextLabel" parent="MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid/RedDropContainer" unique_id=300487936]
 clip_contents = false
-custom_minimum_size = Vector2(115, 0)
+custom_minimum_size = Vector2(130, 0)
 layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_ma6sm")
 bbcode_enabled = true
-text = "[i] drag symbol here[/i]"
+text = "[i] danger marker here[/i]"
 scroll_active = false
 script = ExtResource("2_qk8un")
 ray_color = "red"
