@@ -8,7 +8,7 @@ id = "1.1.1"
 title = "Non-Text Content"
 short_description = "This criterion requires all meaningful non-text elements, such as images or icons, to include text alternatives that convey the same purpose or information."
 long_description = "[b][u]OBJECTIVE[/u][/b]
-The WCAG 2.1 success criterion 1.1.1 - Non-text Content ensures that users can access information presented through images, icons, charts, or other non-text elements.
+The WCAG 2.2 success criterion 1.1.1 - Non-text Content ensures that users can access information presented through images, icons, charts, or other non-text elements.
 
 [b][u]TECHNICAL REQUIREMENTS[/u][/b]
 [indent]

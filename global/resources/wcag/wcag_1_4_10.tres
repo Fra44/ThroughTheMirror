@@ -7,7 +7,7 @@ script = ExtResource("1_ccm7c")
 id = "1.4.10"
 title = "Reflow"
 long_description = "[b][u]OBJECTIVE[/u][/b]
-The WCAG 2.1 success criterion 1.4.10 - Reflow ensures that content remains usable when users enlarge text or zoom the page. The goal is to avoid forcing users to scroll both horizontally and vertically to read content.
+The WCAG 2.2 success criterion 1.4.10 - Reflow ensures that content remains usable when users enlarge text or zoom the page. The goal is to avoid forcing users to scroll both horizontally and vertically to read content.
 
 [b][u]TECHNICAL REQUIREMENTS[/u][/b]
 [indent]

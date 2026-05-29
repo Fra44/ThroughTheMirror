@@ -8,7 +8,7 @@ id = "1.4.1"
 title = "Use of Color"
 short_description = "This criterion states that color must not be the only way to convey information, actions, or status changes."
 long_description = "[b][u]OBJECTIVE[/u][/b]
-The WCAG 2.1 success criterion 1.4.1 - Use of Color ensures that users can understand content even if they cannot perceive colors correctly.
+The WCAG 2.2 success criterion 1.4.1 - Use of Color ensures that users can understand content even if they cannot perceive colors correctly.
 
 [b][u]TECHNICAL REQUIREMENTS[/u][/b]
 Color alone cannot be used to:[indent]
