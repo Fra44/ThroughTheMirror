@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ImpairmentData" format=3 uid="uid://mirjy275aahf"]
+
+[ext_resource type="Resource" uid="uid://de05c61r4wnnp" path="res://global/resources/wcag/wcag_1_4_1.tres" id="1_2x1d4"]
+[ext_resource type="Texture2D" uid="uid://su1volbobry4" path="res://assets/book/logo_impairments/cvd_icon.png" id="1_05ify"]
+[ext_resource type="Script" uid="uid://dry85ilgnq64e" path="res://global/resources/impairment_data.gd" id="1_mnd1t"]
+
+[resource]
+script = ExtResource("1_mnd1t")
+name = "Deuteranopia (CVD)"
+icon = ExtResource("1_05ify")
+short_info = "SEMANTIC MEANING BOUND TO HUE CHANNEL ONLY"
+manual_text = "[b][u]CLINICAL OVERVIEW[/u][/b]
+Color Vision Deficiency (CVD) primarily involves a reduced ability to distinguish between specific wavelengths of light. It is caused by the absence (anopia) or malfunctioning (anomaly) of one of the three types of cone cells in the retina.
+
+[b][u]VARIATIONS & DEMOGRAPHICS[/u][/b]
+[indent]
+[b]•[/b] [u]Red-Green Deficiency:[/u] Protan (red cones) and Deutan (green cones) are the most prevalent forms, making reds and greens easily confused.
+[b]•[/b] [u]Blue-Yellow (Tritan) & Achromatopsia:[/u] Rarer forms affecting blue cones or causing a total lack of color perception.
+[b]•[/b] It affects approximately 1 in 12 men (8%) and 1 in 200 women (0.5%) of Northern European ancestry, due to X chromosome linkage.
+[/indent]"
+related_wcag = ExtResource("1_2x1d4")
+metadata/_custom_type_script = "uid://dry85ilgnq64e"

@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://b8ns4p0smhisg"]
+
+[ext_resource type="PackedScene" uid="uid://d2uhc4g6n7c4d" path="res://entities/player/player.tscn" id="1_hyk8p"]
+[ext_resource type="Script" uid="uid://bw6stpsuvxl2y" path="res://scenes/main/main.gd" id="1_iuonh"]
+
+[node name="Main" type="Node2D" unique_id=1419610177]
+script = ExtResource("1_iuonh")
+metadata/_edit_lock_ = true
+
+[node name="CurrentLevel" type="Node2D" parent="." unique_id=401760833]
+
+[node name="Actors" type="Node2D" parent="." unique_id=1314988803]
+
+[node name="Player" parent="Actors" unique_id=896777798 instance=ExtResource("1_hyk8p")]
+position = Vector2(-33, -28)
+
+[node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=433430480]
+layer = 300
+
+[node name="ColorRect" type="ColorRect" parent="TransitionLayer" unique_id=643728303]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

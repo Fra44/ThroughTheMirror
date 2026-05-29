@@ -1,0 +1,100 @@
+[gd_scene format=4 uid="uid://4to86fcqodrf"]
+
+[ext_resource type="TileSet" uid="uid://bvleur4rtmgit" path="res://assets/full_tileset.tres" id="1_jnydx"]
+[ext_resource type="PackedScene" uid="uid://bjkerwdjwf4ip" path="res://global/Teleport_Trigger.tscn" id="2_l2lv1"]
+[ext_resource type="PackedScene" uid="uid://n47uwycg7cau" path="res://entities/npcs/innkeeper/innkeeper.tscn" id="3_3jqi7"]
+[ext_resource type="PackedScene" uid="uid://pfdjwuamjoqe" path="res://entities/npcs/misc/npc_misc.tscn" id="4_kmtok"]
+[ext_resource type="Texture2D" uid="uid://cyco8co8tbnsn" path="res://entities/npcs/misc/character_premade_02_idle.png" id="5_x5p2q"]
+[ext_resource type="Resource" uid="uid://cpkpmd1b7jgve" path="res://dialogue/npc_misc.dialogue" id="6_50td8"]
+[ext_resource type="Resource" uid="uid://dmqassvu56ril" path="res://global/resources/impairments/cataracts.tres" id="7_53nx2"]
+[ext_resource type="Texture2D" uid="uid://dofgepld661hw" path="res://entities/npcs/misc/character_premade_04_idle.png" id="8_upf35"]
+[ext_resource type="Texture2D" uid="uid://cgof4c67y0ycr" path="res://entities/npcs/misc/character_premade_09_idle.png" id="9_cy7y1"]
+
+[node name="Tavern" type="Node2D" unique_id=141820022]
+position = Vector2(0, -32)
+
+[node name="Ground" type="TileMapLayer" parent="." unique_id=955591069]
+position = Vector2(-3.71, 0)
+tile_map_data = PackedByteArray("AAD9//3/AAARAAIAAAD9//7/AAARAAMAAAD9////AAARAAIAAAD9/wAAAAARAAMAAAD9/wEAAAARAAIAAAD9/wIAAAARAAMAAAD9/wMAAAARAAIAAAD9/wQAAAARAAMAAAD9/wUAAAARAAIAAAD9/wYAAAARAAMAAAD+//3/AAAMAAMAAAD+//7/AAAMAAMAAAD+////AAAMAAMAAAD+/wAAAAAMAAMAAAD+/wEAAAAMAAMAAAD+/wIAAAAMAAMAAAD+/wMAAAAMAAMAAAD+/wQAAAAMAAMAAAD+/wUAAAAMAAMAAAD+/wYAAAAMAAMAAAD///3/AAAMAAMAAAD///7/AAAMAAMAAAD/////AAAMAAMAAAD//wAAAAAMAAMAAAD//wEAAAAMAAMAAAD//wIAAAAMAAMAAAD//wMAAAAMAAMAAAD//wQAAAAMAAMAAAD//wUAAAANAAIAAAD//wYAAAAMAAMAAAAAAP3/AAAMAAMAAAAAAP7/AAAMAAMAAAAAAP//AAAMAAMAAAAAAAAAAAAMAAMAAAAAAAEAAAAMAAMAAAAAAAIAAAAMAAMAAAAAAAMAAAAMAAMAAAAAAAQAAAAMAAMAAAAAAAUAAAAMAAMAAAAAAAYAAAAMAAMAAAABAP3/AAAMAAMAAAABAP7/AAAMAAMAAAABAP//AAAMAAMAAAABAAAAAAAMAAMAAAABAAEAAAAMAAMAAAABAAIAAAAMAAMAAAABAAMAAAAMAAMAAAABAAQAAAAMAAMAAAABAAUAAAAMAAMAAAABAAYAAAAMAAMAAAACAP//AAAMAAMAAAACAAAAAAAMAAMAAAACAAEAAAAMAAMAAAACAAIAAAAMAAMAAAACAAMAAAAMAAMAAAACAAQAAAAMAAMAAAACAAUAAAAMAAMAAAACAAYAAAAMAAMAAAADAP//AAAMAAMAAAADAAAAAAAMAAMAAAADAAEAAAAMAAMAAAADAAIAAAAMAAMAAAADAAMAAAAMAAMAAAADAAQAAAAMAAMAAAADAAUAAAAMAAMAAAADAAYAAAAMAAMAAAAEAP//AAAMAAMAAAAEAAAAAAAMAAMAAAAEAAEAAAAMAAMAAAAEAAIAAAAMAAMAAAAEAAMAAAAMAAMAAAAEAAQAAAAMAAMAAAAEAAUAAAAMAAMAAAAEAAYAAAAMAAMAAAAFAP3/AAAMAAMAAAAFAP7/AAAMAAMAAAAFAP//AAAMAAMAAAAFAAAAAAAMAAMAAAAFAAEAAAAMAAMAAAAFAAIAAAAMAAMAAAAFAAMAAAAMAAMAAAAFAAQAAAAMAAMAAAAFAAUAAAAMAAMAAAAGAP3/AAAMAAMAAAAGAP7/AAAMAAMAAAAGAP//AAAMAAMAAAAGAAAAAAAMAAMAAAAGAAEAAAAMAAMAAAAGAAIAAAAMAAMAAAAGAAMAAAAMAAMAAAAGAAQAAAAMAAMAAAAGAAUAAAAMAAMAAAAGAAYAAAAMAAMAAAAHAP3/AAAMAAMAAAAHAP7/AAAMAAMAAAAHAP//AAAMAAMAAAAHAAAAAAAMAAMAAAAHAAEAAAAMAAMAAAAHAAIAAAAMAAMAAAAHAAMAAAAMAAMAAAAHAAQAAAAMAAMAAAAHAAUAAAAMAAMAAAAHAAYAAAAMAAMAAAAIAP3/AAAMAAMAAAAIAP7/AAAMAAMAAAAIAP//AAANAAIAAAAIAAAAAAAMAAMAAAAIAAEAAAAMAAMAAAAIAAIAAAAMAAMAAAAIAAMAAAAMAAMAAAAIAAQAAAAMAAMAAAAIAAUAAAAMAAMAAAAIAAYAAAAMAAMAAAAJAP3/AAARAAIAAAAJAP7/AAARAAMAAAAJAP//AAARAAIAAAAJAAAAAAARAAMAAAAJAAEAAAARAAIAAAAJAAIAAAARAAMAAAAJAAMAAAARAAIAAAAJAAQAAAARAAMAAAAJAAUAAAARAAIAAAAJAAYAAAARAAMAAAACAP3/AAAMAAMAAAACAP7/AAAMAAMAAAADAP3/AAAMAAMAAAADAP7/AAAMAAMAAAAEAP3/AAAMAAMAAAAEAP7/AAAMAAMAAAAFAAYAAAAMAAMAAAD9//v/AAAOAAIAAAD9//z/AAAOAAMAAAD+//v/AAAPAAIAAAD+//z/AAAOAAIAAGD///v/AAAPAAIAAAD///z/AAAOAAMAAGAAAPv/AAAPAAIAAAAAAPz/AAAOAAIAAGABAPv/AAAPAAIAAAABAPz/AAAOAAMAAGACAPv/AAAPAAIAAAACAPz/AAAOAAIAAGADAPv/AAAPAAIAAAADAPz/AAAOAAMAAGAEAPv/AAAPAAIAAAAEAPz/AAAOAAIAAGAFAPv/AAAPAAIAAAAFAPz/AAAOAAIAAGAGAPv/AAAPAAIAAAAGAPz/AAAOAAMAAGAHAPv/AAAPAAIAAAAHAPz/AAAOAAIAAGAIAPv/AAAPAAIAAAAIAPz/AAAOAAMAAGAJAPv/AAAQAAIAAAAJAPz/AAAQAAMAAAA=")
+tile_set = ExtResource("1_jnydx")
+
+[node name="Obstacles" type="TileMapLayer" parent="." unique_id=2094765093]
+position = Vector2(-132, -73)
+tile_map_data = PackedByteArray("AAAHAAUAAAAYAAoAAAAHAAYAAAAYAAsAAAAKAAgAAAAZAAwAAAALAAgAAAAaAAwAAAAMAAgAAAAbAAwAAAAKAAMAAAAZAAwAAAALAAMAAAAaAAwAAAAMAAMAAAAaAAwAAAAKAAIAAAAYAAsAAAAOAAIAAAAYAAsAAAAOAAEAAAAYAAkAAAAKAAEAAAAYAAkAAAAOAAMAAAAbAAwAAAANAAMAAAAaAAwAAAAGAAUAAgAbAAkAAAAJAAgAAgAbAAkAAAAIAAYAAgAcAAkAAAAPAAUAAgAcAAkAAAAPAAcAAgAYAAcAAAAPAAgAAgAYAAgAAAAPAAkAAgAYAAkAAAAGAAEAAgAaAAwAAAAQAAAAAAAYAAUAAAAQAAIAAgAZAAgAAAAHAAQAAgAYAAcAAAALAAcAAgAbAAgAAAAMAAcAAgAbAAgAAAAKAAkAAgAcAAgAAAAPAAoAAgAcAAgAAAA=")
+tile_set = ExtResource("1_jnydx")
+
+[node name="invisible walls" type="TileMapLayer" parent="Obstacles" unique_id=8119151]
+visible = false
+position = Vector2(0, -6.785)
+tile_map_data = PackedByteArray("AAARAAwAAAAOAAAAAAAQAAwAAAAOAAAAAAAPAAwAAAAOAAAAAAAOAAwAAAAOAAAAAAANAAwAAAAOAAAAAAAMAAwAAAAOAAAAAAALAAwAAAAOAAAAAAAKAAwAAAAOAAAAAAAJAAwAAAAOAAAAAAAIAAwAAAAOAAAAAAAHAAwAAAAOAAAAAAAGAAwAAAAOAAAAAAAFAAwAAAAOAAAAAAA=")
+tile_set = ExtResource("1_jnydx")
+
+[node name="Foreground2" type="TileMapLayer" parent="." unique_id=604422313]
+z_index = 1
+position = Vector2(-132, -74)
+tile_map_data = PackedByteArray("AAAHAAQAAgAcAAYAAAA=")
+tile_set = ExtResource("1_jnydx")
+collision_enabled = false
+
+[node name="Foreground" type="TileMapLayer" parent="." unique_id=1427800951]
+z_index = 1
+position = Vector2(-132, -74)
+tile_map_data = PackedByteArray("AAAHAAQAAgAbAAcAAAA=")
+tile_set = ExtResource("1_jnydx")
+collision_enabled = false
+
+[node name="Decorations" type="TileMapLayer" parent="." unique_id=1855728635]
+position = Vector2(-132, -73)
+tile_map_data = PackedByteArray("AAAKAAEAAgAYAAYAAAAHAAUAAgAbAAYAAAAMAAgAAgAcAAcAAAAHAAAAAgAYAAEAAAAHAAMAAgAbAAgAAAALAAQAAgAaAAgAAAANAAQAAgAaAAgAAAAJAAIAAgAaAAgAAAA=")
+tile_set = ExtResource("1_jnydx")
+
+[node name="moved" type="TileMapLayer" parent="Decorations" unique_id=1083099801]
+position = Vector2(0, 8.75)
+tile_map_data = PackedByteArray("AAALAAoAAgAaAAUAAAA=")
+tile_set = ExtResource("1_jnydx")
+
+[node name="moved2" type="TileMapLayer" parent="Decorations" unique_id=2124570972]
+position = Vector2(51.78, 12.74)
+scale = Vector2(0.74, 0.74)
+tile_map_data = PackedByteArray("AAAMAP//AgAaAAMAAAAMAAAAAgAaAAQAAAA=")
+tile_set = ExtResource("1_jnydx")
+
+[node name="SpawnPoints" type="Node2D" parent="." unique_id=1930942913]
+
+[node name="InsideTavern" type="Marker2D" parent="SpawnPoints" unique_id=1570682214]
+position = Vector2(52, 102)
+
+[node name="TeleportOutsideTavern" parent="SpawnPoints" unique_id=720813871 instance=ExtResource("2_l2lv1")]
+position = Vector2(52, 112)
+target_scene_path = "uid://c70072y8peuih"
+target_spawn_id = "OutsideTavern"
+trigger_size = Vector2(14.935, 3.695)
+
+[node name="Innkeeper" parent="." unique_id=659102842 instance=ExtResource("3_3jqi7")]
+position = Vector2(69, -35)
+
+[node name="Npcs" type="Node2D" parent="." unique_id=100141136]
+
+[node name="NpcMisc" parent="Npcs" unique_id=1808179372 instance=ExtResource("4_kmtok")]
+position = Vector2(-26, 12)
+npc_sprite = ExtResource("5_x5p2q")
+dialogue_resource = ExtResource("6_50td8")
+dialogue_start = "npc1_tavern"
+required_impairment = ExtResource("7_53nx2")
+appears_after_impairment = true
+
+[node name="NpcMisc2" parent="Npcs" unique_id=2087223328 instance=ExtResource("4_kmtok")]
+position = Vector2(-11, -20)
+npc_sprite = ExtResource("8_upf35")
+dialogue_resource = ExtResource("6_50td8")
+dialogue_start = "npc2_tavern"
+required_impairment = ExtResource("7_53nx2")
+appears_after_impairment = true
+
+[node name="NpcMisc3" parent="Npcs" unique_id=181913549 instance=ExtResource("4_kmtok")]
+position = Vector2(-1, 24)
+npc_sprite = ExtResource("9_cy7y1")
+dialogue_resource = ExtResource("6_50td8")
+dialogue_start = "npc3_tavern"
+required_impairment = ExtResource("7_53nx2")
+appears_after_impairment = true

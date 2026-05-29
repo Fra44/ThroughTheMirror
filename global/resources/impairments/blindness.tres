@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ImpairmentData" format=3 uid="uid://d2ae3okydjy7g"]
+
+[ext_resource type="Texture2D" uid="uid://bltycvovv4i4j" path="res://assets/book/logo_impairments/blindness_icon.png" id="1_biwb8"]
+[ext_resource type="Script" uid="uid://dry85ilgnq64e" path="res://global/resources/impairment_data.gd" id="1_rjvph"]
+[ext_resource type="Resource" uid="uid://ba18dfmv5egsx" path="res://global/resources/wcag/wcag_1_1_1.tres" id="1_yt0pc"]
+
+[resource]
+script = ExtResource("1_rjvph")
+name = "Blindness"
+icon = ExtResource("1_biwb8")
+short_info = "NULL OR GENERIC ALT-TEXT"
+manual_text = "[b][u]CLINICAL OVERVIEW[/u][/b]
+Blindness is a condition involving partial or complete loss of vision. According to recent global estimates, it affects approximately 43.2 million people worldwide.
+
+[b][u]FORMS & CAUSES[/u][/b]
+[indent]
+[b]•[/b] [u]Total Blindness:[/u] A complete lack of light perception. Users rely exclusively on assistive technologies like screen readers or Braille displays.
+[b]•[/b] [u]Light Perception:[/u] The ability to perceive light and shadows without distinguishing shapes.
+[b]•[/b] The \"disability\" in software occurs when the UI lacks the semantic structure necessary for screen readers to translate visual layouts into navigable information.
+[/indent]"
+related_wcag = ExtResource("1_yt0pc")
+metadata/_custom_type_script = "uid://dry85ilgnq64e"

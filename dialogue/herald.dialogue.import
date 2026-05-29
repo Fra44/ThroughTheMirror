@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://61akl8p7n6bs"
+path="res://.godot/imported/herald.dialogue-33c0fe81ec25951dd51aa6d2d8bca33d.tres"
+
+[deps]
+
+source_file="res://dialogue/herald.dialogue"
+dest_files=["res://.godot/imported/herald.dialogue-33c0fe81ec25951dd51aa6d2d8bca33d.tres"]
+
+[params]
+
+defaults=true

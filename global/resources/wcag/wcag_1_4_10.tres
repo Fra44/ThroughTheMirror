@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="WCAGData" format=3 uid="uid://b7h2a8akc6vrx"]
+
+[ext_resource type="Script" uid="uid://mgn4yar0d3vn" path="res://global/resources/wcag_data.gd" id="1_ccm7c"]
+
+[resource]
+script = ExtResource("1_ccm7c")
+id = "1.4.10"
+title = "Reflow"
+long_description = "[b][u]OBJECTIVE[/u][/b]
+The WCAG 2.2 success criterion 1.4.10 - Reflow ensures that content remains usable when users enlarge text or zoom the page. The goal is to avoid forcing users to scroll both horizontally and vertically to read content.
+
+[b][u]TECHNICAL REQUIREMENTS[/u][/b]
+[indent]
+[b]•[/b] Content should remain readable and functional when zoomed up to 400%.
+[b]•[/b] For vertically scrolling content, the layout should work at a width of 320 CSS pixels.
+[b]•[/b] Users should not need to scroll horizontally just to read lines of text.
+
+[b][u]CSS CONCEPTS IN THIS LEVEL[/u][/b]
+[indent]
+[b]•[/b] [u]width: 1920px;[/u] creates a large layout, based on the fixed number of pixels defined.
+[b]•[/b] [u]width: 100%;[/u] allows the content to adapt to the available space instead of forcing a fixed size.
+[b]•[/b] [u]white-space: nowrap;[/u] prevents text from wrapping, causing long horizontal lines.
+[b]•[/b] [u]white-space: pre;[/u] preserves spacing and line breaks, but it can still behave rigidly and cause overflow.
+[b]•[/b] [u]white-space: normal;[/u] allows text to wrap naturally, making the content easier to read when enlarged.
+[b]•[/b] [u]white-space: pre-wrap;[/u] preserves line breaks while still allowing wrapping, supporting readable reflow.
+[/indent]
+
+[b][u]TIP[/u][/b]
+Fix the scroll by choosing a flexible width and allowing the text to wrap."
+metadata/_custom_type_script = "uid://mgn4yar0d3vn"

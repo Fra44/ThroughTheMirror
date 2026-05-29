@@ -1,0 +1,57 @@
+~ start
+
+: The game was almost ready. [#portrait=res://scenes/cutscenes/images/intro_developer_room.png] [#fade_in]
+: One final build before release.
+: A whole world, waiting to be shared.
+
+: But something was wrong.
+: Some players could not read what the world was trying to say.
+: Some could not distinguish the signals that opened the way.
+: Some could not find the information they needed to continue.
+
+: At first, it looked like a bug. Another issue to fix before launch.
+: But the problem was not hidden in the code alone. It was hidden in the way the world had been designed.
+
+: Then, the screen began to glow. [#portrait=res://scenes/cutscenes/images/intro_screen_glow.png] [#cinematic=2.5]
+: Lines of code twisted into light. Errors became fragments of color.
+: And from inside the monitor, the world called back.
+
+: Before you could react, the light pulled you in. [#fade_out=4.0]
+: The desk, the room, the screen...
+: Everything disappeared.
+
+: You crossed the boundary between developer and world. [#portrait=res://scenes/cutscenes/images/intro_prism_lands.png] [#fade_in=5.5] [#cinematic=4.0]
+: The Lands of the Prism were no longer just pixels. They were alive.
+: And they were waiting to be understood.
+
+???: Welcome, developer. [#portrait=res://scenes/cutscenes/images/intro_archivist.png] [#cinematic=2.5]
+???: You have crossed the screen and entered the world you created. But this world reflects more than your imagination.
+???: It also reflects what you could not yet see.
+
+???: The Prism does not reveal flaws in people.
+???: It reveals the barriers hidden in the world.
+???: A sign that depends only on color. A text that cannot be read clearly.
+???: A path that gives no information to those who perceive it differently.
+
+???: To heal this world, you must first learn to perceive it through other experiences.
+
+???: Take the Mirror of Resonance. [#portrait=res://scenes/cutscenes/images/intro_archivist_mirror.png] [#cinematic=0.5] [#show_mirror]
+???: It will not need to be used by hand. [#portrait=res://scenes/cutscenes/images/intro_mirror.png] [#cinematic=0.5]
+???: When someone faces a hidden barrier, the Mirror will awaken and reveal their experience to you.
+???: Not to judge them.
+???: But to understand what the world asks of them. [#portrait=res://scenes/cutscenes/images/intro_archivist_mirror.png]
+
+???: And take the Resonance Codex. [#portrait=res://scenes/cutscenes/images/intro_archivist_mirror_codex.png] [#cinematic=0.5] [#show_codex]
+???: You may open it whenever you wish. [#portrait=res://scenes/cutscenes/images/intro_codex.png] [#cinematic=0.5]
+???: It will record your discoveries.
+???: Within its pages, you will find knowledge that every developer should carry.
+???: Knowledge about accessibility, design, and the many ways people interact with digital worlds.
+
+???: Help the inhabitants of the Lands of the Prism. [#portrait=res://scenes/cutscenes/images/intro_archivist_mirror_codex.png]
+???: Listen to their needs. Understand the barriers.
+???: Then reshape the world so that more people can move through it.
+
+???: Only then will your game truly be ready. [#fade_out=5.0]
+
+: Your journey begins now. 
+=> END

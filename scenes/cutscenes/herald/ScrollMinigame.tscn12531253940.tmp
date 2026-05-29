@@ -1,0 +1,237 @@
+[gd_scene format=3 uid="uid://i37uakv271tn"]
+
+[ext_resource type="Texture2D" uid="uid://b5djnnhpwwbb4" path="res://assets/scroll/scroll.png" id="1_6c6c1"]
+[ext_resource type="Script" uid="uid://bbokptboa5i2n" path="res://scenes/cutscenes/herald/scroll_minigame.gd" id="1_65dd5"]
+[ext_resource type="Texture2D" uid="uid://bron4cx8xftgs" path="res://scenes/cutscenes/images/hallway_empty.png" id="2_mfnou"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mfnou"]
+bg_color = Color(0.13725491, 0.13725491, 0.13725491, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.29803923, 0.29803923, 0.29803923, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="ScrollMinigame" type="CanvasLayer" unique_id=2050342460]
+script = ExtResource("1_65dd5")
+
+[node name="BackgroundImage" type="TextureRect" parent="." unique_id=1740896157]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_mfnou")
+expand_mode = 1
+
+[node name="Parchment" type="NinePatchRect" parent="." unique_id=1265747376]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 300)
+offset_left = 184.0
+offset_top = 48.0
+offset_right = 888.0
+offset_bottom = 432.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_6c6c1")
+region_rect = Rect2(41.441162, 69.38342, 1373.708, 939.54236)
+patch_margin_left = 150
+patch_margin_top = 80
+patch_margin_right = 150
+patch_margin_bottom = 80
+
+[node name="PreviewLabel" type="RichTextLabel" parent="Parchment" unique_id=399156830]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 146.0
+offset_top = 88.0
+offset_right = 574.0
+offset_bottom = 318.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 48
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+scroll_active = false
+
+[node name="CodeEditor" type="CanvasLayer" parent="." unique_id=495523744]
+layer = 51
+
+[node name="MarginContainer" type="MarginContainer" parent="CodeEditor" unique_id=574870009]
+offset_left = 8.0
+offset_top = 24.0
+offset_right = 13.0
+offset_bottom = 29.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 0
+
+[node name="MainPanel" type="Control" parent="CodeEditor/MarginContainer" unique_id=375016906]
+layout_mode = 2
+
+[node name="Background" type="PanelContainer" parent="CodeEditor/MarginContainer/MainPanel" unique_id=769244877]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_mfnou")
+
+[node name="Padding" type="MarginContainer" parent="CodeEditor/MarginContainer/MainPanel/Background" unique_id=1912548973]
+layout_mode = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 7
+
+[node name="MainVBox" type="VBoxContainer" parent="CodeEditor/MarginContainer/MainPanel/Background/Padding" unique_id=1318352569]
+layout_mode = 2
+
+[node name="Description" type="Label" parent="CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox" unique_id=1372138588]
+layout_mode = 2
+text = "Fix the code in order to describe the content of the 
+crystal ball properly"
+
+[node name="HSeparator" type="HSeparator" parent="CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox" unique_id=730322351]
+layout_mode = 2
+
+[node name="CodeEditorPanel" type="PanelContainer" parent="CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox" unique_id=173564095]
+layout_mode = 2
+
+[node name="CodeGrid" type="GridContainer" parent="CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel" unique_id=1178691983]
+layout_mode = 2
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 16
+columns = 2
+
+[node name="Num1" type="Label" parent="CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid" unique_id=1196600515]
+layout_mode = 2
+text = "  1"
+
+[node name="Line1" type="RichTextLabel" parent="CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid" unique_id=1959484564]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+text = ".magical-decree {"
+
+[node name="Num2" type="Label" parent="CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid" unique_id=1071561601]
+layout_mode = 2
+text = "  2"
+
+[node name="Line2" type="RichTextLabel" parent="CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid" unique_id=387516959]
+layout_mode = 2
+text = "    display: block;"
+scroll_active = false
+
+[node name="Num5" type="Label" parent="CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid" unique_id=1980483293]
+layout_mode = 2
+text = "  3"
+
+[node name="Line3" type="RichTextLabel" parent="CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid" unique_id=1374263091]
+layout_mode = 2
+text = "    margin: 0 auto;"
+scroll_active = false
+
+[node name="Num3" type="Label" parent="CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid" unique_id=1106954106]
+layout_mode = 2
+text = "  4"
+
+[node name="LineWidth" type="HBoxContainer" parent="CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid" unique_id=511482298]
+layout_mode = 2
+
+[node name="Ident" type="Label" parent="CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid/LineWidth" unique_id=2124724737]
+layout_mode = 2
+text = "  "
+
+[node name="TagOpen" type="RichTextLabel" parent="CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid/LineWidth" unique_id=2083513039]
+custom_minimum_size = Vector2(55, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "      width:"
+vertical_alignment = 1
+
+[node name="WidthOption" type="OptionButton" parent="CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid/LineWidth" unique_id=254546016]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 0
+item_count = 4
+popup/item_0/text = "1920px"
+popup/item_0/id = 0
+popup/item_1/text = "100%"
+popup/item_1/id = 1
+popup/item_2/text = "fixed"
+popup/item_2/id = 2
+popup/item_3/text = "800px"
+popup/item_3/id = 3
+
+[node name="TagClose2" type="RichTextLabel" parent="CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid/LineWidth" unique_id=1887288737]
+custom_minimum_size = Vector2(13.415, 0)
+layout_mode = 2
+text = ";"
+vertical_alignment = 1
+
+[node name="Num6" type="Label" parent="CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid" unique_id=2097578510]
+layout_mode = 2
+text = "  5"
+
+[node name="LineSpace" type="HBoxContainer" parent="CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid" unique_id=887473336]
+layout_mode = 2
+
+[node name="Ident" type="Label" parent="CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid/LineSpace" unique_id=1508502308]
+layout_mode = 2
+text = "  "
+
+[node name="TagOpen" type="RichTextLabel" parent="CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid/LineSpace" unique_id=811055284]
+custom_minimum_size = Vector2(55, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "      white-space:
+"
+vertical_alignment = 1
+
+[node name="SpaceOption" type="OptionButton" parent="CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid/LineSpace" unique_id=842086550]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 0
+item_count = 4
+popup/item_0/text = "nowrap"
+popup/item_0/id = 0
+popup/item_1/text = "normal"
+popup/item_1/id = 1
+popup/item_2/text = "hidden"
+popup/item_2/id = 2
+popup/item_3/text = "fixed"
+popup/item_3/id = 3
+
+[node name="TagClose2" type="RichTextLabel" parent="CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid/LineSpace" unique_id=1570557599]
+custom_minimum_size = Vector2(13.415, 0)
+layout_mode = 2
+text = ";"
+vertical_alignment = 1
+
+[node name="Num4" type="Label" parent="CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid" unique_id=1840186968]
+layout_mode = 2
+text = "  4"
+
+[node name="Line4" type="RichTextLabel" parent="CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/CodeEditorPanel/CodeGrid" unique_id=1039019982]
+layout_mode = 2
+text = " }"
+
+[node name="HSeparator2" type="HSeparator" parent="CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox" unique_id=333590678]
+layout_mode = 2
+
+[node name="ButtonsHBox" type="HBoxContainer" parent="CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox" unique_id=248574724]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="ResetButton" type="Button" parent="CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/ButtonsHBox" unique_id=1839544216]
+unique_name_in_owner = true
+layout_mode = 2
+text = "RESET CODE"
+
+[node name="RunCodeButton" type="Button" parent="CodeEditor/MarginContainer/MainPanel/Background/Padding/MainVBox/ButtonsHBox" unique_id=2123400060]
+unique_name_in_owner = true
+layout_mode = 2
+text = "RUN CODE"

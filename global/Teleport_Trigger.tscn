@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bjkerwdjwf4ip"]
+
+[ext_resource type="Script" uid="uid://mqhupjmptr38" path="res://global/teleport_trigger.gd" id="1_ao2rg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dlynt"]
+resource_local_to_scene = true
+size = Vector2(24, 6)
+
+[node name="TeleportTrigger" type="Area2D" unique_id=1236967530]
+script = ExtResource("1_ao2rg")
+trigger_size = Vector2(24, 6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1272348203]
+shape = SubResource("RectangleShape2D_dlynt")

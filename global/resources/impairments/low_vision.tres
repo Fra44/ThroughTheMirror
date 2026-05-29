@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ImpairmentData" format=3 uid="uid://c6tymx7qw8kpp"]
+
+[ext_resource type="Texture2D" uid="uid://ck6apr4akc6i7" path="res://assets/book/logo_impairments/low_vision_icon.png" id="1_2nrxl"]
+[ext_resource type="Resource" uid="uid://b7h2a8akc6vrx" path="res://global/resources/wcag/wcag_1_4_10.tres" id="1_l6m8n"]
+[ext_resource type="Script" uid="uid://dry85ilgnq64e" path="res://global/resources/impairment_data.gd" id="2_2nrxl"]
+
+[resource]
+script = ExtResource("2_2nrxl")
+name = "Severe Low Vision"
+icon = ExtResource("1_2nrxl")
+short_info = "FIXED-WIDTH CONTAINER DETECTED"
+manual_text = "[b][u]CLINICAL OVERVIEW[/u][/b]
+Low vision represents a reduced visual acuity that cannot be fully corrected with standard glasses. Around 295 million people worldwide have moderate or severe vision impairment (MSVI), with a further 257 million experiencing mild impairment.
+
+[b][u]EFFECTS & DAILY CHALLENGES[/u][/b]
+[indent]
+[b]•[/b] [u]Acuity Loss & Field of Vision:[/u] Causes global blurriness or blind spots (Scotoma, Tunnel Vision).
+[b]•[/b] [u]Photophobia:[/u] Extreme sensitivity to light, making bright \"light mode\" interfaces painful.
+[b]•[/b] These users often rely on magnification tools or larger text to read. If layouts are not adaptable, reading becomes exhausting.
+[/indent]"
+related_wcag = ExtResource("1_l6m8n")
+metadata/_custom_type_script = "uid://dry85ilgnq64e"

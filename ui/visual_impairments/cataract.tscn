@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cbtyfug4t25yq"]
+
+[ext_resource type="Shader" uid="uid://bg0gcxtmerjcu" path="res://ui/visual_impairments/cataract.gdshader" id="1_me41b"]
+[ext_resource type="Script" uid="uid://chul8wxewf1y6" path="res://ui/visual_impairments/cataract.gd" id="1_yryja"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yryja"]
+shader = ExtResource("1_me41b")
+shader_parameter/blur_lod = 2.0
+shader_parameter/contrast = 0.8
+shader_parameter/desaturation = 0.5
+shader_parameter/tint_amount = 0.3
+shader_parameter/tint_color = Color(1, 0.9, 0.6, 1)
+
+[node name="Cataract" type="CanvasLayer" unique_id=163321732]
+process_mode = 3
+layer = 50
+script = ExtResource("1_yryja")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=201545335]
+material = SubResource("ShaderMaterial_yryja")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

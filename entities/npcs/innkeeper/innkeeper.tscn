@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://n47uwycg7cau"]
+
+[ext_resource type="Texture2D" uid="uid://ciooagaw4f1hm" path="res://entities/npcs/innkeeper/innkeeper_idle.png" id="1_prilj"]
+[ext_resource type="Script" uid="uid://dxgwgmyd14tng" path="res://entities/npcs/innkeeper/actionable.gd" id="2_wu38h"]
+[ext_resource type="Resource" uid="uid://dmqassvu56ril" path="res://global/resources/impairments/cataracts.tres" id="3_uw0j0"]
+[ext_resource type="Resource" uid="uid://dkggpvq0xl12g" path="res://dialogue/innkeeper.dialogue" id="3_wu38h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0pg44"]
+size = Vector2(11.5, 13.700001)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_prilj"]
+size = Vector2(14, 32)
+
+[node name="Innkeeper" type="CharacterBody2D" unique_id=659102842]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1456255863]
+z_index = 1
+texture = ExtResource("1_prilj")
+hframes = 2
+vframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=451936232]
+position = Vector2(-1, 8)
+scale = Vector2(1.5, 1.5)
+shape = SubResource("RectangleShape2D_0pg44")
+
+[node name="Actionable" type="Area2D" parent="." unique_id=455008164]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("2_wu38h")
+impairment = ExtResource("3_uw0j0")
+dialogue_resource = ExtResource("3_wu38h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionable" unique_id=1805900562]
+position = Vector2(-1, 15)
+shape = SubResource("RectangleShape2D_prilj")

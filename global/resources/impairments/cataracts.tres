@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ImpairmentData" format=3 uid="uid://dmqassvu56ril"]
+
+[ext_resource type="Script" uid="uid://dry85ilgnq64e" path="res://global/resources/impairment_data.gd" id="1_7niso"]
+[ext_resource type="Texture2D" uid="uid://bjxuldfh2a0qh" path="res://assets/book/logo_impairments/cataracts_icon.png" id="1_bk1tu"]
+[ext_resource type="Resource" uid="uid://c8kdoqwko8sof" path="res://global/resources/wcag/wcag_1_4_3.tres" id="1_f072e"]
+
+[resource]
+script = ExtResource("1_7niso")
+name = "Cataracts"
+icon = ExtResource("1_bk1tu")
+short_info = "CONTRAST RATIO 1.17:1"
+manual_text = "[b][u]CLINICAL OVERVIEW[/u][/b]
+A cataract is a condition in which the eye's lens becomes cloudy, significantly reducing vision quality and potentially leading to blindness. This opacification obstructs light from reaching the retina.  
+
+[b][u]CAUSES AND RISKS[/u][/b]
+[indent]
+[b]•[/b] Commonly associated with aging, but can occur due to injuries, or diseases like glaucoma and diabetes.
+[b]•[/b] Globally, at least 2.2 billion people have a near or distance vision impairment, and cataracts are a leading cause.
+[b]•[/b] It is usually treatable through surgery, but remains a major barrier in digital environments.
+[/indent]
+[b][u]VISUAL IMPACT[/u][/b]
+This impairment manifests as a significant loss of contrast and a “foggy” or blurred overlay in the individual’s vision, making text nearly impossible to read when placed on similar-colored backgrounds. According to the WebAIM 2025 report, low contrast text affects 81.0% of all analyzed websites, representing a massive obstacle for these users."
+related_wcag = ExtResource("1_f072e")
+metadata/_custom_type_script = "uid://dry85ilgnq64e"

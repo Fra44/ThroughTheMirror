@@ -1,0 +1,85 @@
+~ start
+Herald: Hi! I'm the Royal Herald of the Lands of the Prism! [#portrait=res://scenes/cutscenes/images/herald_normal.png]
+Herald: Oh! You are the creator of the game! Nice to meet you!
+Herald: Well, I could use your help. I cannot even prepare a basic announcement with my magical scroll... [#portrait=res://scenes/cutscenes/images/herald_sad.png]
+Herald: Something is wrong with it, but it is easier if I show you. [#show_debug] [#minigame_menu] [#portrait=res://scenes/cutscenes/images/hallway_empty.png]
+=> END
+
+~ not_ready
+Herald: Oh, hello there! I'm the Royal Herald of the Lands of the Prism. [#portrait=res://scenes/cutscenes/images/herald_normal.png]
+Herald: I usually prepare announcements for the kingdom, but there is nothing urgent to proclaim right now.
+Herald: If you discover something important, come back and tell me!
+=> END
+
+~ scroll_closed
+Herald: This is my magical scroll. It should help me prepare royal announcements.
+=> END
+
+
+~ scroll_small_text
+Herald: Normally, it opens like this.
+=> END
+
+
+~ scroll_cannot_read
+Herald: But the text is far too small for me to read comfortably.
+=> END
+
+
+~ scroll_activate_mirror
+Herald: Oh! Yes, try to use your power! Finally somebody will understand my problem!
+=> END
+
+
+~ scroll_low_vision
+: You use your power and start to see as she does. Everything becomes blurry.
+=> END
+
+
+~ scroll_zoom
+Herald: So I use the scroll's magic to enlarge the text.
+=> END
+
+
+~ scroll_sideways_bug
+Herald: But instead of adapting, the parchment stretches sideways!
+=> END
+
+
+~ scroll_walk_corridor
+Herald: To read it, I have to walk along the corridor.
+=> END
+
+
+~ scroll_corridor_explanation
+Herald: That is why I use this hallway. It is wide enough... but it is exhausting.
+=> END
+
+
+~ scroll_fix_prompt
+: The scroll should stop growing sideways and let the text wrap downward. Can you fix the layout spell?
+: Read more about the problem in the Resonance Codex.
+=> END
+
+
+~ fail_reaction
+Herald: No, it is still broken. [#portrait=res://scenes/cutscenes/images/herald_sad.png]
+Herald: The text still forces me to walk sideways instead of adapting to the scroll. [#retry_minigame]
+=> END
+
+
+~ win_reaction
+Herald: Ah! Now the text wraps properly. [#portrait=res://scenes/cutscenes/images/herald_determined.png]
+Herald: I can finally use the scroll without chasing the sentence across the hallway! [#deactivate_shader]
+Herald: So... what did you need me to announce?
+: You tell her about Kalipso, the dragon foreseen by the Archivist. [#close_minigame]
+Herald: Kalipso?! Then we must warn the kingdom immediately! [#portrait=res://scenes/cutscenes/images/herald_shocked.png]
+Herald: Hopefully a brave knight will come to help us!
+Herald: I will prepare the royal announcement at once! [#portrait=res://scenes/cutscenes/images/herald_determined.png]
+Herald: Hear ye, hear ye! A great dragon approaches the kingdom!
+=> END
+
+
+~ already_helped
+Herald: The kingdom is preparing for the dragon. Thank you for your help! [#portrait=res://scenes/cutscenes/images/herald_normal.png]
+=> END

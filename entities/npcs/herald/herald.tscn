@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://cf7w5va7vp8u7"]
+
+[ext_resource type="Texture2D" uid="uid://dxof735o8nm8d" path="res://entities/npcs/herald/south.png" id="1_krrav"]
+[ext_resource type="Resource" uid="uid://d2ae3okydjy7g" path="res://global/resources/impairments/blindness.tres" id="2_lgntu"]
+[ext_resource type="Script" uid="uid://dc0ec8twp47ir" path="res://entities/npcs/herald/actionable.gd" id="2_sgogx"]
+[ext_resource type="Resource" uid="uid://c6tymx7qw8kpp" path="res://global/resources/impairments/low_vision.tres" id="3_ohmgp"]
+[ext_resource type="Resource" uid="uid://61akl8p7n6bs" path="res://dialogue/herald.dialogue" id="4_au5l7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sgogx"]
+size = Vector2(15, 36)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5bwdk"]
+radius = 19.0
+
+[node name="Herald" type="CharacterBody2D" unique_id=777789410]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=199017846]
+z_index = 1
+texture = ExtResource("1_krrav")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=781722917]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_sgogx")
+
+[node name="Actionable" type="Area2D" parent="." unique_id=1578364785]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("2_sgogx")
+impairment = ExtResource("3_ohmgp")
+archivist_impairment = ExtResource("2_lgntu")
+dialogue_resource = ExtResource("4_au5l7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionable" unique_id=368120]
+shape = SubResource("CircleShape2D_5bwdk")

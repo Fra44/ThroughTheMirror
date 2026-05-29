@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://c28oh04cy721k"]
+
+[ext_resource type="Script" uid="uid://d1ac515rywq01" path="res://ui/hud/debug_window.gd" id="1_2h3q6"]
+[ext_resource type="Texture2D" uid="uid://bq1i6srsqcflw" path="res://assets/hud/UI_TravelBook_IconCross01a.png" id="2_qd0mh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3q1or"]
+bg_color = Color(0.050980393, 0.10980392, 0.10980392, 0.9411765)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9338333, 0.30475885, 0.30166778, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="DebugWindow" type="CanvasLayer" unique_id=33922456]
+layer = 60
+script = ExtResource("1_2h3q6")
+
+[node name="Anchor" type="Control" parent="." unique_id=1943724020]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Anchor" unique_id=1089054110]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="Anchor/MarginContainer" unique_id=1089378996]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3q1or")
+
+[node name="MarginContainer" type="MarginContainer" parent="Anchor/MarginContainer/PanelContainer" unique_id=1723331014]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Anchor/MarginContainer/PanelContainer/MarginContainer" unique_id=1746023183]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Anchor/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1347714292]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="TitleLabel" type="Label" parent="Anchor/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1650363681]
+visible = false
+layout_mode = 2
+theme_override_constants/line_spacing = 3
+theme_override_constants/paragraph_spacing = 0
+theme_override_font_sizes/font_size = 18
+text = "New data Added to Manual! Short summary:"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Anchor/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=262870476]
+layout_mode = 2
+theme_override_constants/line_separation = 3
+theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/bold_font_size = 18
+bbcode_enabled = true
+text = "New data Added to [color=#FFD966]Codex[/color]! Short summary:"
+fit_content = true
+
+[node name="HSeparator" type="HSeparator" parent="Anchor/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1600857697]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="StatusLabel" type="Label" parent="Anchor/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=245633900]
+layout_mode = 2
+text = "Status:"
+
+[node name="ErrorLabel" type="Label" parent="Anchor/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=887357406]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.20392157, 0, 1)
+text = "Error:"
+
+[node name="ViolationLabel" type="Label" parent="Anchor/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=713293804]
+layout_mode = 2
+text = "Violation:"
+
+[node name="MarginContainer" type="MarginContainer" parent="Anchor/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1452642845]
+layout_mode = 2
+
+[node name="CloseButton" type="TextureButton" parent="Anchor/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MarginContainer" unique_id=678998137]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_vertical = 0
+texture_normal = ExtResource("2_qd0mh")
+ignore_texture_size = true

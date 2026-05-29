@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://clmvr7vdwffrj"]
+
+[ext_resource type="Script" uid="uid://cbg8qopk00vfq" path="res://scenes/reflection/reflection_quiz.gd" id="1_yus7e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yus7e"]
+bg_color = Color(0.15294118, 0.25490198, 0.4862745, 1)
+border_color = Color(0.5887203, 0.8679927, 0.98772424, 0.30588236)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="ReflectionQuiz" type="Control" unique_id=2124954077]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yus7e")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=483356756]
+custom_minimum_size = Vector2(515, 360)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -48.0
+offset_right = 20.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yus7e")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=847585507]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1732829159]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="QuestionLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=210208662]
+custom_minimum_size = Vector2(0.1, 0)
+layout_mode = 2
+autowrap_mode = 3
+
+[node name="AnswersContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1446000447]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Button1" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/AnswersContainer" unique_id=1572523846]
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/AnswersContainer" unique_id=89497685]
+layout_mode = 2
+
+[node name="Button3" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/AnswersContainer" unique_id=249465287]
+layout_mode = 2
+
+[node name="Button4" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/AnswersContainer" unique_id=1212515484]
+layout_mode = 2
+
+[node name="FactPanel" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1402887993]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/FactPanel" unique_id=286001884]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/FactPanel/MarginContainer" unique_id=1202211582]
+custom_minimum_size = Vector2(0.1, 0)
+layout_mode = 2
+autowrap_mode = 3
+
+[node name="NextButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=86124382]
+unique_name_in_owner = true
+layout_mode = 2

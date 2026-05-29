@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://uo67bb47v2ye"]
+
+[ext_resource type="PackedScene" uid="uid://c70072y8peuih" path="res://scenes/world/overworld.tscn" id="1_6vksw"]
+
+[node name="World" type="Node2D" unique_id=853261510]
+position = Vector2(95, 47)
+
+[node name="Overworld" parent="." unique_id=1589885129 instance=ExtResource("1_6vksw")]
+position = Vector2(129, 52)
+
+[node name="SpawnPoints" type="Node2D" parent="." unique_id=934246133]
+
+[node name="Default" type="Marker2D" parent="SpawnPoints" unique_id=1699341683]
+position = Vector2(409, 358)

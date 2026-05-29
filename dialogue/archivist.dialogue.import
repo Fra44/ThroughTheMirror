@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://b4vgi7s6jt547"
+path="res://.godot/imported/archivist.dialogue-1f4496750979d2d20fc8765ab1711fdb.tres"
+
+[deps]
+
+source_file="res://dialogue/archivist.dialogue"
+dest_files=["res://.godot/imported/archivist.dialogue-1f4496750979d2d20fc8765ab1711fdb.tres"]
+
+[params]
+
+defaults=true

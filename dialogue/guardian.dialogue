@@ -1,0 +1,43 @@
+~ start
+Guard: Halt! I can't let you pass. [#portrait=res://scenes/cutscenes/images/guardian_closed.png]
+Guard: I am the Guardian of this castle. I would let you in, but I am struggling with the magical mechanism of this gate... [#portrait=res://scenes/cutscenes/images/guardian_sad.png]
+Guard: The gate uses two magical signals. One opens the way, while the other is dangerous. [#portrait=res://scenes/cutscenes/images/guardian_closed.png]
+Guard: The problem is that they are shown only through color, and the colors look too similar to me.
+Guard: If I interact with the wrong crystal, you could get seriously hurt!
+Guard: I need the signals to be marked with symbols, so I can tell which one is safe and which one is dangerous. [#portrait=res://scenes/cutscenes/images/guardian_sad.png]
+: You activate your power, and start to see as he sees.
+Guard: See? I can't reliably tell which signal opens the gate. Please help me make the mechanism clear! [#portrait=res://scenes/cutscenes/images/guardian_closed.png] [#activate_shader]
+: Now you can help the guard by adding meaningful markers to the magical signals. [#pan_camera] [#show_debug][#minigame_menu]
+: The safe signal should be marked differently from the dangerous one.
+: Read more about the problem in the Resonance Codex.
+=> END
+
+
+~ fail_reaction
+Guard: Mmm... I still cannot tell which signal is safe and which one is dangerous.
+=> END
+
+
+~ circle
+Guard: Ah! Now I can clearly see which signal opens the gate and which one is dangerous! [#deactivate_shader] [#show_symbols] [#portrait=res://scenes/cutscenes/images/guardian_circle.png]
+Guard: Thank you! The mechanism finally makes sense to me! [#portrait=res://scenes/cutscenes/images/guardian_circle_happy.png] [#close_minigame] [#open_gate] [#reset_camera]
+Guard: Very well! You may enter. [#portrait=res://scenes/cutscenes/images/guardian_circle_letting.png]
+Guard: I heard that the archivist was worried about something... Maybe you should go and check on her! [#portrait=res://scenes/cutscenes/images/guardian_circle.png]
+=> END
+
+
+~ tick
+Guard: Ah! Now I can clearly see which signal opens the gate and which one is dangerous! [#deactivate_shader] [#show_symbols] [#portrait=res://scenes/cutscenes/images/guardian_tick.png]
+Guard: Thank you! The mechanism finally makes sense to me! [#portrait=res://scenes/cutscenes/images/guardian_tick_happy.png]  [#close_minigame] [#open_gate] [#reset_camera]
+Guard: Very well! You may enter. [#portrait=res://scenes/cutscenes/images/guardian_tick_letting.png]
+Guard: I heard that the archivist was worried about something... Maybe you should go and check on her! [#portrait=res://scenes/cutscenes/images/guardian_tick.png]
+=> END
+
+
+~ win_reaction
+=> tick
+
+
+~ already_helped
+Guard: Thank you again, Developer. Proceed to the castle. [#portrait=res://scenes/cutscenes/images/guardian_tick_letting.png]
+=> END
