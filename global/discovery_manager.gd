@@ -4,8 +4,9 @@ extends Node
 var discovered_impairments: Array[ImpairmentData] = []
 var discovered_wcag: Array[WCAGData] = []
 
-# ---> NUOVO: Cassaforte per salvare lo stato del mondo <---
-var level_states: Dictionary = {}
+var gate_solved: bool = false
+var gate_symbol_red: String = ""
+var gate_symbol_green: String = ""
 
 # Segnale emesso ogni volta che trovi qualcosa di nuovo
 signal new_discovery(item)

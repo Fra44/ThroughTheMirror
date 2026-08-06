@@ -49,7 +49,7 @@ func _on_confirm_button_pressed() -> void:
 	# Forziamo la chiusura del popup dei colori se è aperto
 	if color_picker.get_popup().visible:
 		color_picker.get_popup().hide()
-	
+		
 	if ratio >= MIN_CONTRAST:
 		# [TELEMETRIA] Risoluzione corretta e stop del timer
 		if has_node("/root/TelemetryManager"):

@@ -7,10 +7,8 @@ var texture_open = preload("res://assets/gate/gate_open.png")
 func _ready() -> void:
 	# Aggiungiamo il nodo al gruppo per trovarlo facilmente (serve per la cutscene!)
 	add_to_group("gate_door")
-	
-	# --- IL CANCELLO SI AUTOGESTISCE ---
-	# Controlla la memoria globale appena nasce
-	if DiscoveryManager and DiscoveryManager.level_states.get("gate_solved", false) == true:
+
+	if DiscoveryManager.gate_solved:
 		# Se il livello era già stato risolto, si apre da solo all'istante
 		open_door()
 	else:

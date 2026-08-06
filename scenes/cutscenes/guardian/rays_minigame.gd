@@ -136,9 +136,9 @@ func _on_run_button_pressed() -> void:
 		
 		# Salviamo lo stato e i simboli scelti
 		if DiscoveryManager:
-			DiscoveryManager.level_states["gate_solved"] = true
-			DiscoveryManager.level_states["gate_symbol_red"] = current_symbol_red
-			DiscoveryManager.level_states["gate_symbol_green"] = current_symbol_green
+			DiscoveryManager.gate_solved = true
+			DiscoveryManager.gate_symbol_red = current_symbol_red
+			DiscoveryManager.gate_symbol_green = current_symbol_green
 		
 		verification_requested.emit(true, current_symbol_green)
 
