@@ -54,7 +54,7 @@ func _on_balloon_line_changed(line: DialogueLine) -> void:
 		if tag == "show_debug" and current_impairment != null:
 			wait_for_debug = true
 				
-		# --- ACCENSIONE SHADER CVD (Daltonismo) ---
+		# --- ACCENSIONE SHADER CVD ---
 		if tag == "activate_shader":
 			var shaders = get_tree().get_nodes_in_group("cvd_shader")
 			if shaders.size() > 0:
@@ -79,13 +79,13 @@ func _on_balloon_line_changed(line: DialogueLine) -> void:
 			if has_node("Dim"):
 				$Dim.visible = true
 				
-		# --- NUOVO: MOSTRA I SIMBOLI ---
+		# --- MOSTRA I SIMBOLI ---
 		if tag == "show_symbols":
 			var symbols = get_tree().get_nodes_in_group("gate_symbols")
 			for s in symbols:
 				s.visible = true
 				
-		# --- NUOVO: APRI IL CANCELLO ---
+		# --- APRI IL CANCELLO ---
 		if tag == "open_gate":
 			var gate = get_tree().get_first_node_in_group("gate_door")
 			if gate and gate.has_method("open_door"):
@@ -99,14 +99,13 @@ func _on_balloon_line_changed(line: DialogueLine) -> void:
 			get_tree().root.add_child(menu_instance)
 			spawned_minigame = menu_instance
 			
-			# Questo segnale funzionerà non appena aggiungerai "signal verification_requested(is_successful: bool)" al tuo RaysMinigame.gd
 			if spawned_minigame.has_signal("verification_requested"):
 				spawned_minigame.verification_requested.connect(_on_minigame_verification)
 
 			if spawned_minigame.has_signal("preview_symbol_updated"):
 				spawned_minigame.preview_symbol_updated.connect(_on_minigame_preview_symbol_placed)
 			
-			# ---> NUOVA RIGA: Connettiamo il segnale di reset <---
+			# Connettiamo il segnale di reset
 			if spawned_minigame.has_signal("preview_symbols_cleared"):
 				spawned_minigame.preview_symbols_cleared.connect(_on_minigame_preview_symbols_cleared)
 			
@@ -133,12 +132,9 @@ func _on_balloon_line_changed(line: DialogueLine) -> void:
 				# Riportare la 'position' locale a Vector2.ZERO la ricentra perfettamente sul Player!
 				tween.tween_property(cam, "position", Vector2.ZERO, 2.5)
 
-# --- NUOVA FUNZIONE HANDLER: Riceve il segnale dal minigioco e aggiorna il mondo ---
+# --- FUNZIONE HANDLER: Riceve il segnale dal minigioco e aggiorna il mondo ---
 func _on_minigame_preview_symbol_placed(ray_color: String, symbol_name: String) -> void:
 	# 1. Calcoliamo l'indirizzo dell'asset della texture da caricare
-	# ASSUNZIONE: le tue texture visive nel mondo sono salvate in una cartella specifica, 
-	# e il loro nome file corrisponde esattamente al "symbol_name" (es. res://assets/world_symbols/circle.png)
-	# Modifica questo percorso per puntare alla cartella giusta dei tuoi assets visivi del mondo!
 	var texture_path = "res://assets/diamond_rays/" + symbol_name + "_" + ray_color + ".png"
 	
 	# 2. Proviamo a caricare la texture
@@ -156,12 +152,12 @@ func _on_minigame_preview_symbol_placed(ray_color: String, symbol_name: String) 
 		if t is Sprite2D:
 			# Applichiamo la texture
 			t.texture = target_texture
-			# Rendiamo lo sprite visibile!
+			# Rendiamo lo sprite visibile
 			t.visible = true
 			# Facciamo un print di conferma
 			print("Preview: Aggiornato sprite ", ray_color, " con ", symbol_name, " nel mondo!")
 
-# --- NUOVA FUNZIONE HANDLER: Nasconde tutti i simboli dal mondo ---
+# --- FUNZIONE HANDLER: Nasconde tutti i simboli dal mondo ---
 func _on_minigame_preview_symbols_cleared() -> void:
 	# Spegniamo i rossi
 	var red_targets = get_tree().get_nodes_in_group("ray_symbol_preview_red")
@@ -178,7 +174,6 @@ func _on_minigame_preview_symbols_cleared() -> void:
 	print("Preview: Simboli nascosti dal mondo (Reset).")
 
 # FUNZIONE CHIAMATA DAL SEGNALE DI VITTORIA DEL MINIGIOCO
-# ---> AGGIORNATA LA FIRMA PER ACCETTARE IL SECONDO PARAMETRO <---
 func _on_minigame_verification(is_successful: bool, winning_symbol: String = "") -> void:
 	if is_successful:
 		if is_instance_valid(balloon):
@@ -208,7 +203,7 @@ func _on_dialogue_ended(resource: DialogueResource) -> void:
 				# Aspettiamo 1 secondo (il tempo dell'animazione della telecamera)
 				await get_tree().create_timer(1.0).timeout
 				
-				# MOSTRA I COMANDI DEL MINIGIOCO (quando lo avrai implementato)
+				# MOSTRA I COMANDI DEL MINIGIOCO
 				if spawned_minigame.has_method("show_ui"):
 					spawned_minigame.show_ui()
 				

@@ -106,7 +106,7 @@ var quiz_finished: bool = false
 var quiz_started: bool = false
 var final_data: String = ""
 
-# INSERISCI QUI IL VERO LINK DEL TUO FORM NETTSKJEMA.
+# INSERISCI QUI IL VERO LINK DEL FORM NETTSKJEMA.
 var form_url: String = "https://nettskjema.no/a/630352"
 
 var wcag_url: String = "https://www.w3.org/WAI/standards-guidelines/wcag/"

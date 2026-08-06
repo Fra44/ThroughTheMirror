@@ -2,17 +2,16 @@ extends CanvasLayer
 
 @onready var color_rect: ColorRect = $ColorRect
 
-# --- DECLARATION THAT MUST BE AT THE TOP ---
 var is_active: bool = false
 var tween: Tween
 
-# Values to be changed
+# Valori modificalbili
 const TARGET_INTENSITY = 1.0 # 1.0 significa che l'effetto è applicato al 100%
 const TRANSITION_TIME = 0.8 
 # -----------------------------------------------------
 
 func _ready() -> void:
-	# FONDAMENTALE: Ignora la pausa del gioco per permettere le animazioni
+	# Ignora la pausa del gioco per permettere le animazioni
 	process_mode = Node.PROCESS_MODE_ALWAYS 
 	
 	# Gruppo specifico per i tag della Cutscene (#activate_shader / #deactivate_shader)

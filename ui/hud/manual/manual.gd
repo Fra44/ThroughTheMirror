@@ -8,8 +8,7 @@ var is_open: bool = false
 # Memorizza se il gioco era già in pausa prima di aprire il manuale
 var was_paused_before_manual: bool = false
 
-# --- NUOVO BOTTONE DI CHIUSURA ---
-# ATTENZIONE: Trascina il tuo nuovo CloseButton dall'albero della scena qui per assicurarti che il percorso sia esatto!
+# --- BOTTONE DI CHIUSURA ---
 @onready var close_button = $MainContainer/BookBackground/LeftPage/CloseButton
 # ---------------------------------
 
@@ -20,7 +19,7 @@ var was_paused_before_manual: bool = false
 @onready var list_scroll = $MainContainer/BookBackground/LeftPage/MarginContainer/VBoxContainer/ScrollContainer
 @onready var detail_scroll = $MainContainer/BookBackground/RightPage/MarginContainer/DetailView/ScrollContainer
 
-# --- AGGIUNTE PER LE WCAG CORRELATE ---
+# --- WCAG CORRELATE ---
 @onready var related_wcag_container = $MainContainer/BookBackground/RightPage/MarginContainer/DetailView/RelatedWcagContainer
 @onready var wcag_value_label = $MainContainer/BookBackground/RightPage/MarginContainer/DetailView/RelatedWcagContainer/WcagLabel
 @onready var jump_button = $MainContainer/BookBackground/RightPage/MarginContainer/DetailView/RelatedWcagContainer/LinkButton

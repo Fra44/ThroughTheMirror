@@ -202,7 +202,6 @@ func _end_cutscene() -> void:
 	if shaders.size() > 0:
 		shaders[0].toggle_effect(false)
 	
-	# ---> NUOVO: Decidiamo se distruggere la cutscene o avviare il finale
 	if trigger_quiz_at_end:
 		_play_ending_transition()
 	else:
@@ -228,7 +227,7 @@ func _play_ending_transition() -> void:
 	
 	await tween.finished
 	
-	# 3. Ora che è tutto nero, cambiamo scena!
+	# 3. Ora che è tutto nero, cambiamo scena
 	get_tree().change_scene_to_file("res://scenes/cutscenes/outro/GameOutro.tscn")
 	
 	# 4. Pulizia finale

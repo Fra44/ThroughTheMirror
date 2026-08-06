@@ -2,11 +2,10 @@ extends CanvasLayer
 
 @onready var color_rect: ColorRect = $ColorRect
 
-# --- DECLARATION THAT MUST BE AT THE TOP ---
 var is_active: bool = false
 var tween: Tween
 
-# Values to be changed
+# Valori modificabili
 const TARGET_BLUR = 2.4
 const TARGET_DESAT = 0.6
 const TARGET_TINT = 0.3
@@ -15,7 +14,7 @@ const TRANSITION_TIME = 0.8
 # -----------------------------------------------------
 
 func _ready() -> void:
-	# FONDAMENTALE: Ignora la pausa del gioco per permettere le animazioni
+	# Ignora la pausa del gioco per permettere le animazioni
 	process_mode = Node.PROCESS_MODE_ALWAYS 
 	
 	# Aggiungiamo questo nodo a un gruppo per trovarlo facilmente dalla cutscene
@@ -25,9 +24,7 @@ func _ready() -> void:
 	visible = true 
 	_update_shader(0.0, 0.0, 0.0, 1.0) # Initial reset
 
-# --- _input rimosso! Il tasto M non funziona più. ---
-
-# Nuova funzione richiamabile dall'esterno per forzare l'attivazione/disattivazione
+# funzione richiamabile dall'esterno per forzare l'attivazione/disattivazione
 func toggle_effect(activate: bool) -> void:
 	if is_active == activate: return # Evita di riprodurre l'animazione se è già nello stato corretto
 	is_active = activate

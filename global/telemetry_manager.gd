@@ -6,7 +6,7 @@ var manual_opens: int = 0
 var total_manual_time: float = 0.0
 var _current_manual_start: float = 0.0
 
-# Statistiche per ogni livello (assicurati di usare sempre "L1", "L2", "L3", "L4" quando chiami le funzioni!)
+# Statistiche per ogni livello
 var stats = {
 	"L1": {"fails": 0, "start_time": 0.0, "total_time": 0.0},
 	"L2": {"fails": 0, "start_time": 0.0, "total_time": 0.0},
@@ -54,7 +54,7 @@ func track_fail(id: String):
 
 # Genera la stringa finale compatta per il copia-incolla
 func get_summary_string() -> String:
-	# ---> NUOVO: Chiudiamo il cronometro del manuale prima di generare la stringa!
+	# Chiudiamo il cronometro del manuale prima di generare la stringa
 	if _current_manual_start > 0.0:
 		var time_spent = Time.get_unix_time_from_system() - _current_manual_start
 		total_manual_time += time_spent

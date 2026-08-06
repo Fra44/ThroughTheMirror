@@ -5,6 +5,7 @@ extends CanvasLayer
 var is_active: bool = false
 var tween: Tween
 
+# valori modificabili
 const TARGET_BLUR = 2.5 # Quanto forte deve essere la sfocatura
 const TRANSITION_TIME = 1.0 
 

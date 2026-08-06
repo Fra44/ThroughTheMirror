@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 @onready var anchor = $Anchor
-# Riferimento al pulsante (occhio al percorso, deve corrispondere alla gerarchia che abbiamo modificato)
+# Riferimento al pulsante
 @onready var close_button = $Anchor/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MarginContainer/CloseButton
 
 @onready var title_label = $Anchor/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/TitleLabel

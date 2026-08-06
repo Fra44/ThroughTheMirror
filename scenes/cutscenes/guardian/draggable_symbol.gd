@@ -1,7 +1,5 @@
 extends TextureRect
 
-# Esportiamo questa variabile così nell'Inspector potrai scriverci
-# "circle", "cross", "square" ecc. per ogni diversa icona!
 @export var symbol_name: String = "circle"
 
 # Questa funzione integrata in Godot scatta in automatico quando clicchi e trascini

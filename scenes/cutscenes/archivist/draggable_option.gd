@@ -3,7 +3,7 @@ extends PanelContainer
 @onready var label = $MarginContainer/HBoxContainer/Label
 @onready var play_button = $MarginContainer/HBoxContainer/PlayAudioButton
 
-# Esportiamo l'audio così puoi trascinare un file .wav o .ogg diverso per ogni pannello dall'Inspector!
+# Esportiamo l'audio così puoi trascinare un file .wav o .ogg diverso per ogni pannello dall'Inspector
 @export var audio_stream: AudioStream 
 
 signal play_requested(stream: AudioStream)
@@ -12,7 +12,6 @@ func _ready() -> void:
 	# Quando clicchi l'icona dell'audio, diciamo al main script di suonarlo
 	play_button.pressed.connect(func(): play_requested.emit(audio_stream))
 
-# --- MAGIA DEL DRAG ---
 func _get_drag_data(at_position: Vector2) -> Variant:
 	# Questo è il "pacchetto" di dati che ci portiamo dietro col mouse
 	var data = {

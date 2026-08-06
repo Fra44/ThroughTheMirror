@@ -1,4 +1,4 @@
-extends RichTextLabel # O Label, se il tuo DropZone è un Label. Assicurati che l'extends coincida!
+extends RichTextLabel
 
 signal option_dropped(text: String, audio: AudioStream)
 

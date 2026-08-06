@@ -38,7 +38,7 @@ func _on_balloon_line_changed(line: DialogueLine) -> void:
 				var tex = load(path)
 				portrait.texture = tex # Aggiorna il ritratto della cutscene
 				
-				# ---> LA MAGIA: Se il minigioco è aperto, mandiamo l'immagine anche a lui! <---
+				# Se il minigioco è aperto, mandiamo l'immagine anche a lui
 				if spawned_minigame != null and spawned_minigame.has_method("update_image"):
 					spawned_minigame.update_image(tex)
 			else:
@@ -73,7 +73,7 @@ func _on_balloon_line_changed(line: DialogueLine) -> void:
 			get_tree().root.add_child(menu_instance)
 			spawned_minigame = menu_instance
 			
-			# --- NUOVA LOGICA: Passiamo l'immagine attuale IMMEDIATAMENTE ---
+			# --- Passiamo l'immagine attuale IMMEDIATAMENTE ---
 			if spawned_minigame.has_method("update_image") and portrait.texture != null:
 				spawned_minigame.update_image(portrait.texture)
 			
