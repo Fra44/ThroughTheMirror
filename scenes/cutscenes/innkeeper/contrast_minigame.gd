@@ -60,9 +60,7 @@ func _on_confirm_button_pressed() -> void:
 			print("[TELEMETRIA L1] Completato. Tempo totale: ", snapped(stats["total_time"], 0.1), "s | Tentativi falliti: ", stats["fails"])
 		
 		verification_requested.emit(true)
-		
-		if DiscoveryManager:
-			DiscoveryManager.level_states["menu_solved"] = true
+
 	else:
 		# [TELEMETRIA] Errore utente registrato
 		if has_node("/root/TelemetryManager"):

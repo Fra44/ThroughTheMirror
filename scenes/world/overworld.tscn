@@ -1,6 +1,5 @@
 [gd_scene format=4 uid="uid://c70072y8peuih"]
 
-[ext_resource type="Script" uid="uid://c1knqkkcbqidl" path="res://scenes/world/overworld.gd" id="1_ap4hg"]
 [ext_resource type="TileSet" uid="uid://bvleur4rtmgit" path="res://assets/full_tileset.tres" id="1_het3u"]
 [ext_resource type="PackedScene" uid="uid://bjkerwdjwf4ip" path="res://global/Teleport_Trigger.tscn" id="2_het3u"]
 [ext_resource type="PackedScene" uid="uid://rd3pc53spu15" path="res://entities/npcs/guardian/guardian.tscn" id="3_373mm"]
@@ -38,7 +37,6 @@ size = Vector2(61.5, 20)
 
 [node name="Overworld" type="Node2D" unique_id=1589885129]
 position = Vector2(-233, 151)
-script = ExtResource("1_ap4hg")
 
 [node name="Ground" type="TileMapLayer" parent="." unique_id=1239822606]
 position = Vector2(0, -1)
