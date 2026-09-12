@@ -27,5 +27,5 @@ func action() -> void:
 		dialogue_resource, 
 		impairment, 
 		dialogue_start, 
-		"res://scenes/cutscenes/images/archivist.png" # <--- Inserisci qui l'immagine dell'archivista
+		"res://scenes/cutscenes/images/archivist.png"
 	)

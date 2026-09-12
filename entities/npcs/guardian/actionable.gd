@@ -1,7 +1,6 @@
 extends Area2D
 
 # 1. Carichiamo la scena specifica della cutscene del guardiano
-# (Assicurati di creare questa scena duplicando quella dell'innkeeper!)
 const CUTSCENE_SCENE = preload("res://scenes/cutscenes/guardian/guardian_cutscene.tscn")
 
 @export var impairment: ImpairmentData   

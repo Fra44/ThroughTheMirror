@@ -60,17 +60,17 @@ func _on_balloon_line_changed(line: DialogueLine) -> void:
 			if shaders.size() > 0:
 				shaders[0].toggle_effect(true)
 			
-			# NUOVA POSIZIONE: Inseriamo i dati nel manuale ESATTAMENTE ora!
+			# NUOVA POSIZIONE: Inseriamo i dati nel manuale ESATTAMENTE ora
 			if current_impairment and DiscoveryManager:
 				DiscoveryManager.discover_impairment(current_impairment)
 				
-		# SPEGNIMENTO SHADER (Nuovo!)
+		# SPEGNIMENTO SHADER
 		if tag == "deactivate_shader":
 			var shaders = get_tree().get_nodes_in_group("cataract_shader")
 			if shaders.size() > 0:
 				shaders[0].toggle_effect(false)
 				
-		# CHIUSURA MINIGIOCO E RITORNO ALLA CUTSCENE (Nuovo!)
+		# CHIUSURA MINIGIOCO E RITORNO ALLA CUTSCENE
 		if tag == "close_minigame":
 			# Distruggiamo il minigioco
 			if spawned_minigame != null and is_instance_valid(spawned_minigame):

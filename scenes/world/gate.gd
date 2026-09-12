@@ -1,6 +1,6 @@
 extends Sprite2D
 
-# Carichiamo le texture (Modifica il percorso dell'apertura se diverso)
+# Carichiamo le texture
 var texture_close = preload("res://assets/gate/gate_close.png")
 var texture_open = preload("res://assets/gate/gate_open.png")
 
